@@ -773,10 +773,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TacosMakerPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 3924062403524717276, guid: 59c27f86f71f64413ba0e5f860af3c37, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
