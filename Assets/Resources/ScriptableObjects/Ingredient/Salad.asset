@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 945df2e4b118f4f42ab5d24478048d00, type: 3}
-  m_Name: Chicken
+  m_Name: Salad
   m_EditorClassIdentifier: 
-  name: Chicken
-  sprite: {fileID: 6047051563096828533, guid: 074eecafd54df47de8357a6d0afe5271, type: 3}
+  name: Salad
+  sprite: {fileID: 6047051563096828533, guid: 353c8f01c7e784be391205911f17d8f1, type: 3}

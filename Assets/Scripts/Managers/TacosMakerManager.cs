@@ -16,6 +16,7 @@ public class TacosMakerManager : MonoBehaviour
 
     void Start()
     {
+        tacosMakerVisual.SetupIngredients(availableIngredients);
         CreateTacos();
     }
 
@@ -28,5 +29,10 @@ public class TacosMakerManager : MonoBehaviour
 
         onCreationTacos = new Tacos();
         tacosMakerVisual.CreateTacos();
+    }
+
+    public void AddIngredients(Ingredient ingredient)
+    {
+        onCreationTacos.AddIngredient(ingredient);
     }
 }

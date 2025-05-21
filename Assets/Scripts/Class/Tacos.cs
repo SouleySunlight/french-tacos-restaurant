@@ -14,4 +14,9 @@ public class Tacos
         ingredients = new();
     }
 
+    public void AddIngredient(Ingredient ingredient)
+    {
+        ingredients.Add(ingredient);
+    }
+
 }

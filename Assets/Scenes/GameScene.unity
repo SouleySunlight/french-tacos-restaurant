@@ -579,6 +579,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6998152585439279160, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
+      propertyPath: availableIngredients.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998152585439279160, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
+      propertyPath: 'availableIngredients.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 3379be92e59104cc3a127a761ff34feb, type: 2}
+    - target: {fileID: 6998152585439279160, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
+      propertyPath: 'availableIngredients.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2535e60e534f54fdbb53a2b6b4d3691b, type: 2}
+    - target: {fileID: 6998152585439279160, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
+      propertyPath: 'availableIngredients.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9167cde54586e49538ce78549eae4299, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
