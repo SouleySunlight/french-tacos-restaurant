@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 945df2e4b118f4f42ab5d24478048d00, type: 3}
   m_Name: Beef
   m_EditorClassIdentifier: 
-  name: 
-  sprite: {fileID: 0}
+  name: Beef
+  sprite: {fileID: 3126107728554842056, guid: 76a7482c8e981488dba2ce58467a3b73, type: 3}
