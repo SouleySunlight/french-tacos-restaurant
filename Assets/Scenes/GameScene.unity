@@ -345,41 +345,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &710510695
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 710510696}
-  m_Layer: 5
-  m_Name: FirstTacosPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &710510696
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710510695}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7661052948966349480}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: -800}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &796927915
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,14 +705,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 796927919}
     m_Modifications:
-    - target: {fileID: 976346061138423414, guid: 59c27f86f71f64413ba0e5f860af3c37, type: 3}
-      propertyPath: tacosPrefab
-      value: 
-      objectReference: {fileID: 6047051563096828533, guid: 5cbdd2495398c4d5fb003ebb634079a8, type: 3}
-    - target: {fileID: 976346061138423414, guid: 59c27f86f71f64413ba0e5f860af3c37, type: 3}
-      propertyPath: doneTacosFirstPosition
-      value: 
-      objectReference: {fileID: 710510696}
     - target: {fileID: 1912324636870769842, guid: 59c27f86f71f64413ba0e5f860af3c37, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -832,20 +789,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: TacosMakerPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 3924062403524717276, guid: 59c27f86f71f64413ba0e5f860af3c37, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4369893006492422916, guid: 59c27f86f71f64413ba0e5f860af3c37, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1912324636870769842, guid: 59c27f86f71f64413ba0e5f860af3c37, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 710510696}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59c27f86f71f64413ba0e5f860af3c37, type: 3}
 --- !u!224 &7661052948966349480 stripped
