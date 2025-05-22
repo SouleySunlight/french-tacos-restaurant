@@ -27,16 +27,6 @@ public class TacosMakerVisual : MonoBehaviour
         tacosMakerManager = FindFirstObjectByType<TacosMakerManager>();
     }
 
-    public void OpenTacosMakerWindow()
-    {
-        tacosMakerWindow.SetActive(true);
-    }
-
-    public void CloseTacosMakerWindow()
-    {
-        tacosMakerWindow.SetActive(false);
-    }
-
     public void CreateTacos()
     {
         onCreationTacos = Instantiate(tortillaPrefab, onCreationTacosTransform.position, Quaternion.identity, onCreationTacosTransform);
