@@ -9,7 +9,7 @@ public class SidebarVisuals : MonoBehaviour
     [SerializeField] private List<SidebarOptions> sidebarOptions;
     [SerializeField] private RectTransform firstButtonTransform;
 
-    private readonly int VERTICAL_GAP = 200;
+    private readonly int VERTICAL_GAP = -200;
 
 
     void Awake()
@@ -17,13 +17,17 @@ public class SidebarVisuals : MonoBehaviour
         var index = 0;
         foreach (var sidebarOption in sidebarOptions)
         {
-            var position = new Vector3(firstButtonTransform.position.x + index * VERTICAL_GAP, firstButtonTransform.position.y, firstButtonTransform.position.z);
+            var position = new Vector3(firstButtonTransform.position.x, firstButtonTransform.position.y + index * VERTICAL_GAP, firstButtonTransform.position.z);
             var createdOption = Instantiate(sidebuttonPrefab, position, Quaternion.identity, firstButtonTransform);
             createdOption.GetComponent<Button>().onClick.AddListener(() => UpdateView(sidebarOption.viewToShow));
             createdOption.GetComponentInChildren<TMP_Text>().text = sidebarOption.name;
-
+            index++;
         }
 
+    }
+
+    void Start()
+    {
         UpdateView(sidebarOptions[0].viewToShow);
     }
 
