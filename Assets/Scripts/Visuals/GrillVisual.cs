@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GrillVisual : MonoBehaviour
 {
@@ -8,8 +9,8 @@ public class GrillVisual : MonoBehaviour
     private List<GameObject> tacosToGrillList = new();
     private List<GameObject> grillingTacos = new();
     [SerializeField] private List<RectTransform> grillTransforms = new();
+    [SerializeField] private List<Image> grillTimers = new();
     private readonly int TACOS_TO_GRILL_HORIZONTAL_GAP = 500;
-    private readonly float GRILL_DURATION = 30f;
 
     public void UpdateVisual()
     {
@@ -46,5 +47,18 @@ public class GrillVisual : MonoBehaviour
         var tacosToGrill = tacosToGrillList.Find(tacosPrefab => tacosPrefab.GetComponent<TacosDisplayer>().tacosData == tacos);
         tacosToGrillList.Remove(tacosToGrill);
         tacosToGrill.GetComponent<RectTransform>().position = grillTransforms[position].position;
+        grillingTacos.Add(tacosToGrill);
+    }
+
+    public void UpdateTacosVisual(Tacos tacos)
+    {
+        var tacosToUpdate = grillingTacos.Find(tacosPrefab => tacosPrefab.GetComponent<TacosDisplayer>().tacosData == tacos);
+        tacosToUpdate.GetComponent<TacosDisplayer>().UpdateTacosVisual();
+
+    }
+
+    public void UpdateTimer(int index, float percentage)
+    {
+        grillTimers[index].fillAmount = percentage;
     }
 }

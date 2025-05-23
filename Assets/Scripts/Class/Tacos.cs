@@ -27,4 +27,9 @@ public class Tacos
         isGrilled = true;
     }
 
+    public bool IsGrilled()
+    {
+        return isGrilled;
+    }
+
 }
