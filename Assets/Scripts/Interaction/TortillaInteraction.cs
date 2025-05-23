@@ -5,6 +5,6 @@ public class TortillaInteraction : MonoBehaviour, IPointerDownHandler
 {
     public void OnPointerDown(PointerEventData eventData)
     {
-        FindFirstObjectByType<TacosMakerManager>().WrapTacos();
+        FindFirstObjectByType<GameManager>().WrapTacos();
     }
 }

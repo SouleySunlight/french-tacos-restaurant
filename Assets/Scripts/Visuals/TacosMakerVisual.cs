@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class TacosMakerVisual : MonoBehaviour
 {
-    [SerializeField] private GameObject tacosMakerWindow;
     [SerializeField] private GameObject tortillaPrefab;
     [SerializeField] private GameObject tacosPrefab;
     [SerializeField] private GameObject ingredientButtonPrefab;
@@ -18,7 +17,6 @@ public class TacosMakerVisual : MonoBehaviour
     private List<GameObject> doneTacosPrefabs = new();
     private readonly int INGREDIENT_BUTTON_HORIZONTAL_GAP = 345;
     private readonly int INGREDIENT_BUTTON_VERTICAL_GAP = -200;
-    private readonly int DONE_TACOS_HORIZONTAL_GAP = 500;
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
 
 
@@ -59,23 +57,7 @@ public class TacosMakerVisual : MonoBehaviour
 
     public void WrapTacos(Tacos createdTacos)
     {
-        var newTacos = Instantiate(tacosPrefab, doneTacosFirstPosition.position, Quaternion.identity, doneTacosFirstPosition);
-        newTacos.GetComponent<TacosInteraction>().tacosData = createdTacos;
-        doneTacosPrefabs.Add(newTacos);
-
         Destroy(onCreationTacos);
         onCreationTacos = null;
-        UpdateDoneTacosVisual();
-    }
-
-    void UpdateDoneTacosVisual()
-    {
-        var index = 0;
-        foreach (GameObject prefab in doneTacosPrefabs)
-        {
-            var position = new Vector3(doneTacosFirstPosition.position.x + index * DONE_TACOS_HORIZONTAL_GAP, doneTacosFirstPosition.position.y, doneTacosFirstPosition.position.z);
-            prefab.GetComponent<RectTransform>().position = position;
-            index++;
-        }
     }
 }
