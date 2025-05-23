@@ -9,12 +9,14 @@ public class Tacos
     public List<Ingredient> ingredients;
 
     public bool isGrilled;
+    public bool isBurnt;
 
     public Tacos()
     {
         guid = Guid.NewGuid();
         ingredients = new();
         isGrilled = false;
+        isBurnt = false;
     }
 
     public void AddIngredient(Ingredient ingredient)
@@ -30,6 +32,16 @@ public class Tacos
     public bool IsGrilled()
     {
         return isGrilled;
+    }
+
+    public void BurnTacos()
+    {
+        isBurnt = true;
+    }
+
+    public bool IsBurnt()
+    {
+        return isBurnt;
     }
 
 }

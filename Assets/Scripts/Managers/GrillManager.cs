@@ -11,6 +11,8 @@ public class GrillManager : MonoBehaviour
     private readonly int MAX_GRILLING_TACOS = 2;
     private readonly float UNUSED_TIME_VALUE = -10f;
     private readonly float GRILL_DURATION = 10f;
+    private readonly float BURN_DURATION = 20f;
+
 
 
     private GrillVisual grillVisual;
@@ -32,6 +34,14 @@ public class GrillManager : MonoBehaviour
             if (grillingTime[i] == -10f) { continue; }
 
             grillingTime[i] += Time.deltaTime;
+
+            if (grillingTime[i] >= BURN_DURATION && !grillingTacos[i].isBurnt)
+            {
+                grillingTacos[i].BurnTacos();
+                grillVisual.UpdateTacosVisual(grillingTacos[i]);
+                continue;
+            }
+
 
             if (grillingTime[i] >= GRILL_DURATION && !grillingTacos[i].isGrilled)
             {

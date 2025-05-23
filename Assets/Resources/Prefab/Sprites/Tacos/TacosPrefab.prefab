@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ungrilledTacosImage: {fileID: 3004690476862396172, guid: 99d70b876a7c54b71ac77bb7f75529cf, type: 3}
   grilledTacosImage: {fileID: 331345989143700516, guid: 21852f2b68fbb49aa9d75ca7460687c6, type: 3}
+  burntTacos: {fileID: -3704311931981801585, guid: 99986e09435d844e7ad382887d973878, type: 3}
 --- !u!114 &1362372819983485494
 MonoBehaviour:
   m_ObjectHideFlags: 0
