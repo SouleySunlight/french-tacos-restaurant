@@ -124,3 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eb5234a7025042c6a354f4d101ec839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ungrilledTacosImage: {fileID: 3004690476862396172, guid: 99d70b876a7c54b71ac77bb7f75529cf, type: 3}
+  grilledTacosImage: {fileID: 331345989143700516, guid: 21852f2b68fbb49aa9d75ca7460687c6, type: 3}

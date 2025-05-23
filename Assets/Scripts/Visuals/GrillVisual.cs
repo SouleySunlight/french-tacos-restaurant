@@ -27,9 +27,8 @@ public class GrillVisual : MonoBehaviour
 
     public void ReceiveTacosToGrill(Tacos tacos)
     {
-        Debug.Log("coucou");
         var tacosToGrill = Instantiate(tacosToGrillPrefab, tacosToGrillFirstTransform.position, Quaternion.identity, tacosToGrillFirstTransform);
-        tacosToGrill.GetComponent<TacosInteraction>().tacosData = tacos;
+        tacosToGrill.GetComponent<TacosDisplayer>().tacosData = tacos;
         tacosToGrillList.Add(tacosToGrill);
         UpdateVisual();
     }

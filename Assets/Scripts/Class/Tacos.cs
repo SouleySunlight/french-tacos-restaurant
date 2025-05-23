@@ -8,15 +8,23 @@ public class Tacos
     public Guid guid;
     public List<Ingredient> ingredients;
 
+    public bool isGrilled;
+
     public Tacos()
     {
         guid = Guid.NewGuid();
         ingredients = new();
+        isGrilled = false;
     }
 
     public void AddIngredient(Ingredient ingredient)
     {
         ingredients.Add(ingredient);
+    }
+
+    public void GrillTacos()
+    {
+        isGrilled = true;
     }
 
 }
