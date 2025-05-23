@@ -1,8 +1,7 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TacosDisplayer : MonoBehaviour, IPointerDownHandler
+public class TacosDisplayer : MonoBehaviour
 {
     public Tacos tacosData;
     [SerializeField] private Sprite ungrilledTacosImage;
@@ -17,8 +16,5 @@ public class TacosDisplayer : MonoBehaviour, IPointerDownHandler
     {
         GetComponentInChildren<Image>().sprite = tacosData.isGrilled ? grilledTacosImage : ungrilledTacosImage;
     }
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log(tacosData.guid);
-    }
+
 }
