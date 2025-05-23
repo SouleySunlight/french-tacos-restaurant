@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3412095494019706122
+--- !u!1 &160997056225958956
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,44 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7827192709015239324}
-  - component: {fileID: 1140460138308906937}
+  - component: {fileID: 1122247084773290553}
+  - component: {fileID: 5406849787522843213}
   m_Layer: 0
-  m_Name: TacosMakerManager
+  m_Name: GrillManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7827192709015239324
+--- !u!4 &1122247084773290553
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3412095494019706122}
+  m_GameObject: {fileID: 160997056225958956}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1001.1441, y: 943.2995, z: -16.526052}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -307.17255, y: 472.8886, z: 0.9290924}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1140460138308906937
+--- !u!114 &5406849787522843213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3412095494019706122}
+  m_GameObject: {fileID: 160997056225958956}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d683bb6bb0a746ba9aae9e266e7cb43, type: 3}
+  m_Script: {fileID: 11500000, guid: 2651a492afc0c4ffb999c0980dbe7f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableIngredients:
-  - {fileID: 11400000, guid: bcd75b2f569f34240a4d51384afa9c1c, type: 2}
-  - {fileID: 11400000, guid: 3379be92e59104cc3a127a761ff34feb, type: 2}
-  - {fileID: 11400000, guid: 2535e60e534f54fdbb53a2b6b4d3691b, type: 2}
-  - {fileID: 11400000, guid: 9167cde54586e49538ce78549eae4299, type: 2}

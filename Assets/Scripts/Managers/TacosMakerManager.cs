@@ -7,8 +7,6 @@ public class TacosMakerManager : MonoBehaviour
     private TacosMakerVisual tacosMakerVisual;
 
     private Tacos onCreationTacos;
-    private List<Tacos> doneTacos = new();
-    public readonly int MAX_DONE_TACOS = 2;
 
 
     void Awake()
@@ -38,21 +36,17 @@ public class TacosMakerManager : MonoBehaviour
         onCreationTacos.AddIngredient(ingredient);
     }
 
-    public void WrapTacos()
+    public Tacos WrapTacos()
     {
-        if (doneTacos.Count >= MAX_DONE_TACOS)
-        {
-            return;
-        }
-
         if (onCreationTacos.ingredients.Count == 0)
         {
-            return;
+            throw new EmptyTacosException();
         }
 
-        doneTacos.Add(onCreationTacos);
-        tacosMakerVisual.WrapTacos(onCreationTacos);
+        var wrappedTacos = onCreationTacos;
+        tacosMakerVisual.WrapTacos(wrappedTacos);
         onCreationTacos = null;
         CreateTacos();
+        return wrappedTacos;
     }
 }
