@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public TacosMakerManager TacosMakerManager { get; private set; }
     public GrillManager GrillManager { get; private set; }
-
+    public CheckoutManager CheckoutManager { get; private set; }
 
     private void Awake()
     {
@@ -24,12 +24,12 @@ public class GameManager : MonoBehaviour
     {
         try
         {
-            if (GrillManager.CanAddTacosToGrill())
+            if (!GrillManager.CanAddTacosToGrillWaitingZone())
             {
                 throw new NotEnoughSpaceException();
             }
             var wrappedTacos = TacosMakerManager.WrapTacos();
-            GrillManager.ReceiveTacosToGrill(wrappedTacos);
+            GrillManager.AddTacosToWaitingZone(wrappedTacos);
         }
         catch (Exception e)
         {
@@ -37,10 +37,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OnTacosGrilled(Tacos tacos)
+    {
+        CheckoutManager.ReceiveTacosToServe(tacos);
+
+    }
+
     void InitializeManagers()
     {
         TacosMakerManager = GetComponentInChildren<TacosMakerManager>();
         GrillManager = GetComponentInChildren<GrillManager>();
+        CheckoutManager = GetComponentInChildren<CheckoutManager>();
 
         if (TacosMakerManager == null)
         {
@@ -64,6 +71,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             GrillManager = GetComponentInChildren<GrillManager>();
+        }
+        if (CheckoutManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/CheckoutManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load CheckoutManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            CheckoutManager = GetComponentInChildren<CheckoutManager>();
         }
     }
 
