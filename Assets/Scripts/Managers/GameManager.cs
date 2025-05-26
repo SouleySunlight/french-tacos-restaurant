@@ -7,9 +7,12 @@ public class GameManager : MonoBehaviour
     public TacosMakerManager TacosMakerManager { get; private set; }
     public GrillManager GrillManager { get; private set; }
     public CheckoutManager CheckoutManager { get; private set; }
+    [SerializeField] private List<Ingredient> initialAvailableIngredients = new();
+    [HideInInspector] public List<Ingredient> AvailableIngredients;
 
     private void Awake()
     {
+        AvailableIngredients = initialAvailableIngredients;
         InitializeManagers();
         if (Instance == null)
         {
