@@ -160,6 +160,8 @@ GameObject:
   m_Component:
   - component: {fileID: 984661222806013986}
   - component: {fileID: 6654528356029807903}
+  - component: {fileID: 9200508348836268652}
+  - component: {fileID: 4306534587249165841}
   m_Layer: 5
   m_Name: OrderPrefab
   m_TagString: Untagged
@@ -202,6 +204,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orderText: {fileID: 2508157832876801837}
+--- !u!114 &9200508348836268652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659161461995990105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e29b73af4674b74831856f2217c811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &4306534587249165841
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659161461995990105}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6731560250444972929
 GameObject:
   m_ObjectHideFlags: 0
