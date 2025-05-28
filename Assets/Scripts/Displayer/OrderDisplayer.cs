@@ -17,7 +17,7 @@ public class OrderDisplayer : MonoBehaviour
             {
                 text += ingredient.name + " ";
             }
-            text += "</br>";
+            text += "<br>";
         }
 
         orderText.text = text;

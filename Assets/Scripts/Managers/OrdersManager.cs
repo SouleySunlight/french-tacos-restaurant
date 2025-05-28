@@ -26,14 +26,29 @@ public class OrdersManager : MonoBehaviour
     Order GenerateOrder()
     {
         List<List<Ingredient>> orderList = new();
-        List<Ingredient> ingredients = new()
+
+        var numberOfTacos = Random.Range(1, 3);
+
+        for (int i = 0; i < numberOfTacos; i++)
         {
-            GameManager.Instance.AvailableIngredients[0]
-        };
-        orderList.Add(ingredients);
+            orderList.Add(GenerateSingleTacosComposition());
+        }
 
         return new Order(orderList);
     }
 
+    List<Ingredient> GenerateSingleTacosComposition()
+    {
+        List<Ingredient> ingredients = new();
+        var availableIngrdients = GameManager.Instance.AvailableIngredients;
+        var numberOfIngredients = Random.Range(1, availableIngrdients.Count);
+
+        for (int i = 0; i < numberOfIngredients; i++)
+        {
+            ingredients.Add(availableIngrdients[Random.Range(0, availableIngrdients.Count)]);
+        }
+
+        return ingredients;
+    }
 
 }
