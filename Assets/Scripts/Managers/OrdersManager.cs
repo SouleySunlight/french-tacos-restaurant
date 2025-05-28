@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class OrdersManager : MonoBehaviour
 
     void Start()
     {
-        AddNewOrder(GenerateOrder());
+        LaunchOrderProvider();
     }
 
     void AddNewOrder(Order order)
@@ -49,6 +50,24 @@ public class OrdersManager : MonoBehaviour
         }
 
         return ingredients;
+    }
+
+    private IEnumerator OrderProviderCoroutine()
+    {
+        yield return new WaitForSeconds(2);
+        AddNewOrder(GenerateOrder());
+
+        while (true)
+        {
+            var timeToWait = Random.Range(0, 10);
+            yield return new WaitForSeconds(timeToWait);
+            AddNewOrder(GenerateOrder());
+        }
+    }
+
+    void LaunchOrderProvider()
+    {
+        StartCoroutine(OrderProviderCoroutine());
     }
 
 }
