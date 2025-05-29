@@ -19,6 +19,6 @@ public class Order
         }
         expectedOrder = orderItems;
 
-        price = ingredients.Count * price;
+        price = ingredients.Count * GlobalConstant.TACOS_PRICE;
     }
 }

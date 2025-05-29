@@ -99,6 +99,7 @@ public class OrdersManager : MonoBehaviour
 
     void CompleteOrder(Order order)
     {
+        GameManager.Instance.CompleteOrder(order);
         ordersVisual.CompleteOrder(order);
     }
 

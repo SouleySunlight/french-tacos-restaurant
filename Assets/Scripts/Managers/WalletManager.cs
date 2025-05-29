@@ -11,4 +11,11 @@ public class WalletManager : MonoBehaviour
         walletVisual = FindFirstObjectByType<WalletVisual>();
         walletVisual.UpdateWalletAmount(currentWalletAmount);
     }
+
+    public void ReceiveMoney(int amount)
+    {
+        currentWalletAmount += amount;
+        walletVisual.UpdateWalletAmount(currentWalletAmount);
+
+    }
 }
