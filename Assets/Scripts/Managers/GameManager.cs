@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -6,10 +7,14 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public TacosMakerManager TacosMakerManager { get; private set; }
     public GrillManager GrillManager { get; private set; }
-
+    public CheckoutManager CheckoutManager { get; private set; }
+    public OrdersManager OrdersManager { get; private set; }
+    [SerializeField] private List<Ingredient> initialAvailableIngredients = new();
+    [HideInInspector] public List<Ingredient> AvailableIngredients;
 
     private void Awake()
     {
+        AvailableIngredients = initialAvailableIngredients;
         InitializeManagers();
         if (Instance == null)
         {
@@ -24,12 +29,12 @@ public class GameManager : MonoBehaviour
     {
         try
         {
-            if (GrillManager.CanAddTacosToGrill())
+            if (!GrillManager.CanAddTacosToGrillWaitingZone())
             {
                 throw new NotEnoughSpaceException();
             }
             var wrappedTacos = TacosMakerManager.WrapTacos();
-            GrillManager.ReceiveTacosToGrill(wrappedTacos);
+            GrillManager.AddTacosToWaitingZone(wrappedTacos);
         }
         catch (Exception e)
         {
@@ -37,10 +42,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OnTacosGrilled(Tacos tacos)
+    {
+        CheckoutManager.ReceiveTacosToServe(tacos);
+
+    }
+
+    public void ServeTacos(Tacos tacos)
+    {
+        CheckoutManager.ServeTacos(tacos);
+    }
+    public void RefuseTacos()
+    {
+        CheckoutManager.RefuseTacos();
+    }
+
     void InitializeManagers()
     {
         TacosMakerManager = GetComponentInChildren<TacosMakerManager>();
         GrillManager = GetComponentInChildren<GrillManager>();
+        CheckoutManager = GetComponentInChildren<CheckoutManager>();
+        OrdersManager = GetComponentInChildren<OrdersManager>();
 
         if (TacosMakerManager == null)
         {
@@ -64,6 +86,28 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             GrillManager = GetComponentInChildren<GrillManager>();
+        }
+        if (CheckoutManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/CheckoutManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load CheckoutManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            CheckoutManager = GetComponentInChildren<CheckoutManager>();
+        }
+        if (OrdersManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/OrdersManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load OrdersManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            OrdersManager = GetComponentInChildren<OrdersManager>();
         }
     }
 

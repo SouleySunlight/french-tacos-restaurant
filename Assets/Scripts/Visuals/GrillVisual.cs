@@ -10,7 +10,6 @@ public class GrillVisual : MonoBehaviour
     private List<GameObject> grillingTacos = new();
     [SerializeField] private List<RectTransform> grillTransforms = new();
     [SerializeField] private List<Image> grillTimers = new();
-    private readonly int TACOS_TO_GRILL_HORIZONTAL_GAP = 500;
 
     public void UpdateVisual()
     {
@@ -22,7 +21,7 @@ public class GrillVisual : MonoBehaviour
         var index = 0;
         foreach (GameObject prefab in tacosToGrillList)
         {
-            var position = new Vector3(tacosToGrillFirstTransform.position.x + index * TACOS_TO_GRILL_HORIZONTAL_GAP, tacosToGrillFirstTransform.position.y, tacosToGrillFirstTransform.position.z);
+            var position = new Vector3(tacosToGrillFirstTransform.position.x + index * GlobalConstant.TACOS_HORIZONTAL_GAP, tacosToGrillFirstTransform.position.y, tacosToGrillFirstTransform.position.z);
             prefab.GetComponent<RectTransform>().position = position;
             index++;
         }
@@ -39,7 +38,7 @@ public class GrillVisual : MonoBehaviour
 
     void OnClickOnTacos(GameObject gameObject)
     {
-        FindFirstObjectByType<GrillManager>().AddTacosToGrill(gameObject.GetComponent<TacosDisplayer>().tacosData);
+        FindFirstObjectByType<GrillManager>().OnClickOnTacos(gameObject.GetComponent<TacosDisplayer>().tacosData);
     }
 
     public void GrillTacos(Tacos tacos, int position)
@@ -60,5 +59,14 @@ public class GrillVisual : MonoBehaviour
     public void UpdateTimer(int index, float percentage)
     {
         grillTimers[index].fillAmount = percentage;
+    }
+
+    public void RemoveTacosOfTheGrill(Tacos tacosToServe, int index)
+    {
+        var tacosToRemoveIndex = grillingTacos.FindIndex((tacos) => tacos.GetComponent<TacosDisplayer>().tacosData.guid == tacosToServe.guid);
+        Destroy(grillingTacos[tacosToRemoveIndex]);
+        grillingTacos.RemoveAt(tacosToRemoveIndex);
+        grillTimers[index].fillAmount = 0;
+
     }
 }

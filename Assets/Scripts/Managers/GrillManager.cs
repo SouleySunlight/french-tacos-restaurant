@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GrillManager : MonoBehaviour
@@ -17,9 +18,12 @@ public class GrillManager : MonoBehaviour
 
     private GrillVisual grillVisual;
 
+    private GameManager gameManager;
+
     void Awake()
     {
-        grillVisual = FindFirstObjectByType<GrillVisual>();
+        gameManager = FindFirstObjectByType<GameManager>();
+        grillVisual = FindFirstObjectByType<GrillVisual>(FindObjectsInactive.Include);
         for (int i = 0; i < MAX_GRILLING_TACOS; i++)
         {
             grillingTacos.Add(null);
@@ -55,44 +59,79 @@ public class GrillManager : MonoBehaviour
         }
     }
 
-    public void ReceiveTacosToGrill(Tacos tacos)
+    public void AddTacosToWaitingZone(Tacos tacos)
     {
         waitingToGrillTacos.Add(tacos);
         grillVisual.ReceiveTacosToGrill(tacos);
     }
 
-    public bool CanAddTacosToGrill()
+    public bool CanAddTacosToGrillWaitingZone()
     {
-        return waitingToGrillTacos.Count >= MAX_WAITING_TO_GRILL_TACOS;
+        return waitingToGrillTacos.Count < MAX_WAITING_TO_GRILL_TACOS;
     }
-    public void AddTacosToGrill(Tacos tacos)
+
+    public void OnClickOnTacos(Tacos tacos)
     {
         try
         {
-            if (!waitingToGrillTacos.Contains(tacos))
+            if (waitingToGrillTacos.Contains(tacos))
             {
+                AddTacosToGrill(tacos);
                 return;
             }
 
-            waitingToGrillTacos.Remove(tacos);
-
-            for (int i = 0; i <= grillingTacos.Count; i++)
+            if (tacos.isGrilled || tacos.isBurnt)
             {
-                if (grillingTacos[i] == null)
-                {
-                    grillingTacos[i] = tacos;
-                    grillVisual.GrillTacos(tacos, i);
-                    grillingTime[i] = 0f;
-                    return;
-                }
+                ServeTacos(tacos);
+                return;
             }
-            throw new NotEnoughSpaceException();
 
+            if (CanAddTacosToGrillWaitingZone())
+            {
+                RemoveTacosOfTheGrill(tacos);
+                AddTacosToWaitingZone(tacos);
+                return;
+            }
 
         }
         catch (Exception e)
         {
             Debug.Log(e);
         }
+
+    }
+
+    public void AddTacosToGrill(Tacos tacos)
+    {
+        waitingToGrillTacos.Remove(tacos);
+
+        for (int i = 0; i <= grillingTacos.Count; i++)
+        {
+            if (grillingTacos[i] == null)
+            {
+                grillingTacos[i] = tacos;
+                grillVisual.GrillTacos(tacos, i);
+                grillingTime[i] = 0f;
+                return;
+            }
+        }
+        throw new NotEnoughSpaceException();
+
+    }
+
+    void ServeTacos(Tacos tacos)
+    {
+        RemoveTacosOfTheGrill(tacos);
+        gameManager.OnTacosGrilled(tacos);
+
+    }
+
+    void RemoveTacosOfTheGrill(Tacos tacos)
+    {
+        var tacosToRemoveIndex = grillingTacos.FindIndex((grillTacos) => grillTacos != null && grillTacos.guid == tacos.guid);
+        grillingTacos[tacosToRemoveIndex] = null;
+        grillingTime[tacosToRemoveIndex] = UNUSED_TIME_VALUE;
+        grillVisual.RemoveTacosOfTheGrill(tacos, tacosToRemoveIndex);
+
     }
 }

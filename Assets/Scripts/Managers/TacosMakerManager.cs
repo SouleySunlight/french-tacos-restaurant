@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class TacosMakerManager : MonoBehaviour
 {
-    [SerializeField] private List<Ingredient> availableIngredients;
     private TacosMakerVisual tacosMakerVisual;
 
     private Tacos onCreationTacos;
@@ -16,7 +15,7 @@ public class TacosMakerManager : MonoBehaviour
 
     void Start()
     {
-        tacosMakerVisual.SetupIngredients(availableIngredients);
+        tacosMakerVisual.SetupIngredients(GameManager.Instance.AvailableIngredients);
         CreateTacos();
     }
 
