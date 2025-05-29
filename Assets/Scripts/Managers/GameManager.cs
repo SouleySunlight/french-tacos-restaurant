@@ -52,6 +52,10 @@ public class GameManager : MonoBehaviour
     {
         CheckoutManager.ServeTacos(tacos);
     }
+    public void RefuseTacos()
+    {
+        CheckoutManager.RefuseTacos();
+    }
 
     void InitializeManagers()
     {

@@ -22,6 +22,11 @@ public class CheckoutManager : MonoBehaviour
     {
         tacosToServe.Remove(tacos);
         checkoutVisual.RemoveTacosToServe(tacos);
+    }
+
+    public void RefuseTacos()
+    {
+        checkoutVisual.UpdateVisuals();
 
     }
 }

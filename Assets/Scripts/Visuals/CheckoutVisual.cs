@@ -25,9 +25,10 @@ public class CheckoutVisual : MonoBehaviour
             Destroy(tacosToRemove);
             tacosToServe.Remove(tacosToRemove);
         }
+        UpdateVisuals();
     }
 
-    void UpdateVisuals()
+    public void UpdateVisuals()
     {
         var index = 0;
         foreach (GameObject prefab in tacosToServe)

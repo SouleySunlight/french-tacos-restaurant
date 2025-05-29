@@ -16,7 +16,10 @@ public class TacosMovemement : MonoBehaviour, IPointerDownHandler, IDragHandler,
     public void OnEndDrag(PointerEventData eventData)
     {
         canvasGroup.blocksRaycasts = true;
-
+        if (PlayzoneVisual.currentView == ViewToShowEnum.CHECKOUT)
+        {
+            FindFirstObjectByType<CheckoutVisual>().UpdateVisuals();
+        }
     }
 
     public void OnDrag(PointerEventData eventData)

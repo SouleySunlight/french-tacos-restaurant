@@ -76,12 +76,19 @@ public class OrdersManager : MonoBehaviour
         if (IsTacosPartOfTheOrder(order, tacos))
         {
             ServeTacos(tacos);
+            return;
         }
+        RefuseTacos();
     }
 
     void ServeTacos(Tacos tacos)
     {
         GameManager.Instance.ServeTacos(tacos);
+    }
+
+    void RefuseTacos()
+    {
+        GameManager.Instance.RefuseTacos();
     }
 
     bool IsTacosPartOfTheOrder(Order order, Tacos tacos)
