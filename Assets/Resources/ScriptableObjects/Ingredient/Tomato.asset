@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Tomato
   sprite: {fileID: 6047051563096828533, guid: c8ddc634d9dc647f4b23b07d260db4f5, type: 3}
+  category: 1

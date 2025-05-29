@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Salad
   sprite: {fileID: 6047051563096828533, guid: 353c8f01c7e784be391205911f17d8f1, type: 3}
+  category: 1
