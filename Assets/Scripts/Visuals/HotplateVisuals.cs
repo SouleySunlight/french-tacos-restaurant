@@ -7,6 +7,7 @@ public class HotplateVisuals : MonoBehaviour
 {
     [SerializeField] private RectTransform firstIngredientPosition;
     [SerializeField] private GameObject ingredientButtonPrefab;
+    [SerializeField] private List<RectTransform> cookPositions = new();
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
 
 
@@ -23,8 +24,14 @@ public class HotplateVisuals : MonoBehaviour
             );
 
             var buttonPrefab = Instantiate(ingredientButtonPrefab, buttonPosition, Quaternion.identity, firstIngredientPosition);
+            buttonPrefab.GetComponent<Button>().onClick.AddListener(() => GameManager.Instance.HotplateManager.CookIngredients(ingredient));
             buttonPrefab.GetComponentInChildren<TMP_Text>().text = ingredient.name;
             index++;
         }
+    }
+
+    public void CookIngredients(Ingredient ingredient, int position)
+    {
+        var ingredientToCook = Instantiate(ingredient.sprite, cookPositions[position].position, Quaternion.identity, cookPositions[position]);
     }
 }

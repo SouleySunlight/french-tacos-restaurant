@@ -10,7 +10,6 @@ public class GrillManager : MonoBehaviour
     private List<float> grillingTime = new();
     private readonly int MAX_WAITING_TO_GRILL_TACOS = 2;
     private readonly int MAX_GRILLING_TACOS = 2;
-    private readonly float UNUSED_TIME_VALUE = -10f;
     private readonly float GRILL_DURATION = 10f;
     private readonly float BURN_DURATION = 20f;
 
@@ -27,7 +26,7 @@ public class GrillManager : MonoBehaviour
         for (int i = 0; i < MAX_GRILLING_TACOS; i++)
         {
             grillingTacos.Add(null);
-            grillingTime.Add(UNUSED_TIME_VALUE);
+            grillingTime.Add(GlobalConstant.UNUSED_TIME_VALUE);
         }
     }
 
@@ -130,7 +129,7 @@ public class GrillManager : MonoBehaviour
     {
         var tacosToRemoveIndex = grillingTacos.FindIndex((grillTacos) => grillTacos != null && grillTacos.guid == tacos.guid);
         grillingTacos[tacosToRemoveIndex] = null;
-        grillingTime[tacosToRemoveIndex] = UNUSED_TIME_VALUE;
+        grillingTime[tacosToRemoveIndex] = GlobalConstant.UNUSED_TIME_VALUE;
         grillVisual.RemoveTacosOfTheGrill(tacos, tacosToRemoveIndex);
 
     }
