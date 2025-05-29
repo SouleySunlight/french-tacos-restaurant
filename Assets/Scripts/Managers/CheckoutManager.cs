@@ -16,7 +16,12 @@ public class CheckoutManager : MonoBehaviour
     {
         tacosToServe.Add(tacos);
         checkoutVisual.AddTacosToServe(tacos);
+    }
 
+    public void ServeTacos(Tacos tacos)
+    {
+        tacosToServe.Remove(tacos);
+        checkoutVisual.RemoveTacosToServe(tacos);
 
     }
 }

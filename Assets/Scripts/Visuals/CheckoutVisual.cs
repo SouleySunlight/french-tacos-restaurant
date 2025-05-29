@@ -17,6 +17,16 @@ public class CheckoutVisual : MonoBehaviour
         UpdateVisuals();
     }
 
+    public void RemoveTacosToServe(Tacos tacos)
+    {
+        var tacosToRemove = tacosToServe.Find(tacosPrefab => tacosPrefab.GetComponent<TacosDisplayer>().tacosData.guid == tacos.guid);
+        if (tacosToRemove != null)
+        {
+            Destroy(tacosToRemove);
+            tacosToServe.Remove(tacosToRemove);
+        }
+    }
+
     void UpdateVisuals()
     {
         var index = 0;

@@ -48,6 +48,11 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void ServeTacos(Tacos tacos)
+    {
+        CheckoutManager.ServeTacos(tacos);
+    }
+
     void InitializeManagers()
     {
         TacosMakerManager = GetComponentInChildren<TacosMakerManager>();

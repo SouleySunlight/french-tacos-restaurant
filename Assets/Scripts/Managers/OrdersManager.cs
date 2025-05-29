@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -68,6 +69,35 @@ public class OrdersManager : MonoBehaviour
     void LaunchOrderProvider()
     {
         StartCoroutine(OrderProviderCoroutine());
+    }
+
+    public void TryToServeTacos(Order order, Tacos tacos)
+    {
+        if (IsTacosPartOfTheOrder(order, tacos))
+        {
+            ServeTacos(tacos);
+        }
+    }
+
+    void ServeTacos(Tacos tacos)
+    {
+        GameManager.Instance.ServeTacos(tacos);
+    }
+
+    bool IsTacosPartOfTheOrder(Order order, Tacos tacos)
+    {
+        foreach (var orderedTacos in order.expectedOrder)
+        {
+            if (orderedTacos.Count != tacos.ingredients.Count)
+            {
+                continue;
+            }
+            if (orderedTacos.OrderBy(x => x.GetInstanceID()).SequenceEqual(tacos.ingredients.OrderBy(x => x.GetInstanceID())))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
