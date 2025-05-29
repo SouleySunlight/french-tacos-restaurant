@@ -14,9 +14,6 @@ public class TacosMakerVisual : MonoBehaviour
 
     private GameObject onCreationTacos;
     private TacosMakerManager tacosMakerManager;
-    private List<GameObject> doneTacosPrefabs = new();
-    private readonly int INGREDIENT_BUTTON_HORIZONTAL_GAP = 345;
-    private readonly int INGREDIENT_BUTTON_VERTICAL_GAP = -200;
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
 
 
@@ -36,8 +33,8 @@ public class TacosMakerVisual : MonoBehaviour
         foreach (Ingredient ingredient in ingredients)
         {
             var buttonPosition = new Vector3(
-                ingredientButtonFirstTransform.position.x + INGREDIENT_BUTTON_HORIZONTAL_GAP * (index % NUMBER_OF_BUTTON_PER_ROW),
-                ingredientButtonFirstTransform.position.y + INGREDIENT_BUTTON_VERTICAL_GAP * (index / NUMBER_OF_BUTTON_PER_ROW),
+                ingredientButtonFirstTransform.position.x + GlobalConstant.INGREDIENT_BUTTON_HORIZONTAL_GAP * (index % NUMBER_OF_BUTTON_PER_ROW),
+                ingredientButtonFirstTransform.position.y + GlobalConstant.INGREDIENT_BUTTON_VERTICAL_GAP * (index / NUMBER_OF_BUTTON_PER_ROW),
                 ingredientButtonFirstTransform.position.z
             );
 

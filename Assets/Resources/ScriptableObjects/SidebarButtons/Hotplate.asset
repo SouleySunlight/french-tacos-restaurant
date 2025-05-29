@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ac7f42b229e445cad67edd83ac2c22, type: 3}
   m_Name: Hotplate
   m_EditorClassIdentifier: 
-  name: 
-  viewToShow: 0
+  name: Hotplate
+  viewToShow: 3
