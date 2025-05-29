@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public GrillManager GrillManager { get; private set; }
     public CheckoutManager CheckoutManager { get; private set; }
     public OrdersManager OrdersManager { get; private set; }
+    public WalletManager WalletManager { get; private set; }
+
     [SerializeField] private List<Ingredient> initialAvailableIngredients = new();
     [HideInInspector] public List<Ingredient> AvailableIngredients;
 
@@ -63,6 +65,8 @@ public class GameManager : MonoBehaviour
         GrillManager = GetComponentInChildren<GrillManager>();
         CheckoutManager = GetComponentInChildren<CheckoutManager>();
         OrdersManager = GetComponentInChildren<OrdersManager>();
+        WalletManager = GetComponentInChildren<WalletManager>();
+
 
         if (TacosMakerManager == null)
         {
@@ -108,6 +112,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             OrdersManager = GetComponentInChildren<OrdersManager>();
+        }
+        if (WalletManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/WalletManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load WalletManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            WalletManager = GetComponentInChildren<WalletManager>();
         }
     }
 
