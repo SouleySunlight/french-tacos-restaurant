@@ -8,15 +8,22 @@ public class OrderDisplayer : MonoBehaviour
 
     void Start()
     {
+        UpdateOrder();
+    }
+
+    public void UpdateOrder()
+    {
         var text = "";
 
-        foreach (var row in orderData.expectedOrder)
+        foreach (var orderItem in orderData.expectedOrder)
         {
             text += "- ";
-            foreach (var ingredient in row.tacosIngredients)
+            if (orderItem.isServed) { text += "<s>"; }
+            foreach (var ingredient in orderItem.tacosIngredients)
             {
                 text += ingredient.name + " ";
             }
+            if (orderItem.isServed) { text += "</s>"; }
             text += "<br>";
         }
 

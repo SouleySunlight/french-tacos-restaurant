@@ -75,14 +75,17 @@ public class OrdersManager : MonoBehaviour
     {
         if (IsTacosPartOfTheOrder(order, tacos))
         {
-            ServeTacos(tacos);
+            ServeTacos(order, tacos);
             return;
         }
         RefuseTacos();
     }
 
-    void ServeTacos(Tacos tacos)
+    void ServeTacos(Order order, Tacos tacos)
     {
+        var orderItem = FindMatchingOrderIdem(order, tacos);
+        orderItem.isServed = true;
+        ordersVisual.UpdateOrderVisual(order);
         GameManager.Instance.ServeTacos(tacos);
     }
 
@@ -107,4 +110,10 @@ public class OrdersManager : MonoBehaviour
         return false;
     }
 
+    OrderItem FindMatchingOrderIdem(Order order, Tacos tacos)
+    {
+        var matchingOrderItem = order.expectedOrder.Find((orderItem) => orderItem.tacosIngredients.OrderBy(x => x.GetInstanceID()).SequenceEqual(tacos.ingredients.OrderBy(x => x.GetInstanceID())));
+
+        return matchingOrderItem;
+    }
 }
