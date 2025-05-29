@@ -4,5 +4,6 @@ public enum ViewToShowEnum
 {
     TACOS_MAKER,
     CHECKOUT,
-    GRILL
+    GRILL,
+    HOTPLATE
 }
