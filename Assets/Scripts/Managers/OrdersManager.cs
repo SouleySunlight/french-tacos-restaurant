@@ -73,17 +73,18 @@ public class OrdersManager : MonoBehaviour
 
     public void TryToServeTacos(Order order, Tacos tacos)
     {
-        if (IsTacosPartOfTheOrder(order, tacos))
+        var matchingOrderItem = FindMatchingOrderIdem(order, tacos);
+
+        if (matchingOrderItem == null)
         {
-            ServeTacos(order, tacos);
+            RefuseTacos();
             return;
         }
-        RefuseTacos();
+        ServeTacos(order, tacos, matchingOrderItem);
     }
 
-    void ServeTacos(Order order, Tacos tacos)
+    void ServeTacos(Order order, Tacos tacos, OrderItem orderItem)
     {
-        var orderItem = FindMatchingOrderIdem(order, tacos);
         orderItem.isServed = true;
         ordersVisual.UpdateOrderVisual(order);
         GameManager.Instance.ServeTacos(tacos);
@@ -94,25 +95,9 @@ public class OrdersManager : MonoBehaviour
         GameManager.Instance.RefuseTacos();
     }
 
-    bool IsTacosPartOfTheOrder(Order order, Tacos tacos)
-    {
-        foreach (var orderItem in order.expectedOrder)
-        {
-            if (orderItem.tacosIngredients.Count != tacos.ingredients.Count)
-            {
-                continue;
-            }
-            if (orderItem.tacosIngredients.OrderBy(x => x.GetInstanceID()).SequenceEqual(tacos.ingredients.OrderBy(x => x.GetInstanceID())))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     OrderItem FindMatchingOrderIdem(Order order, Tacos tacos)
     {
-        var matchingOrderItem = order.expectedOrder.Find((orderItem) => orderItem.tacosIngredients.OrderBy(x => x.GetInstanceID()).SequenceEqual(tacos.ingredients.OrderBy(x => x.GetInstanceID())));
+        var matchingOrderItem = order.expectedOrder.Find((orderItem) => orderItem.tacosIngredients.OrderBy(x => x.GetInstanceID()).SequenceEqual(tacos.ingredients.OrderBy(x => x.GetInstanceID())) && !orderItem.isServed);
 
         return matchingOrderItem;
     }
