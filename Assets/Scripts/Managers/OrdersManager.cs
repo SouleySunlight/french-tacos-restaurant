@@ -73,6 +73,18 @@ public class OrdersManager : MonoBehaviour
 
     public void TryToServeTacos(Order order, Tacos tacos)
     {
+        if (tacos.isBurnt)
+        {
+            RefuseTacos();
+            return;
+        }
+
+        if (!tacos.isGrilled)
+        {
+            RefuseTacos();
+            return;
+        }
+
         var matchingOrderItem = FindMatchingOrderIdem(order, tacos);
 
         if (matchingOrderItem == null)
@@ -99,6 +111,7 @@ public class OrdersManager : MonoBehaviour
 
     void CompleteOrder(Order order)
     {
+        GameManager.Instance.CompleteOrder(order);
         ordersVisual.CompleteOrder(order);
     }
 

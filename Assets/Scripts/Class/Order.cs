@@ -5,6 +5,7 @@ public class Order
 {
     public Guid guid;
     public List<OrderItem> expectedOrder { get; private set; } = new();
+    public int price;
 
     public Order(List<List<Ingredient>> ingredients)
     {
@@ -17,5 +18,7 @@ public class Order
             orderItems.Add(new OrderItem(tacosComposition));
         }
         expectedOrder = orderItems;
+
+        price = ingredients.Count * GlobalConstant.TACOS_PRICE;
     }
 }
