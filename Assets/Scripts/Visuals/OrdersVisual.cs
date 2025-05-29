@@ -43,6 +43,19 @@ public class OrdersVisual : MonoBehaviour
         orderToUpdate.GetComponent<OrderDisplayer>().UpdateOrder();
     }
 
+    public void CompleteOrder(Order order)
+    {
+        var orderToUpdate = orderPrefabs.Find(orderPrefab => orderPrefab.GetComponent<OrderDisplayer>().orderData.guid == order.guid);
+        if (orderToUpdate == null)
+        {
+            return;
+        }
+
+        Destroy(orderToUpdate);
+        orderPrefabs.Remove(orderToUpdate);
+        UpdateVisuals();
+    }
+
 
 
 }

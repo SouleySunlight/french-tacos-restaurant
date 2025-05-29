@@ -85,10 +85,23 @@ public class OrdersManager : MonoBehaviour
 
     void ServeTacos(Order order, Tacos tacos, OrderItem orderItem)
     {
-        orderItem.isServed = true;
-        ordersVisual.UpdateOrderVisual(order);
         GameManager.Instance.ServeTacos(tacos);
+
+        orderItem.isServed = true;
+        if (order.expectedOrder.Exists(orderItem => !orderItem.isServed))
+        {
+            ordersVisual.UpdateOrderVisual(order);
+            return;
+        }
+
+        CompleteOrder(order);
     }
+
+    void CompleteOrder(Order order)
+    {
+        ordersVisual.CompleteOrder(order);
+    }
+
 
     void RefuseTacos()
     {
