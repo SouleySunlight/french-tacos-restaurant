@@ -93,13 +93,13 @@ public class OrdersManager : MonoBehaviour
 
     bool IsTacosPartOfTheOrder(Order order, Tacos tacos)
     {
-        foreach (var orderedTacos in order.expectedOrder)
+        foreach (var orderItem in order.expectedOrder)
         {
-            if (orderedTacos.Count != tacos.ingredients.Count)
+            if (orderItem.tacosIngredients.Count != tacos.ingredients.Count)
             {
                 continue;
             }
-            if (orderedTacos.OrderBy(x => x.GetInstanceID()).SequenceEqual(tacos.ingredients.OrderBy(x => x.GetInstanceID())))
+            if (orderItem.tacosIngredients.OrderBy(x => x.GetInstanceID()).SequenceEqual(tacos.ingredients.OrderBy(x => x.GetInstanceID())))
             {
                 return true;
             }

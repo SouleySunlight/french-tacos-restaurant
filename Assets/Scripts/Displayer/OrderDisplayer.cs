@@ -13,7 +13,7 @@ public class OrderDisplayer : MonoBehaviour
         foreach (var row in orderData.expectedOrder)
         {
             text += "- ";
-            foreach (var ingredient in row)
+            foreach (var ingredient in row.tacosIngredients)
             {
                 text += ingredient.name + " ";
             }
