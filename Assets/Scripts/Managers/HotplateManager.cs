@@ -7,12 +7,11 @@ public class HotplateManager : MonoBehaviour
     private List<Ingredient> cookingIngredients = new();
     private List<float> cookingTimes = new();
 
-    private readonly int MAX_COOKING_INGREDIENTS = 4;
 
     void Awake()
     {
         hotplateVisuals = FindFirstObjectByType<HotplateVisuals>(FindObjectsInactive.Include);
-        for (int i = 0; i < MAX_COOKING_INGREDIENTS; i++)
+        for (int i = 0; i < GlobalConstant.MAX_COOKING_INGREDIENTS; i++)
         {
             cookingIngredients.Add(null);
             cookingTimes.Add(GlobalConstant.UNUSED_TIME_VALUE);
@@ -29,8 +28,17 @@ public class HotplateManager : MonoBehaviour
         for (int i = 0; i < cookingTimes.Count; i++)
         {
             if (cookingTimes[i] == GlobalConstant.UNUSED_TIME_VALUE) { continue; }
+
+            if (cookingTimes[i] >= cookingIngredients[i].processingTime)
+            {
+                hotplateVisuals.OnIngredientCooked(i);
+                continue;
+            }
+
             cookingTimes[i] += Time.deltaTime;
             hotplateVisuals.UpdateTimer(i, cookingTimes[i] / cookingIngredients[i].processingTime);
+
+
         }
     }
 

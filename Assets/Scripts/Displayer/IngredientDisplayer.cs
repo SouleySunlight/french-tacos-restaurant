@@ -33,6 +33,11 @@ public class IngredientDisplayer : MonoBehaviour
         ingredientImage.sprite = ingredientData.unprocessedSprite;
         UseCommonSize();
     }
+    public void DisplayProcessedImage()
+    {
+        ingredientImage.sprite = ingredientData.processedSprite;
+        UseCommonSize();
+    }
 
     void UseTacosSize()
     {
