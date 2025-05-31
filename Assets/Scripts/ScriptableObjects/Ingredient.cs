@@ -7,6 +7,7 @@ public class Ingredient : ScriptableObject
     public GameObject inTacosSprite;
     public GameObject unprocessedSprite;
     public GameObject processedSprite;
+    public float processingTime;
 
     public IngredientCategoryEnum category;
 

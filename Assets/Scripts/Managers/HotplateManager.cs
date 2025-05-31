@@ -30,7 +30,7 @@ public class HotplateManager : MonoBehaviour
         {
             if (cookingTimes[i] == GlobalConstant.UNUSED_TIME_VALUE) { continue; }
             cookingTimes[i] += Time.deltaTime;
-            hotplateVisuals.UpdateTimer(i, cookingTimes[i] / 10);
+            hotplateVisuals.UpdateTimer(i, cookingTimes[i] / cookingIngredients[i].processingTime);
         }
     }
 
