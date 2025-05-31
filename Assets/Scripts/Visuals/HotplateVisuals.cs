@@ -8,6 +8,8 @@ public class HotplateVisuals : MonoBehaviour
     [SerializeField] private RectTransform firstIngredientPosition;
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private List<RectTransform> cookPositions = new();
+    [SerializeField] private List<Image> cookingTimers = new();
+
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
 
 
@@ -33,5 +35,11 @@ public class HotplateVisuals : MonoBehaviour
     public void CookIngredients(Ingredient ingredient, int position)
     {
         var ingredientToCook = Instantiate(ingredient.unprocessedSprite, cookPositions[position].position, Quaternion.identity, cookPositions[position]);
+    }
+
+    public void UpdateTimer(int index, float percentage)
+    {
+        Debug.Log(percentage);
+        cookingTimers[index].fillAmount = percentage;
     }
 }
