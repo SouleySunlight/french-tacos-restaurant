@@ -4,7 +4,10 @@ using UnityEngine;
 public class Ingredient : ScriptableObject
 {
     public new string name;
-    public GameObject sprite;
+    public GameObject inTacosSprite;
+    public GameObject unprocessedSprite;
+    public GameObject processedSprite;
+
     public IngredientCategoryEnum category;
 
 }

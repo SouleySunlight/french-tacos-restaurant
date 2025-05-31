@@ -32,6 +32,6 @@ public class HotplateVisuals : MonoBehaviour
 
     public void CookIngredients(Ingredient ingredient, int position)
     {
-        var ingredientToCook = Instantiate(ingredient.sprite, cookPositions[position].position, Quaternion.identity, cookPositions[position]);
+        var ingredientToCook = Instantiate(ingredient.unprocessedSprite, cookPositions[position].position, Quaternion.identity, cookPositions[position]);
     }
 }

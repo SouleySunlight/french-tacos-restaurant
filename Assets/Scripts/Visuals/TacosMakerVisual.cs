@@ -48,7 +48,7 @@ public class TacosMakerVisual : MonoBehaviour
     public void AddIngredient(Ingredient ingredient)
     {
         if (onCreationTacos == null) { return; }
-        Instantiate(ingredient.sprite, onCreationTacos.GetComponent<RectTransform>().position, Quaternion.identity, onCreationTacos.GetComponent<RectTransform>());
+        Instantiate(ingredient.inTacosSprite, onCreationTacos.GetComponent<RectTransform>().position, Quaternion.identity, onCreationTacos.GetComponent<RectTransform>());
         tacosMakerManager.AddIngredients(ingredient);
     }
 

@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3126107728554842056, guid: 76a7482c8e981488dba2ce58467a3b73, type: 3}
+  m_Sprite: {fileID: 6165403363357119445, guid: 83876ad9272de419b8c462d3e1ae9e0a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -85,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2334664220487716863}
   m_Layer: 5
-  m_Name: BeefPrefab
+  m_Name: inTacosChickenPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
