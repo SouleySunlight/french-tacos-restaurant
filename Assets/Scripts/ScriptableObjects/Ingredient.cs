@@ -4,9 +4,9 @@ using UnityEngine;
 public class Ingredient : ScriptableObject
 {
     public new string name;
-    public GameObject inTacosSprite;
-    public GameObject unprocessedSprite;
-    public GameObject processedSprite;
+    public Sprite inTacosSprite;
+    public Sprite unprocessedSprite;
+    public Sprite processedSprite;
     public float processingTime;
 
     public IngredientCategoryEnum category;

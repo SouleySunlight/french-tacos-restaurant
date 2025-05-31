@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class TacosMakerVisual : MonoBehaviour
 {
     [SerializeField] private GameObject tortillaPrefab;
-    [SerializeField] private GameObject tacosPrefab;
     [SerializeField] private GameObject ingredientButtonPrefab;
+    [SerializeField] private GameObject ingredientPrefab;
     [SerializeField] private RectTransform onCreationTacosTransform;
     [SerializeField] private RectTransform ingredientButtonFirstTransform;
     [SerializeField] private RectTransform doneTacosFirstPosition;
@@ -48,7 +48,9 @@ public class TacosMakerVisual : MonoBehaviour
     public void AddIngredient(Ingredient ingredient)
     {
         if (onCreationTacos == null) { return; }
-        Instantiate(ingredient.inTacosSprite, onCreationTacos.GetComponent<RectTransform>().position, Quaternion.identity, onCreationTacos.GetComponent<RectTransform>());
+        var createdIngredient = Instantiate(ingredientPrefab, onCreationTacos.GetComponent<RectTransform>().position, Quaternion.identity, onCreationTacos.GetComponent<RectTransform>());
+        createdIngredient.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
+
         tacosMakerManager.AddIngredients(ingredient);
     }
 
