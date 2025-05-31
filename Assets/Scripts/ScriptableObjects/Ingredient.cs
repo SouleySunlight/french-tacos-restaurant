@@ -4,7 +4,6 @@ using UnityEngine;
 public class Ingredient : ScriptableObject
 {
     public new string name;
-    public Sprite inTacosSprite;
     public Sprite unprocessedSprite;
     public Sprite processedSprite;
     public float processingTime;

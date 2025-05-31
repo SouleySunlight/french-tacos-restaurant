@@ -24,15 +24,24 @@ public class IngredientDisplayer : MonoBehaviour
 
     public void DisplayInTacosImage()
     {
-        ingredientImage.sprite = ingredientData.inTacosSprite;
-        ingredientImage.GetComponent<RectTransform>().sizeDelta = new(GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_DIMENSION, GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_DIMENSION);
+        ingredientImage.sprite = ingredientData.processedSprite;
+        UseTacosSize();
     }
 
     public void DisplayUnprocessedImage()
     {
         ingredientImage.sprite = ingredientData.unprocessedSprite;
-        ingredientImage.GetComponent<RectTransform>().sizeDelta = new(GlobalConstant.INGREDIENT_IMAGE_DIMENSION, GlobalConstant.INGREDIENT_IMAGE_DIMENSION);
+        UseCommonSize();
+    }
 
+    void UseTacosSize()
+    {
+        ingredientImage.GetComponent<RectTransform>().sizeDelta = new(GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_DIMENSION, GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_DIMENSION);
+    }
+
+    void UseCommonSize()
+    {
+        ingredientImage.GetComponent<RectTransform>().sizeDelta = new(GlobalConstant.INGREDIENT_IMAGE_DIMENSION, GlobalConstant.INGREDIENT_IMAGE_DIMENSION);
     }
 
 

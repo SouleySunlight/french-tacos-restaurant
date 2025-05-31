@@ -41,7 +41,6 @@ public class HotplateVisuals : MonoBehaviour
 
     public void UpdateTimer(int index, float percentage)
     {
-        Debug.Log(percentage);
         cookingTimers[index].fillAmount = percentage;
     }
 }
