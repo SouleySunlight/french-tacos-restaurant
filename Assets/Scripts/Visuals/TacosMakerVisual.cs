@@ -12,15 +12,10 @@ public class TacosMakerVisual : MonoBehaviour
     [SerializeField] private RectTransform ingredientButtonFirstTransform;
     [SerializeField] private RectTransform doneTacosFirstPosition;
 
+    private List<GameObject> buttons = new();
+
     private GameObject onCreationTacos;
-    private TacosMakerManager tacosMakerManager;
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
-
-
-    void Awake()
-    {
-        tacosMakerManager = FindFirstObjectByType<TacosMakerManager>();
-    }
 
     public void CreateTacos()
     {
@@ -39,19 +34,22 @@ public class TacosMakerVisual : MonoBehaviour
             );
 
             var buttonPrefab = Instantiate(ingredientButtonPrefab, buttonPosition, Quaternion.identity, ingredientButtonFirstTransform);
-            buttonPrefab.GetComponent<Button>().onClick.AddListener(() => AddIngredient(ingredient));
+            buttonPrefab.GetComponent<Button>().onClick.AddListener(() => OnClickToAddIngredient(ingredient));
             buttonPrefab.GetComponentInChildren<TMP_Text>().text = ingredient.name + " " + GameManager.Instance.InventoryManager.GetStockString(ingredient);
             index++;
         }
     }
 
-    public void AddIngredient(Ingredient ingredient)
+    void OnClickToAddIngredient(Ingredient ingredient)
     {
         if (onCreationTacos == null) { return; }
+
+        GameManager.Instance.TacosMakerManager.AddIngredients(ingredient);
+    }
+    public void AddIngredient(Ingredient ingredient)
+    {
         var createdIngredient = Instantiate(ingredientPrefab, onCreationTacos.GetComponent<RectTransform>().position, Quaternion.identity, onCreationTacos.GetComponent<RectTransform>());
         createdIngredient.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
-
-        tacosMakerManager.AddIngredients(ingredient);
     }
 
     public void WrapTacos(Tacos createdTacos)

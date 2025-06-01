@@ -21,4 +21,14 @@ public class InventoryManager : MonoBehaviour
     {
         return "(" + inventory[ingredient].currentAmount + "/" + inventory[ingredient].maxAmount + ")";
     }
+
+    public bool IsIngredientAvailable(Ingredient ingredient)
+    {
+        return inventory[ingredient].currentAmount > 0;
+    }
+
+    public void ConsumeIngredient(Ingredient ingredient)
+    {
+        inventory[ingredient].currentAmount -= 1;
+    }
 }
