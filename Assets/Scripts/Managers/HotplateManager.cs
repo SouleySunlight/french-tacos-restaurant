@@ -67,4 +67,25 @@ public class HotplateManager : MonoBehaviour
         throw new NotEnoughSpaceException();
 
     }
+
+    public void OnClickOnIngredient(int position)
+    {
+        var cookingTime = cookingTimes[position];
+        var ingredient = cookingIngredients[position];
+
+        if (cookingTime < ingredient.processingTime)
+        {
+            Debug.Log("pas encore");
+            return;
+        }
+
+        if (cookingTime > ingredient.wastingTime)
+        {
+            Debug.Log("trop tard");
+            return;
+        }
+
+        Debug.Log("Nice");
+
+    }
 }

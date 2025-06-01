@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Beef
   m_EditorClassIdentifier: 
   name: Beef
-  inTacosSprite: {fileID: -8733503966219448144, guid: 2bd2968a986cd4a77902d7f0133143c0, type: 3}
   unprocessedSprite: {fileID: 3126107728554842056, guid: 76a7482c8e981488dba2ce58467a3b73, type: 3}
   processedSprite: {fileID: -8733503966219448144, guid: 2bd2968a986cd4a77902d7f0133143c0, type: 3}
+  wastedSprite: {fileID: 8934833565084604155, guid: 01007f1586206478dbf3284e6898caa2, type: 3}
   processingTime: 15
+  wastingTime: 25
   category: 0

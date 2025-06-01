@@ -55,6 +55,7 @@ public class HotplateVisuals : MonoBehaviour, IView
     {
         var ingredientToCook = Instantiate(ingredientPrefab, cookPositions[position].position, Quaternion.identity, cookPositions[position]);
         ingredientToCook.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
+        ingredientToCook.GetComponent<IngredientMovement>().ClickHotplateEvent.AddListener(OnClickOnIngredient);
         ingredients[position] = ingredientToCook;
     }
 
@@ -71,5 +72,10 @@ public class HotplateVisuals : MonoBehaviour, IView
     public void UpdateTimer(int index, float percentage)
     {
         cookingTimers[index].fillAmount = percentage;
+    }
+
+    void OnClickOnIngredient(GameObject gameObject)
+    {
+        GameManager.Instance.HotplateManager.OnClickOnIngredient(ingredients.FindIndex(ingredient => ingredient == gameObject));
     }
 }

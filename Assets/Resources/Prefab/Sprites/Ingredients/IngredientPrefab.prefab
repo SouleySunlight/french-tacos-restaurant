@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8004390261812282539}
   - component: {fileID: 386538551604804060}
+  - component: {fileID: 152692571626319132}
   m_Layer: 5
   m_Name: IngredientPrefab
   m_TagString: Untagged
@@ -51,6 +52,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientImage: {fileID: 214286602410473772}
   ingredientData: {fileID: 0}
+--- !u!114 &152692571626319132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2624213403382393968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5699d64d15166453ca0b8944efca0728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClickHotplateEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5394314228564811698
 GameObject:
   m_ObjectHideFlags: 0

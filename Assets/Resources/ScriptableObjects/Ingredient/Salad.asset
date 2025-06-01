@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Salad
   m_EditorClassIdentifier: 
   name: Salad
-  inTacosSprite: {fileID: -3033238745804453191, guid: fd0c16ee473404b96b75bf34e4aeeb5b, type: 3}
   unprocessedSprite: {fileID: 0}
-  processedSprite: {fileID: 0}
+  processedSprite: {fileID: -3033238745804453191, guid: fd0c16ee473404b96b75bf34e4aeeb5b, type: 3}
+  wastedSprite: {fileID: 0}
   processingTime: 0
+  wastingTime: 0
   category: 1
