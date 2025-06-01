@@ -84,7 +84,12 @@ public class HotplateManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("Nice");
+        var ingredientToAdd = cookingIngredients[position];
+        if (GameManager.Instance.InventoryManager.CanAddIngredient(ingredientToAdd))
+        {
+            GameManager.Instance.InventoryManager.AddIngredient(ingredient);
+            RemoveIngredientFromCooking(position);
+        }
     }
 
     void RemoveIngredientFromCooking(int position)

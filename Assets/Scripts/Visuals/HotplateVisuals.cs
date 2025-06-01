@@ -26,10 +26,7 @@ public class HotplateVisuals : MonoBehaviour, IView
 
     public void OnViewDisplayed()
     {
-        foreach (var button in buttons)
-        {
-            button.GetComponent<IngredientButtonDisplayer>().GetComponent<IngredientButtonDisplayer>().UpdateVisual();
-        }
+        UpdateIngredientButtons();
     }
 
     public void SetupIngredients(List<Ingredient> ingredients)
@@ -85,5 +82,14 @@ public class HotplateVisuals : MonoBehaviour, IView
         Destroy(ingredientToRemove);
         ingredients[position] = null;
         UpdateTimer(position, 0);
+        UpdateIngredientButtons();
+    }
+
+    public void UpdateIngredientButtons()
+    {
+        foreach (var button in buttons)
+        {
+            button.GetComponent<IngredientButtonDisplayer>().GetComponent<IngredientButtonDisplayer>().UpdateVisual();
+        }
     }
 }

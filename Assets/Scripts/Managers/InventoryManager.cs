@@ -31,4 +31,14 @@ public class InventoryManager : MonoBehaviour
     {
         inventory[ingredient].currentAmount -= 1;
     }
+
+    public bool CanAddIngredient(Ingredient ingredient)
+    {
+        return inventory[ingredient].currentAmount < inventory[ingredient].maxAmount;
+    }
+
+    public void AddIngredient(Ingredient ingredient)
+    {
+        inventory[ingredient].currentAmount += 1;
+    }
 }
