@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GrillVisual : MonoBehaviour
+public class GrillVisual : MonoBehaviour, IView
 {
     [SerializeField] private GameObject tacosToGrillPrefab;
     [SerializeField] private RectTransform tacosToGrillFirstTransform;

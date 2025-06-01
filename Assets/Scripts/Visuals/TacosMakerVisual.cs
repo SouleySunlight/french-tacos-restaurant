@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TacosMakerVisual : MonoBehaviour
+public class TacosMakerVisual : MonoBehaviour, IView
 {
     [SerializeField] private GameObject tortillaPrefab;
     [SerializeField] private GameObject ingredientButtonPrefab;
@@ -16,6 +16,14 @@ public class TacosMakerVisual : MonoBehaviour
 
     private GameObject onCreationTacos;
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
+
+    public void OnViewDisplayed()
+    {
+        foreach (var button in buttons)
+        {
+            button.GetComponent<IngredientButtonDisplayer>().GetComponent<IngredientButtonDisplayer>().UpdateVisual();
+        }
+    }
 
     public void CreateTacos()
     {

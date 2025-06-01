@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HotplateVisuals : MonoBehaviour
+public class HotplateVisuals : MonoBehaviour, IView
 {
     [SerializeField] private RectTransform firstIngredientPosition;
     [SerializeField] private GameObject ingredientButtonPrefab;
@@ -12,6 +12,8 @@ public class HotplateVisuals : MonoBehaviour
     [SerializeField] private List<RectTransform> cookPositions = new();
     [SerializeField] private List<Image> cookingTimers = new();
 
+    private List<GameObject> buttons = new();
+
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
 
     void Start()
@@ -19,6 +21,14 @@ public class HotplateVisuals : MonoBehaviour
         for (int i = 0; i < GlobalConstant.MAX_COOKING_INGREDIENTS; i++)
         {
             ingredients.Add(null);
+        }
+    }
+
+    public void OnViewDisplayed()
+    {
+        foreach (var button in buttons)
+        {
+            button.GetComponent<IngredientButtonDisplayer>().GetComponent<IngredientButtonDisplayer>().UpdateVisual();
         }
     }
 
@@ -36,6 +46,7 @@ public class HotplateVisuals : MonoBehaviour
             var buttonPrefab = Instantiate(ingredientButtonPrefab, buttonPosition, Quaternion.identity, firstIngredientPosition);
             buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
             buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.HotplateManager.CookIngredients(ingredient));
+            buttons.Add(buttonPrefab);
             index++;
         }
     }
