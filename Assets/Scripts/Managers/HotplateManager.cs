@@ -32,7 +32,11 @@ public class HotplateManager : MonoBehaviour
             if (cookingTimes[i] >= cookingIngredients[i].processingTime)
             {
                 hotplateVisuals.OnIngredientCooked(i);
-                continue;
+            }
+
+            if (cookingTimes[i] >= cookingIngredients[i].wastingTime)
+            {
+                hotplateVisuals.OnIngredientBurnt(i);
             }
 
             cookingTimes[i] += Time.deltaTime;

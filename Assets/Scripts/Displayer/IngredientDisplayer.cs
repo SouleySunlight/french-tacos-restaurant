@@ -39,6 +39,12 @@ public class IngredientDisplayer : MonoBehaviour
         UseCommonSize();
     }
 
+    public void DisplayWastedImage()
+    {
+        ingredientImage.sprite = ingredientData.wastedSprite;
+        UseCommonSize();
+    }
+
     void UseTacosSize()
     {
         ingredientImage.GetComponent<RectTransform>().sizeDelta = new(GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_DIMENSION, GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_DIMENSION);

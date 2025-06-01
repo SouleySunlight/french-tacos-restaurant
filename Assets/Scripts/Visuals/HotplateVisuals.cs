@@ -52,6 +52,11 @@ public class HotplateVisuals : MonoBehaviour
         ingredients[position].GetComponent<IngredientDisplayer>().DisplayProcessedImage();
     }
 
+    public void OnIngredientBurnt(int position)
+    {
+        ingredients[position].GetComponent<IngredientDisplayer>().DisplayWastedImage();
+    }
+
     public void UpdateTimer(int index, float percentage)
     {
         cookingTimers[index].fillAmount = percentage;
