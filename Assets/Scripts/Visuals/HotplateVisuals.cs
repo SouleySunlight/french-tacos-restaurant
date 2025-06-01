@@ -34,8 +34,8 @@ public class HotplateVisuals : MonoBehaviour
             );
 
             var buttonPrefab = Instantiate(ingredientButtonPrefab, buttonPosition, Quaternion.identity, firstIngredientPosition);
-            buttonPrefab.GetComponent<Button>().onClick.AddListener(() => GameManager.Instance.HotplateManager.CookIngredients(ingredient));
-            buttonPrefab.GetComponentInChildren<TMP_Text>().text = ingredient.name;
+            buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
+            buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.HotplateManager.CookIngredients(ingredient));
             index++;
         }
     }
