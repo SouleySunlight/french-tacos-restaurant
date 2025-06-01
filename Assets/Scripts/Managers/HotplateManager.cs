@@ -48,7 +48,7 @@ public class HotplateManager : MonoBehaviour
 
     List<Ingredient> GetIngredientsToCook()
     {
-        return GameManager.Instance.AvailableIngredients.FindAll(ingredient => ingredient.category == IngredientCategoryEnum.MEAT);
+        return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll(ingredient => ingredient.category == IngredientCategoryEnum.MEAT);
     }
 
     public void CookIngredients(Ingredient ingredient)

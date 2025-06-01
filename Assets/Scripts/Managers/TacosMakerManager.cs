@@ -15,7 +15,7 @@ public class TacosMakerManager : MonoBehaviour
 
     void Start()
     {
-        tacosMakerVisual.SetupIngredients(GameManager.Instance.AvailableIngredients);
+        tacosMakerVisual.SetupIngredients(GameManager.Instance.InventoryManager.UnlockedIngredients);
         CreateTacos();
     }
 

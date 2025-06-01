@@ -42,7 +42,7 @@ public class OrdersManager : MonoBehaviour
     List<Ingredient> GenerateSingleTacosComposition()
     {
         List<Ingredient> ingredients = new();
-        var availableIngrdients = GameManager.Instance.AvailableIngredients;
+        var availableIngrdients = GameManager.Instance.InventoryManager.UnlockedIngredients;
         var numberOfIngredients = Random.Range(1, availableIngrdients.Count);
 
         for (int i = 0; i < numberOfIngredients; i++)
