@@ -40,7 +40,7 @@ public class TacosMakerVisual : MonoBehaviour
 
             var buttonPrefab = Instantiate(ingredientButtonPrefab, buttonPosition, Quaternion.identity, ingredientButtonFirstTransform);
             buttonPrefab.GetComponent<Button>().onClick.AddListener(() => AddIngredient(ingredient));
-            buttonPrefab.GetComponentInChildren<TMP_Text>().text = ingredient.name;
+            buttonPrefab.GetComponentInChildren<TMP_Text>().text = ingredient.name + " " + GameManager.Instance.InventoryManager.GetStockString(ingredient);
             index++;
         }
     }

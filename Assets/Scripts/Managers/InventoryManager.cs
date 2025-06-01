@@ -16,4 +16,9 @@ public class InventoryManager : MonoBehaviour
             inventory[ingredient] = new InventorySlot();
         }
     }
+
+    public string GetStockString(Ingredient ingredient)
+    {
+        return "(" + inventory[ingredient].currentAmount + "/" + inventory[ingredient].maxAmount + ")";
+    }
 }
