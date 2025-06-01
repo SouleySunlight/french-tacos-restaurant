@@ -6,9 +6,14 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private List<Ingredient> initialAvailableIngredients = new();
     [HideInInspector] public List<Ingredient> UnlockedIngredients { get; private set; }
+    private Dictionary<Ingredient, InventorySlot> inventory = new();
 
     private void Awake()
     {
         UnlockedIngredients = initialAvailableIngredients;
+        foreach (var ingredient in UnlockedIngredients)
+        {
+            inventory[ingredient] = new InventorySlot();
+        }
     }
 }
