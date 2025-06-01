@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: Tomato
   m_EditorClassIdentifier: 
   name: Tomato
-  sprite: {fileID: 6047051563096828533, guid: c8ddc634d9dc647f4b23b07d260db4f5, type: 3}
+  inTacosSprite: {fileID: -2611690852699305752, guid: b4778249c892f4e71b82db7a10f511a9, type: 3}
+  unprocessedSprite: {fileID: 0}
+  processedSprite: {fileID: 0}
+  processingTime: 0
+  category: 1

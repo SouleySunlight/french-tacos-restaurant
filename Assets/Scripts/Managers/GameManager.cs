@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public CheckoutManager CheckoutManager { get; private set; }
     public OrdersManager OrdersManager { get; private set; }
     public WalletManager WalletManager { get; private set; }
+    public HotplateManager HotplateManager { get; private set; }
+
 
     [SerializeField] private List<Ingredient> initialAvailableIngredients = new();
     [HideInInspector] public List<Ingredient> AvailableIngredients;
@@ -70,7 +72,7 @@ public class GameManager : MonoBehaviour
         CheckoutManager = GetComponentInChildren<CheckoutManager>();
         OrdersManager = GetComponentInChildren<OrdersManager>();
         WalletManager = GetComponentInChildren<WalletManager>();
-
+        HotplateManager = GetComponentInChildren<HotplateManager>();
 
         if (TacosMakerManager == null)
         {
@@ -127,6 +129,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             WalletManager = GetComponentInChildren<WalletManager>();
+        }
+        if (HotplateManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/HotplateManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load HotplateManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            HotplateManager = GetComponentInChildren<HotplateManager>();
         }
     }
 

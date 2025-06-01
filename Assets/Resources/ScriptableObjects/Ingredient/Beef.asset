@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: Beef
   m_EditorClassIdentifier: 
   name: Beef
-  sprite: {fileID: 6047051563096828533, guid: 9f589cddae40d48bea9c35e70ab46d64, type: 3}
+  inTacosSprite: {fileID: -8733503966219448144, guid: 2bd2968a986cd4a77902d7f0133143c0, type: 3}
+  unprocessedSprite: {fileID: 3126107728554842056, guid: 76a7482c8e981488dba2ce58467a3b73, type: 3}
+  processedSprite: {fileID: -8733503966219448144, guid: 2bd2968a986cd4a77902d7f0133143c0, type: 3}
+  processingTime: 15
+  category: 0
