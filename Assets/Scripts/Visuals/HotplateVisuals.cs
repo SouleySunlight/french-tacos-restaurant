@@ -78,4 +78,12 @@ public class HotplateVisuals : MonoBehaviour, IView
     {
         GameManager.Instance.HotplateManager.OnClickOnIngredient(ingredients.FindIndex(ingredient => ingredient == gameObject));
     }
+
+    public void RemoveIngredientFromGrill(int position)
+    {
+        var ingredientToRemove = ingredients[position];
+        Destroy(ingredientToRemove);
+        ingredients[position] = null;
+        UpdateTimer(position, 0);
+    }
 }

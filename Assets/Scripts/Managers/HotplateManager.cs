@@ -75,17 +75,22 @@ public class HotplateManager : MonoBehaviour
 
         if (cookingTime < ingredient.processingTime)
         {
-            Debug.Log("pas encore");
             return;
         }
 
         if (cookingTime > ingredient.wastingTime)
         {
-            Debug.Log("trop tard");
+            RemoveIngredientFromCooking(position);
             return;
         }
 
         Debug.Log("Nice");
+    }
 
+    void RemoveIngredientFromCooking(int position)
+    {
+        cookingIngredients[position] = null;
+        cookingTimes[position] = GlobalConstant.UNUSED_TIME_VALUE;
+        hotplateVisuals.RemoveIngredientFromGrill(position);
     }
 }
