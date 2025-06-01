@@ -36,6 +36,7 @@ public class TacosMakerVisual : MonoBehaviour
             var buttonPrefab = Instantiate(ingredientButtonPrefab, buttonPosition, Quaternion.identity, ingredientButtonFirstTransform);
             buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
             buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => OnClickToAddIngredient(ingredient));
+            buttons.Add(buttonPrefab);
             index++;
         }
     }
@@ -50,6 +51,7 @@ public class TacosMakerVisual : MonoBehaviour
     {
         var createdIngredient = Instantiate(ingredientPrefab, onCreationTacos.GetComponent<RectTransform>().position, Quaternion.identity, onCreationTacos.GetComponent<RectTransform>());
         createdIngredient.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
+        buttons.Find(button => button.GetComponent<IngredientButtonDisplayer>().ingredientData == ingredient).GetComponent<IngredientButtonDisplayer>().UpdateVisual();
     }
 
     public void WrapTacos(Tacos createdTacos)

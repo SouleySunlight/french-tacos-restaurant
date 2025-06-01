@@ -16,7 +16,7 @@ public class IngredientButtonDisplayer : MonoBehaviour
         UpdateVisual();
     }
 
-    void UpdateVisual()
+    public void UpdateVisual()
     {
         buttonText.text = ingredientData.name + " " + GameManager.Instance.InventoryManager.GetStockString(ingredientData);
     }
