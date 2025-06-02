@@ -42,7 +42,7 @@ public class InventoryManager : MonoBehaviour
         inventory[ingredient.id].currentAmount += 1;
     }
 
-    public InventorySaveData GetSaveData()
+    public InventorySaveData GetInventorySaveData()
     {
         var data = new InventorySaveData();
         foreach (var pair in inventory)
@@ -57,7 +57,7 @@ public class InventoryManager : MonoBehaviour
         return data;
     }
 
-    public void LoadFromSaveData(InventorySaveData data)
+    public void LoadInventoryFromSaveData(InventorySaveData data)
     {
         inventory.Clear();
 
