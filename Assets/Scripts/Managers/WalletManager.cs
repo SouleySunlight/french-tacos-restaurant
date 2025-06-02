@@ -16,6 +16,15 @@ public class WalletManager : MonoBehaviour
     {
         currentWalletAmount += amount;
         walletVisual.UpdateWalletAmount(currentWalletAmount);
+    }
 
+    public int GetCurrentAmount()
+    {
+        return currentWalletAmount;
+    }
+    public void SetCurrentAmount(int amount)
+    {
+        currentWalletAmount = amount;
+        walletVisual.UpdateWalletAmount(currentWalletAmount);
     }
 }
