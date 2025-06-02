@@ -40,8 +40,10 @@ public class GameManager : MonoBehaviour
     {
         GameSaveData gameSaveData = new()
         {
-            playerMoney = WalletManager.GetCurrentAmount()
+            playerMoney = WalletManager.GetCurrentAmount(),
+            inventorySaveData = InventoryManager.GetSaveData()
         };
+
         SaveSystem.Save(gameSaveData);
     }
 
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour
     {
         GameSaveData data = SaveSystem.Load();
         WalletManager.SetCurrentAmount(data.playerMoney);
+        InventoryManager.LoadFromSaveData(data.inventorySaveData);
     }
 
     public void WrapTacos()

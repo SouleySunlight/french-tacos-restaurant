@@ -41,4 +41,29 @@ public class InventoryManager : MonoBehaviour
     {
         inventory[ingredient.id].currentAmount += 1;
     }
+
+    public InventorySaveData GetSaveData()
+    {
+        var data = new InventorySaveData();
+        foreach (var pair in inventory)
+        {
+            data.slots.Add(new InventorySlotSaveData
+            {
+                ingredientID = pair.Key,
+                currentAmount = pair.Value.currentAmount,
+                maxAmount = pair.Value.maxAmount
+            });
+        }
+        return data;
+    }
+
+    public void LoadFromSaveData(InventorySaveData data)
+    {
+        inventory.Clear();
+
+        foreach (var slot in data.slots)
+        {
+            inventory[slot.ingredientID] = new InventorySlot(slot.currentAmount, slot.maxAmount);
+        }
+    }
 }
