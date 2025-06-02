@@ -6,39 +6,39 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private List<Ingredient> initialAvailableIngredients = new();
     [HideInInspector] public List<Ingredient> UnlockedIngredients { get; private set; }
-    private Dictionary<Ingredient, InventorySlot> inventory = new();
+    private Dictionary<string, InventorySlot> inventory = new();
 
     private void Awake()
     {
         UnlockedIngredients = initialAvailableIngredients;
         foreach (var ingredient in UnlockedIngredients)
         {
-            inventory[ingredient] = new InventorySlot();
+            inventory[ingredient.id] = new InventorySlot();
         }
     }
 
     public string GetStockString(Ingredient ingredient)
     {
-        return "(" + inventory[ingredient].currentAmount + "/" + inventory[ingredient].maxAmount + ")";
+        return "(" + inventory[ingredient.id].currentAmount + "/" + inventory[ingredient.id].maxAmount + ")";
     }
 
     public bool IsIngredientAvailable(Ingredient ingredient)
     {
-        return inventory[ingredient].currentAmount > 0;
+        return inventory[ingredient.id].currentAmount > 0;
     }
 
     public void ConsumeIngredient(Ingredient ingredient)
     {
-        inventory[ingredient].currentAmount -= 1;
+        inventory[ingredient.id].currentAmount -= 1;
     }
 
     public bool CanAddIngredient(Ingredient ingredient)
     {
-        return inventory[ingredient].currentAmount < inventory[ingredient].maxAmount;
+        return inventory[ingredient.id].currentAmount < inventory[ingredient.id].maxAmount;
     }
 
     public void AddIngredient(Ingredient ingredient)
     {
-        inventory[ingredient].currentAmount += 1;
+        inventory[ingredient.id].currentAmount += 1;
     }
 }
