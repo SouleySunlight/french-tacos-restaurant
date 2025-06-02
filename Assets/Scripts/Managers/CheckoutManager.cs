@@ -9,7 +9,7 @@ public class CheckoutManager : MonoBehaviour
 
     void Awake()
     {
-        checkoutVisual = FindFirstObjectByType<CheckoutVisual>();
+        checkoutVisual = FindFirstObjectByType<CheckoutVisual>(FindObjectsInactive.Include);
     }
 
     public void ReceiveTacosToServe(Tacos tacos)

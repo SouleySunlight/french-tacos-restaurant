@@ -11,10 +11,6 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         UnlockedIngredients = initialAvailableIngredients;
-        foreach (var ingredient in UnlockedIngredients)
-        {
-            inventory[ingredient.id] = new InventorySlot();
-        }
     }
 
     public string GetStockString(Ingredient ingredient)
@@ -60,6 +56,15 @@ public class InventoryManager : MonoBehaviour
     public void LoadInventoryFromSaveData(InventorySaveData data)
     {
         inventory.Clear();
+
+        if (data.slots.Count == 0)
+        {
+            foreach (var ingredient in UnlockedIngredients)
+            {
+                inventory[ingredient.id] = new InventorySlot();
+            }
+            return;
+        }
 
         foreach (var slot in data.slots)
         {

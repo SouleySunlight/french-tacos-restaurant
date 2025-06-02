@@ -71,32 +71,32 @@ public class GrillManager : MonoBehaviour
 
     public void OnClickOnTacos(Tacos tacos)
     {
-        try
+        // try
+        // {
+        if (waitingToGrillTacos.Contains(tacos))
         {
-            if (waitingToGrillTacos.Contains(tacos))
-            {
-                AddTacosToGrill(tacos);
-                return;
-            }
-
-            if (tacos.isGrilled || tacos.isBurnt)
-            {
-                ServeTacos(tacos);
-                return;
-            }
-
-            if (CanAddTacosToGrillWaitingZone())
-            {
-                RemoveTacosOfTheGrill(tacos);
-                AddTacosToWaitingZone(tacos);
-                return;
-            }
-
+            AddTacosToGrill(tacos);
+            return;
         }
-        catch (Exception e)
+
+        if (tacos.isGrilled || tacos.isBurnt)
         {
-            Debug.Log(e);
+            ServeTacos(tacos);
+            return;
         }
+
+        if (CanAddTacosToGrillWaitingZone())
+        {
+            RemoveTacosOfTheGrill(tacos);
+            AddTacosToWaitingZone(tacos);
+            return;
+        }
+
+        // }
+        // catch (Exception e)
+        // {
+        //     Debug.Log(e);
+        // }
 
     }
 
