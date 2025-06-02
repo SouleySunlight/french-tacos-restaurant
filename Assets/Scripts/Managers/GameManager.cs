@@ -26,6 +26,34 @@ public class GameManager : MonoBehaviour
         Destroy(gameObject);
     }
 
+    void Start()
+    {
+        LoadGame();
+    }
+
+    void OnApplicationQuit()
+    {
+        SaveGame();
+    }
+
+    public void SaveGame()
+    {
+        GameSaveData gameSaveData = new()
+        {
+            playerMoney = WalletManager.GetCurrentAmount(),
+            inventorySaveData = InventoryManager.GetSaveData()
+        };
+
+        SaveSystem.Save(gameSaveData);
+    }
+
+    void LoadGame()
+    {
+        GameSaveData data = SaveSystem.Load();
+        WalletManager.SetCurrentAmount(data.playerMoney);
+        InventoryManager.LoadFromSaveData(data.inventorySaveData);
+    }
+
     public void WrapTacos()
     {
         try
@@ -60,6 +88,7 @@ public class GameManager : MonoBehaviour
     public void CompleteOrder(Order order)
     {
         WalletManager.ReceiveMoney(order.price);
+        SaveGame();
     }
 
     void InitializeManagers()
