@@ -48,7 +48,7 @@ public class HotplateManager : MonoBehaviour
 
     List<Ingredient> GetIngredientsToCook()
     {
-        return GameManager.Instance.AvailableIngredients.FindAll(ingredient => ingredient.category == IngredientCategoryEnum.MEAT);
+        return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll(ingredient => ingredient.category == IngredientCategoryEnum.MEAT);
     }
 
     public void CookIngredients(Ingredient ingredient)
@@ -66,5 +66,36 @@ public class HotplateManager : MonoBehaviour
         }
         throw new NotEnoughSpaceException();
 
+    }
+
+    public void OnClickOnIngredient(int position)
+    {
+        var cookingTime = cookingTimes[position];
+        var ingredient = cookingIngredients[position];
+
+        if (cookingTime < ingredient.processingTime)
+        {
+            return;
+        }
+
+        if (cookingTime > ingredient.wastingTime)
+        {
+            RemoveIngredientFromCooking(position);
+            return;
+        }
+
+        var ingredientToAdd = cookingIngredients[position];
+        if (GameManager.Instance.InventoryManager.CanAddIngredient(ingredientToAdd))
+        {
+            GameManager.Instance.InventoryManager.AddIngredient(ingredient);
+            RemoveIngredientFromCooking(position);
+        }
+    }
+
+    void RemoveIngredientFromCooking(int position)
+    {
+        cookingIngredients[position] = null;
+        cookingTimes[position] = GlobalConstant.UNUSED_TIME_VALUE;
+        hotplateVisuals.RemoveIngredientFromGrill(position);
     }
 }

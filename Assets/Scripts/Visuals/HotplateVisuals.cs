@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HotplateVisuals : MonoBehaviour
+public class HotplateVisuals : MonoBehaviour, IView
 {
     [SerializeField] private RectTransform firstIngredientPosition;
     [SerializeField] private GameObject ingredientButtonPrefab;
@@ -11,6 +11,8 @@ public class HotplateVisuals : MonoBehaviour
     [SerializeField] private List<GameObject> ingredients;
     [SerializeField] private List<RectTransform> cookPositions = new();
     [SerializeField] private List<Image> cookingTimers = new();
+
+    private List<GameObject> buttons = new();
 
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
 
@@ -20,6 +22,11 @@ public class HotplateVisuals : MonoBehaviour
         {
             ingredients.Add(null);
         }
+    }
+
+    public void OnViewDisplayed()
+    {
+        UpdateIngredientButtons();
     }
 
     public void SetupIngredients(List<Ingredient> ingredients)
@@ -34,8 +41,9 @@ public class HotplateVisuals : MonoBehaviour
             );
 
             var buttonPrefab = Instantiate(ingredientButtonPrefab, buttonPosition, Quaternion.identity, firstIngredientPosition);
-            buttonPrefab.GetComponent<Button>().onClick.AddListener(() => GameManager.Instance.HotplateManager.CookIngredients(ingredient));
-            buttonPrefab.GetComponentInChildren<TMP_Text>().text = ingredient.name;
+            buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
+            buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.HotplateManager.CookIngredients(ingredient));
+            buttons.Add(buttonPrefab);
             index++;
         }
     }
@@ -44,6 +52,7 @@ public class HotplateVisuals : MonoBehaviour
     {
         var ingredientToCook = Instantiate(ingredientPrefab, cookPositions[position].position, Quaternion.identity, cookPositions[position]);
         ingredientToCook.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
+        ingredientToCook.GetComponent<IngredientMovement>().ClickHotplateEvent.AddListener(OnClickOnIngredient);
         ingredients[position] = ingredientToCook;
     }
 
@@ -60,5 +69,27 @@ public class HotplateVisuals : MonoBehaviour
     public void UpdateTimer(int index, float percentage)
     {
         cookingTimers[index].fillAmount = percentage;
+    }
+
+    void OnClickOnIngredient(GameObject gameObject)
+    {
+        GameManager.Instance.HotplateManager.OnClickOnIngredient(ingredients.FindIndex(ingredient => ingredient == gameObject));
+    }
+
+    public void RemoveIngredientFromGrill(int position)
+    {
+        var ingredientToRemove = ingredients[position];
+        Destroy(ingredientToRemove);
+        ingredients[position] = null;
+        UpdateTimer(position, 0);
+        UpdateIngredientButtons();
+    }
+
+    public void UpdateIngredientButtons()
+    {
+        foreach (var button in buttons)
+        {
+            button.GetComponent<IngredientButtonDisplayer>().GetComponent<IngredientButtonDisplayer>().UpdateVisual();
+        }
     }
 }

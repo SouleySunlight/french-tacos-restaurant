@@ -28,6 +28,7 @@ public class PlayzoneVisual : MonoBehaviour
     public void DisplayView(ViewToShowEnum zoneToShow)
     {
         currentView = zoneToShow;
+        views[zoneToShow].GetComponent<IView>().OnViewDisplayed();
         foreach (var view in views)
         {
             view.Value.SetActive(zoneToShow == view.Key);

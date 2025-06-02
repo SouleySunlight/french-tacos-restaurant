@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckoutVisual : MonoBehaviour
+public class CheckoutVisual : MonoBehaviour, IView
 {
     [SerializeField] private RectTransform firstTacosPosition;
     [SerializeField] private GameObject tacosPrefab;

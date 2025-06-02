@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Chicken
   m_EditorClassIdentifier: 
   name: Chicken
-  inTacosSprite: {fileID: 6165403363357119445, guid: 83876ad9272de419b8c462d3e1ae9e0a, type: 3}
   unprocessedSprite: {fileID: 8664216723903435382, guid: 8f969bb8601ea492abc9c4efe1c98608, type: 3}
   processedSprite: {fileID: 6165403363357119445, guid: 83876ad9272de419b8c462d3e1ae9e0a, type: 3}
+  wastedSprite: {fileID: 3626891485384884952, guid: 4adec8d4c4c2e45b89c030767fcfd84b, type: 3}
   processingTime: 10
+  wastingTime: 20
   category: 0

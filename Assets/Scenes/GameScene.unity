@@ -1211,6 +1211,60 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2587466862440848009, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
   m_PrefabInstance: {fileID: 1342178357523527731}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1473123456
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1473123457}
+  - component: {fileID: 1473123458}
+  m_Layer: 0
+  m_Name: InventoryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1473123457
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473123456}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1592385110}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1473123458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473123456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30945d94e38914efdb2c7d954d379125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialAvailableIngredients:
+  - {fileID: 11400000, guid: bcd75b2f569f34240a4d51384afa9c1c, type: 2}
+  - {fileID: 11400000, guid: 3379be92e59104cc3a127a761ff34feb, type: 2}
+  - {fileID: 11400000, guid: 9167cde54586e49538ce78549eae4299, type: 2}
+  - {fileID: 11400000, guid: 2535e60e534f54fdbb53a2b6b4d3691b, type: 2}
+--- !u!4 &1592385110 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3085991473500790815, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
+  m_PrefabInstance: {fileID: 1939070525881176875}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1607082799 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4993246168955234606, guid: 2adece383d52c41cdab0a615cc9775d9, type: 3}
@@ -1311,6 +1365,7 @@ MonoBehaviour:
   firstIngredientPosition: {fileID: 44640097}
   ingredientButtonPrefab: {fileID: 7813578882716834325, guid: 00d21511e35e24f16bf33bf8234b51ef, type: 3}
   ingredientPrefab: {fileID: 2624213403382393968, guid: c47743246aeac47bd88a8a604859dcee, type: 3}
+  ingredients: []
   cookPositions:
   - {fileID: 511970060}
   - {fileID: 291866538}
@@ -1842,7 +1897,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3085991473500790815, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1473123457}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
 --- !u!1001 &6894727702419213581

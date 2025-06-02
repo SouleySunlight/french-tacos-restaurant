@@ -1,5 +1,7 @@
 public class GlobalConstant
 {
+    public static readonly int DEFAULT_INGREDIENT_AMOUNT = 0;
+    public static readonly int DEFAULT_INGREDIENT_MAX_AMOUNT = 10;
     public static readonly int INGREDIENT_BUTTON_HORIZONTAL_GAP = 345;
     public static readonly int INGREDIENT_BUTTON_VERTICAL_GAP = -200;
     public static readonly int INGREDIENT_IMAGE_DIMENSION = 100;
