@@ -104,6 +104,18 @@ public class GameManager : MonoBehaviour
         SaveGame();
     }
 
+    public void UnlockIngredient(Ingredient ingredient)
+    {
+        if (!WalletManager.HasEnoughMoney(ingredient.priceToUnlock))
+        {
+            return;
+        }
+        WalletManager.SpendMoney(ingredient.priceToUnlock);
+        InventoryManager.UnlockIngredient(ingredient);
+        TacosMakerManager.AddAvailableIngredient(ingredient);
+        HotplateManager.AddAvailableIngredient(ingredient);
+    }
+
     void InitializeManagers()
     {
         TacosMakerManager = GetComponentInChildren<TacosMakerManager>();

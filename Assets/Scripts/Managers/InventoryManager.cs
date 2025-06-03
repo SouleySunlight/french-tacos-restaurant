@@ -103,4 +103,11 @@ public class InventoryManager : MonoBehaviour
         var ingredientToBuy = GetIngredientsToUnlock();
         shopVisuals.SetupIngredientToBuy(ingredientToBuy);
     }
+
+    public void UnlockIngredient(Ingredient ingredient)
+    {
+        inventory[ingredient.id] = new InventorySlot();
+        UnlockedIngredients.Add(ingredient);
+        shopVisuals.RemoveIngredient(ingredient);
+    }
 }

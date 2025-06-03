@@ -45,6 +45,14 @@ public class HotplateManager : MonoBehaviour
         hotplateVisuals.SetupIngredients(GetIngredientsToCook());
     }
 
+    public void AddAvailableIngredient(Ingredient ingredient)
+    {
+        if (ingredient.category == IngredientCategoryEnum.MEAT)
+        {
+            hotplateVisuals.AddAvailableIngredient(ingredient);
+        }
+    }
+
     List<Ingredient> GetIngredientsToCook()
     {
         return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll(ingredient => ingredient.category == IngredientCategoryEnum.MEAT);
