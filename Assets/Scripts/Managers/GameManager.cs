@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     public WalletManager WalletManager { get; private set; }
     public HotplateManager HotplateManager { get; private set; }
     public InventoryManager InventoryManager { get; private set; }
+
+    private bool isLoaded = false;
 
 
     private void Awake()
@@ -28,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(OnGameLoadedCoroutine());
         LoadGame();
     }
 
@@ -41,7 +45,7 @@ public class GameManager : MonoBehaviour
         GameSaveData gameSaveData = new()
         {
             playerMoney = WalletManager.GetCurrentAmount(),
-            inventorySaveData = InventoryManager.GetSaveData()
+            inventorySaveData = InventoryManager.GetInventorySaveData()
         };
 
         SaveSystem.Save(gameSaveData);
@@ -51,7 +55,16 @@ public class GameManager : MonoBehaviour
     {
         GameSaveData data = SaveSystem.Load();
         WalletManager.SetCurrentAmount(data.playerMoney);
-        InventoryManager.LoadFromSaveData(data.inventorySaveData);
+        InventoryManager.LoadInventoryFromSaveData(data.inventorySaveData);
+        isLoaded = true;
+    }
+
+    private IEnumerator OnGameLoadedCoroutine()
+    {
+        yield return new WaitUntil(() => isLoaded);
+        HotplateManager.SetupIngredients();
+        TacosMakerManager.SetupIngredients();
+        InventoryManager.SetupShop();
     }
 
     public void WrapTacos()
@@ -89,6 +102,18 @@ public class GameManager : MonoBehaviour
     {
         WalletManager.ReceiveMoney(order.price);
         SaveGame();
+    }
+
+    public void UnlockIngredient(Ingredient ingredient)
+    {
+        if (!WalletManager.HasEnoughMoney(ingredient.priceToUnlock))
+        {
+            return;
+        }
+        WalletManager.SpendMoney(ingredient.priceToUnlock);
+        InventoryManager.UnlockIngredient(ingredient);
+        TacosMakerManager.AddAvailableIngredient(ingredient);
+        HotplateManager.AddAvailableIngredient(ingredient);
     }
 
     void InitializeManagers()

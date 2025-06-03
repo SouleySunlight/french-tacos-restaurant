@@ -17,12 +17,6 @@ public class HotplateManager : MonoBehaviour
             cookingTimes.Add(GlobalConstant.UNUSED_TIME_VALUE);
         }
     }
-
-    void Start()
-    {
-        hotplateVisuals.SetupIngredients(GetIngredientsToCook());
-    }
-
     void Update()
     {
         for (int i = 0; i < cookingTimes.Count; i++)
@@ -43,6 +37,19 @@ public class HotplateManager : MonoBehaviour
             hotplateVisuals.UpdateTimer(i, cookingTimes[i] / cookingIngredients[i].processingTime);
 
 
+        }
+    }
+
+    public void SetupIngredients()
+    {
+        hotplateVisuals.SetupIngredients(GetIngredientsToCook());
+    }
+
+    public void AddAvailableIngredient(Ingredient ingredient)
+    {
+        if (ingredient.category == IngredientCategoryEnum.MEAT)
+        {
+            hotplateVisuals.AddAvailableIngredient(ingredient);
         }
     }
 

@@ -32,8 +32,26 @@ public class TacosMakerVisual : MonoBehaviour, IView
 
     public void SetupIngredients(List<Ingredient> ingredients)
     {
-        var index = 0;
         foreach (Ingredient ingredient in ingredients)
+        {
+            AddIngredient(ingredient);
+        }
+        UpdateVisual();
+    }
+
+    public void AddIngredient(Ingredient ingredient)
+    {
+        var buttonPrefab = Instantiate(ingredientButtonPrefab, ingredientButtonFirstTransform.position, Quaternion.identity, ingredientButtonFirstTransform);
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => OnClickToAddIngredient(ingredient));
+        buttons.Add(buttonPrefab);
+        UpdateVisual();
+    }
+
+    void UpdateVisual()
+    {
+        var index = 0;
+        foreach (GameObject button in buttons)
         {
             var buttonPosition = new Vector3(
                 ingredientButtonFirstTransform.position.x + GlobalConstant.INGREDIENT_BUTTON_HORIZONTAL_GAP * (index % NUMBER_OF_BUTTON_PER_ROW),
@@ -41,10 +59,7 @@ public class TacosMakerVisual : MonoBehaviour, IView
                 ingredientButtonFirstTransform.position.z
             );
 
-            var buttonPrefab = Instantiate(ingredientButtonPrefab, buttonPosition, Quaternion.identity, ingredientButtonFirstTransform);
-            buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
-            buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => OnClickToAddIngredient(ingredient));
-            buttons.Add(buttonPrefab);
+            button.GetComponent<RectTransform>().position = buttonPosition;
             index++;
         }
     }
@@ -53,9 +68,9 @@ public class TacosMakerVisual : MonoBehaviour, IView
     {
         if (onCreationTacos == null) { return; }
 
-        GameManager.Instance.TacosMakerManager.AddIngredients(ingredient);
+        GameManager.Instance.TacosMakerManager.AddIngredientsToTacos(ingredient);
     }
-    public void AddIngredient(Ingredient ingredient)
+    public void AddIngredientToTacos(Ingredient ingredient)
     {
         var createdIngredient = Instantiate(ingredientPrefab, onCreationTacos.GetComponent<RectTransform>().position, Quaternion.identity, onCreationTacos.GetComponent<RectTransform>());
         createdIngredient.GetComponent<IngredientDisplayer>().ingredientData = ingredient;

@@ -31,8 +31,17 @@ public class HotplateVisuals : MonoBehaviour, IView
 
     public void SetupIngredients(List<Ingredient> ingredients)
     {
-        var index = 0;
         foreach (Ingredient ingredient in ingredients)
+        {
+            AddAvailableIngredient(ingredient);
+        }
+        UpdateVisual();
+    }
+
+    void UpdateVisual()
+    {
+        var index = 0;
+        foreach (var button in buttons)
         {
             var buttonPosition = new Vector3(
                 firstIngredientPosition.position.x + GlobalConstant.INGREDIENT_BUTTON_HORIZONTAL_GAP * (index % NUMBER_OF_BUTTON_PER_ROW),
@@ -40,12 +49,18 @@ public class HotplateVisuals : MonoBehaviour, IView
                 firstIngredientPosition.position.z
             );
 
-            var buttonPrefab = Instantiate(ingredientButtonPrefab, buttonPosition, Quaternion.identity, firstIngredientPosition);
-            buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
-            buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.HotplateManager.CookIngredients(ingredient));
-            buttons.Add(buttonPrefab);
+            button.GetComponent<RectTransform>().position = buttonPosition;
             index++;
         }
+    }
+
+    public void AddAvailableIngredient(Ingredient ingredient)
+    {
+        var buttonPrefab = Instantiate(ingredientButtonPrefab, firstIngredientPosition.position, Quaternion.identity, firstIngredientPosition);
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.HotplateManager.CookIngredients(ingredient));
+        buttons.Add(buttonPrefab);
+        UpdateVisual();
     }
 
     public void CookIngredients(Ingredient ingredient, int position)

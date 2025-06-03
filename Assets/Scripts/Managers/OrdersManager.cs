@@ -60,7 +60,7 @@ public class OrdersManager : MonoBehaviour
 
         while (true)
         {
-            var timeToWait = Random.Range(30, 60);
+            var timeToWait = Random.Range(20, 30);
             yield return new WaitForSeconds(timeToWait);
             AddNewOrder(GenerateOrder());
         }

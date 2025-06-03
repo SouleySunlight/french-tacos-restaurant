@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class IngredientButtonDisplayer : MonoBehaviour
 {
     public Ingredient ingredientData;
-
+    public bool shouldShowQuantity = true;
+    public bool shouldShowPrice = false;
     [SerializeField] private TMP_Text buttonText;
     [SerializeField] private Button button;
 
@@ -18,7 +19,15 @@ public class IngredientButtonDisplayer : MonoBehaviour
 
     public void UpdateVisual()
     {
-        buttonText.text = ingredientData.name + " " + GameManager.Instance.InventoryManager.GetStockString(ingredientData);
+        buttonText.text = ingredientData.name;
+        if (shouldShowQuantity)
+        {
+            buttonText.text += " " + GameManager.Instance.InventoryManager.GetStockString(ingredientData);
+        }
+        if (shouldShowPrice)
+        {
+            buttonText.text += " " + ingredientData.priceToUnlock + " €";
+        }
     }
 
     public void AddListener(UnityAction action)

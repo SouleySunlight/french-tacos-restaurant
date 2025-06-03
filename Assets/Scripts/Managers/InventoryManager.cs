@@ -4,17 +4,14 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
 
-    [SerializeField] private List<Ingredient> initialAvailableIngredients = new();
-    [HideInInspector] public List<Ingredient> UnlockedIngredients { get; private set; }
+    [SerializeField] private List<Ingredient> allIngredients = new();
+    [HideInInspector] public List<Ingredient> UnlockedIngredients { get; private set; } = new();
     private Dictionary<string, InventorySlot> inventory = new();
+    private ShopVisuals shopVisuals;
 
-    private void Awake()
+    void Awake()
     {
-        UnlockedIngredients = initialAvailableIngredients;
-        foreach (var ingredient in UnlockedIngredients)
-        {
-            inventory[ingredient.id] = new InventorySlot();
-        }
+        shopVisuals = FindFirstObjectByType<ShopVisuals>(FindObjectsInactive.Include);
     }
 
     public string GetStockString(Ingredient ingredient)
@@ -42,7 +39,7 @@ public class InventoryManager : MonoBehaviour
         inventory[ingredient.id].currentAmount += 1;
     }
 
-    public InventorySaveData GetSaveData()
+    public InventorySaveData GetInventorySaveData()
     {
         var data = new InventorySaveData();
         foreach (var pair in inventory)
@@ -57,13 +54,60 @@ public class InventoryManager : MonoBehaviour
         return data;
     }
 
-    public void LoadFromSaveData(InventorySaveData data)
+    public void LoadInventoryFromSaveData(InventorySaveData data)
     {
         inventory.Clear();
+
+        if (data.slots.Count == 0)
+        {
+            foreach (var ingredient in allIngredients)
+            {
+                if (ingredient.isUnlockedFromTheBeginning)
+                {
+                    inventory[ingredient.id] = new InventorySlot();
+                    UnlockedIngredients.Add(ingredient);
+                }
+            }
+            return;
+        }
 
         foreach (var slot in data.slots)
         {
             inventory[slot.ingredientID] = new InventorySlot(slot.currentAmount, slot.maxAmount);
+            var ingredientToAdd = allIngredients.Find(ingredient => slot.ingredientID == ingredient.id);
+            if (!ingredientToAdd)
+            {
+                continue;
+            }
+            UnlockedIngredients.Add(ingredientToAdd);
         }
+    }
+
+    public List<Ingredient> GetIngredientsToUnlock()
+    {
+        List<Ingredient> ingredientsToUnlock = new();
+
+        foreach (var ingredient in allIngredients)
+        {
+            if (!UnlockedIngredients.Contains(ingredient))
+            {
+                ingredientsToUnlock.Add(ingredient);
+            }
+        }
+        ingredientsToUnlock.Sort((x, y) => x.priceToUnlock.CompareTo(y.priceToUnlock));
+        return ingredientsToUnlock;
+    }
+
+    public void SetupShop()
+    {
+        var ingredientToBuy = GetIngredientsToUnlock();
+        shopVisuals.SetupIngredientToBuy(ingredientToBuy);
+    }
+
+    public void UnlockIngredient(Ingredient ingredient)
+    {
+        inventory[ingredient.id] = new InventorySlot();
+        UnlockedIngredients.Add(ingredient);
+        shopVisuals.RemoveIngredient(ingredient);
     }
 }

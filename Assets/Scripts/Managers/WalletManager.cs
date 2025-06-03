@@ -27,4 +27,15 @@ public class WalletManager : MonoBehaviour
         currentWalletAmount = amount;
         walletVisual.UpdateWalletAmount(currentWalletAmount);
     }
+
+    public bool HasEnoughMoney(int amount)
+    {
+        return currentWalletAmount >= amount;
+    }
+
+    public void SpendMoney(int amount)
+    {
+        currentWalletAmount -= amount;
+        walletVisual.UpdateWalletAmount(currentWalletAmount);
+    }
 }
