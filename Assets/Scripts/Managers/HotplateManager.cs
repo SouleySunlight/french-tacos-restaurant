@@ -17,12 +17,6 @@ public class HotplateManager : MonoBehaviour
             cookingTimes.Add(GlobalConstant.UNUSED_TIME_VALUE);
         }
     }
-
-    void Start()
-    {
-        hotplateVisuals.SetupIngredients(GetIngredientsToCook());
-    }
-
     void Update()
     {
         for (int i = 0; i < cookingTimes.Count; i++)
@@ -44,6 +38,11 @@ public class HotplateManager : MonoBehaviour
 
 
         }
+    }
+
+    public void SetupIngredients()
+    {
+        hotplateVisuals.SetupIngredients(GetIngredientsToCook());
     }
 
     List<Ingredient> GetIngredientsToCook()

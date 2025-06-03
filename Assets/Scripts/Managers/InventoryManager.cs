@@ -4,14 +4,9 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
 
-    [SerializeField] private List<Ingredient> initialAvailableIngredients = new();
-    [HideInInspector] public List<Ingredient> UnlockedIngredients { get; private set; }
+    [SerializeField] private List<Ingredient> allIngredients = new();
+    [HideInInspector] public List<Ingredient> UnlockedIngredients { get; private set; } = new();
     private Dictionary<string, InventorySlot> inventory = new();
-
-    private void Awake()
-    {
-        UnlockedIngredients = initialAvailableIngredients;
-    }
 
     public string GetStockString(Ingredient ingredient)
     {
@@ -59,16 +54,27 @@ public class InventoryManager : MonoBehaviour
 
         if (data.slots.Count == 0)
         {
-            foreach (var ingredient in UnlockedIngredients)
+            foreach (var ingredient in allIngredients)
             {
                 inventory[ingredient.id] = new InventorySlot();
             }
+            Debug.Log("coucou");
+            UnlockedIngredients = allIngredients;
             return;
         }
 
         foreach (var slot in data.slots)
         {
             inventory[slot.ingredientID] = new InventorySlot(slot.currentAmount, slot.maxAmount);
+            var ingredientToAdd = allIngredients.Find(ingredient => slot.ingredientID == ingredient.id);
+            Debug.Log(ingredientToAdd);
+            if (!ingredientToAdd)
+            {
+                continue;
+            }
+            UnlockedIngredients.Add(ingredientToAdd);
         }
+
+        Debug.Log(UnlockedIngredients.Count);
     }
 }

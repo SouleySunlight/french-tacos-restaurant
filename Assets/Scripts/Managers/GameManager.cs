@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     public WalletManager WalletManager { get; private set; }
     public HotplateManager HotplateManager { get; private set; }
     public InventoryManager InventoryManager { get; private set; }
+
+    private bool isLoaded = false;
 
 
     private void Awake()
@@ -28,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(OnGameLoadedCoroutine());
         LoadGame();
     }
 
@@ -52,6 +56,14 @@ public class GameManager : MonoBehaviour
         GameSaveData data = SaveSystem.Load();
         WalletManager.SetCurrentAmount(data.playerMoney);
         InventoryManager.LoadInventoryFromSaveData(data.inventorySaveData);
+        isLoaded = true;
+    }
+
+    private IEnumerator OnGameLoadedCoroutine()
+    {
+        yield return new WaitUntil(() => isLoaded);
+        HotplateManager.SetupIngredients();
+        TacosMakerManager.SetupIngredients();
     }
 
     public void WrapTacos()

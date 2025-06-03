@@ -13,7 +13,7 @@ public class TacosMakerManager : MonoBehaviour
         tacosMakerVisual = FindFirstObjectByType<TacosMakerVisual>(FindObjectsInactive.Include);
     }
 
-    void Start()
+    public void SetupIngredients()
     {
         tacosMakerVisual.SetupIngredients(GameManager.Instance.InventoryManager.UnlockedIngredients);
         CreateTacos();
