@@ -57,9 +57,11 @@ public class InventoryManager : MonoBehaviour
             foreach (var ingredient in allIngredients)
             {
                 inventory[ingredient.id] = new InventorySlot();
+                if (ingredient.isUnlockedFromTheBeginning)
+                {
+                    UnlockedIngredients.Add(ingredient);
+                }
             }
-            Debug.Log("coucou");
-            UnlockedIngredients = allIngredients;
             return;
         }
 
@@ -67,14 +69,11 @@ public class InventoryManager : MonoBehaviour
         {
             inventory[slot.ingredientID] = new InventorySlot(slot.currentAmount, slot.maxAmount);
             var ingredientToAdd = allIngredients.Find(ingredient => slot.ingredientID == ingredient.id);
-            Debug.Log(ingredientToAdd);
             if (!ingredientToAdd)
             {
                 continue;
             }
             UnlockedIngredients.Add(ingredientToAdd);
         }
-
-        Debug.Log(UnlockedIngredients.Count);
     }
 }

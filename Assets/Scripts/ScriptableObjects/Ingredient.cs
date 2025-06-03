@@ -11,6 +11,8 @@ public class Ingredient : ScriptableObject
     public float processingTime;
     public float wastingTime;
     public IngredientCategoryEnum category;
+    public bool isUnlockedFromTheBeginning;
+    public int priceToUnlock = 0;
 
 }
 
