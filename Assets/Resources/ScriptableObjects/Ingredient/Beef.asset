@@ -20,3 +20,5 @@ MonoBehaviour:
   processingTime: 15
   wastingTime: 25
   category: 0
+  isUnlockedFromTheBeginning: 0
+  priceToUnlock: 20

@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => isLoaded);
         HotplateManager.SetupIngredients();
         TacosMakerManager.SetupIngredients();
+        InventoryManager.SetupShop();
     }
 
     public void WrapTacos()

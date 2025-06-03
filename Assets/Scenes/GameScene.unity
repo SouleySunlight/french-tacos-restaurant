@@ -1105,6 +1105,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080643627}
   m_CullTransparentMesh: 1
+--- !u!1 &1188111339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1188111340}
+  m_Layer: 5
+  m_Name: FirstButtonPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1188111340
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188111339}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 938975184}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 719}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1259311881
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,10 +1300,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30945d94e38914efdb2c7d954d379125, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialAvailableIngredients:
-  - {fileID: 11400000, guid: bcd75b2f569f34240a4d51384afa9c1c, type: 2}
+  allIngredients:
   - {fileID: 11400000, guid: 3379be92e59104cc3a127a761ff34feb, type: 2}
   - {fileID: 11400000, guid: 9167cde54586e49538ce78549eae4299, type: 2}
+  - {fileID: 11400000, guid: bcd75b2f569f34240a4d51384afa9c1c, type: 2}
   - {fileID: 11400000, guid: 2535e60e534f54fdbb53a2b6b4d3691b, type: 2}
 --- !u!4 &1592385110 stripped
 Transform:
@@ -1581,9 +1616,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5691638432325272317, guid: 6178fd37d099d470ca6b53a20f001354, type: 3}
+      propertyPath: firstButtonPosition
+      value: 
+      objectReference: {fileID: 1188111340}
+    - target: {fileID: 5691638432325272317, guid: 6178fd37d099d470ca6b53a20f001354, type: 3}
+      propertyPath: ingredientButtonPrefab
+      value: 
+      objectReference: {fileID: 7813578882716834325, guid: 00d21511e35e24f16bf33bf8234b51ef, type: 3}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2934758488970067692, guid: 6178fd37d099d470ca6b53a20f001354, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5041458812560773481, guid: 6178fd37d099d470ca6b53a20f001354, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1188111340}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6178fd37d099d470ca6b53a20f001354, type: 3}
 --- !u!1 &2139222436
