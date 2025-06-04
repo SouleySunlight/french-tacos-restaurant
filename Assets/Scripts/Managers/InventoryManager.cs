@@ -28,9 +28,19 @@ public class InventoryManager : MonoBehaviour
     {
         return inventory[ingredient.id].currentAmount > 0;
     }
+    public bool IsUnprocessedIngredientAvailable(Ingredient ingredient)
+    {
+        return unprocessedInventory[ingredient.id].currentAmount > 0;
+    }
 
+    public void ConsumeUnprocessedIngredient(Ingredient ingredient)
+    {
+        if (unprocessedInventory[ingredient.id].currentAmount <= 0) { return; }
+        unprocessedInventory[ingredient.id].currentAmount -= 1;
+    }
     public void ConsumeIngredient(Ingredient ingredient)
     {
+        if (inventory[ingredient.id].currentAmount <= 0) { return; }
         inventory[ingredient.id].currentAmount -= 1;
     }
 

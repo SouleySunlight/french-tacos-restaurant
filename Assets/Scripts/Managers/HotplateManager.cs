@@ -66,9 +66,14 @@ public class HotplateManager : MonoBehaviour
             {
                 continue;
             }
-            hotplateVisuals.CookIngredients(ingredient, i);
+            if (!GameManager.Instance.InventoryManager.IsUnprocessedIngredientAvailable(ingredient))
+            {
+                return;
+            }
+            GameManager.Instance.InventoryManager.ConsumeUnprocessedIngredient(ingredient);
             cookingIngredients[i] = ingredient;
             cookingTimes[i] = 0;
+            hotplateVisuals.CookIngredients(ingredient, i);
             return;
         }
         throw new NotEnoughSpaceException();

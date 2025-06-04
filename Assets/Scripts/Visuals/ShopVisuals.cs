@@ -17,6 +17,14 @@ public class ShopVisuals : MonoBehaviour, IView
         viewToggleButton.onClick.AddListener(() => GameManager.Instance.ShopManager.ChangeView());
     }
 
+    public void OnViewDisplayed()
+    {
+        foreach (var button in buttons)
+        {
+            button.GetComponent<IngredientButtonDisplayer>().GetComponent<IngredientButtonDisplayer>().UpdateVisual();
+        }
+    }
+
     public void SetupIngredientToBuy(List<Ingredient> ingredients)
     {
         DestroyAllButtons();

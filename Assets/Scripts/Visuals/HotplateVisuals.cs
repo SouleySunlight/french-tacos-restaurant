@@ -72,6 +72,7 @@ public class HotplateVisuals : MonoBehaviour, IView
         ingredientToCook.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
         ingredientToCook.GetComponent<IngredientMovement>().ClickHotplateEvent.AddListener(OnClickOnIngredient);
         ingredients[position] = ingredientToCook;
+        UpdateIngredientButtons();
     }
 
     public void OnIngredientCooked(int position)
