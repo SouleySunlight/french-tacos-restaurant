@@ -7,12 +7,6 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private List<Ingredient> allIngredients = new();
     [HideInInspector] public List<Ingredient> UnlockedIngredients { get; private set; } = new();
     private Dictionary<string, InventorySlot> inventory = new();
-    private ShopVisuals shopVisuals;
-
-    void Awake()
-    {
-        shopVisuals = FindFirstObjectByType<ShopVisuals>(FindObjectsInactive.Include);
-    }
 
     public string GetStockString(Ingredient ingredient)
     {
@@ -97,17 +91,9 @@ public class InventoryManager : MonoBehaviour
         ingredientsToUnlock.Sort((x, y) => x.priceToUnlock.CompareTo(y.priceToUnlock));
         return ingredientsToUnlock;
     }
-
-    public void SetupShop()
-    {
-        var ingredientToBuy = GetIngredientsToUnlock();
-        shopVisuals.SetupIngredientToBuy(ingredientToBuy);
-    }
-
     public void UnlockIngredient(Ingredient ingredient)
     {
         inventory[ingredient.id] = new InventorySlot();
         UnlockedIngredients.Add(ingredient);
-        shopVisuals.RemoveIngredient(ingredient);
     }
 }
