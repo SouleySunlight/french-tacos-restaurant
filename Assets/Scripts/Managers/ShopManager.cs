@@ -43,5 +43,6 @@ public class ShopManager : MonoBehaviour
     public void RefillIngredient(Ingredient ingredient)
     {
         GameManager.Instance.InventoryManager.RefillIngredient(ingredient);
+        shopVisuals.UpdateIngredientButtonVisual(ingredient);
     }
 }

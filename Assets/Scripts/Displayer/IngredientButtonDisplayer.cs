@@ -8,7 +8,9 @@ public class IngredientButtonDisplayer : MonoBehaviour
     public Ingredient ingredientData;
     public bool shouldShowQuantity = false;
     public bool shouldShowUnprocessedQuantity = false;
-    public bool shouldShowPrice = false;
+    public bool shouldShowUnlockPrice = false;
+    public bool shouldShowRefillPrice = false;
+
     [SerializeField] private TMP_Text buttonText;
     [SerializeField] private Button button;
 
@@ -30,9 +32,13 @@ public class IngredientButtonDisplayer : MonoBehaviour
             buttonText.text += " " + GameManager.Instance.InventoryManager.GetUnprocessedStockString(ingredientData);
 
         }
-        if (shouldShowPrice)
+        if (shouldShowUnlockPrice)
         {
             buttonText.text += " " + ingredientData.priceToUnlock + " €";
+        }
+        if (shouldShowRefillPrice)
+        {
+            buttonText.text += " " + ingredientData.priceToRefill + " €";
         }
     }
 

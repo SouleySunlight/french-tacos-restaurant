@@ -26,7 +26,7 @@ public class ShopVisuals : MonoBehaviour, IView
             var buttonPrefab = Instantiate(ingredientButtonPrefab, firstButtonPosition.position, Quaternion.identity, firstButtonPosition);
             buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
             buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.UnlockIngredient(ingredient));
-            buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowPrice = true;
+            buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowUnlockPrice = true;
 
             buttons.Add(buttonPrefab);
         }
@@ -42,6 +42,8 @@ public class ShopVisuals : MonoBehaviour, IView
             var buttonPrefab = Instantiate(ingredientButtonPrefab, firstButtonPosition.position, Quaternion.identity, firstButtonPosition);
             buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.RefillIngredient(ingredient));
             buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
+            buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowRefillPrice = true;
+            buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowUnprocessedQuantity = true;
 
             buttons.Add(buttonPrefab);
         }
@@ -83,5 +85,10 @@ public class ShopVisuals : MonoBehaviour, IView
         {
             Destroy(button);
         }
+    }
+
+    public void UpdateIngredientButtonVisual(Ingredient ingredient)
+    {
+        buttons.Find(button => button.GetComponent<IngredientButtonDisplayer>().ingredientData.id == ingredient.id).GetComponent<IngredientButtonDisplayer>().UpdateVisual();
     }
 }

@@ -13,6 +13,7 @@ public class Ingredient : ScriptableObject
     public IngredientCategoryEnum category;
     public bool isUnlockedFromTheBeginning;
     public int priceToUnlock = 0;
+    public int priceToRefill = 1;
 
     public bool NeedProcessing()
     {

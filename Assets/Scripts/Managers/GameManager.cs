@@ -122,7 +122,12 @@ public class GameManager : MonoBehaviour
 
     public void RefillIngredient(Ingredient ingredient)
     {
-        GameManager.Instance.InventoryManager.RefillIngredient(ingredient);
+        if (!WalletManager.HasEnoughMoney(ingredient.priceToRefill))
+        {
+            return;
+        }
+        WalletManager.SpendMoney(ingredient.priceToRefill);
+        ShopManager.RefillIngredient(ingredient);
     }
 
     void InitializeManagers()
