@@ -39,4 +39,9 @@ public class ShopManager : MonoBehaviour
         GameManager.Instance.InventoryManager.UnlockIngredient(ingredient);
         shopVisuals.RemoveIngredientToBuy(ingredient);
     }
+
+    public void RefillIngredient(Ingredient ingredient)
+    {
+        GameManager.Instance.InventoryManager.RefillIngredient(ingredient);
+    }
 }

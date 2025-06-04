@@ -40,6 +40,7 @@ public class ShopVisuals : MonoBehaviour, IView
         foreach (Ingredient ingredient in ingredients)
         {
             var buttonPrefab = Instantiate(ingredientButtonPrefab, firstButtonPosition.position, Quaternion.identity, firstButtonPosition);
+            buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.RefillIngredient(ingredient));
             buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
 
             buttons.Add(buttonPrefab);

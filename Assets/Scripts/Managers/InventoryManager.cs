@@ -38,10 +38,19 @@ public class InventoryManager : MonoBehaviour
     {
         return inventory[ingredient.id].currentAmount < inventory[ingredient.id].maxAmount;
     }
+    public bool CanAddUnprocessedIngredient(Ingredient ingredient)
+    {
+        return unprocessedInventory[ingredient.id].currentAmount < unprocessedInventory[ingredient.id].maxAmount;
+    }
 
     public void AddIngredient(Ingredient ingredient)
     {
         inventory[ingredient.id].currentAmount += 1;
+    }
+
+    public void AddUnprocessedIngredient(Ingredient ingredient)
+    {
+        unprocessedInventory[ingredient.id].currentAmount += 1;
     }
 
     public InventorySaveData GetInventorySaveData()
@@ -146,5 +155,18 @@ public class InventoryManager : MonoBehaviour
     {
         inventory[ingredient.id] = new InventorySlot(GlobalConstant.DEFAULT_INGREDIENT_AMOUNT, GlobalConstant.DEFAULT_INGREDIENT_MAX_AMOUNT);
         UnlockedIngredients.Add(ingredient);
+    }
+
+    public void RefillIngredient(Ingredient ingredient)
+    {
+        if (ingredient.NeedProcessing())
+        {
+            if (!CanAddUnprocessedIngredient(ingredient)) { return; }
+            AddUnprocessedIngredient(ingredient);
+            return;
+        }
+
+        if (!CanAddIngredient(ingredient)) { return; }
+        AddIngredient(ingredient);
     }
 }

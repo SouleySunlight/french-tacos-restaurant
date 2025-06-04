@@ -115,9 +115,14 @@ public class GameManager : MonoBehaviour
             return;
         }
         WalletManager.SpendMoney(ingredient.priceToUnlock);
-        InventoryManager.UnlockIngredient(ingredient);
+        ShopManager.UnlockIngredient(ingredient);
         TacosMakerManager.AddAvailableIngredient(ingredient);
         HotplateManager.AddAvailableIngredient(ingredient);
+    }
+
+    public void RefillIngredient(Ingredient ingredient)
+    {
+        GameManager.Instance.InventoryManager.RefillIngredient(ingredient);
     }
 
     void InitializeManagers()
