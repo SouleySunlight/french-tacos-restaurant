@@ -14,6 +14,11 @@ public class Ingredient : ScriptableObject
     public bool isUnlockedFromTheBeginning;
     public int priceToUnlock = 0;
 
+    public bool NeedProcessing()
+    {
+        return category == IngredientCategoryEnum.MEAT;
+    }
+
 }
 
 public enum IngredientCategoryEnum

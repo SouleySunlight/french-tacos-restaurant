@@ -47,7 +47,8 @@ public class GameManager : MonoBehaviour
         GameSaveData gameSaveData = new()
         {
             playerMoney = WalletManager.GetCurrentAmount(),
-            inventorySaveData = InventoryManager.GetInventorySaveData()
+            inventorySaveData = InventoryManager.GetInventorySaveData(),
+            unprocessedInventorySaveData = InventoryManager.GetUnprocessedInventorySaveData()
         };
 
         SaveSystem.Save(gameSaveData);
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour
         GameSaveData data = SaveSystem.Load();
         WalletManager.SetCurrentAmount(data.playerMoney);
         InventoryManager.LoadInventoryFromSaveData(data.inventorySaveData);
+        InventoryManager.LoadUnprocessedInventoryFromSaveData(data.unprocessedInventorySaveData);
         isLoaded = true;
     }
 

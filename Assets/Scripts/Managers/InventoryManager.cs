@@ -7,10 +7,21 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private List<Ingredient> allIngredients = new();
     [HideInInspector] public List<Ingredient> UnlockedIngredients { get; private set; } = new();
     private Dictionary<string, InventorySlot> inventory = new();
+    private Dictionary<string, InventorySlot> unprocessedInventory = new();
+
 
     public string GetStockString(Ingredient ingredient)
     {
         return "(" + inventory[ingredient.id].currentAmount + "/" + inventory[ingredient.id].maxAmount + ")";
+    }
+
+    public string GetUnprocessedStockString(Ingredient ingredient)
+    {
+        if (ingredient.NeedProcessing())
+        {
+            return "(" + unprocessedInventory[ingredient.id].currentAmount + "/" + unprocessedInventory[ingredient.id].maxAmount + ")";
+        }
+        return GetStockString(ingredient);
     }
 
     public bool IsIngredientAvailable(Ingredient ingredient)
@@ -48,6 +59,21 @@ public class InventoryManager : MonoBehaviour
         return data;
     }
 
+    public InventorySaveData GetUnprocessedInventorySaveData()
+    {
+        var data = new InventorySaveData();
+        foreach (var pair in unprocessedInventory)
+        {
+            data.slots.Add(new InventorySlotSaveData
+            {
+                ingredientID = pair.Key,
+                currentAmount = pair.Value.currentAmount,
+                maxAmount = pair.Value.maxAmount
+            });
+        }
+        return data;
+    }
+
     public void LoadInventoryFromSaveData(InventorySaveData data)
     {
         inventory.Clear();
@@ -58,7 +84,10 @@ public class InventoryManager : MonoBehaviour
             {
                 if (ingredient.isUnlockedFromTheBeginning)
                 {
-                    inventory[ingredient.id] = new InventorySlot();
+                    inventory[ingredient.id] = new InventorySlot(
+                        ingredient.NeedProcessing() ? 0 : GlobalConstant.DEFAULT_INGREDIENT_AMOUNT,
+                        GlobalConstant.DEFAULT_INGREDIENT_MAX_AMOUNT
+                        );
                     UnlockedIngredients.Add(ingredient);
                 }
             }
@@ -74,6 +103,28 @@ public class InventoryManager : MonoBehaviour
                 continue;
             }
             UnlockedIngredients.Add(ingredientToAdd);
+        }
+    }
+
+    public void LoadUnprocessedInventoryFromSaveData(InventorySaveData data)
+    {
+        unprocessedInventory.Clear();
+
+        if (data.slots.Count == 0)
+        {
+            foreach (var ingredient in allIngredients)
+            {
+                if (ingredient.isUnlockedFromTheBeginning && ingredient.NeedProcessing())
+                {
+                    unprocessedInventory[ingredient.id] = new InventorySlot(GlobalConstant.DEFAULT_INGREDIENT_AMOUNT, GlobalConstant.DEFAULT_INGREDIENT_MAX_AMOUNT);
+                }
+            }
+            return;
+        }
+
+        foreach (var slot in data.slots)
+        {
+            unprocessedInventory[slot.ingredientID] = new InventorySlot(slot.currentAmount, slot.maxAmount);
         }
     }
 
@@ -93,7 +144,7 @@ public class InventoryManager : MonoBehaviour
     }
     public void UnlockIngredient(Ingredient ingredient)
     {
-        inventory[ingredient.id] = new InventorySlot();
+        inventory[ingredient.id] = new InventorySlot(GlobalConstant.DEFAULT_INGREDIENT_AMOUNT, GlobalConstant.DEFAULT_INGREDIENT_MAX_AMOUNT);
         UnlockedIngredients.Add(ingredient);
     }
 }
