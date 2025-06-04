@@ -27,7 +27,6 @@ public class ShopVisuals : MonoBehaviour, IView
             buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
             buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.UnlockIngredient(ingredient));
             buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowPrice = true;
-            buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowQuantity = false;
 
             buttons.Add(buttonPrefab);
         }
