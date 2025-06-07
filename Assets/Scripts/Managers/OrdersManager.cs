@@ -29,7 +29,7 @@ public class OrdersManager : MonoBehaviour
     {
         List<List<Ingredient>> orderList = new();
 
-        var numberOfTacos = Random.Range(1, 3);
+        var numberOfTacos = Random.Range(1, 4);
 
         for (int i = 0; i < numberOfTacos; i++)
         {

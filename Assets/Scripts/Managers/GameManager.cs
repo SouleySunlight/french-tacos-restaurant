@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public WalletManager WalletManager { get; private set; }
     public HotplateManager HotplateManager { get; private set; }
     public InventoryManager InventoryManager { get; private set; }
+    public ShopManager ShopManager { get; private set; }
+
 
     private bool isLoaded = false;
 
@@ -45,7 +47,8 @@ public class GameManager : MonoBehaviour
         GameSaveData gameSaveData = new()
         {
             playerMoney = WalletManager.GetCurrentAmount(),
-            inventorySaveData = InventoryManager.GetInventorySaveData()
+            inventorySaveData = InventoryManager.GetInventorySaveData(),
+            unprocessedInventorySaveData = InventoryManager.GetUnprocessedInventorySaveData()
         };
 
         SaveSystem.Save(gameSaveData);
@@ -56,6 +59,7 @@ public class GameManager : MonoBehaviour
         GameSaveData data = SaveSystem.Load();
         WalletManager.SetCurrentAmount(data.playerMoney);
         InventoryManager.LoadInventoryFromSaveData(data.inventorySaveData);
+        InventoryManager.LoadUnprocessedInventoryFromSaveData(data.unprocessedInventorySaveData);
         isLoaded = true;
     }
 
@@ -64,7 +68,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => isLoaded);
         HotplateManager.SetupIngredients();
         TacosMakerManager.SetupIngredients();
-        InventoryManager.SetupShop();
+        ShopManager.SetupShop();
     }
 
     public void WrapTacos()
@@ -111,9 +115,19 @@ public class GameManager : MonoBehaviour
             return;
         }
         WalletManager.SpendMoney(ingredient.priceToUnlock);
-        InventoryManager.UnlockIngredient(ingredient);
+        ShopManager.UnlockIngredient(ingredient);
         TacosMakerManager.AddAvailableIngredient(ingredient);
         HotplateManager.AddAvailableIngredient(ingredient);
+    }
+
+    public void RefillIngredient(Ingredient ingredient)
+    {
+        if (!WalletManager.HasEnoughMoney(ingredient.priceToRefill))
+        {
+            return;
+        }
+        WalletManager.SpendMoney(ingredient.priceToRefill);
+        ShopManager.RefillIngredient(ingredient);
     }
 
     void InitializeManagers()
@@ -125,6 +139,7 @@ public class GameManager : MonoBehaviour
         WalletManager = GetComponentInChildren<WalletManager>();
         HotplateManager = GetComponentInChildren<HotplateManager>();
         InventoryManager = GetComponentInChildren<InventoryManager>();
+        ShopManager = GetComponentInChildren<ShopManager>();
 
 
         if (TacosMakerManager == null)
@@ -204,6 +219,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             InventoryManager = GetComponentInChildren<InventoryManager>();
+        }
+        if (ShopManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/ShopManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load ShopManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            ShopManager = GetComponentInChildren<ShopManager>();
         }
     }
 

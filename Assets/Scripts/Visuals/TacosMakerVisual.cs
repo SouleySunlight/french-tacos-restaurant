@@ -43,6 +43,8 @@ public class TacosMakerVisual : MonoBehaviour, IView
     {
         var buttonPrefab = Instantiate(ingredientButtonPrefab, ingredientButtonFirstTransform.position, Quaternion.identity, ingredientButtonFirstTransform);
         buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowQuantity = true;
+
         buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => OnClickToAddIngredient(ingredient));
         buttons.Add(buttonPrefab);
         UpdateVisual();

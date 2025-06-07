@@ -58,6 +58,9 @@ public class HotplateVisuals : MonoBehaviour, IView
     {
         var buttonPrefab = Instantiate(ingredientButtonPrefab, firstIngredientPosition.position, Quaternion.identity, firstIngredientPosition);
         buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowUnprocessedQuantity = true;
+
+
         buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.HotplateManager.CookIngredients(ingredient));
         buttons.Add(buttonPrefab);
         UpdateVisual();
@@ -69,6 +72,7 @@ public class HotplateVisuals : MonoBehaviour, IView
         ingredientToCook.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
         ingredientToCook.GetComponent<IngredientMovement>().ClickHotplateEvent.AddListener(OnClickOnIngredient);
         ingredients[position] = ingredientToCook;
+        UpdateIngredientButtons();
     }
 
     public void OnIngredientCooked(int position)

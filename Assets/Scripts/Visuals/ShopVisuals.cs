@@ -1,31 +1,64 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopVisuals : MonoBehaviour, IView
 {
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private Transform firstButtonPosition;
+    [SerializeField] private Button viewToggleButton;
 
     private List<GameObject> buttons = new();
 
 
+    void Start()
+    {
+        viewToggleButton.onClick.AddListener(() => GameManager.Instance.ShopManager.ChangeView());
+    }
+
+    public void OnViewDisplayed()
+    {
+        foreach (var button in buttons)
+        {
+            button.GetComponent<IngredientButtonDisplayer>().GetComponent<IngredientButtonDisplayer>().UpdateVisual();
+        }
+    }
+
     public void SetupIngredientToBuy(List<Ingredient> ingredients)
     {
-
+        DestroyAllButtons();
+        buttons.Clear();
         foreach (Ingredient ingredient in ingredients)
         {
             var buttonPrefab = Instantiate(ingredientButtonPrefab, firstButtonPosition.position, Quaternion.identity, firstButtonPosition);
             buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
             buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.UnlockIngredient(ingredient));
-            buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowPrice = true;
-            buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowQuantity = false;
+            buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowUnlockPrice = true;
 
             buttons.Add(buttonPrefab);
         }
         UpdateVisual();
     }
 
-    public void RemoveIngredient(Ingredient ingredient)
+    public void SetupIngredientToRefill(List<Ingredient> ingredients)
+    {
+        DestroyAllButtons();
+        buttons.Clear();
+        foreach (Ingredient ingredient in ingredients)
+        {
+            var buttonPrefab = Instantiate(ingredientButtonPrefab, firstButtonPosition.position, Quaternion.identity, firstButtonPosition);
+            buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.RefillIngredient(ingredient));
+            buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
+            buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowRefillPrice = true;
+            buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowUnprocessedQuantity = true;
+
+            buttons.Add(buttonPrefab);
+        }
+        UpdateVisual();
+    }
+
+    public void RemoveIngredientToBuy(Ingredient ingredient)
     {
         var buttonToRemove = buttons.Find(button => button.GetComponent<IngredientButtonDisplayer>().ingredientData.id == ingredient.id);
         Destroy(buttonToRemove);
@@ -46,5 +79,24 @@ public class ShopVisuals : MonoBehaviour, IView
             button.GetComponent<RectTransform>().position = buttonPosition;
             index++;
         }
+        UpdateToggleButtonVisual();
+    }
+
+    public void UpdateToggleButtonVisual()
+    {
+        viewToggleButton.GetComponentInChildren<TMP_Text>().text = GameManager.Instance.ShopManager.isInUnlockMode ? "To Refill" : "To Unlock";
+    }
+
+    void DestroyAllButtons()
+    {
+        foreach (var button in buttons)
+        {
+            Destroy(button);
+        }
+    }
+
+    public void UpdateIngredientButtonVisual(Ingredient ingredient)
+    {
+        buttons.Find(button => button.GetComponent<IngredientButtonDisplayer>().ingredientData.id == ingredient.id).GetComponent<IngredientButtonDisplayer>().UpdateVisual();
     }
 }

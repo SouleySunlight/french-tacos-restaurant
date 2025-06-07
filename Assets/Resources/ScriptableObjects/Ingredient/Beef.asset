@@ -22,3 +22,4 @@ MonoBehaviour:
   category: 0
   isUnlockedFromTheBeginning: 0
   priceToUnlock: 20
+  priceToRefill: 1
