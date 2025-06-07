@@ -8,12 +8,13 @@ public class GrillManager : MonoBehaviour
     private List<Tacos> waitingToGrillTacos = new();
     private List<Tacos> grillingTacos = new();
     private List<float> grillingTime = new();
+    private List<float> totalGrillingTime = new();
+
     private readonly int MAX_WAITING_TO_GRILL_TACOS = 2;
     private readonly int MAX_GRILLING_TACOS = 2;
     private readonly float GRILL_BASE_DURATION = 20f;
     private readonly float BURN_BASE_DURATION = 10f;
     private float currentGrillDuration;
-    private float currentBurnDuration;
 
     private GrillVisual grillVisual;
 
@@ -27,6 +28,7 @@ public class GrillManager : MonoBehaviour
         {
             grillingTacos.Add(null);
             grillingTime.Add(GlobalConstant.UNUSED_TIME_VALUE);
+            totalGrillingTime.Add(GlobalConstant.UNUSED_TIME_VALUE);
         }
     }
 
@@ -43,7 +45,7 @@ public class GrillManager : MonoBehaviour
 
             grillingTime[i] += Time.deltaTime;
 
-            if (grillingTime[i] >= currentBurnDuration && !grillingTacos[i].isBurnt)
+            if (grillingTime[i] >= totalGrillingTime[i] + BURN_BASE_DURATION && !grillingTacos[i].isBurnt)
             {
                 grillingTacos[i].BurnTacos();
                 grillVisual.UpdateTacosVisual(grillingTacos[i]);
@@ -51,14 +53,14 @@ public class GrillManager : MonoBehaviour
             }
 
 
-            if (grillingTime[i] >= currentGrillDuration && !grillingTacos[i].isGrilled)
+            if (grillingTime[i] >= totalGrillingTime[i] && !grillingTacos[i].isGrilled)
             {
                 grillingTacos[i].GrillTacos();
                 grillVisual.UpdateTacosVisual(grillingTacos[i]);
                 continue;
             }
 
-            grillVisual.UpdateTimer(i, grillingTime[i] / currentGrillDuration);
+            grillVisual.UpdateTimer(i, grillingTime[i] / totalGrillingTime[i]);
 
         }
     }
@@ -116,6 +118,7 @@ public class GrillManager : MonoBehaviour
                 grillingTacos[i] = tacos;
                 grillVisual.GrillTacos(tacos, i);
                 grillingTime[i] = 0f;
+                totalGrillingTime[i] = currentGrillDuration;
                 return;
             }
         }
@@ -135,6 +138,7 @@ public class GrillManager : MonoBehaviour
         var tacosToRemoveIndex = grillingTacos.FindIndex((grillTacos) => grillTacos != null && grillTacos.guid == tacos.guid);
         grillingTacos[tacosToRemoveIndex] = null;
         grillingTime[tacosToRemoveIndex] = GlobalConstant.UNUSED_TIME_VALUE;
+        totalGrillingTime[tacosToRemoveIndex] = GlobalConstant.UNUSED_TIME_VALUE;
         grillVisual.RemoveTacosOfTheGrill(tacos, tacosToRemoveIndex);
 
     }
@@ -142,7 +146,5 @@ public class GrillManager : MonoBehaviour
     public void UpdateGrillingTime()
     {
         currentGrillDuration = GRILL_BASE_DURATION * GameManager.Instance.UpgradeManager.GetEffect("GRILL");
-        Debug.Log(currentGrillDuration);
-        currentBurnDuration = currentGrillDuration + BURN_BASE_DURATION;
     }
 }

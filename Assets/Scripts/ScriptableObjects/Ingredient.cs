@@ -9,7 +9,7 @@ public class Ingredient : ScriptableObject
     public Sprite processedSprite;
     public Sprite wastedSprite;
     public float processingTime;
-    public float wastingTime;
+    public float wastingTimeOffset;
     public IngredientCategoryEnum category;
     public bool isUnlockedFromTheBeginning;
     public int priceToUnlock = 0;

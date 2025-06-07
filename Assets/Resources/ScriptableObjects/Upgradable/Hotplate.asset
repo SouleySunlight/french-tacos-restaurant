@@ -16,4 +16,4 @@ MonoBehaviour:
   baseCost: 5
   costEvolutionFactor: 1.5
   maxLevel: 25
-  speedMultiplier: 0.9
+  speedMultiplier: 0.5
