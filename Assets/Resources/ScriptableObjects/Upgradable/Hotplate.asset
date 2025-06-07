@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0ac7f42b229e445cad67edd83ac2c22, type: 3}
-  m_Name: Upgrade
+  m_Script: {fileID: 11500000, guid: d06a9a7151dca4e6090757541d4e70c8, type: 3}
+  m_Name: Hotplate
   m_EditorClassIdentifier: 
-  name: Upgrade
-  viewToShow: 5
+  id: HOTPLATE
+  baseCost: 5
+  costEvolutionFactor: 1.5
+  maxLevel: 25
+  speedMultiplier: 0.9

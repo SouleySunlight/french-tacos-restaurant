@@ -2,6 +2,11 @@ public class GlobalConstant
 {
     public static readonly int DEFAULT_INGREDIENT_AMOUNT = 5;
     public static readonly int DEFAULT_INGREDIENT_MAX_AMOUNT = 10;
+    public static readonly int DEFAULT_UPGRADE_LEVEL = 0;
+    public static readonly int DEFAULT_UPGRADE_MAX_LEVEL = 25;
+    public static readonly int DEFAULT_UPGRADE_BASE_COST = 5;
+    public static readonly float DEFAULT_UPGRADE_COST_FACTOR = 1.5f;
+    public static readonly float DEFAULT_SPEED_UPGRADE = 0.9f;
     public static readonly int INGREDIENT_BUTTON_HORIZONTAL_GAP = 345;
     public static readonly int INGREDIENT_BUTTON_VERTICAL_GAP = -200;
     public static readonly int INGREDIENT_IMAGE_DIMENSION = 100;

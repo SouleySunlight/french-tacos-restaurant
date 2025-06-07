@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public HotplateManager HotplateManager { get; private set; }
     public InventoryManager InventoryManager { get; private set; }
     public ShopManager ShopManager { get; private set; }
+    public UpgradeManager UpgradeManager { get; private set; }
+
 
 
     private bool isLoaded = false;
@@ -140,7 +142,7 @@ public class GameManager : MonoBehaviour
         HotplateManager = GetComponentInChildren<HotplateManager>();
         InventoryManager = GetComponentInChildren<InventoryManager>();
         ShopManager = GetComponentInChildren<ShopManager>();
-
+        UpgradeManager = GetComponentInChildren<UpgradeManager>();
 
         if (TacosMakerManager == null)
         {
@@ -230,6 +232,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             ShopManager = GetComponentInChildren<ShopManager>();
+        }
+        if (UpgradeManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/UpgradeManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load UpgradeManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            UpgradeManager = GetComponentInChildren<UpgradeManager>();
         }
     }
 

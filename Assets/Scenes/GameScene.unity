@@ -995,6 +995,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3341695851007084656, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: viewEntries.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341695851007084656, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: viewEntries.Array.data[5].viewType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341695851007084656, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: viewEntries.Array.data[5].viewObject
+      value: 
+      objectReference: {fileID: 1472314402}
     - target: {fileID: 5691638432325272317, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: viewToggleButton
       value: 
@@ -1105,7 +1117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8119134404811225055, guid: 05266e7e7cd574588b91cb729b508d76, type: 3}
       propertyPath: sidebarOptions.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8119134404811225055, guid: 05266e7e7cd574588b91cb729b508d76, type: 3}
       propertyPath: 'sidebarOptions.Array.data[0]'
@@ -1127,6 +1139,10 @@ PrefabInstance:
       propertyPath: 'sidebarOptions.Array.data[4]'
       value: 
       objectReference: {fileID: 11400000, guid: fdfa5a6c8f0e94a28b8ddaf77d47f32d, type: 2}
+    - target: {fileID: 8119134404811225055, guid: 05266e7e7cd574588b91cb729b508d76, type: 3}
+      propertyPath: 'sidebarOptions.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2cc5bb3c57abb4a2f97adef69f149d2b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

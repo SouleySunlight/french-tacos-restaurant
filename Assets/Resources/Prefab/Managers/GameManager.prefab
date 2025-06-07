@@ -263,6 +263,7 @@ Transform:
   - {fileID: 6388461067313984526}
   - {fileID: 7267674512255065765}
   - {fileID: 5438782134288401850}
+  - {fileID: 6600567508718462209}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &13131466575187571
@@ -365,6 +366,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0230f5c49d0740b89138c07c20c6b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8627000037312151107
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6600567508718462209}
+  - component: {fileID: 3797732046845199967}
+  m_Layer: 0
+  m_Name: UpgradeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6600567508718462209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8627000037312151107}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3085991473500790815}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3797732046845199967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8627000037312151107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d8d0e7d4199841e4accf76c9fa1d0a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradables:
+  - {fileID: 11400000, guid: 133b5d6a094614f8e8f81b0b60132603, type: 2}
+  - {fileID: 11400000, guid: 92df465875d58473382d11e5502a28ae, type: 2}
 --- !u!1 &8905604857820178103
 GameObject:
   m_ObjectHideFlags: 0
