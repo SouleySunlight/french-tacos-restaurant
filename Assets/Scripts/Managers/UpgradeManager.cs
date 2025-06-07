@@ -20,4 +20,9 @@ public class UpgradeManager : MonoBehaviour
             upgrades[upgradable.id] = GlobalConstant.DEFAULT_UPGRADE_LEVEL;
         }
     }
+
+    public void SetupUpgrades()
+    {
+        upgradeVisual.SetupUpgrades(upgradables, upgrades);
+    }
 }

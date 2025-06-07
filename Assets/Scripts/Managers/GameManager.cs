@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
         HotplateManager.SetupIngredients();
         TacosMakerManager.SetupIngredients();
         ShopManager.SetupShop();
+        UpgradeManager.SetupUpgrades();
     }
 
     public void WrapTacos()
