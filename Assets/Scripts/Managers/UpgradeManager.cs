@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
     [SerializeField] List<BaseUpgrade> upgradables = new();
-    private Dictionary<string, int> upgrades = new();
+    private Dictionary<string, UpgradeSlot> upgrades = new();
 
     private UpgradeVisual upgradeVisual;
 
@@ -17,12 +18,19 @@ public class UpgradeManager : MonoBehaviour
     {
         foreach (var upgradable in upgradables)
         {
-            upgrades[upgradable.id] = GlobalConstant.DEFAULT_UPGRADE_LEVEL;
+            upgrades[upgradable.id] = new UpgradeSlot(upgradable, GlobalConstant.DEFAULT_UPGRADE_LEVEL);
         }
     }
 
     public void SetupUpgrades()
     {
-        upgradeVisual.SetupUpgrades(upgradables, upgrades);
+        upgradeVisual.SetupUpgrades(upgrades.Values.ToList());
+    }
+
+    public void UpgradeElement(string id)
+    {
+        if (upgrades[id].currentLevel >= upgrades[id].upgrade.maxLevel) { return; }
+        upgrades[id].currentLevel += 1;
+        upgradeVisual.UpdateUpgradeButton(id);
     }
 }

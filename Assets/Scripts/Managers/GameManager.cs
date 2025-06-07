@@ -133,6 +133,17 @@ public class GameManager : MonoBehaviour
         ShopManager.RefillIngredient(ingredient);
     }
 
+    public void UpgradeElement(UpgradeSlot upgrade)
+    {
+        if (!WalletManager.HasEnoughMoney(upgrade.upgrade.GetCostAtLevel(upgrade.currentLevel)))
+        {
+            return;
+        }
+        WalletManager.SpendMoney(upgrade.upgrade.GetCostAtLevel(upgrade.currentLevel));
+        UpgradeManager.UpgradeElement(upgrade.upgrade.id);
+
+    }
+
     void InitializeManagers()
     {
         TacosMakerManager = GetComponentInChildren<TacosMakerManager>();

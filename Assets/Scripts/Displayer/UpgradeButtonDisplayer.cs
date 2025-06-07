@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class UpgradeButtonDisplayer : MonoBehaviour
 {
-    public BaseUpgrade upgradeData;
-    public int currentLevel;
+    public UpgradeSlot upgradeData;
 
     [SerializeField] private TMP_Text buttonText;
     [SerializeField] private Button button;
@@ -18,7 +17,7 @@ public class UpgradeButtonDisplayer : MonoBehaviour
 
     public void UpdateVisual()
     {
-        buttonText.text = upgradeData.id + " <br> LVL: " + currentLevel + "/" + upgradeData.maxLevel + "(" + upgradeData.GetCostAtLevel(currentLevel) + " € )";
+        buttonText.text = upgradeData.upgrade.id + " <br> LVL: " + upgradeData.currentLevel + "/" + upgradeData.upgrade.maxLevel + "(" + upgradeData.upgrade.GetCostAtLevel(upgradeData.currentLevel) + " € )";
     }
 
     public void AddListener(UnityAction action)

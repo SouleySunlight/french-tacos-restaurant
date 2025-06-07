@@ -8,14 +8,15 @@ public class UpgradeVisual : MonoBehaviour, IView
 
     private List<GameObject> buttons = new();
 
-    public void SetupUpgrades(List<BaseUpgrade> upgrades, Dictionary<string, int> currentLevels)
+    public void SetupUpgrades(List<UpgradeSlot> upgrades)
     {
         buttons.Clear();
-        foreach (BaseUpgrade upgrade in upgrades)
+        foreach (UpgradeSlot upgrade in upgrades)
         {
             var buttonPrefab = Instantiate(upgradeButtonPrefab, firstButtonPosition.position, Quaternion.identity, firstButtonPosition);
             buttonPrefab.GetComponent<UpgradeButtonDisplayer>().upgradeData = upgrade;
-            buttonPrefab.GetComponent<UpgradeButtonDisplayer>().currentLevel = currentLevels[upgrade.id];
+            buttonPrefab.GetComponent<UpgradeButtonDisplayer>().AddListener(() => OnClickOnUpgradeButton(upgrade));
+
 
             buttons.Add(buttonPrefab);
         }
@@ -34,5 +35,14 @@ public class UpgradeVisual : MonoBehaviour, IView
             button.GetComponent<RectTransform>().position = buttonPosition;
             index++;
         }
+    }
+
+    public void UpdateUpgradeButton(string id)
+    {
+        buttons.Find(button => button.GetComponent<UpgradeButtonDisplayer>().upgradeData.upgrade.id == id).GetComponent<UpgradeButtonDisplayer>().UpdateVisual();
+    }
+    void OnClickOnUpgradeButton(UpgradeSlot upgrade)
+    {
+        GameManager.Instance.UpgradeElement(upgrade);
     }
 }
