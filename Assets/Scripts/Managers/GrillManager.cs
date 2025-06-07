@@ -10,10 +10,10 @@ public class GrillManager : MonoBehaviour
     private List<float> grillingTime = new();
     private readonly int MAX_WAITING_TO_GRILL_TACOS = 2;
     private readonly int MAX_GRILLING_TACOS = 2;
-    private readonly float GRILL_DURATION = 10f;
-    private readonly float BURN_DURATION = 20f;
-
-
+    private readonly float GRILL_BASE_DURATION = 20f;
+    private readonly float BURN_BASE_DURATION = 10f;
+    private float currentGrillDuration;
+    private float currentBurnDuration;
 
     private GrillVisual grillVisual;
 
@@ -30,6 +30,11 @@ public class GrillManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        UpdateGrillingTime();
+    }
+
     void Update()
     {
         for (int i = 0; i < grillingTime.Count; i++)
@@ -38,7 +43,7 @@ public class GrillManager : MonoBehaviour
 
             grillingTime[i] += Time.deltaTime;
 
-            if (grillingTime[i] >= BURN_DURATION && !grillingTacos[i].isBurnt)
+            if (grillingTime[i] >= currentBurnDuration && !grillingTacos[i].isBurnt)
             {
                 grillingTacos[i].BurnTacos();
                 grillVisual.UpdateTacosVisual(grillingTacos[i]);
@@ -46,14 +51,14 @@ public class GrillManager : MonoBehaviour
             }
 
 
-            if (grillingTime[i] >= GRILL_DURATION && !grillingTacos[i].isGrilled)
+            if (grillingTime[i] >= currentGrillDuration && !grillingTacos[i].isGrilled)
             {
                 grillingTacos[i].GrillTacos();
                 grillVisual.UpdateTacosVisual(grillingTacos[i]);
                 continue;
             }
 
-            grillVisual.UpdateTimer(i, grillingTime[i] / GRILL_DURATION);
+            grillVisual.UpdateTimer(i, grillingTime[i] / currentGrillDuration);
 
         }
     }
@@ -132,5 +137,12 @@ public class GrillManager : MonoBehaviour
         grillingTime[tacosToRemoveIndex] = GlobalConstant.UNUSED_TIME_VALUE;
         grillVisual.RemoveTacosOfTheGrill(tacos, tacosToRemoveIndex);
 
+    }
+
+    public void UpdateGrillingTime()
+    {
+        currentGrillDuration = GRILL_BASE_DURATION * GameManager.Instance.UpgradeManager.GetEffect("GRILL");
+        Debug.Log(currentGrillDuration);
+        currentBurnDuration = currentGrillDuration + BURN_BASE_DURATION;
     }
 }

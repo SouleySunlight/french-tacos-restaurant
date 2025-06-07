@@ -702,11 +702,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259311881}
   m_CullTransparentMesh: 1
---- !u!224 &1296247959 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1912324636870769842, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
-  m_PrefabInstance: {fileID: 1342178357523527731}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1472314402
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,7 +752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeButtonPrefab: {fileID: 7813578882716834325, guid: 779887a542bdd4265babbe75f610051c, type: 3}
-  firstButtonPosition: {fileID: 1296247959}
+  firstButtonPosition: {fileID: 528747893}
 --- !u!224 &1472551867 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2587466862440848009, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}

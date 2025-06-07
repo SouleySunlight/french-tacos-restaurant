@@ -32,5 +32,19 @@ public class UpgradeManager : MonoBehaviour
         if (upgrades[id].currentLevel >= upgrades[id].upgrade.maxLevel) { return; }
         upgrades[id].currentLevel += 1;
         upgradeVisual.UpdateUpgradeButton(id);
+        OnUpgradeElement(id);
+    }
+
+    void OnUpgradeElement(string id)
+    {
+        if (id == "GRILL")
+        {
+            GameManager.Instance.GrillManager.UpdateGrillingTime();
+        }
+    }
+
+    public float GetEffect(string id)
+    {
+        return upgrades[id].upgrade.GetEffect(upgrades[id].currentLevel);
     }
 }
