@@ -50,7 +50,8 @@ public class GameManager : MonoBehaviour
         {
             playerMoney = WalletManager.GetCurrentAmount(),
             inventorySaveData = InventoryManager.GetInventorySaveData(),
-            unprocessedInventorySaveData = InventoryManager.GetUnprocessedInventorySaveData()
+            unprocessedInventorySaveData = InventoryManager.GetUnprocessedInventorySaveData(),
+            upgradeSaveData = UpgradeManager.GetInventorySaveData()
         };
 
         SaveSystem.Save(gameSaveData);

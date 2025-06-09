@@ -58,4 +58,18 @@ public class UpgradeManager : MonoBehaviour
     {
         return upgrades[id].upgrade.GetEffect(upgrades[id].currentLevel);
     }
+
+    public UpgradeSaveData GetInventorySaveData()
+    {
+        var data = new UpgradeSaveData();
+        foreach (var pair in upgrades)
+        {
+            data.slots.Add(new UpgradeSlotSaveData
+            {
+                upgradeID = pair.Key,
+                currentLevel = pair.Value.currentLevel,
+            });
+        }
+        return data;
+    }
 }
