@@ -20,8 +20,10 @@ public class DayCycleManager : MonoBehaviour
     private IEnumerator DayCoroutine()
     {
         yield return new WaitForSeconds(dayDurationInSeconds);
+        GameManager.Instance.PauseGame();
         dayCycleVisual.OnDayOver(currentDay, GameManager.Instance.WalletManager.moneyEarnedThisDay, GameManager.Instance.WalletManager.moneySpendThisDay);
         currentDay++;
+        GameManager.Instance.SaveGame();
 
     }
 
@@ -35,6 +37,7 @@ public class DayCycleManager : MonoBehaviour
     {
         dayCycleVisual.UpdateDayDisplay(currentDay);
         GameManager.Instance.WalletManager.ResetDailyCount();
+        GameManager.Instance.ResumeGame();
         StartNewDay();
     }
 }

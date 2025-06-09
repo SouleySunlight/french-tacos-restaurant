@@ -17,9 +17,7 @@ public class GameManager : MonoBehaviour
     public UpgradeManager UpgradeManager { get; private set; }
     public DayCycleManager DayCycleManager { get; private set; }
 
-
-
-
+    public bool isGamePaused { get; private set; } = false;
     private bool isLoaded = false;
 
 
@@ -79,6 +77,16 @@ public class GameManager : MonoBehaviour
         GrillManager.SetupGrillingTime();
         DayCycleManager.SetupDayCycle();
 
+    }
+
+    public void PauseGame()
+    {
+        isGamePaused = true;
+    }
+
+    public void ResumeGame()
+    {
+        isGamePaused = false;
     }
 
     public void WrapTacos()
