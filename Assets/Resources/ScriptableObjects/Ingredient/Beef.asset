@@ -18,7 +18,7 @@ MonoBehaviour:
   processedSprite: {fileID: -8733503966219448144, guid: 2bd2968a986cd4a77902d7f0133143c0, type: 3}
   wastedSprite: {fileID: 8934833565084604155, guid: 01007f1586206478dbf3284e6898caa2, type: 3}
   processingTime: 15
-  wastingTime: 25
+  wastingTimeOffset: 10
   category: 0
   isUnlockedFromTheBeginning: 0
   priceToUnlock: 20

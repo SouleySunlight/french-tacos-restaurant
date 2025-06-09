@@ -3,12 +3,10 @@ using System.Collections.Generic;
 public class InventorySlot
 {
     public int currentAmount;
-    public int maxAmount;
 
-    public InventorySlot(int current, int max)
+    public InventorySlot(int current)
     {
         currentAmount = current;
-        maxAmount = max;
     }
 }
 [System.Serializable]
@@ -16,7 +14,6 @@ public class InventorySlotSaveData
 {
     public string ingredientID;
     public int currentAmount;
-    public int maxAmount;
 }
 
 [System.Serializable]

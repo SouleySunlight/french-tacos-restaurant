@@ -6,6 +6,7 @@ public class HotplateManager : MonoBehaviour
     private HotplateVisuals hotplateVisuals;
     private List<Ingredient> cookingIngredients = new();
     private List<float> cookingTimes = new();
+    private List<float> totalCookingTimes = new();
 
 
     void Awake()
@@ -15,6 +16,7 @@ public class HotplateManager : MonoBehaviour
         {
             cookingIngredients.Add(null);
             cookingTimes.Add(GlobalConstant.UNUSED_TIME_VALUE);
+            totalCookingTimes.Add(GlobalConstant.UNUSED_TIME_VALUE);
         }
     }
     void Update()
@@ -23,18 +25,18 @@ public class HotplateManager : MonoBehaviour
         {
             if (cookingTimes[i] == GlobalConstant.UNUSED_TIME_VALUE) { continue; }
 
-            if (cookingTimes[i] >= cookingIngredients[i].processingTime)
+            if (cookingTimes[i] >= totalCookingTimes[i])
             {
                 hotplateVisuals.OnIngredientCooked(i);
             }
 
-            if (cookingTimes[i] >= cookingIngredients[i].wastingTime)
+            if (cookingTimes[i] >= totalCookingTimes[i] + cookingIngredients[i].wastingTimeOffset)
             {
                 hotplateVisuals.OnIngredientBurnt(i);
             }
 
             cookingTimes[i] += Time.deltaTime;
-            hotplateVisuals.UpdateTimer(i, cookingTimes[i] / cookingIngredients[i].processingTime);
+            hotplateVisuals.UpdateTimer(i, cookingTimes[i] / totalCookingTimes[i]);
 
 
         }
@@ -73,6 +75,7 @@ public class HotplateManager : MonoBehaviour
             GameManager.Instance.InventoryManager.ConsumeUnprocessedIngredient(ingredient);
             cookingIngredients[i] = ingredient;
             cookingTimes[i] = 0;
+            totalCookingTimes[i] = cookingIngredients[i].processingTime * GameManager.Instance.UpgradeManager.GetEffect("HOTPLATE");
             hotplateVisuals.CookIngredients(ingredient, i);
             return;
         }
@@ -85,12 +88,12 @@ public class HotplateManager : MonoBehaviour
         var cookingTime = cookingTimes[position];
         var ingredient = cookingIngredients[position];
 
-        if (cookingTime < ingredient.processingTime)
+        if (cookingTime < totalCookingTimes[position])
         {
             return;
         }
 
-        if (cookingTime > ingredient.wastingTime)
+        if (cookingTime > totalCookingTimes[position] + cookingIngredients[position].wastingTimeOffset)
         {
             RemoveIngredientFromCooking(position);
             return;
@@ -108,6 +111,7 @@ public class HotplateManager : MonoBehaviour
     {
         cookingIngredients[position] = null;
         cookingTimes[position] = GlobalConstant.UNUSED_TIME_VALUE;
+        totalCookingTimes[position] = GlobalConstant.UNUSED_TIME_VALUE;
         hotplateVisuals.RemoveIngredientFromGrill(position);
     }
 }
