@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         ShopManager.SetupShop();
         UpgradeManager.SetupUpgrades();
         GrillManager.SetupGrillingTime();
-        DayCycleManager.StartNewDay();
+        DayCycleManager.SetupDayCycle();
 
     }
 
