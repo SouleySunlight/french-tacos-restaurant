@@ -1,5 +1,6 @@
 public class GlobalConstant
 {
+    public static readonly float DEFAULT_CAPACITY_UPGRADE = 1f;
     public static readonly int DEFAULT_INGREDIENT_AMOUNT = 5;
     public static readonly int DEFAULT_INGREDIENT_MAX_AMOUNT = 10;
     public static readonly int DEFAULT_UPGRADE_LEVEL = 0;

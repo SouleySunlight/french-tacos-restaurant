@@ -37,9 +37,17 @@ public class UpgradeManager : MonoBehaviour
 
     void OnUpgradeElement(string id)
     {
-        if (id == "GRILL")
+        switch (id)
         {
-            GameManager.Instance.GrillManager.UpdateGrillingTime();
+            case "GRILL":
+                GameManager.Instance.GrillManager.UpdateGrillingTime();
+                return;
+            case "FRIDGE":
+                GameManager.Instance.InventoryManager.UpdateUnprocessInventoryMaxAmount();
+                return;
+            default:
+                return;
+
         }
     }
 

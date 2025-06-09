@@ -9,7 +9,12 @@ public class InventoryManager : MonoBehaviour
     private Dictionary<string, InventorySlot> inventory = new();
     private Dictionary<string, InventorySlot> unprocessedInventory = new();
 
+    private int unprocessedIngredientMaxAmount;
 
+    void Start()
+    {
+        UpdateUnprocessInventoryMaxAmount();
+    }
     public string GetStockString(Ingredient ingredient)
     {
         return "(" + inventory[ingredient.id].currentAmount + "/" + inventory[ingredient.id].maxAmount + ")";
@@ -19,7 +24,7 @@ public class InventoryManager : MonoBehaviour
     {
         if (ingredient.NeedProcessing())
         {
-            return "(" + unprocessedInventory[ingredient.id].currentAmount + "/" + unprocessedInventory[ingredient.id].maxAmount + ")";
+            return "(" + unprocessedInventory[ingredient.id].currentAmount + "/" + unprocessedIngredientMaxAmount + ")";
         }
         return GetStockString(ingredient);
     }
@@ -50,7 +55,7 @@ public class InventoryManager : MonoBehaviour
     }
     public bool CanAddUnprocessedIngredient(Ingredient ingredient)
     {
-        return unprocessedInventory[ingredient.id].currentAmount < unprocessedInventory[ingredient.id].maxAmount;
+        return unprocessedInventory[ingredient.id].currentAmount < unprocessedIngredientMaxAmount;
     }
 
     public void AddIngredient(Ingredient ingredient)
@@ -178,5 +183,10 @@ public class InventoryManager : MonoBehaviour
 
         if (!CanAddIngredient(ingredient)) { return; }
         AddIngredient(ingredient);
+    }
+
+    public void UpdateUnprocessInventoryMaxAmount()
+    {
+        unprocessedIngredientMaxAmount = GlobalConstant.DEFAULT_INGREDIENT_MAX_AMOUNT + (int)GameManager.Instance.UpgradeManager.GetEffect("FRIDGE");
     }
 }
