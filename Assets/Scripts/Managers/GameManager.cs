@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
         GameSaveData gameSaveData = new()
         {
             playerMoney = WalletManager.GetCurrentAmount(),
+            currentDay = DayCycleManager.GetCurrentDay(),
             inventorySaveData = InventoryManager.GetInventorySaveData(),
             unprocessedInventorySaveData = InventoryManager.GetUnprocessedInventorySaveData(),
             upgradeSaveData = UpgradeManager.GetInventorySaveData()
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
     {
         GameSaveData data = SaveSystem.Load();
         WalletManager.SetCurrentAmount(data.playerMoney);
+        DayCycleManager.SetCurrentDay(data.currentDay == 0 ? 1 : data.currentDay);
         InventoryManager.LoadInventoryFromSaveData(data.inventorySaveData);
         InventoryManager.LoadUnprocessedInventoryFromSaveData(data.unprocessedInventorySaveData);
         UpgradeManager.LoadUpgradesFromSaveData(data.upgradeSaveData);

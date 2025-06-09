@@ -40,4 +40,14 @@ public class DayCycleManager : MonoBehaviour
         GameManager.Instance.ResumeGame();
         StartNewDay();
     }
+
+    public int GetCurrentDay()
+    {
+        return currentDay;
+    }
+    public void SetCurrentDay(int day)
+    {
+        currentDay = day;
+        dayCycleVisual.UpdateDayDisplay(currentDay);
+    }
 }
