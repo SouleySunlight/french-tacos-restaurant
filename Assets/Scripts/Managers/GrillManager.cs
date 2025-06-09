@@ -34,6 +34,7 @@ public class GrillManager : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.isGamePaused) { return; }
         for (int i = 0; i < grillingTime.Count; i++)
         {
             if (grillingTime[i] == -10f) { continue; }

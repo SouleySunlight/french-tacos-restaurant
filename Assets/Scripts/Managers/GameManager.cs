@@ -15,9 +15,9 @@ public class GameManager : MonoBehaviour
     public InventoryManager InventoryManager { get; private set; }
     public ShopManager ShopManager { get; private set; }
     public UpgradeManager UpgradeManager { get; private set; }
+    public DayCycleManager DayCycleManager { get; private set; }
 
-
-
+    public bool isGamePaused { get; private set; } = false;
     private bool isLoaded = false;
 
 
@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
         GameSaveData gameSaveData = new()
         {
             playerMoney = WalletManager.GetCurrentAmount(),
+            currentDay = DayCycleManager.GetCurrentDay(),
             inventorySaveData = InventoryManager.GetInventorySaveData(),
             unprocessedInventorySaveData = InventoryManager.GetUnprocessedInventorySaveData(),
             upgradeSaveData = UpgradeManager.GetInventorySaveData()
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
     {
         GameSaveData data = SaveSystem.Load();
         WalletManager.SetCurrentAmount(data.playerMoney);
+        DayCycleManager.SetCurrentDay(data.currentDay == 0 ? 1 : data.currentDay);
         InventoryManager.LoadInventoryFromSaveData(data.inventorySaveData);
         InventoryManager.LoadUnprocessedInventoryFromSaveData(data.unprocessedInventorySaveData);
         UpgradeManager.LoadUpgradesFromSaveData(data.upgradeSaveData);
@@ -75,7 +77,18 @@ public class GameManager : MonoBehaviour
         ShopManager.SetupShop();
         UpgradeManager.SetupUpgrades();
         GrillManager.SetupGrillingTime();
+        DayCycleManager.SetupDayCycle();
 
+    }
+
+    public void PauseGame()
+    {
+        isGamePaused = true;
+    }
+
+    public void ResumeGame()
+    {
+        isGamePaused = false;
     }
 
     public void WrapTacos()
@@ -159,6 +172,8 @@ public class GameManager : MonoBehaviour
         InventoryManager = GetComponentInChildren<InventoryManager>();
         ShopManager = GetComponentInChildren<ShopManager>();
         UpgradeManager = GetComponentInChildren<UpgradeManager>();
+        DayCycleManager = GetComponentInChildren<DayCycleManager>();
+
 
         if (TacosMakerManager == null)
         {
@@ -259,6 +274,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             UpgradeManager = GetComponentInChildren<UpgradeManager>();
+        }
+        if (DayCycleManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/DayCycleManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load DayCycleManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            DayCycleManager = GetComponentInChildren<DayCycleManager>();
         }
     }
 

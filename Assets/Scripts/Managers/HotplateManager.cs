@@ -21,6 +21,8 @@ public class HotplateManager : MonoBehaviour
     }
     void Update()
     {
+        if (GameManager.Instance.isGamePaused) { return; }
+
         for (int i = 0; i < cookingTimes.Count; i++)
         {
             if (cookingTimes[i] == GlobalConstant.UNUSED_TIME_VALUE) { continue; }

@@ -62,6 +62,7 @@ public class OrdersManager : MonoBehaviour
         {
             var timeToWait = Random.Range(20, 30);
             yield return new WaitForSeconds(timeToWait);
+            yield return new WaitUntil(() => GameManager.Instance.isGamePaused == false);
             AddNewOrder(GenerateOrder());
         }
     }
