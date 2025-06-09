@@ -79,7 +79,6 @@ public class InventoryManager : MonoBehaviour
             {
                 ingredientID = pair.Key,
                 currentAmount = pair.Value.currentAmount,
-                maxAmount = pair.Value.maxAmount
             });
         }
         return data;
@@ -94,7 +93,6 @@ public class InventoryManager : MonoBehaviour
             {
                 ingredientID = pair.Key,
                 currentAmount = pair.Value.currentAmount,
-                maxAmount = pair.Value.maxAmount
             });
         }
         return data;
@@ -111,8 +109,7 @@ public class InventoryManager : MonoBehaviour
                 if (ingredient.isUnlockedFromTheBeginning)
                 {
                     inventory[ingredient.id] = new InventorySlot(
-                        ingredient.NeedProcessing() ? 0 : GlobalConstant.DEFAULT_INGREDIENT_AMOUNT,
-                        GlobalConstant.DEFAULT_INGREDIENT_MAX_AMOUNT
+                        ingredient.NeedProcessing() ? 0 : GlobalConstant.DEFAULT_INGREDIENT_AMOUNT
                         );
                     UnlockedIngredients.Add(ingredient);
                 }
@@ -122,7 +119,7 @@ public class InventoryManager : MonoBehaviour
 
         foreach (var slot in data.slots)
         {
-            inventory[slot.ingredientID] = new InventorySlot(slot.currentAmount, slot.maxAmount);
+            inventory[slot.ingredientID] = new InventorySlot(slot.currentAmount);
             var ingredientToAdd = allIngredients.Find(ingredient => slot.ingredientID == ingredient.id);
             if (!ingredientToAdd)
             {
@@ -142,7 +139,7 @@ public class InventoryManager : MonoBehaviour
             {
                 if (ingredient.isUnlockedFromTheBeginning && ingredient.NeedProcessing())
                 {
-                    unprocessedInventory[ingredient.id] = new InventorySlot(GlobalConstant.DEFAULT_INGREDIENT_AMOUNT, GlobalConstant.DEFAULT_INGREDIENT_MAX_AMOUNT);
+                    unprocessedInventory[ingredient.id] = new InventorySlot(GlobalConstant.DEFAULT_INGREDIENT_AMOUNT);
                 }
             }
             return;
@@ -150,7 +147,7 @@ public class InventoryManager : MonoBehaviour
 
         foreach (var slot in data.slots)
         {
-            unprocessedInventory[slot.ingredientID] = new InventorySlot(slot.currentAmount, slot.maxAmount);
+            unprocessedInventory[slot.ingredientID] = new InventorySlot(slot.currentAmount);
         }
     }
 
@@ -170,7 +167,7 @@ public class InventoryManager : MonoBehaviour
     }
     public void UnlockIngredient(Ingredient ingredient)
     {
-        inventory[ingredient.id] = new InventorySlot(GlobalConstant.DEFAULT_INGREDIENT_AMOUNT, GlobalConstant.DEFAULT_INGREDIENT_MAX_AMOUNT);
+        inventory[ingredient.id] = new InventorySlot(GlobalConstant.DEFAULT_INGREDIENT_AMOUNT);
         UnlockedIngredients.Add(ingredient);
     }
 
