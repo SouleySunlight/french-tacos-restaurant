@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
         WalletManager.SetCurrentAmount(data.playerMoney);
         InventoryManager.LoadInventoryFromSaveData(data.inventorySaveData);
         InventoryManager.LoadUnprocessedInventoryFromSaveData(data.unprocessedInventorySaveData);
+        UpgradeManager.LoadUpgradesFromSaveData(data.upgradeSaveData);
         isLoaded = true;
     }
 
@@ -73,6 +74,8 @@ public class GameManager : MonoBehaviour
         TacosMakerManager.SetupIngredients();
         ShopManager.SetupShop();
         UpgradeManager.SetupUpgrades();
+        GrillManager.SetupGrillingTime();
+
     }
 
     public void WrapTacos()

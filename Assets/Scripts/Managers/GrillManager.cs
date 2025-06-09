@@ -32,11 +32,6 @@ public class GrillManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        UpdateGrillingTime();
-    }
-
     void Update()
     {
         for (int i = 0; i < grillingTime.Count; i++)
@@ -146,5 +141,10 @@ public class GrillManager : MonoBehaviour
     public void UpdateGrillingTime()
     {
         currentGrillDuration = GRILL_BASE_DURATION * GameManager.Instance.UpgradeManager.GetEffect("GRILL");
+    }
+
+    public void SetupGrillingTime()
+    {
+        UpdateGrillingTime();
     }
 }

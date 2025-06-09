@@ -14,14 +14,6 @@ public class UpgradeManager : MonoBehaviour
         upgradeVisual = FindAnyObjectByType<UpgradeVisual>(FindObjectsInactive.Include);
     }
 
-    void Start()
-    {
-        foreach (var upgradable in upgradables)
-        {
-            upgrades[upgradable.id] = new UpgradeSlot(upgradable, GlobalConstant.DEFAULT_UPGRADE_LEVEL);
-        }
-    }
-
     public void SetupUpgrades()
     {
         upgradeVisual.SetupUpgrades(upgrades.Values.ToList());
@@ -71,5 +63,25 @@ public class UpgradeManager : MonoBehaviour
             });
         }
         return data;
+    }
+
+    public void LoadUpgradesFromSaveData(UpgradeSaveData data)
+    {
+        upgrades.Clear();
+
+        if (data.slots.Count == 0)
+        {
+            foreach (var upgradable in upgradables)
+            {
+                upgrades[upgradable.id] = new UpgradeSlot(upgradable, GlobalConstant.DEFAULT_UPGRADE_LEVEL);
+            }
+            return;
+        }
+
+        foreach (var slot in data.slots)
+        {
+            var upgradeToAdd = upgradables.Find(upgradable => upgradable.id == slot.upgradeID);
+            upgrades[slot.upgradeID] = new UpgradeSlot(upgradeToAdd, slot.currentLevel);
+        }
     }
 }
