@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public InventoryManager InventoryManager { get; private set; }
     public ShopManager ShopManager { get; private set; }
     public UpgradeManager UpgradeManager { get; private set; }
+    public DayCycleManager DayCycleManager { get; private set; }
+
 
 
 
@@ -75,6 +77,7 @@ public class GameManager : MonoBehaviour
         ShopManager.SetupShop();
         UpgradeManager.SetupUpgrades();
         GrillManager.SetupGrillingTime();
+        DayCycleManager.StartNewDay();
 
     }
 
@@ -159,6 +162,8 @@ public class GameManager : MonoBehaviour
         InventoryManager = GetComponentInChildren<InventoryManager>();
         ShopManager = GetComponentInChildren<ShopManager>();
         UpgradeManager = GetComponentInChildren<UpgradeManager>();
+        DayCycleManager = GetComponentInChildren<DayCycleManager>();
+
 
         if (TacosMakerManager == null)
         {
@@ -259,6 +264,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             UpgradeManager = GetComponentInChildren<UpgradeManager>();
+        }
+        if (DayCycleManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/DayCycleManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load DayCycleManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            DayCycleManager = GetComponentInChildren<DayCycleManager>();
         }
     }
 
