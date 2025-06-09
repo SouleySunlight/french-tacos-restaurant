@@ -4,7 +4,7 @@ using UnityEngine;
 public class DayCycleManager : MonoBehaviour
 {
     private int currentDay = 1;
-    private float dayDurationInSeconds = 10f;
+    private float dayDurationInSeconds = 30f;
     private DayCycleVisual dayCycleVisual;
 
     void Awake()
@@ -20,7 +20,7 @@ public class DayCycleManager : MonoBehaviour
     private IEnumerator DayCoroutine()
     {
         yield return new WaitForSeconds(dayDurationInSeconds);
-        dayCycleVisual.OnDayOver(currentDay);
+        dayCycleVisual.OnDayOver(currentDay, GameManager.Instance.WalletManager.moneyEarnedThisDay, GameManager.Instance.WalletManager.moneySpendThisDay);
         currentDay++;
 
     }
@@ -34,6 +34,7 @@ public class DayCycleManager : MonoBehaviour
     public void ToNextDay()
     {
         dayCycleVisual.UpdateDayDisplay(currentDay);
+        GameManager.Instance.WalletManager.ResetDailyCount();
         StartNewDay();
     }
 }

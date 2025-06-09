@@ -5,6 +5,9 @@ public class WalletManager : MonoBehaviour
     private WalletVisual walletVisual;
 
     private int currentWalletAmount = 0;
+    public int moneyEarnedThisDay { get; private set; } = 0;
+    public int moneySpendThisDay { get; private set; } = 0;
+
 
     void Awake()
     {
@@ -15,6 +18,7 @@ public class WalletManager : MonoBehaviour
     public void ReceiveMoney(int amount)
     {
         currentWalletAmount += amount;
+        moneyEarnedThisDay += amount;
         walletVisual.UpdateWalletAmount(currentWalletAmount);
     }
 
@@ -36,6 +40,13 @@ public class WalletManager : MonoBehaviour
     public void SpendMoney(int amount)
     {
         currentWalletAmount -= amount;
+        moneySpendThisDay += amount;
         walletVisual.UpdateWalletAmount(currentWalletAmount);
+    }
+
+    public void ResetDailyCount()
+    {
+        moneyEarnedThisDay = 0;
+        moneySpendThisDay = 0;
     }
 }
