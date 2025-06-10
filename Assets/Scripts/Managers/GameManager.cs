@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
         UpgradeManager.SetupUpgrades();
         GrillManager.SetupGrillingTime();
         DayCycleManager.SetupDayCycle();
+        InventoryManager.SetupInventoriesMaxAmount();
 
     }
 

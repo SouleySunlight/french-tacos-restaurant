@@ -12,11 +12,6 @@ public class InventoryManager : MonoBehaviour
     private int processedIngredientMaxAmount;
     private int unprocessedIngredientMaxAmount;
 
-    void Start()
-    {
-        UpdateProcessedInventoryMaxAmount();
-        UpdateUnprocessedInventoryMaxAmount();
-    }
     public string GetStockString(Ingredient ingredient)
     {
         return "(" + inventory[ingredient.id].currentAmount + "/" + processedIngredientMaxAmount + ")";
@@ -198,5 +193,11 @@ public class InventoryManager : MonoBehaviour
     public void UpdateUnprocessedInventoryMaxAmount()
     {
         unprocessedIngredientMaxAmount = GlobalConstant.DEFAULT_INGREDIENT_MAX_AMOUNT + (int)GameManager.Instance.UpgradeManager.GetEffect("FRIDGE");
+    }
+
+    public void SetupInventoriesMaxAmount()
+    {
+        UpdateProcessedInventoryMaxAmount();
+        UpdateUnprocessedInventoryMaxAmount();
     }
 }
