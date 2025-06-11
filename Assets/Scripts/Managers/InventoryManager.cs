@@ -200,4 +200,22 @@ public class InventoryManager : MonoBehaviour
         UpdateProcessedInventoryMaxAmount();
         UpdateUnprocessedInventoryMaxAmount();
     }
+
+    public int GetUnprocessedIngredientQuantity(Ingredient ingredient)
+    {
+        return unprocessedInventory.ContainsKey(ingredient.id) ? unprocessedInventory[ingredient.id].currentAmount : 0;
+    }
+    public int GetProcessedIngredientQuantity(Ingredient ingredient)
+    {
+        return inventory.ContainsKey(ingredient.id) ? inventory[ingredient.id].currentAmount : 0;
+    }
+
+    public int GetProcessedIngredientMaxAmount()
+    {
+        return processedIngredientMaxAmount;
+    }
+    public int GetUnprocessedIngredientMaxAmount()
+    {
+        return unprocessedIngredientMaxAmount;
+    }
 }

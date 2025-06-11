@@ -32,6 +32,9 @@ public class WorkersManager : MonoBehaviour
             case WorkersRole.GRILL:
                 GameManager.Instance.GrillManager.HireWorker(worker);
                 break;
+            case WorkersRole.HOTPLATE:
+                GameManager.Instance.HotplateManager.HireWorker(worker);
+                break;
         }
     }
 }

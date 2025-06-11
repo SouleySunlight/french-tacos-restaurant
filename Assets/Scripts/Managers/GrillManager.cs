@@ -213,6 +213,7 @@ public class GrillManager : MonoBehaviour
                 gameManager.OnTacosGrilled(tacosToRemove);
                 RemoveTacosOfTheGrill(tacosToRemove);
                 isWorkerTaskDone = true;
+                return;
             }
         }
     }
