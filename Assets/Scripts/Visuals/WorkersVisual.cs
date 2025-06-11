@@ -41,6 +41,7 @@ public class WorkersVisual : MonoBehaviour, IView
             .GetComponent<WorkersButtonDisplayer>();
         if (clickedButton != null)
         {
+            GameManager.Instance.WorkersManager.HireWorker(worker);
             clickedButton.SetIsWorkerHired(!clickedButton.IsWorkerHired());
             clickedButton.UpdateVisual();
         }
