@@ -16,6 +16,7 @@ public class HotplateManager : MonoBehaviour, IWorkStation
     void Awake()
     {
         hotplateVisuals = FindFirstObjectByType<HotplateVisuals>(FindObjectsInactive.Include);
+        hotplateVisuals.Setup();
         for (int i = 0; i < GlobalConstant.MAX_COOKING_INGREDIENTS; i++)
         {
             cookingIngredients.Add(null);
