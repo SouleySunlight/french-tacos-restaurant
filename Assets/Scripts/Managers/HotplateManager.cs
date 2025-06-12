@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HotplateManager : MonoBehaviour
+public class HotplateManager : MonoBehaviour, IWorkStation
 {
     private HotplateVisuals hotplateVisuals;
     private List<Ingredient> cookingIngredients = new();
@@ -158,7 +158,7 @@ public class HotplateManager : MonoBehaviour
         StartCoroutine(WorkerTaskCoroutine());
     }
 
-    IEnumerator WorkerTaskCoroutine()
+    public IEnumerator WorkerTaskCoroutine()
     {
         if (currentWorker == null) { yield break; }
 
@@ -176,7 +176,7 @@ public class HotplateManager : MonoBehaviour
 
     }
 
-    void PerformWorkerTask()
+    public void PerformWorkerTask()
     {
         WorkerRemoveDoneIngredient();
         if (isWorkerTaskDone)

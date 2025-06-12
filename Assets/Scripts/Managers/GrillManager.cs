@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GrillManager : MonoBehaviour
+public class GrillManager : MonoBehaviour, IWorkStation
 {
     private List<Tacos> waitingToGrillTacos = new();
     private List<Tacos> grillingTacos = new();
@@ -170,7 +170,7 @@ public class GrillManager : MonoBehaviour
         StartCoroutine(WorkerTaskCoroutine());
     }
 
-    IEnumerator WorkerTaskCoroutine()
+    public IEnumerator WorkerTaskCoroutine()
     {
         if (currentWorker == null) { yield break; }
 
@@ -188,7 +188,7 @@ public class GrillManager : MonoBehaviour
 
     }
 
-    void PerformWorkerTask()
+    public void PerformWorkerTask()
     {
         WorkerRemoveDoneTacosFromGrill();
         if (isWorkerTaskDone)
