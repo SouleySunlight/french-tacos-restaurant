@@ -29,6 +29,7 @@ public class WorkersManager : MonoBehaviour
 
         availableWorkers.Remove(worker);
         hiredWorkers.Add(worker);
+        workersVisual.UpdateButtonsVisual();
         GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay);
 
         switch (worker.role)
@@ -52,6 +53,7 @@ public class WorkersManager : MonoBehaviour
 
         hiredWorkers.Remove(worker);
         availableWorkers.Add(worker);
+        workersVisual.UpdateButtonsVisual();
 
         switch (worker.role)
         {
@@ -64,6 +66,25 @@ public class WorkersManager : MonoBehaviour
             case WorkersRole.CHECKOUT:
                 GameManager.Instance.CheckoutManager.FireWorker(worker);
                 break;
+        }
+    }
+
+    public void RenewWorkers()
+    {
+        var workerToFire = new List<Worker>();
+        foreach (var worker in hiredWorkers)
+        {
+            if (!GameManager.Instance.WalletManager.HasEnoughMoney(worker.pricePerDay))
+            {
+                workerToFire.Add(worker);
+                continue;
+            }
+
+            GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay);
+        }
+        foreach (var worker in workerToFire)
+        {
+            FireWorker(worker);
         }
     }
 }

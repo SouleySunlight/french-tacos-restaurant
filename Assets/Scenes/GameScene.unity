@@ -255,6 +255,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58526552}
   m_CullTransparentMesh: 1
+--- !u!1 &151248570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 151248571}
+  m_Layer: 5
+  m_Name: FirstButtonPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &151248571
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151248570}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 983298382}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 719}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &299660668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,7 +1121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0542318eb29244bf4a354eb20aa03ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableWorkers: []
+  availableWorkers:
+  - {fileID: 11400000, guid: 191bf2d9c7d7747d988ce9b61282c5b6, type: 2}
+  - {fileID: 11400000, guid: cebd5c87bdd0b4c96b2f888eecbc2e2a, type: 2}
+  - {fileID: 11400000, guid: 4155be5a64fd04d97abfae05162a7927, type: 2}
 --- !u!1 &730926786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1574,7 +1612,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 151248571}
   m_Father: {fileID: 1472551867}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1594,8 +1633,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf05c422fdc14e6bbad50cd3036a7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workerButtonPrefab: {fileID: 0}
-  firstButtonPosition: {fileID: 0}
+  workerButtonPrefab: {fileID: 1494327487557313040, guid: 124de583e1dc443afbbc82b0ec2e231f, type: 3}
+  firstButtonPosition: {fileID: 151248571}
 --- !u!1 &1080045301
 GameObject:
   m_ObjectHideFlags: 0

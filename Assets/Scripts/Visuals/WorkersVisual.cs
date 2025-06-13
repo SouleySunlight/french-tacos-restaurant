@@ -55,4 +55,12 @@ public class WorkersVisual : MonoBehaviour, IView
         }
 
     }
+
+    public void UpdateButtonsVisual()
+    {
+        foreach (var button in buttons)
+        {
+            button.GetComponent<WorkersButtonDisplayer>().UpdateVisual();
+        }
+    }
 }
