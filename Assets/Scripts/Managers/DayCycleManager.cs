@@ -4,7 +4,7 @@ using UnityEngine;
 public class DayCycleManager : MonoBehaviour
 {
     private int currentDay = 1;
-    private float dayDurationInSeconds = 30f;
+    private float dayDurationInSeconds = 180f;
     private DayCycleVisual dayCycleVisual;
 
     void Awake()
