@@ -24,8 +24,12 @@ public class WorkersManager : MonoBehaviour
         if (!availableWorkers.Contains(worker))
         { return; }
 
+        if (!GameManager.Instance.WalletManager.HasEnoughMoney(worker.pricePerDay))
+        { return; }
+
         availableWorkers.Remove(worker);
         hiredWorkers.Add(worker);
+        GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay);
 
         switch (worker.role)
         {
