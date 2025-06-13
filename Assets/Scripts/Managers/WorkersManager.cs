@@ -11,7 +11,7 @@ public class WorkersManager : MonoBehaviour
 
     void Awake()
     {
-        workersVisual = FindFirstObjectByType<WorkersVisual>();
+        workersVisual = FindFirstObjectByType<WorkersVisual>(FindObjectsInactive.Include);
     }
 
     public void SetupWorkers()

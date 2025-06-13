@@ -8,5 +8,6 @@ public enum ViewToShowEnum
     HOTPLATE,
     SHOP,
     UPGRADE,
-    WORKERS
+    WORKERS,
+    FRYER
 }
