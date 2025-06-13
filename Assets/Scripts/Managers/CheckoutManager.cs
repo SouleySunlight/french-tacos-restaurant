@@ -41,6 +41,11 @@ public class CheckoutManager : MonoBehaviour, IWorkStation
         StartCoroutine(WorkerTaskCoroutine());
     }
 
+    public void FireWorker(Worker worker)
+    {
+        currentWorker = null;
+    }
+
     public IEnumerator WorkerTaskCoroutine()
     {
         if (currentWorker == null) { yield break; }

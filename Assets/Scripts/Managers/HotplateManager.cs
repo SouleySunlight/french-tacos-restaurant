@@ -158,6 +158,10 @@ public class HotplateManager : MonoBehaviour, IWorkStation
         currentWorker = worker;
         StartCoroutine(WorkerTaskCoroutine());
     }
+    public void FireWorker(Worker worker)
+    {
+        currentWorker = null;
+    }
 
     public IEnumerator WorkerTaskCoroutine()
     {

@@ -40,4 +40,26 @@ public class WorkersManager : MonoBehaviour
                 break;
         }
     }
+
+    public void FireWorker(Worker worker)
+    {
+        if (!hiredWorkers.Contains(worker))
+        { return; }
+
+        hiredWorkers.Remove(worker);
+        availableWorkers.Add(worker);
+
+        switch (worker.role)
+        {
+            case WorkersRole.GRILL:
+                GameManager.Instance.GrillManager.FireWorker(worker);
+                break;
+            case WorkersRole.HOTPLATE:
+                GameManager.Instance.HotplateManager.FireWorker(worker);
+                break;
+            case WorkersRole.CHECKOUT:
+                GameManager.Instance.CheckoutManager.FireWorker(worker);
+                break;
+        }
+    }
 }
