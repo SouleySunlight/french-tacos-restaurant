@@ -25,5 +25,6 @@ public class Ingredient : ScriptableObject
 public enum IngredientCategoryEnum
 {
     MEAT,
-    VEGETABLE
+    VEGETABLE,
+    FRIES,
 }
