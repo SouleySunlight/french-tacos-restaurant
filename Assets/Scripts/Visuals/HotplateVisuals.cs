@@ -68,8 +68,6 @@ public class HotplateVisuals : MonoBehaviour, IView
 
     public void CookIngredients(Ingredient ingredient, int position)
     {
-        Debug.Log(position);
-        Debug.Log(ingredients.Count);
         var ingredientToCook = Instantiate(ingredientPrefab, cookPositions[position].position, Quaternion.identity, cookPositions[position]);
         ingredientToCook.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
         ingredientToCook.GetComponent<IngredientMovement>().ClickHotplateEvent.AddListener(OnClickOnIngredient);
@@ -84,8 +82,6 @@ public class HotplateVisuals : MonoBehaviour, IView
 
     public void OnIngredientBurnt(int position)
     {
-        Debug.Log(position);
-
         ingredients[position].GetComponent<IngredientDisplayer>().DisplayWastedImage();
     }
 
