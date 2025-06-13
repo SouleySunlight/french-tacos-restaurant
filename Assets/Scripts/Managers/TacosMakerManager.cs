@@ -58,4 +58,9 @@ public class TacosMakerManager : MonoBehaviour
         CreateTacos();
         return wrappedTacos;
     }
+
+    public void UpdateButtonsVisual()
+    {
+        tacosMakerVisual.UpdateButtonsVisual();
+    }
 }

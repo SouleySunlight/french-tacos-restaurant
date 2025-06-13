@@ -8,7 +8,7 @@ public class HotplateVisuals : MonoBehaviour, IView
     [SerializeField] private RectTransform firstIngredientPosition;
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private GameObject ingredientPrefab;
-    [SerializeField] private List<GameObject> ingredients;
+    [SerializeField] private List<GameObject> ingredients = new();
     [SerializeField] private List<RectTransform> cookPositions = new();
     [SerializeField] private List<Image> cookingTimers = new();
 
@@ -16,7 +16,7 @@ public class HotplateVisuals : MonoBehaviour, IView
 
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
 
-    void Start()
+    public void Setup()
     {
         for (int i = 0; i < GlobalConstant.MAX_COOKING_INGREDIENTS; i++)
         {

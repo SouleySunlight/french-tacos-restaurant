@@ -12,11 +12,6 @@ public class InventoryManager : MonoBehaviour
     private int processedIngredientMaxAmount;
     private int unprocessedIngredientMaxAmount;
 
-    void Start()
-    {
-        UpdateProcessedInventoryMaxAmount();
-        UpdateUnprocessedInventoryMaxAmount();
-    }
     public string GetStockString(Ingredient ingredient)
     {
         return "(" + inventory[ingredient.id].currentAmount + "/" + processedIngredientMaxAmount + ")";
@@ -63,11 +58,15 @@ public class InventoryManager : MonoBehaviour
     public void AddIngredient(Ingredient ingredient)
     {
         inventory[ingredient.id].currentAmount += 1;
+        OnProcessedIngredientAdded();
+
     }
 
     public void AddUnprocessedIngredient(Ingredient ingredient)
     {
         unprocessedInventory[ingredient.id].currentAmount += 1;
+        OnUnprocessedIngredientAdded();
+
     }
 
     public InventorySaveData GetInventorySaveData()
@@ -198,5 +197,39 @@ public class InventoryManager : MonoBehaviour
     public void UpdateUnprocessedInventoryMaxAmount()
     {
         unprocessedIngredientMaxAmount = GlobalConstant.DEFAULT_INGREDIENT_MAX_AMOUNT + (int)GameManager.Instance.UpgradeManager.GetEffect("FRIDGE");
+    }
+
+    public void SetupInventoriesMaxAmount()
+    {
+        UpdateProcessedInventoryMaxAmount();
+        UpdateUnprocessedInventoryMaxAmount();
+    }
+
+    public int GetUnprocessedIngredientQuantity(Ingredient ingredient)
+    {
+        return unprocessedInventory.ContainsKey(ingredient.id) ? unprocessedInventory[ingredient.id].currentAmount : 0;
+    }
+    public int GetProcessedIngredientQuantity(Ingredient ingredient)
+    {
+        return inventory.ContainsKey(ingredient.id) ? inventory[ingredient.id].currentAmount : 0;
+    }
+
+    public int GetProcessedIngredientMaxAmount()
+    {
+        return processedIngredientMaxAmount;
+    }
+    public int GetUnprocessedIngredientMaxAmount()
+    {
+        return unprocessedIngredientMaxAmount;
+    }
+
+    void OnProcessedIngredientAdded()
+    {
+        GameManager.Instance.TacosMakerManager.UpdateButtonsVisual();
+    }
+
+    void OnUnprocessedIngredientAdded()
+    {
+        GameManager.Instance.HotplateManager.UpdateButtonsVisual();
     }
 }

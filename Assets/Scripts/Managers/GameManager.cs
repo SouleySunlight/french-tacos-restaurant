@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public ShopManager ShopManager { get; private set; }
     public UpgradeManager UpgradeManager { get; private set; }
     public DayCycleManager DayCycleManager { get; private set; }
+    public WorkersManager WorkersManager { get; private set; }
 
     public bool isGamePaused { get; private set; } = false;
     private bool isLoaded = false;
@@ -78,6 +79,8 @@ public class GameManager : MonoBehaviour
         UpgradeManager.SetupUpgrades();
         GrillManager.SetupGrillingTime();
         DayCycleManager.SetupDayCycle();
+        InventoryManager.SetupInventoriesMaxAmount();
+        WorkersManager.SetupWorkers();
 
     }
 
@@ -173,6 +176,7 @@ public class GameManager : MonoBehaviour
         ShopManager = GetComponentInChildren<ShopManager>();
         UpgradeManager = GetComponentInChildren<UpgradeManager>();
         DayCycleManager = GetComponentInChildren<DayCycleManager>();
+        WorkersManager = GetComponentInChildren<WorkersManager>();
 
 
         if (TacosMakerManager == null)
@@ -285,6 +289,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             DayCycleManager = GetComponentInChildren<DayCycleManager>();
+        }
+        if (WorkersManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/WorkersManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load WorkersManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            WorkersManager = GetComponentInChildren<WorkersManager>();
         }
     }
 

@@ -19,6 +19,11 @@ public class TacosMakerVisual : MonoBehaviour, IView
 
     public void OnViewDisplayed()
     {
+        UpdateButtonsVisual();
+    }
+
+    public void UpdateButtonsVisual()
+    {
         foreach (var button in buttons)
         {
             button.GetComponent<IngredientButtonDisplayer>().GetComponent<IngredientButtonDisplayer>().UpdateVisual();

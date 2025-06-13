@@ -4,7 +4,7 @@ using UnityEngine;
 public class DayCycleManager : MonoBehaviour
 {
     private int currentDay = 1;
-    private float dayDurationInSeconds = 30f;
+    private float dayDurationInSeconds = 180f;
     private DayCycleVisual dayCycleVisual;
 
     void Awake()
@@ -37,6 +37,7 @@ public class DayCycleManager : MonoBehaviour
     {
         dayCycleVisual.UpdateDayDisplay(currentDay);
         GameManager.Instance.WalletManager.ResetDailyCount();
+        GameManager.Instance.WorkersManager.RenewWorkers();
         GameManager.Instance.ResumeGame();
         StartNewDay();
     }

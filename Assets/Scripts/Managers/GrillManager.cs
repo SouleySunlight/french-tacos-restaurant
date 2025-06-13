@@ -1,9 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GrillManager : MonoBehaviour
+public class GrillManager : MonoBehaviour, IWorkStation
 {
     private List<Tacos> waitingToGrillTacos = new();
     private List<Tacos> grillingTacos = new();
@@ -19,6 +20,8 @@ public class GrillManager : MonoBehaviour
     private GrillVisual grillVisual;
 
     private GameManager gameManager;
+    private Worker currentWorker = null;
+    private bool isWorkerTaskDone = false;
 
     void Awake()
     {
@@ -70,6 +73,18 @@ public class GrillManager : MonoBehaviour
     public bool CanAddTacosToGrillWaitingZone()
     {
         return waitingToGrillTacos.Count < MAX_WAITING_TO_GRILL_TACOS;
+    }
+
+    public bool CanAddTacosToGrill()
+    {
+        for (int i = 0; i < grillingTacos.Count; i++)
+        {
+            if (grillingTacos[i] == null)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void OnClickOnTacos(Tacos tacos)
@@ -147,5 +162,71 @@ public class GrillManager : MonoBehaviour
     public void SetupGrillingTime()
     {
         UpdateGrillingTime();
+    }
+
+    public void HireWorker(Worker worker)
+    {
+        currentWorker = worker;
+        StartCoroutine(WorkerTaskCoroutine());
+    }
+    public void FireWorker(Worker worker)
+    {
+        currentWorker = null;
+    }
+
+    public IEnumerator WorkerTaskCoroutine()
+    {
+        if (currentWorker == null) { yield break; }
+
+        yield return new WaitForSeconds(currentWorker.secondsBetweenTasks);
+        while (!isWorkerTaskDone && currentWorker != null)
+        {
+            yield return new WaitUntil(() => !GameManager.Instance.isGamePaused);
+            PerformWorkerTask();
+            yield return new WaitForSeconds(0.5f);
+        }
+        isWorkerTaskDone = false;
+        if (currentWorker != null)
+        {
+            StartCoroutine(WorkerTaskCoroutine());
+        }
+
+    }
+
+    public void PerformWorkerTask()
+    {
+        WorkerRemoveDoneTacosFromGrill();
+        if (isWorkerTaskDone)
+        {
+            return;
+        }
+        WorkerAddTacosToGrill();
+
+    }
+
+    void WorkerRemoveDoneTacosFromGrill()
+    {
+        for (int i = 0; i < grillingTacos.Count; i++)
+        {
+            if (grillingTacos[i] == null) { continue; }
+
+            if (grillingTacos[i].isGrilled || grillingTacos[i].isBurnt)
+            {
+                var tacosToRemove = grillingTacos[i];
+                gameManager.OnTacosGrilled(tacosToRemove);
+                RemoveTacosOfTheGrill(tacosToRemove);
+                isWorkerTaskDone = true;
+                return;
+            }
+        }
+    }
+
+    void WorkerAddTacosToGrill()
+    {
+
+        if (waitingToGrillTacos.Count == 0) { return; }
+        if (!CanAddTacosToGrill()) { return; }
+        AddTacosToGrill(waitingToGrillTacos[0]);
+        isWorkerTaskDone = true;
     }
 }
