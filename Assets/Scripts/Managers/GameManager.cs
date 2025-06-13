@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public UpgradeManager UpgradeManager { get; private set; }
     public DayCycleManager DayCycleManager { get; private set; }
     public WorkersManager WorkersManager { get; private set; }
+    public FryerManager FryerManager { get; private set; }
 
     public bool isGamePaused { get; private set; } = false;
     private bool isLoaded = false;
@@ -75,6 +76,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => isLoaded);
         HotplateManager.SetupIngredients();
         TacosMakerManager.SetupIngredients();
+        FryerManager.SetupIngredients();
         ShopManager.SetupShop();
         UpgradeManager.SetupUpgrades();
         GrillManager.SetupGrillingTime();
@@ -177,6 +179,7 @@ public class GameManager : MonoBehaviour
         UpgradeManager = GetComponentInChildren<UpgradeManager>();
         DayCycleManager = GetComponentInChildren<DayCycleManager>();
         WorkersManager = GetComponentInChildren<WorkersManager>();
+        FryerManager = GetComponentInChildren<FryerManager>();
 
 
         if (TacosMakerManager == null)
@@ -300,6 +303,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             WorkersManager = GetComponentInChildren<WorkersManager>();
+        }
+        if (FryerManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/FryerManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load FryerManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            FryerManager = GetComponentInChildren<FryerManager>();
         }
     }
 
