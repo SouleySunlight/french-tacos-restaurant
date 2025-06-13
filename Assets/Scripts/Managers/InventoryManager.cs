@@ -58,11 +58,15 @@ public class InventoryManager : MonoBehaviour
     public void AddIngredient(Ingredient ingredient)
     {
         inventory[ingredient.id].currentAmount += 1;
+        OnProcessedIngredientAdded();
+
     }
 
     public void AddUnprocessedIngredient(Ingredient ingredient)
     {
         unprocessedInventory[ingredient.id].currentAmount += 1;
+        OnUnprocessedIngredientAdded();
+
     }
 
     public InventorySaveData GetInventorySaveData()
@@ -217,5 +221,15 @@ public class InventoryManager : MonoBehaviour
     public int GetUnprocessedIngredientMaxAmount()
     {
         return unprocessedIngredientMaxAmount;
+    }
+
+    void OnProcessedIngredientAdded()
+    {
+        GameManager.Instance.TacosMakerManager.UpdateButtonsVisual();
+    }
+
+    void OnUnprocessedIngredientAdded()
+    {
+        GameManager.Instance.HotplateManager.UpdateButtonsVisual();
     }
 }

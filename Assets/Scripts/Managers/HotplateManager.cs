@@ -268,4 +268,9 @@ public class HotplateManager : MonoBehaviour, IWorkStation
         }
         CookIngredients(ingredientToAdd);
     }
+
+    public void UpdateButtonsVisual()
+    {
+        hotplateVisuals.UpdateIngredientButtons();
+    }
 }
