@@ -96,7 +96,34 @@ public class OrdersManager : MonoBehaviour
         ServeTacos(order, tacos, matchingOrderItem);
     }
 
-    void ServeTacos(Order order, Tacos tacos, OrderItem orderItem)
+    public void WorkerTryToServeTacos(Tacos tacos)
+    {
+        if (tacos.isBurnt)
+        {
+            return;
+        }
+
+        if (!tacos.isGrilled)
+        {
+            return;
+        }
+
+        foreach (var order in orders)
+        {
+            var matchingOrderItem = FindMatchingOrderIdem(order, tacos);
+
+            if (matchingOrderItem == null)
+            {
+                continue;
+            }
+            ServeTacos(order, tacos, matchingOrderItem);
+            GameManager.Instance.CheckoutManager.MarkWorkerTaskAsDone();
+            return;
+
+        }
+    }
+
+    public void ServeTacos(Order order, Tacos tacos, OrderItem orderItem)
     {
         GameManager.Instance.ServeTacos(tacos);
 
@@ -127,5 +154,10 @@ public class OrdersManager : MonoBehaviour
         var matchingOrderItem = order.expectedOrder.Find((orderItem) => orderItem.tacosIngredients.OrderBy(x => x.GetInstanceID()).SequenceEqual(tacos.ingredients.OrderBy(x => x.GetInstanceID())) && !orderItem.isServed);
 
         return matchingOrderItem;
+    }
+
+    public Order GetOrderWithTacos(Tacos tacos)
+    {
+        return orders.Find(order => order.expectedOrder.Exists(orderItem => orderItem.tacosIngredients.OrderBy(x => x.GetInstanceID()).SequenceEqual(tacos.ingredients.OrderBy(x => x.GetInstanceID()))));
     }
 }

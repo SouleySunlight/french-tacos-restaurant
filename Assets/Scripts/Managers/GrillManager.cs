@@ -175,8 +175,9 @@ public class GrillManager : MonoBehaviour, IWorkStation
         if (currentWorker == null) { yield break; }
 
         yield return new WaitForSeconds(currentWorker.secondsBetweenTasks);
-        while (!isWorkerTaskDone)
+        while (!isWorkerTaskDone && currentWorker != null)
         {
+            yield return new WaitUntil(() => !GameManager.Instance.isGamePaused);
             PerformWorkerTask();
             yield return new WaitForSeconds(0.5f);
         }
@@ -196,8 +197,6 @@ public class GrillManager : MonoBehaviour, IWorkStation
             return;
         }
         WorkerAddTacosToGrill();
-
-
 
     }
 

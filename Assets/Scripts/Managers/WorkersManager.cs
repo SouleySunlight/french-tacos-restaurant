@@ -35,6 +35,9 @@ public class WorkersManager : MonoBehaviour
             case WorkersRole.HOTPLATE:
                 GameManager.Instance.HotplateManager.HireWorker(worker);
                 break;
+            case WorkersRole.CHECKOUT:
+                GameManager.Instance.CheckoutManager.HireWorker(worker);
+                break;
         }
     }
 }
