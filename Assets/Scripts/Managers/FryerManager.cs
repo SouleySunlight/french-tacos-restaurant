@@ -4,9 +4,12 @@ using UnityEngine;
 public class FryerManager : MonoBehaviour
 {
     private FryerVisual fryerVisuals;
-    private List<Ingredient> cookingIngredients = new();
-    private List<float> cookingTimes = new();
-    private List<float> totalCookingTimes = new();
+    private List<Ingredient> fryingIngredients = new();
+    private List<float> fryingTimes = new();
+    private List<float> totalFryingTimes = new();
+    private List<int> fryingQuantities = new();
+
+    private static int BASKET_SIZE = 5;
 
     void Awake()
     {
@@ -14,9 +17,10 @@ public class FryerManager : MonoBehaviour
         fryerVisuals.Setup();
         for (int i = 0; i < GlobalConstant.MAX_FRYING_INGREDIENTS; i++)
         {
-            cookingIngredients.Add(null);
-            cookingTimes.Add(GlobalConstant.UNUSED_TIME_VALUE);
-            totalCookingTimes.Add(GlobalConstant.UNUSED_TIME_VALUE);
+            fryingIngredients.Add(null);
+            fryingTimes.Add(GlobalConstant.UNUSED_TIME_VALUE);
+            totalFryingTimes.Add(GlobalConstant.UNUSED_TIME_VALUE);
+            fryingQuantities.Add(0);
         }
     }
 
@@ -24,21 +28,21 @@ public class FryerManager : MonoBehaviour
     {
         if (GameManager.Instance.isGamePaused) { return; }
 
-        for (int i = 0; i < cookingTimes.Count; i++)
+        for (int i = 0; i < fryingTimes.Count; i++)
         {
-            if (cookingTimes[i] == GlobalConstant.UNUSED_TIME_VALUE) { continue; }
+            if (fryingTimes[i] == GlobalConstant.UNUSED_TIME_VALUE) { continue; }
 
-            if (cookingTimes[i] >= totalCookingTimes[i])
+            if (fryingTimes[i] >= totalFryingTimes[i])
             {
                 // fryerVisuals.OnIngredientCooked(i);
             }
 
-            if (cookingTimes[i] >= totalCookingTimes[i] + cookingIngredients[i].wastingTimeOffset)
+            if (fryingTimes[i] >= totalFryingTimes[i] + fryingIngredients[i].wastingTimeOffset)
             {
                 //fryerVisuals.OnIngredientBurnt(i);
             }
 
-            cookingTimes[i] += Time.deltaTime;
+            fryingTimes[i] += Time.deltaTime;
             // fryerVisuals.UpdateTimer(i, cookingTimes[i] / totalCookingTimes[i]);
         }
     }
@@ -59,5 +63,37 @@ public class FryerManager : MonoBehaviour
         {
             fryerVisuals.AddAvailableIngredient(ingredient);
         }
+    }
+
+
+    public void FryIngredients(Ingredient ingredient)
+    {
+        for (int i = 0; i < fryingIngredients.Count; i++)
+        {
+            if (fryingIngredients[i] != ingredient && fryingIngredients[i] != null)
+            {
+                continue;
+            }
+            if (fryingQuantities[i] >= BASKET_SIZE)
+            {
+                continue;
+            }
+            if (!GameManager.Instance.InventoryManager.IsUnprocessedIngredientAvailable(ingredient))
+            {
+                return;
+            }
+            GameManager.Instance.InventoryManager.ConsumeUnprocessedIngredient(ingredient);
+            if (fryingIngredients[i] == null)
+            {
+                fryingIngredients[i] = ingredient;
+                fryingTimes[i] = 0;
+                totalFryingTimes[i] = fryingIngredients[i].processingTime;
+            }
+            fryingQuantities[i]++;
+            fryerVisuals.FryIngredients(ingredient, i);
+            return;
+        }
+        throw new NotEnoughSpaceException();
+
     }
 }
