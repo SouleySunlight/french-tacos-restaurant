@@ -336,4 +336,9 @@ public class FryerManager : MonoBehaviour, IWorkStation
         }
         return false;
     }
+
+    public void UpdateButtonsVisual()
+    {
+        fryerVisuals.UpdateIngredientButtons();
+    }
 }

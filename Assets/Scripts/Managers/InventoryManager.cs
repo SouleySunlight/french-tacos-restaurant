@@ -231,5 +231,6 @@ public class InventoryManager : MonoBehaviour
     void OnUnprocessedIngredientAdded()
     {
         GameManager.Instance.HotplateManager.UpdateButtonsVisual();
+        GameManager.Instance.FryerManager.UpdateButtonsVisual();
     }
 }
