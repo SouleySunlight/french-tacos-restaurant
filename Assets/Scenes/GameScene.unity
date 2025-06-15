@@ -3211,7 +3211,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 7bf4063ab44f94a5397424d30c16ccd6, type: 2}
     - target: {fileID: 3797732046845199967, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
       propertyPath: upgradables.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797732046845199967, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
       propertyPath: 'upgradables.Array.data[2]'
@@ -3221,6 +3221,10 @@ PrefabInstance:
       propertyPath: 'upgradables.Array.data[3]'
       value: 
       objectReference: {fileID: 11400000, guid: ccc7b94dbaac541358a2f2f38b227085, type: 2}
+    - target: {fileID: 3797732046845199967, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
+      propertyPath: 'upgradables.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: bdb004f5cac904721beaa05500c66c45, type: 2}
     - target: {fileID: 4491620471671158343, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
       propertyPath: m_Name
       value: GameManager

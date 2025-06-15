@@ -137,7 +137,7 @@ public class FryerManager : MonoBehaviour
 
         isFrying[position] = true;
         fryingTimes[position] = 0;
-        totalFryingTimes[position] = fryingIngredients[position].processingTime;
+        totalFryingTimes[position] = fryingIngredients[position].processingTime * GameManager.Instance.UpgradeManager.GetEffect("FRYER");
     }
 
     void RemoveIngredientFromFrying(int position)
