@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FryerVisual : MonoBehaviour, IView
 {
@@ -9,6 +10,8 @@ public class FryerVisual : MonoBehaviour, IView
     [SerializeField] private GameObject ingredientPrefab;
     [SerializeField] private List<GameObject> quantityManager = new();
     [SerializeField] private List<RectTransform> fryPositions = new();
+    [SerializeField] private List<Image> cookingTimers = new();
+
     private List<GameObject> ingredients = new();
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
 
@@ -65,6 +68,7 @@ public class FryerVisual : MonoBehaviour, IView
         if (ingredients[position] == null)
         {
             var ingredientToFry = Instantiate(ingredientPrefab, fryPositions[position].position, Quaternion.identity, fryPositions[position]);
+            ingredientToFry.GetComponent<IngredientMovement>().ClickFryerEvent.AddListener(OnClickOnIngredient);
             ingredientToFry.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
             ingredients[position] = ingredientToFry;
             quantityManager[position].GetComponent<QuantityDisplayer>().SetQuantity(1);
@@ -86,6 +90,37 @@ public class FryerVisual : MonoBehaviour, IView
         {
             button.GetComponent<IngredientButtonDisplayer>().UpdateVisual();
         }
+    }
+
+    void OnClickOnIngredient(GameObject gameObject)
+    {
+        GameManager.Instance.FryerManager.OnIngredientClick(ingredients.FindIndex(ingredient => ingredient == gameObject));
+    }
+
+    public void UpdateTimer(int index, float percentage)
+    {
+        cookingTimers[index].fillAmount = percentage;
+    }
+
+    public void OnIngredientCooked(int position)
+    {
+        ingredients[position].GetComponent<IngredientDisplayer>().DisplayProcessedImage();
+    }
+
+    public void OnIngredientBurnt(int position)
+    {
+        ingredients[position].GetComponent<IngredientDisplayer>().DisplayWastedImage();
+    }
+
+
+    public void RemoveIngredientFromGrill(int position)
+    {
+        var ingredientToRemove = ingredients[position];
+        Destroy(ingredientToRemove);
+        ingredients[position] = null;
+        UpdateTimer(position, 0);
+        quantityManager[position].GetComponent<QuantityDisplayer>().SetQuantity(0);
+        UpdateIngredientButtons();
     }
 
 }

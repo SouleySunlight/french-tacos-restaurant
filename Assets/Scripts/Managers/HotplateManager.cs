@@ -104,7 +104,6 @@ public class HotplateManager : MonoBehaviour, IWorkStation
     public void OnClickOnIngredient(int position)
     {
         var cookingTime = cookingTimes[position];
-        var ingredient = cookingIngredients[position];
 
         if (cookingTime < totalCookingTimes[position])
         {
@@ -124,8 +123,7 @@ public class HotplateManager : MonoBehaviour, IWorkStation
     void OnIngredientCookedClicked(int position, bool? doneByWorker = false)
     {
         var ingredient = cookingIngredients[position];
-        var ingredientToAdd = cookingIngredients[position];
-        if (GameManager.Instance.InventoryManager.CanAddIngredient(ingredientToAdd))
+        if (GameManager.Instance.InventoryManager.CanAddIngredient(ingredient))
         {
             GameManager.Instance.InventoryManager.AddIngredient(ingredient);
             RemoveIngredientFromCooking(position);
