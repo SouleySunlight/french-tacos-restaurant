@@ -17,7 +17,8 @@ public class Ingredient : ScriptableObject
 
     public bool NeedProcessing()
     {
-        return category == IngredientCategoryEnum.MEAT;
+
+        return category == IngredientCategoryEnum.MEAT || category == IngredientCategoryEnum.FRIES;
     }
 
 }
@@ -25,5 +26,6 @@ public class Ingredient : ScriptableObject
 public enum IngredientCategoryEnum
 {
     MEAT,
-    VEGETABLE
+    VEGETABLE,
+    FRIES,
 }
