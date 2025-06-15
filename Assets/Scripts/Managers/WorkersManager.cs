@@ -43,6 +43,9 @@ public class WorkersManager : MonoBehaviour
             case WorkersRole.CHECKOUT:
                 GameManager.Instance.CheckoutManager.HireWorker(worker);
                 break;
+            case WorkersRole.FRYER:
+                GameManager.Instance.FryerManager.HireWorker(worker);
+                break;
         }
     }
 
@@ -65,6 +68,9 @@ public class WorkersManager : MonoBehaviour
                 break;
             case WorkersRole.CHECKOUT:
                 GameManager.Instance.CheckoutManager.FireWorker(worker);
+                break;
+            case WorkersRole.FRYER:
+                GameManager.Instance.FryerManager.FireWorker(worker);
                 break;
         }
     }

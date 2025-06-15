@@ -15,5 +15,6 @@ public enum WorkersRole
 {
     GRILL,
     CHECKOUT,
-    HOTPLATE
+    HOTPLATE,
+    FRYER
 }

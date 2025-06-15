@@ -1,9 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class FryerManager : MonoBehaviour
+public class FryerManager : MonoBehaviour, IWorkStation
 {
     private FryerVisual fryerVisuals;
     private List<Ingredient> fryingIngredients = new();
@@ -12,7 +13,11 @@ public class FryerManager : MonoBehaviour
     private List<int> fryingQuantities = new();
     private List<bool> isFrying = new();
 
-    private static int BASKET_SIZE = 5;
+    private static int BASKET_SIZE = 3;
+
+
+    private Worker currentWorker = null;
+    private bool isWorkerTaskDone = false;
 
     void Awake()
     {
@@ -53,10 +58,10 @@ public class FryerManager : MonoBehaviour
 
     public void SetupIngredients()
     {
-        fryerVisuals.SetupIngredients(GetIngredientsToCook());
+        fryerVisuals.SetupIngredients(GetIngredientsToFry());
     }
 
-    List<Ingredient> GetIngredientsToCook()
+    List<Ingredient> GetIngredientsToFry()
     {
         return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll(ingredient => ingredient.category == IngredientCategoryEnum.FRIES);
     }
@@ -150,7 +155,7 @@ public class FryerManager : MonoBehaviour
         fryerVisuals.RemoveIngredientFromGrill(position);
     }
 
-    void OnIngredientCookedClicked(int position)
+    void OnIngredientCookedClicked(int position, bool? doneByWorker = false)
     {
         var ingredientToAdd = fryingIngredients[position];
         for (int i = 0; i < fryingQuantities[position]; i++)
@@ -161,10 +166,174 @@ public class FryerManager : MonoBehaviour
             }
         }
         RemoveIngredientFromFrying(position);
+        if (doneByWorker == true)
+        {
+            isWorkerTaskDone = true;
+        }
     }
 
-    void OnIngredientBurntClicked(int position)
+    void OnIngredientBurntClicked(int position, bool? doneByWorker = false)
     {
         RemoveIngredientFromFrying(position);
+        if (doneByWorker == true)
+        {
+            isWorkerTaskDone = true;
+        }
+    }
+
+    public void HireWorker(Worker worker)
+    {
+        currentWorker = worker;
+        StartCoroutine(WorkerTaskCoroutine());
+    }
+    public void FireWorker(Worker worker)
+    {
+        currentWorker = null;
+    }
+
+    public IEnumerator WorkerTaskCoroutine()
+    {
+        if (currentWorker == null) { yield break; }
+
+        yield return new WaitForSeconds(currentWorker.secondsBetweenTasks);
+        while (!isWorkerTaskDone && currentWorker != null)
+        {
+            yield return new WaitUntil(() => !GameManager.Instance.isGamePaused);
+            PerformWorkerTask();
+            yield return new WaitForSeconds(0.5f);
+        }
+        isWorkerTaskDone = false;
+        if (currentWorker != null)
+        {
+            StartCoroutine(WorkerTaskCoroutine());
+        }
+
+    }
+
+    public void PerformWorkerTask()
+    {
+        WorkerRemoveFriedIngredient();
+        if (isWorkerTaskDone)
+        {
+            return;
+        }
+        WorkerRemoveBurntIngredient();
+        if (isWorkerTaskDone)
+        {
+            return;
+        }
+        WorkerAddIngredientToFry();
+
+    }
+    void WorkerRemoveFriedIngredient()
+    {
+        for (int i = 0; i < fryingIngredients.Count; i++)
+        {
+            if (fryingIngredients[i] == null) { continue; }
+
+            if (fryingTimes[i] < totalFryingTimes[i]) { continue; }
+            if (fryingTimes[i] > totalFryingTimes[i] + fryingIngredients[i].wastingTimeOffset)
+            {
+                continue;
+            }
+            OnIngredientCookedClicked(i, true);
+            if (isWorkerTaskDone)
+            {
+                return;
+            }
+        }
+    }
+
+    void WorkerRemoveBurntIngredient()
+    {
+        for (int i = 0; i < fryingIngredients.Count; i++)
+        {
+            if (fryingIngredients[i] == null) { continue; }
+
+            if (fryingTimes[i] < totalFryingTimes[i] + fryingIngredients[i].wastingTimeOffset)
+            {
+                continue;
+            }
+            OnIngredientBurntClicked(i, true);
+            return;
+        }
+    }
+
+    int GetNumberOfIngredientsFrying(Ingredient ingredientToFind)
+    {
+        var count = 0;
+        for (int i = 0; i < fryingIngredients.Count; i++)
+        {
+            if (fryingIngredients[i] == null) { continue; }
+            if (fryingIngredients[i] != ingredientToFind) { continue; }
+            count += fryingQuantities[i];
+
+        }
+        return count;
+    }
+
+    void WorkerAddIngredientToFry()
+    {
+        var unprocessedIngredients = GetIngredientsToFry();
+        Ingredient ingredientToAdd = null;
+        int minIngredientAvailable = 1000;
+        foreach (var unprocessedIngredient in unprocessedIngredients)
+        {
+            if (!CanAddIngredientToFry(unprocessedIngredient)) { return; }
+
+            if (!GameManager.Instance.InventoryManager.IsUnprocessedIngredientAvailable(unprocessedIngredient))
+            {
+                continue;
+            }
+            var currentIngredientAvailableQuantity = GameManager.Instance.InventoryManager.GetProcessedIngredientQuantity(unprocessedIngredient) + GetNumberOfIngredientsFrying(unprocessedIngredient);
+
+            if (currentIngredientAvailableQuantity >= GameManager.Instance.InventoryManager.GetProcessedIngredientMaxAmount())
+            {
+                continue;
+            }
+
+            if (currentIngredientAvailableQuantity < minIngredientAvailable)
+            {
+                minIngredientAvailable = currentIngredientAvailableQuantity;
+                ingredientToAdd = unprocessedIngredient;
+            }
+            if (currentIngredientAvailableQuantity == minIngredientAvailable && Random.Range(0, 2) == 0)
+            {
+                ingredientToAdd = unprocessedIngredient;
+            }
+        }
+        if (ingredientToAdd == null)
+        {
+            return;
+        }
+        var remainingSlotAvailable = GameManager.Instance.InventoryManager.GetProcessedIngredientMaxAmount() - minIngredientAvailable;
+
+        var numberOfIngredientToFry = remainingSlotAvailable < BASKET_SIZE ? remainingSlotAvailable : BASKET_SIZE;
+
+
+        var positionOfIngredient = fryingIngredients.FindIndex(ingredient => ingredient == null);
+        for (int i = 0; i < numberOfIngredientToFry; i++)
+        {
+            if (CanAddIngredientToFry(ingredientToAdd))
+            {
+                FryIngredients(ingredientToAdd);
+            }
+        }
+        StartFryingIngredient(positionOfIngredient);
+    }
+    public bool CanAddIngredientToFry(Ingredient ingredient)
+    {
+        for (int i = 0; i < fryingIngredients.Count; i++)
+        {
+            if (fryingIngredients[i] == null)
+            {
+                return true;
+            }
+            if (fryingIngredients[i] == ingredient && fryingQuantities[i] < BASKET_SIZE)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
