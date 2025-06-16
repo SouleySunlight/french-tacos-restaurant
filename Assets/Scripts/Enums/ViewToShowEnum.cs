@@ -9,5 +9,6 @@ public enum ViewToShowEnum
     SHOP,
     UPGRADE,
     WORKERS,
-    FRYER
+    FRYER,
+    SAUCE_GRUYERE
 }
