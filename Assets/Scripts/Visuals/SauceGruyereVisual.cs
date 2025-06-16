@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SauceGruyereVisual : MonoBehaviour, IView
 {
@@ -8,6 +9,8 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private GameObject ingredientPrefab;
     [SerializeField] private RectTransform sauceGruyerePosition;
+    [SerializeField] private Image cookingTimer;
+
 
     private List<GameObject> buttons = new();
     private List<GameObject> ingredientsInSauceGruyere = new();
@@ -67,6 +70,12 @@ public class SauceGruyereVisual : MonoBehaviour, IView
             button.GetComponent<IngredientButtonDisplayer>().GetComponent<IngredientButtonDisplayer>().UpdateVisual();
         }
     }
+
+    public void UpdateTimer(float percentage)
+    {
+        cookingTimer.fillAmount = percentage;
+    }
+
 
 
 }
