@@ -12,6 +12,8 @@ public class SauceGruyereManager : MonoBehaviour
     private float totalCookingTime = GlobalConstant.UNUSED_TIME_VALUE;
 
     private bool isSauceGruyereCooked = false;
+    private bool isSauceGruyereBurnt = false;
+
 
     void Awake()
     {
@@ -25,14 +27,22 @@ public class SauceGruyereManager : MonoBehaviour
 
         if (cookingTime == GlobalConstant.UNUSED_TIME_VALUE) { return; }
 
-        if (cookingTime >= totalCookingTime)
+        if (cookingTime >= totalCookingTime + sauceGruyere.wastingTimeOffset)
+        {
+            if (!isSauceGruyereBurnt)
+            {
+                isSauceGruyereBurnt = true;
+                sauceGruyereVisual.OnSauceGruyereBurnt();
+            }
+        }
+
+        if (cookingTime >= totalCookingTime && cookingTime < totalCookingTime + sauceGruyere.wastingTimeOffset)
         {
             if (!isSauceGruyereCooked)
             {
                 isSauceGruyereCooked = true;
                 sauceGruyereVisual.OnSauceGruyereCooked();
             }
-            return;
         }
 
         cookingTime += Time.deltaTime;

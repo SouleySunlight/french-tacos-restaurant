@@ -96,6 +96,11 @@ public class SauceGruyereVisual : MonoBehaviour, IView
         sauceGruyerePrefab.SetActive(true);
     }
 
+    public void OnSauceGruyereBurnt()
+    {
+        sauceGruyerePrefab.GetComponent<IngredientDisplayer>().DisplayWastedImage();
+    }
+
 
     public void RemoveIngredientsFromSauceGruyere()
     {
