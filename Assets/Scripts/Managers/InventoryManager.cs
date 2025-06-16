@@ -59,7 +59,17 @@ public class InventoryManager : MonoBehaviour
     {
         inventory[ingredient.id].currentAmount += 1;
         OnProcessedIngredientAdded();
+    }
 
+    public void AddIngredient(Ingredient ingredient, int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            Debug.Log(i);
+            if (!CanAddIngredient(ingredient)) { return; }
+            AddIngredient(ingredient);
+        }
+        OnProcessedIngredientAdded();
     }
 
     public void AddUnprocessedIngredient(Ingredient ingredient)

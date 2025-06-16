@@ -67,6 +67,7 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     {
         var ingredientToCook = Instantiate(ingredientPrefab, sauceGruyerePosition.position, Quaternion.identity, sauceGruyerePosition);
         ingredientToCook.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
+        ingredientToCook.GetComponent<IngredientMovement>().ClickSauceGruyereEvent.AddListener(OnClickOnIngredient);
         ingredientsInSauceGruyere.Add(ingredientToCook);
         UpdateIngredientButtons();
     }
@@ -75,6 +76,8 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     {
         sauceGruyerePrefab = Instantiate(ingredientPrefab, sauceGruyerePosition.position, Quaternion.identity, sauceGruyerePosition);
         sauceGruyerePrefab.GetComponent<IngredientDisplayer>().ingredientData = sauceGruyereIngredient;
+        sauceGruyerePrefab.GetComponent<IngredientMovement>().ClickSauceGruyereEvent.AddListener(OnClickOnIngredient);
+
     }
 
     public void UpdateIngredientButtons()
@@ -110,6 +113,16 @@ public class SauceGruyereVisual : MonoBehaviour, IView
         }
         ingredientsInSauceGruyere.Clear();
         UpdateIngredientButtons();
+    }
+    void OnClickOnIngredient(GameObject gameObject)
+    {
+        GameManager.Instance.SauceGruyereManager.OnClickOnIngredient(gameObject.GetComponent<IngredientDisplayer>().ingredientData);
+    }
+
+    public void RemoveSauceGruyere()
+    {
+        sauceGruyerePrefab.GetComponent<IngredientDisplayer>().DisplayProcessedImage();
+        sauceGruyerePrefab.SetActive(false);
     }
 
 

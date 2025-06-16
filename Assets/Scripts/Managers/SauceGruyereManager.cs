@@ -13,6 +13,7 @@ public class SauceGruyereManager : MonoBehaviour
 
     private bool isSauceGruyereCooked = false;
     private bool isSauceGruyereBurnt = false;
+    private static readonly int SAUCE_GRUYERE_CREATED_QUANTITY = 5;
 
 
     void Awake()
@@ -85,6 +86,37 @@ public class SauceGruyereManager : MonoBehaviour
     {
         cookingTime = 0;
         totalCookingTime = sauceGruyere.processingTime;
+    }
+
+    public void OnClickOnIngredient(Ingredient ingredient)
+    {
+        if (ingredient.id != sauceGruyere.id)
+        {
+            return;
+        }
+        if (isSauceGruyereBurnt)
+        {
+            RemoveSauceGruyere();
+            return;
+        }
+        if (isSauceGruyereCooked)
+        {
+            GameManager.Instance.InventoryManager.AddIngredient(sauceGruyere, SAUCE_GRUYERE_CREATED_QUANTITY);
+            RemoveSauceGruyere();
+            return;
+        }
+    }
+
+    public void RemoveSauceGruyere()
+    {
+        sauceGruyereIngredients.Clear();
+        sauceGruyereVisual.RemoveSauceGruyere();
+        cookingTime = GlobalConstant.UNUSED_TIME_VALUE;
+        totalCookingTime = GlobalConstant.UNUSED_TIME_VALUE;
+        isSauceGruyereCooked = false;
+        isSauceGruyereBurnt = false;
+        sauceGruyereVisual.UpdateTimer(0);
+
     }
 
 
