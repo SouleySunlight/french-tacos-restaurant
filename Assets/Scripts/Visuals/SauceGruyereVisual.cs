@@ -10,13 +10,21 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     [SerializeField] private GameObject ingredientPrefab;
     [SerializeField] private RectTransform sauceGruyerePosition;
     [SerializeField] private Image cookingTimer;
+    [SerializeField] private Ingredient sauceGruyereIngredient;
 
 
     private List<GameObject> buttons = new();
     private List<GameObject> ingredientsInSauceGruyere = new();
+    private GameObject sauceGruyerePrefab = null;
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
 
 
+    void Awake()
+    {
+        CreateSauceGruyere();
+        sauceGruyerePrefab.SetActive(false);
+
+    }
     public void AddAvailableIngredient(Ingredient ingredient)
     {
         var buttonPrefab = Instantiate(ingredientButtonPrefab, firstIngredientPosition.position, Quaternion.identity, firstIngredientPosition);
@@ -63,6 +71,12 @@ public class SauceGruyereVisual : MonoBehaviour, IView
         UpdateIngredientButtons();
     }
 
+    public void CreateSauceGruyere()
+    {
+        sauceGruyerePrefab = Instantiate(ingredientPrefab, sauceGruyerePosition.position, Quaternion.identity, sauceGruyerePosition);
+        sauceGruyerePrefab.GetComponent<IngredientDisplayer>().ingredientData = sauceGruyereIngredient;
+    }
+
     public void UpdateIngredientButtons()
     {
         foreach (var button in buttons)
@@ -74,6 +88,23 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     public void UpdateTimer(float percentage)
     {
         cookingTimer.fillAmount = percentage;
+    }
+
+    public void OnSauceGruyereCooked()
+    {
+        RemoveIngredientsFromSauceGruyere();
+        sauceGruyerePrefab.SetActive(true);
+    }
+
+
+    public void RemoveIngredientsFromSauceGruyere()
+    {
+        foreach (var ingredient in ingredientsInSauceGruyere)
+        {
+            Destroy(ingredient);
+        }
+        ingredientsInSauceGruyere.Clear();
+        UpdateIngredientButtons();
     }
 
 

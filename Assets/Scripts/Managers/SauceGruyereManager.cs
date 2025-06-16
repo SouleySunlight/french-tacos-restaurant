@@ -5,9 +5,13 @@ public class SauceGruyereManager : MonoBehaviour
 {
     private SauceGruyereVisual sauceGruyereVisual;
     private List<Ingredient> sauceGruyereIngredients = new();
+    [SerializeField] private Ingredient sauceGruyere;
+
 
     private float cookingTime = GlobalConstant.UNUSED_TIME_VALUE;
     private float totalCookingTime = GlobalConstant.UNUSED_TIME_VALUE;
+
+    private bool isSauceGruyereCooked = false;
 
     void Awake()
     {
@@ -20,6 +24,16 @@ public class SauceGruyereManager : MonoBehaviour
 
 
         if (cookingTime == GlobalConstant.UNUSED_TIME_VALUE) { return; }
+
+        if (cookingTime >= totalCookingTime)
+        {
+            if (!isSauceGruyereCooked)
+            {
+                isSauceGruyereCooked = true;
+                sauceGruyereVisual.OnSauceGruyereCooked();
+            }
+            return;
+        }
 
         cookingTime += Time.deltaTime;
         sauceGruyereVisual.UpdateTimer(cookingTime / totalCookingTime);
@@ -40,10 +54,15 @@ public class SauceGruyereManager : MonoBehaviour
 
     public void AddIngredientToSauceGruyere(Ingredient ingredient)
     {
+        if (!GameManager.Instance.InventoryManager.IsIngredientAvailable(ingredient))
+        {
+            return;
+        }
         if (sauceGruyereIngredients.Contains(ingredient))
         {
             return;
         }
+        GameManager.Instance.InventoryManager.ConsumeIngredient(ingredient);
         sauceGruyereIngredients.Add(ingredient);
         sauceGruyereVisual.AddIngredientToSauceGruyere(ingredient);
         if (sauceGruyereIngredients.Count == GetSauceGruyereComponent().Count)
@@ -55,13 +74,9 @@ public class SauceGruyereManager : MonoBehaviour
     void CookSauceGruyere()
     {
         cookingTime = 0;
-        totalCookingTime = GetSauceGruyereIngredient().processingTime;
+        totalCookingTime = sauceGruyere.processingTime;
     }
 
-    Ingredient GetSauceGruyereIngredient()
-    {
-        return GameManager.Instance.InventoryManager.UnlockedIngredients.Find((ingredient) => ingredient.category == IngredientCategoryEnum.SAUCE_GRUYERE);
-    }
 
 
 }
