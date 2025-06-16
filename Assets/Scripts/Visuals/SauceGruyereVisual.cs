@@ -6,7 +6,11 @@ public class SauceGruyereVisual : MonoBehaviour, IView
 {
     [SerializeField] private RectTransform firstIngredientPosition;
     [SerializeField] private GameObject ingredientButtonPrefab;
+    [SerializeField] private GameObject ingredientPrefab;
+    [SerializeField] private RectTransform sauceGruyerePosition;
+
     private List<GameObject> buttons = new();
+    private List<GameObject> ingredientsInSauceGruyere = new();
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
 
 
@@ -17,7 +21,7 @@ public class SauceGruyereVisual : MonoBehaviour, IView
         buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowUnprocessedQuantity = true;
 
 
-        buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.HotplateManager.CookIngredients(ingredient));
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.SauceGruyereManager.AddIngredientToSauceGruyere(ingredient));
         buttons.Add(buttonPrefab);
         UpdateVisual();
     }
@@ -34,6 +38,7 @@ public class SauceGruyereVisual : MonoBehaviour, IView
             );
 
             button.GetComponent<RectTransform>().position = buttonPosition;
+
             index++;
         }
     }
@@ -45,6 +50,22 @@ public class SauceGruyereVisual : MonoBehaviour, IView
             AddAvailableIngredient(ingredient);
         }
         UpdateVisual();
+    }
+
+    public void AddIngredientToSauceGruyere(Ingredient ingredient)
+    {
+        var ingredientToCook = Instantiate(ingredientPrefab, sauceGruyerePosition.position, Quaternion.identity, sauceGruyerePosition);
+        ingredientToCook.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
+        ingredientsInSauceGruyere.Add(ingredientToCook);
+        UpdateIngredientButtons();
+    }
+
+    public void UpdateIngredientButtons()
+    {
+        foreach (var button in buttons)
+        {
+            button.GetComponent<IngredientButtonDisplayer>().GetComponent<IngredientButtonDisplayer>().UpdateVisual();
+        }
     }
 
 
