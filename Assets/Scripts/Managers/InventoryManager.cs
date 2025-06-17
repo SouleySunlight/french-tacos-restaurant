@@ -65,7 +65,6 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < amount; i++)
         {
-            Debug.Log(i);
             if (!CanAddIngredient(ingredient)) { return; }
             AddIngredient(ingredient);
         }
