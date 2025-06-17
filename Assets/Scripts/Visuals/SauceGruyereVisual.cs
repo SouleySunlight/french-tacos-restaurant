@@ -18,6 +18,11 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     private GameObject sauceGruyerePrefab = null;
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
 
+    public void OnViewDisplayed()
+    {
+        UpdateIngredientButtons();
+    }
+
 
     void Awake()
     {
