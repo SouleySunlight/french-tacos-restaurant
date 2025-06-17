@@ -9,7 +9,7 @@ public class SauceGruyereManager : MonoBehaviour
 
 
     private float cookingTime = GlobalConstant.UNUSED_TIME_VALUE;
-    private float totalCookingTime = GlobalConstant.UNUSED_TIME_VALUE;
+    private float currentCookingTime = GlobalConstant.UNUSED_TIME_VALUE;
 
     private bool isSauceGruyereCooked = false;
     private bool isSauceGruyereBurnt = false;
@@ -28,7 +28,7 @@ public class SauceGruyereManager : MonoBehaviour
 
         if (cookingTime == GlobalConstant.UNUSED_TIME_VALUE) { return; }
 
-        if (cookingTime >= totalCookingTime + sauceGruyere.wastingTimeOffset)
+        if (cookingTime >= currentCookingTime + sauceGruyere.wastingTimeOffset)
         {
             if (!isSauceGruyereBurnt)
             {
@@ -37,7 +37,7 @@ public class SauceGruyereManager : MonoBehaviour
             }
         }
 
-        if (cookingTime >= totalCookingTime && cookingTime < totalCookingTime + sauceGruyere.wastingTimeOffset)
+        if (cookingTime >= currentCookingTime && cookingTime < currentCookingTime + sauceGruyere.wastingTimeOffset)
         {
             if (!isSauceGruyereCooked)
             {
@@ -47,9 +47,7 @@ public class SauceGruyereManager : MonoBehaviour
         }
 
         cookingTime += Time.deltaTime;
-        sauceGruyereVisual.UpdateTimer(cookingTime / totalCookingTime);
-
-
+        sauceGruyereVisual.UpdateTimer(cookingTime / currentCookingTime);
 
     }
 
@@ -85,7 +83,16 @@ public class SauceGruyereManager : MonoBehaviour
     void CookSauceGruyere()
     {
         cookingTime = 0;
-        totalCookingTime = sauceGruyere.processingTime;
+    }
+
+    public void UpdateCookingTime()
+    {
+        currentCookingTime = sauceGruyere.processingTime * GameManager.Instance.UpgradeManager.GetEffect("GRUYERE_POT");
+    }
+
+    public void SetupCookingTime()
+    {
+        UpdateCookingTime();
     }
 
     public void OnClickOnIngredient(Ingredient ingredient)
@@ -112,7 +119,6 @@ public class SauceGruyereManager : MonoBehaviour
         sauceGruyereIngredients.Clear();
         sauceGruyereVisual.RemoveSauceGruyere();
         cookingTime = GlobalConstant.UNUSED_TIME_VALUE;
-        totalCookingTime = GlobalConstant.UNUSED_TIME_VALUE;
         isSauceGruyereCooked = false;
         isSauceGruyereBurnt = false;
         sauceGruyereVisual.UpdateTimer(0);

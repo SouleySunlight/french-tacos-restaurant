@@ -40,6 +40,9 @@ public class UpgradeManager : MonoBehaviour
             case "INGREDIENT_DISPLAYER":
                 GameManager.Instance.InventoryManager.UpdateProcessedInventoryMaxAmount();
                 return;
+            case "GRUYERE_POT":
+                GameManager.Instance.SauceGruyereManager.UpdateCookingTime();
+                return;
             default:
                 return;
 

@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
         ShopManager.SetupShop();
         UpgradeManager.SetupUpgrades();
         GrillManager.SetupGrillingTime();
+        SauceGruyereManager.UpdateCookingTime();
         DayCycleManager.SetupDayCycle();
         InventoryManager.SetupInventoriesMaxAmount();
         WorkersManager.SetupWorkers();
