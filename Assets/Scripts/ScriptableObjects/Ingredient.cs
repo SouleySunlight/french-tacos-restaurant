@@ -14,6 +14,8 @@ public class Ingredient : ScriptableObject
     public bool isUnlockedFromTheBeginning;
     public int priceToUnlock = 0;
     public int priceToRefill = 1;
+    public bool canBeAddedToTacos = true;
+    public bool canBePurshased = true;
 
     public bool NeedProcessing()
     {
@@ -28,4 +30,6 @@ public enum IngredientCategoryEnum
     MEAT,
     VEGETABLE,
     FRIES,
+    SAUCE_GRUYERE_INGREDIENT,
+    SAUCE_GRUYERE
 }

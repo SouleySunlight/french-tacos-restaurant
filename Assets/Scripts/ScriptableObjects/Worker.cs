@@ -16,5 +16,6 @@ public enum WorkersRole
     GRILL,
     CHECKOUT,
     HOTPLATE,
-    FRYER
+    FRYER,
+    GRUYERE
 }

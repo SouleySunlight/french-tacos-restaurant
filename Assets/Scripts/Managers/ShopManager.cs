@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
@@ -23,7 +24,7 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
-            shopVisuals.SetupIngredientToRefill(GameManager.Instance.InventoryManager.UnlockedIngredients);
+            shopVisuals.SetupIngredientToRefill(GetIngredientsToRefill());
         }
 
 
@@ -44,5 +45,10 @@ public class ShopManager : MonoBehaviour
     {
         GameManager.Instance.InventoryManager.RefillIngredient(ingredient);
         shopVisuals.UpdateIngredientButtonVisual(ingredient);
+    }
+
+    public List<Ingredient> GetIngredientsToRefill()
+    {
+        return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll(ingredient => ingredient.canBePurshased);
     }
 }

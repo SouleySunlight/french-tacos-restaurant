@@ -15,7 +15,7 @@ public class TacosMakerManager : MonoBehaviour
 
     public void SetupIngredients()
     {
-        tacosMakerVisual.SetupIngredients(GameManager.Instance.InventoryManager.UnlockedIngredients);
+        tacosMakerVisual.SetupIngredients(GetIngredientsAddableToTacos());
         CreateTacos();
     }
 
@@ -62,5 +62,10 @@ public class TacosMakerManager : MonoBehaviour
     public void UpdateButtonsVisual()
     {
         tacosMakerVisual.UpdateButtonsVisual();
+    }
+
+    List<Ingredient> GetIngredientsAddableToTacos()
+    {
+        return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll(ingredient => ingredient.canBeAddedToTacos);
     }
 }

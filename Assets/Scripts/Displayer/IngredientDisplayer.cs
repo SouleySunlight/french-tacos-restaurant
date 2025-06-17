@@ -31,9 +31,9 @@ public class IngredientDisplayer : MonoBehaviour
     public void DisplayUnprocessedImage()
     {
         ingredientImage.sprite = ingredientData.unprocessedSprite;
-        if (PlayzoneVisual.currentView == ViewToShowEnum.FRYER)
+        if (PlayzoneVisual.currentView == ViewToShowEnum.FRYER || PlayzoneVisual.currentView == ViewToShowEnum.SAUCE_GRUYERE)
         {
-            UseFryerSize();
+            UseMediumSize();
             return;
         }
         UseCommonSize();
@@ -41,9 +41,9 @@ public class IngredientDisplayer : MonoBehaviour
     public void DisplayProcessedImage()
     {
         ingredientImage.sprite = ingredientData.processedSprite;
-        if (PlayzoneVisual.currentView == ViewToShowEnum.FRYER)
+        if (PlayzoneVisual.currentView == ViewToShowEnum.FRYER || PlayzoneVisual.currentView == ViewToShowEnum.SAUCE_GRUYERE)
         {
-            UseFryerSize();
+            UseMediumSize();
             return;
         }
         UseCommonSize();
@@ -52,9 +52,9 @@ public class IngredientDisplayer : MonoBehaviour
     public void DisplayWastedImage()
     {
         ingredientImage.sprite = ingredientData.wastedSprite;
-        if (PlayzoneVisual.currentView == ViewToShowEnum.FRYER)
+        if (PlayzoneVisual.currentView == ViewToShowEnum.FRYER || PlayzoneVisual.currentView == ViewToShowEnum.SAUCE_GRUYERE)
         {
-            UseFryerSize();
+            UseMediumSize();
             return;
         }
         UseCommonSize();
@@ -65,7 +65,7 @@ public class IngredientDisplayer : MonoBehaviour
         ingredientImage.GetComponent<RectTransform>().sizeDelta = new(GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_DIMENSION, GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_DIMENSION);
     }
 
-    void UseFryerSize()
+    void UseMediumSize()
     {
         ingredientImage.GetComponent<RectTransform>().sizeDelta = new(GlobalConstant.INGREDIENT_FRYER_IMAGE_DIMENSION, GlobalConstant.INGREDIENT_FRYER_IMAGE_DIMENSION);
     }

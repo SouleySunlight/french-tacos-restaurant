@@ -46,6 +46,9 @@ public class WorkersManager : MonoBehaviour
             case WorkersRole.FRYER:
                 GameManager.Instance.FryerManager.HireWorker(worker);
                 break;
+            case WorkersRole.GRUYERE:
+                GameManager.Instance.SauceGruyereManager.HireWorker(worker);
+                break;
         }
     }
 
@@ -71,6 +74,9 @@ public class WorkersManager : MonoBehaviour
                 break;
             case WorkersRole.FRYER:
                 GameManager.Instance.FryerManager.FireWorker(worker);
+                break;
+            case WorkersRole.GRUYERE:
+                GameManager.Instance.SauceGruyereManager.FireWorker(worker);
                 break;
         }
     }

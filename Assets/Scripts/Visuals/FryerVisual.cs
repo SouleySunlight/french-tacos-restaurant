@@ -84,7 +84,7 @@ public class FryerVisual : MonoBehaviour, IView
         UpdateIngredientButtons();
     }
 
-    void UpdateIngredientButtons()
+    public void UpdateIngredientButtons()
     {
         foreach (var button in buttons)
         {
@@ -120,6 +120,11 @@ public class FryerVisual : MonoBehaviour, IView
         ingredients[position] = null;
         UpdateTimer(position, 0);
         quantityManager[position].GetComponent<QuantityDisplayer>().SetQuantity(0);
+        UpdateIngredientButtons();
+    }
+
+    public void OnViewDisplayed()
+    {
         UpdateIngredientButtons();
     }
 

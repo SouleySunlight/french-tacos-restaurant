@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public DayCycleManager DayCycleManager { get; private set; }
     public WorkersManager WorkersManager { get; private set; }
     public FryerManager FryerManager { get; private set; }
+    public SauceGruyereManager SauceGruyereManager { get; private set; }
 
     public bool isGamePaused { get; private set; } = false;
     private bool isLoaded = false;
@@ -77,9 +78,11 @@ public class GameManager : MonoBehaviour
         HotplateManager.SetupIngredients();
         TacosMakerManager.SetupIngredients();
         FryerManager.SetupIngredients();
+        SauceGruyereManager.SetupIngredients();
         ShopManager.SetupShop();
         UpgradeManager.SetupUpgrades();
         GrillManager.SetupGrillingTime();
+        SauceGruyereManager.UpdateCookingTime();
         DayCycleManager.SetupDayCycle();
         InventoryManager.SetupInventoriesMaxAmount();
         WorkersManager.SetupWorkers();
@@ -180,6 +183,7 @@ public class GameManager : MonoBehaviour
         DayCycleManager = GetComponentInChildren<DayCycleManager>();
         WorkersManager = GetComponentInChildren<WorkersManager>();
         FryerManager = GetComponentInChildren<FryerManager>();
+        SauceGruyereManager = GetComponentInChildren<SauceGruyereManager>();
 
 
         if (TacosMakerManager == null)
@@ -314,6 +318,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             FryerManager = GetComponentInChildren<FryerManager>();
+        }
+        if (SauceGruyereManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/SauceGruyereManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load SauceGruyereManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            SauceGruyereManager = GetComponentInChildren<SauceGruyereManager>();
         }
     }
 

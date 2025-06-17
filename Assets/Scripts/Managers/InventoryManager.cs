@@ -59,7 +59,16 @@ public class InventoryManager : MonoBehaviour
     {
         inventory[ingredient.id].currentAmount += 1;
         OnProcessedIngredientAdded();
+    }
 
+    public void AddIngredient(Ingredient ingredient, int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            if (!CanAddIngredient(ingredient)) { return; }
+            AddIngredient(ingredient);
+        }
+        OnProcessedIngredientAdded();
     }
 
     public void AddUnprocessedIngredient(Ingredient ingredient)
@@ -231,5 +240,6 @@ public class InventoryManager : MonoBehaviour
     void OnUnprocessedIngredientAdded()
     {
         GameManager.Instance.HotplateManager.UpdateButtonsVisual();
+        GameManager.Instance.FryerManager.UpdateButtonsVisual();
     }
 }
