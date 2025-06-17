@@ -1,7 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class SauceGruyereManager : MonoBehaviour
+public class SauceGruyereManager : MonoBehaviour, IWorkStation
 {
     private SauceGruyereVisual sauceGruyereVisual;
     private List<Ingredient> sauceGruyereIngredients = new();
@@ -14,6 +16,9 @@ public class SauceGruyereManager : MonoBehaviour
     private bool isSauceGruyereCooked = false;
     private bool isSauceGruyereBurnt = false;
     private static readonly int SAUCE_GRUYERE_CREATED_QUANTITY = 5;
+
+    private Worker currentWorker = null;
+    private bool isWorkerTaskDone = false;
 
 
     void Awake()
@@ -61,7 +66,7 @@ public class SauceGruyereManager : MonoBehaviour
         return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll((ingredient) => ingredient.category == IngredientCategoryEnum.SAUCE_GRUYERE_INGREDIENT);
     }
 
-    public void AddIngredientToSauceGruyere(Ingredient ingredient)
+    public void AddIngredientToSauceGruyere(Ingredient ingredient, bool? isDoneByWorker = false)
     {
         if (!GameManager.Instance.InventoryManager.IsIngredientAvailable(ingredient))
         {
@@ -74,6 +79,7 @@ public class SauceGruyereManager : MonoBehaviour
         GameManager.Instance.InventoryManager.ConsumeIngredient(ingredient);
         sauceGruyereIngredients.Add(ingredient);
         sauceGruyereVisual.AddIngredientToSauceGruyere(ingredient);
+        isDoneByWorker = true;
         if (sauceGruyereIngredients.Count == GetSauceGruyereComponent().Count)
         {
             CookSauceGruyere();
@@ -108,9 +114,7 @@ public class SauceGruyereManager : MonoBehaviour
         }
         if (isSauceGruyereCooked)
         {
-            GameManager.Instance.InventoryManager.AddIngredient(sauceGruyere, SAUCE_GRUYERE_CREATED_QUANTITY);
-            RemoveSauceGruyere();
-            return;
+            RemoveCookedSauceGruyere();
         }
     }
 
@@ -125,6 +129,98 @@ public class SauceGruyereManager : MonoBehaviour
 
     }
 
+    void RemoveCookedSauceGruyere()
+    {
+        GameManager.Instance.InventoryManager.AddIngredient(sauceGruyere, SAUCE_GRUYERE_CREATED_QUANTITY);
+        RemoveSauceGruyere();
+    }
 
+    public void HireWorker(Worker worker)
+    {
+        currentWorker = worker;
+        StartCoroutine(WorkerTaskCoroutine());
+    }
+    public void FireWorker(Worker worker)
+    {
+        currentWorker = null;
+    }
 
+    public IEnumerator WorkerTaskCoroutine()
+    {
+        if (currentWorker == null) { yield break; }
+
+        yield return new WaitForSeconds(currentWorker.secondsBetweenTasks);
+        while (!isWorkerTaskDone && currentWorker != null)
+        {
+            yield return new WaitUntil(() => !GameManager.Instance.isGamePaused);
+            PerformWorkerTask();
+            yield return new WaitForSeconds(0.5f);
+        }
+        isWorkerTaskDone = false;
+        if (currentWorker != null)
+        {
+            StartCoroutine(WorkerTaskCoroutine());
+        }
+    }
+
+    public void PerformWorkerTask()
+    {
+        WorkerRemoveDoneIngredient();
+        if (isWorkerTaskDone)
+        {
+            return;
+        }
+        WorkerRemoveBurntIngredient();
+        if (isWorkerTaskDone)
+        {
+            return;
+        }
+        WorkerAddIngredientToSauceGruyere();
+    }
+
+    void WorkerRemoveDoneIngredient()
+    {
+        if (isSauceGruyereBurnt) { return; }
+        if (!isSauceGruyereCooked)
+        {
+            return;
+        }
+        isWorkerTaskDone = true;
+        RemoveCookedSauceGruyere();
+    }
+
+    void WorkerRemoveBurntIngredient()
+    {
+        if (!isSauceGruyereBurnt)
+        {
+            return;
+        }
+        isWorkerTaskDone = true;
+        RemoveSauceGruyere();
+    }
+
+    void WorkerAddIngredientToSauceGruyere()
+    {
+        if (GameManager.Instance.isGamePaused) { return; }
+        if (sauceGruyereIngredients.Count >= GetSauceGruyereComponent().Count)
+        {
+            return;
+        }
+        if (GameManager.Instance.InventoryManager.GetProcessedIngredientQuantity(sauceGruyere) + SAUCE_GRUYERE_CREATED_QUANTITY > GameManager.Instance.InventoryManager.GetProcessedIngredientMaxAmount())
+        {
+            return;
+        }
+        if (sauceGruyereIngredients.Count == 0)
+        {
+            AddIngredientToSauceGruyere(GetSauceGruyereComponent()[0]);
+            return;
+
+        }
+        var missingIngredients = GetSauceGruyereComponent().FindAll((ingredient) => !sauceGruyereIngredients.Contains(ingredient));
+        if (missingIngredients.Count == 0)
+        {
+            return;
+        }
+        AddIngredientToSauceGruyere(missingIngredients[0]);
+    }
 }
