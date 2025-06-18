@@ -3507,7 +3507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3549979191600397304, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
       propertyPath: allIngredients.Array.size
-      value: 14
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3549979191600397304, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
       propertyPath: 'allIngredients.Array.data[4]'
@@ -3549,6 +3549,26 @@ PrefabInstance:
       propertyPath: 'allIngredients.Array.data[13]'
       value: 
       objectReference: {fileID: 11400000, guid: c1e0c4473153945399b1778d41cc21f1, type: 2}
+    - target: {fileID: 3549979191600397304, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
+      propertyPath: 'allIngredients.Array.data[14]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 387778b61a4c7433ab2147dec49e7768, type: 2}
+    - target: {fileID: 3549979191600397304, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
+      propertyPath: 'allIngredients.Array.data[15]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d6177012fa324b1b882d2c0bb28aa6f, type: 2}
+    - target: {fileID: 3549979191600397304, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
+      propertyPath: 'allIngredients.Array.data[16]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b7fbbf57f1d443b89806d8768858add, type: 2}
+    - target: {fileID: 3549979191600397304, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
+      propertyPath: 'allIngredients.Array.data[17]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2891f9a766039492a9ba314120ce8cbb, type: 2}
+    - target: {fileID: 3549979191600397304, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
+      propertyPath: 'allIngredients.Array.data[18]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 77e09de92004d495d8d063104ecbd3ed, type: 2}
     - target: {fileID: 3797732046845199967, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
       propertyPath: upgradables.Array.size
       value: 6

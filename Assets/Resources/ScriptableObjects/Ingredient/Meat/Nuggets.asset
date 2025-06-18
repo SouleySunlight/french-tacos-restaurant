@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 945df2e4b118f4f42ab5d24478048d00, type: 3}
   m_Name: Nuggets
   m_EditorClassIdentifier: 
-  id: 
-  name: 
-  unprocessedSprite: {fileID: 0}
-  processedSprite: {fileID: 0}
-  wastedSprite: {fileID: 0}
-  processingTime: 0
-  wastingTimeOffset: 0
+  id: NUG
+  name: Nuggets
+  unprocessedSprite: {fileID: 6733056002609741397, guid: 2092edbccebfe40efb1cd0a7667bd674, type: 3}
+  processedSprite: {fileID: 7829007464044354663, guid: 993fd5f61a8f04483b4e8a0e73a6a68e, type: 3}
+  wastedSprite: {fileID: 3626891485384884952, guid: 4adec8d4c4c2e45b89c030767fcfd84b, type: 3}
+  processingTime: 15
+  wastingTimeOffset: 10
   category: 0
   isUnlockedFromTheBeginning: 0
-  priceToUnlock: 0
+  priceToUnlock: 35
   priceToRefill: 1
   canBeAddedToTacos: 1
   canBePurshased: 1
-  popularity: 0
-  processingMethod: 2
+  popularity: 1
+  processingMethod: 1

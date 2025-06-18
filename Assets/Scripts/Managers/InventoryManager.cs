@@ -169,7 +169,6 @@ public class InventoryManager : MonoBehaviour
         {
             Popularity += ingredient.popularity;
         }
-        Debug.Log("Popularity loaded: " + Popularity);
     }
 
     public List<Ingredient> GetIngredientsToUnlock()
