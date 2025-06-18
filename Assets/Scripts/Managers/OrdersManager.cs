@@ -47,6 +47,7 @@ public class OrdersManager : MonoBehaviour
         ingredients.Add(GetMeatOfTheTacos());
         ingredients.AddRange(GetVegetablesOfTheTacos());
         ingredients.AddRange(GetSauceOfTheTacos());
+        ingredients.AddRange(GetInEveryTacosIngredients());
 
         return ingredients;
     }
@@ -163,7 +164,7 @@ public class OrdersManager : MonoBehaviour
     {
         var availableVegetables = GameManager.Instance.InventoryManager.UnlockedIngredients
             .FindAll(ingredient => ingredient.category == IngredientCategoryEnum.VEGETABLE);
-        var numberOfVegetables = Random.Range(1, availableVegetables.Count + 1);
+        var numberOfVegetables = Random.Range(0, availableVegetables.Count + 1);
         var selectedVegetables = new List<Ingredient>();
         for (int i = 0; i < numberOfVegetables; i++)
         {
@@ -195,5 +196,11 @@ public class OrdersManager : MonoBehaviour
         var availableMeat = GameManager.Instance.InventoryManager.UnlockedIngredients
             .FindAll(ingredient => ingredient.category == IngredientCategoryEnum.MEAT);
         return availableMeat[Random.Range(0, availableMeat.Count)];
+    }
+
+    List<Ingredient> GetInEveryTacosIngredients()
+    {
+        return GameManager.Instance.InventoryManager.UnlockedIngredients
+            .FindAll(ingredient => ingredient.inEveryTacos);
     }
 }

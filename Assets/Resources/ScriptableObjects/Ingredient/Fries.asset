@@ -25,5 +25,6 @@ MonoBehaviour:
   priceToRefill: 1
   canBeAddedToTacos: 1
   canBePurshased: 1
+  inEveryTacos: 1
   popularity: 0
   processingMethod: 1
