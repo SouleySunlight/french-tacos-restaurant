@@ -17,6 +17,7 @@ public class Ingredient : ScriptableObject
     public bool canBeAddedToTacos = true;
     public bool canBePurshased = true;
     public int popularity = 0;
+    public ProcessingMethodEnum processingMethod = ProcessingMethodEnum.NONE;
 
     public bool NeedProcessing()
     {
@@ -33,4 +34,11 @@ public enum IngredientCategoryEnum
     SAUCE_GRUYERE_INGREDIENT,
     SAUCE_GRUYERE,
     SAUCE
+}
+
+public enum ProcessingMethodEnum
+{
+    HOTPLATE,
+    FRYER,
+    NONE
 }

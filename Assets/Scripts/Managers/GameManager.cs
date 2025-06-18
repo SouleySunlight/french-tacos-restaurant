@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
         ShopManager.UnlockIngredient(ingredient);
         TacosMakerManager.AddAvailableIngredient(ingredient);
         HotplateManager.AddAvailableIngredient(ingredient);
+        FryerManager.AddAvailableIngredient(ingredient);
     }
 
     public void RefillIngredient(Ingredient ingredient)

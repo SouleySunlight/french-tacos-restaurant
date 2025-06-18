@@ -56,7 +56,7 @@ public class HotplateManager : MonoBehaviour, IWorkStation
 
     public void AddAvailableIngredient(Ingredient ingredient)
     {
-        if (ingredient.category == IngredientCategoryEnum.MEAT)
+        if (ingredient.processingMethod == ProcessingMethodEnum.HOTPLATE)
         {
             hotplateVisuals.AddAvailableIngredient(ingredient);
         }
@@ -64,7 +64,7 @@ public class HotplateManager : MonoBehaviour, IWorkStation
 
     List<Ingredient> GetIngredientsToCook()
     {
-        return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll(ingredient => ingredient.category == IngredientCategoryEnum.MEAT);
+        return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll(ingredient => ingredient.processingMethod == ProcessingMethodEnum.HOTPLATE);
     }
 
     public void CookIngredients(Ingredient ingredient)

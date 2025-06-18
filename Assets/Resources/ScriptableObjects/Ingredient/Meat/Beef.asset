@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 945df2e4b118f4f42ab5d24478048d00, type: 3}
+  m_Name: Beef
+  m_EditorClassIdentifier: 
+  id: BEE
+  name: Beef
+  unprocessedSprite: {fileID: 3126107728554842056, guid: 76a7482c8e981488dba2ce58467a3b73, type: 3}
+  processedSprite: {fileID: -8733503966219448144, guid: 2bd2968a986cd4a77902d7f0133143c0, type: 3}
+  wastedSprite: {fileID: 8934833565084604155, guid: 01007f1586206478dbf3284e6898caa2, type: 3}
+  processingTime: 15
+  wastingTimeOffset: 10
+  category: 0
+  isUnlockedFromTheBeginning: 0
+  priceToUnlock: 20
+  priceToRefill: 1
+  canBeAddedToTacos: 1
+  canBePurshased: 1
+  popularity: 1
+  processingMethod: 0
