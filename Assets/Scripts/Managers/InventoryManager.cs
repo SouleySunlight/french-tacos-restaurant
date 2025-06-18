@@ -6,6 +6,7 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private List<Ingredient> allIngredients = new();
     [HideInInspector] public List<Ingredient> UnlockedIngredients { get; private set; } = new();
+    [HideInInspector] public int Popularity { get; private set; } = new();
     private Dictionary<string, InventorySlot> inventory = new();
     private Dictionary<string, InventorySlot> unprocessedInventory = new();
 
@@ -122,6 +123,7 @@ public class InventoryManager : MonoBehaviour
                     UnlockedIngredients.Add(ingredient);
                 }
             }
+            LoadPopularity();
             return;
         }
 
@@ -134,6 +136,7 @@ public class InventoryManager : MonoBehaviour
                 continue;
             }
             UnlockedIngredients.Add(ingredientToAdd);
+            LoadPopularity();
         }
     }
 
@@ -159,6 +162,16 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public void LoadPopularity()
+    {
+        Popularity = 0;
+        foreach (var ingredient in UnlockedIngredients)
+        {
+            Popularity += ingredient.popularity;
+        }
+        Debug.Log("Popularity loaded: " + Popularity);
+    }
+
     public List<Ingredient> GetIngredientsToUnlock()
     {
         List<Ingredient> ingredientsToUnlock = new();
@@ -180,10 +193,12 @@ public class InventoryManager : MonoBehaviour
             unprocessedInventory[ingredient.id] = new InventorySlot(GlobalConstant.DEFAULT_INGREDIENT_AMOUNT);
             inventory[ingredient.id] = new InventorySlot(0);
             UnlockedIngredients.Add(ingredient);
+            Popularity += ingredient.popularity;
             return;
         }
         inventory[ingredient.id] = new InventorySlot(GlobalConstant.DEFAULT_INGREDIENT_AMOUNT);
         UnlockedIngredients.Add(ingredient);
+        Popularity += ingredient.popularity;
     }
 
     public void RefillIngredient(Ingredient ingredient)

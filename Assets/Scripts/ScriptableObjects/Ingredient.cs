@@ -16,10 +16,10 @@ public class Ingredient : ScriptableObject
     public int priceToRefill = 1;
     public bool canBeAddedToTacos = true;
     public bool canBePurshased = true;
+    public int popularity = 0;
 
     public bool NeedProcessing()
     {
-
         return category == IngredientCategoryEnum.MEAT || category == IngredientCategoryEnum.FRIES;
     }
 

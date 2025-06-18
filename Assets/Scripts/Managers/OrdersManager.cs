@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class OrdersManager : MonoBehaviour
 {
     private OrdersVisual ordersVisual;
     private List<Order> orders = new();
+
+    private readonly int DEFAULT_DELAY_BETWEEN_ORDERS = 60;
+    private readonly float popularityFactor = 0.9f;
 
     void Awake()
     {
@@ -60,7 +62,7 @@ public class OrdersManager : MonoBehaviour
 
         while (true)
         {
-            var timeToWait = Random.Range(20, 30);
+            var timeToWait = DEFAULT_DELAY_BETWEEN_ORDERS * Mathf.Pow(popularityFactor, GameManager.Instance.InventoryManager.Popularity);
             yield return new WaitForSeconds(timeToWait);
             yield return new WaitUntil(() => GameManager.Instance.isGamePaused == false);
             AddNewOrder(GenerateOrder());
