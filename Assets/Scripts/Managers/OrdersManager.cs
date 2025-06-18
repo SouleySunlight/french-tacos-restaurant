@@ -7,7 +7,6 @@ public class OrdersManager : MonoBehaviour
 {
     private OrdersVisual ordersVisual;
     private List<Order> orders = new();
-
     private readonly int DEFAULT_DELAY_BETWEEN_ORDERS = 60;
     private readonly float popularityFactor = 0.9f;
 
@@ -44,13 +43,10 @@ public class OrdersManager : MonoBehaviour
     List<Ingredient> GenerateSingleTacosComposition()
     {
         List<Ingredient> ingredients = new();
-        var availableIngrdients = GameManager.Instance.InventoryManager.UnlockedIngredients;
-        var numberOfIngredients = Random.Range(1, availableIngrdients.Count);
 
-        for (int i = 0; i < numberOfIngredients; i++)
-        {
-            ingredients.Add(availableIngrdients[Random.Range(0, availableIngrdients.Count)]);
-        }
+        ingredients.Add(GetMeatOfTheTacos());
+        ingredients.AddRange(GetVegetablesOfTheTacos());
+        ingredients.AddRange(GetSauceOfTheTacos());
 
         return ingredients;
     }
@@ -161,5 +157,43 @@ public class OrdersManager : MonoBehaviour
     public Order GetOrderWithTacos(Tacos tacos)
     {
         return orders.Find(order => order.expectedOrder.Exists(orderItem => orderItem.tacosIngredients.OrderBy(x => x.GetInstanceID()).SequenceEqual(tacos.ingredients.OrderBy(x => x.GetInstanceID()))));
+    }
+
+    List<Ingredient> GetVegetablesOfTheTacos()
+    {
+        var availableVegetables = GameManager.Instance.InventoryManager.UnlockedIngredients
+            .FindAll(ingredient => ingredient.category == IngredientCategoryEnum.VEGETABLE);
+        var numberOfVegetables = Random.Range(1, availableVegetables.Count + 1);
+        var selectedVegetables = new List<Ingredient>();
+        for (int i = 0; i < numberOfVegetables; i++)
+        {
+            var vegetableToAdd = availableVegetables[Random.Range(0, availableVegetables.Count)];
+            selectedVegetables.Add(vegetableToAdd);
+            availableVegetables.Remove(vegetableToAdd);
+        }
+        return selectedVegetables;
+    }
+
+    List<Ingredient> GetSauceOfTheTacos()
+    {
+        var availableSauces = GameManager.Instance.InventoryManager.UnlockedIngredients
+            .FindAll(ingredient => ingredient.category == IngredientCategoryEnum.SAUCE);
+        if (availableSauces.Count == 0) { return new List<Ingredient>(); }
+        var numberOfSauces = Random.Range(0, availableSauces.Count >= 2 ? 3 : 2);
+        var selectedSauces = new List<Ingredient>();
+        for (int i = 0; i < numberOfSauces; i++)
+        {
+            var vegetableToAdd = availableSauces[Random.Range(0, availableSauces.Count)];
+            selectedSauces.Add(vegetableToAdd);
+            availableSauces.Remove(vegetableToAdd);
+        }
+        return selectedSauces;
+    }
+
+    Ingredient GetMeatOfTheTacos()
+    {
+        var availableMeat = GameManager.Instance.InventoryManager.UnlockedIngredients
+            .FindAll(ingredient => ingredient.category == IngredientCategoryEnum.MEAT);
+        return availableMeat[Random.Range(0, availableMeat.Count)];
     }
 }
