@@ -31,5 +31,6 @@ public enum IngredientCategoryEnum
     VEGETABLE,
     FRIES,
     SAUCE_GRUYERE_INGREDIENT,
-    SAUCE_GRUYERE
+    SAUCE_GRUYERE,
+    SAUCE
 }

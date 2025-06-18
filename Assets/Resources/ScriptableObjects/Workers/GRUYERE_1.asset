@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bef891038ce44164b3933d595664312, type: 3}
   m_Name: GRUYERE_1
   m_EditorClassIdentifier: 
-  id: 
+  id: GRUYERE1
   level: 1
-  secondsBetweenTasks: 0
-  pricePerDay: 0
-  role: 0
+  secondsBetweenTasks: 1
+  pricePerDay: 1
+  role: 4

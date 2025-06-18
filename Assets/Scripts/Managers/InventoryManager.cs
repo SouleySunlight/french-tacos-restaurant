@@ -188,7 +188,7 @@ public class InventoryManager : MonoBehaviour
     }
     public void UnlockIngredient(Ingredient ingredient)
     {
-        if (ingredient.category == IngredientCategoryEnum.MEAT)
+        if (ingredient.NeedProcessing())
         {
             unprocessedInventory[ingredient.id] = new InventorySlot(GlobalConstant.DEFAULT_INGREDIENT_AMOUNT);
             inventory[ingredient.id] = new InventorySlot(0);

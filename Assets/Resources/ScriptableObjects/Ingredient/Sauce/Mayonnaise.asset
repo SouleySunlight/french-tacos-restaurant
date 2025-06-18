@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 945df2e4b118f4f42ab5d24478048d00, type: 3}
-  m_Name: Tomato
+  m_Name: Mayonnaise
   m_EditorClassIdentifier: 
-  id: TOM
-  name: Tomato
-  unprocessedSprite: {fileID: 0}
-  processedSprite: {fileID: -2611690852699305752, guid: b4778249c892f4e71b82db7a10f511a9, type: 3}
-  wastedSprite: {fileID: 0}
+  id: MAYO
+  name: Mayonnaise
+  unprocessedSprite: {fileID: -5541170273893586733, guid: 7d7adb093feaf4a458edf65bccfafb6a, type: 3}
+  processedSprite: {fileID: -5541170273893586733, guid: 7d7adb093feaf4a458edf65bccfafb6a, type: 3}
+  wastedSprite: {fileID: -5541170273893586733, guid: 7d7adb093feaf4a458edf65bccfafb6a, type: 3}
   processingTime: 0
   wastingTimeOffset: 0
-  category: 1
-  isUnlockedFromTheBeginning: 0
-  priceToUnlock: 5
+  category: 5
+  isUnlockedFromTheBeginning: 1
+  priceToUnlock: 0
   priceToRefill: 1
   canBeAddedToTacos: 1
   canBePurshased: 1
-  popularity: 1
+  popularity: 0
