@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ public class IngredientButtonDisplayer : MonoBehaviour
 
     [SerializeField] private Button button;
     [SerializeField] private Image ingredientImage;
+    [SerializeField] private TMP_Text quantityText;
 
 
     void Start()
@@ -19,10 +21,16 @@ public class IngredientButtonDisplayer : MonoBehaviour
     public void UpdateVisual()
     {
         ingredientImage.sprite = ingredientData.processedSprite;
+        UpdateQuantity();
     }
 
     public void AddListener(UnityAction action)
     {
         button.onClick.AddListener(action);
+    }
+
+    public void UpdateQuantity()
+    {
+        quantityText.text = GameManager.Instance.InventoryManager.GetStockString(ingredientData);
     }
 }

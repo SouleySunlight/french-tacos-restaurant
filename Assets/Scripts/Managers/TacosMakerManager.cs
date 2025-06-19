@@ -59,9 +59,9 @@ public class TacosMakerManager : MonoBehaviour
         return wrappedTacos;
     }
 
-    public void UpdateButtonsVisual()
+    public void UpdateButtonsVisualQuantity()
     {
-        tacosMakerVisual.UpdateButtonsVisual();
+        tacosMakerVisual.UpdateButtonsVisualQuantity();
     }
 
     List<Ingredient> GetIngredientsAddableToTacos()

@@ -3171,6 +3171,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 796927919}
     m_Modifications:
+    - target: {fileID: 976346061138423414, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: ingredientButtonPrefab
+      value: 
+      objectReference: {fileID: 3788280034557678561, guid: 6acfae9cecf9e421a9ee1aa4133cdc8e, type: 3}
     - target: {fileID: 2303933431091396998, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: m_Name
       value: PlayZone
