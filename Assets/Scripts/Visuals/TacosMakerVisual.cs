@@ -26,7 +26,7 @@ public class TacosMakerVisual : MonoBehaviour, IView
     {
         foreach (var button in buttons)
         {
-            button.GetComponent<LegacyIngredientButtonDisplayer>().GetComponent<LegacyIngredientButtonDisplayer>().UpdateVisual();
+            button.GetComponent<IngredientButtonDisplayer>().GetComponent<IngredientButtonDisplayer>().UpdateVisual();
         }
     }
 
@@ -47,10 +47,9 @@ public class TacosMakerVisual : MonoBehaviour, IView
     public void AddIngredient(Ingredient ingredient)
     {
         var buttonPrefab = Instantiate(ingredientButtonPrefab, ingredientButtonFirstTransform.position, Quaternion.identity, ingredientButtonFirstTransform);
-        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().ingredientData = ingredient;
-        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().shouldShowQuantity = true;
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
 
-        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().AddListener(() => OnClickToAddIngredient(ingredient));
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => OnClickToAddIngredient(ingredient));
         buttons.Add(buttonPrefab);
         UpdateVisual();
     }
@@ -81,7 +80,7 @@ public class TacosMakerVisual : MonoBehaviour, IView
     {
         var createdIngredient = Instantiate(ingredientPrefab, onCreationTacos.GetComponent<RectTransform>().position, Quaternion.identity, onCreationTacos.GetComponent<RectTransform>());
         createdIngredient.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
-        buttons.Find(button => button.GetComponent<LegacyIngredientButtonDisplayer>().ingredientData == ingredient).GetComponent<LegacyIngredientButtonDisplayer>().UpdateVisual();
+        buttons.Find(button => button.GetComponent<IngredientButtonDisplayer>().ingredientData == ingredient).GetComponent<IngredientButtonDisplayer>().UpdateVisual();
     }
 
     public void WrapTacos(Tacos createdTacos)
