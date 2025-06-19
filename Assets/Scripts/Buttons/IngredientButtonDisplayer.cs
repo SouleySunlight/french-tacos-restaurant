@@ -12,6 +12,9 @@ public class IngredientButtonDisplayer : MonoBehaviour
     [SerializeField] private Image ingredientImage;
     [SerializeField] private TMP_Text quantityText;
 
+    [SerializeField] private GameObject shadow;
+    [SerializeField] private RectTransform buttonTransform;
+
 
     void Start()
     {
@@ -32,5 +35,19 @@ public class IngredientButtonDisplayer : MonoBehaviour
     public void UpdateQuantity()
     {
         quantityText.text = GameManager.Instance.InventoryManager.GetStockString(ingredientData);
+    }
+
+    public void OnPressDown()
+    {
+        var newPosition = new Vector2(buttonTransform.anchoredPosition.x, buttonTransform.anchoredPosition.y - 5f);
+        buttonTransform.anchoredPosition = newPosition;
+        shadow.SetActive(false);
+    }
+
+    public void OnRelease()
+    {
+        var newPosition = new Vector2(buttonTransform.anchoredPosition.x, buttonTransform.anchoredPosition.y + 5f);
+        buttonTransform.anchoredPosition = newPosition;
+        shadow.SetActive(true);
     }
 }
