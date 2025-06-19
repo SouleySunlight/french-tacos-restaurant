@@ -36,12 +36,12 @@ public class FryerVisual : MonoBehaviour, IView
     public void AddAvailableIngredient(Ingredient ingredient)
     {
         var buttonPrefab = Instantiate(ingredientButtonPrefab, firstButtonPosition.position, Quaternion.identity, firstButtonPosition);
-        buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
-        buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowUnprocessedQuantity = true;
+        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().ingredientData = ingredient;
+        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().shouldShowUnprocessedQuantity = true;
 
 
-        buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.FryerManager.FryIngredients(ingredient));
-        buttonPrefab.GetComponent<IngredientButtonDisplayer>().UpdateVisual();
+        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().AddListener(() => GameManager.Instance.FryerManager.FryIngredients(ingredient));
+        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().UpdateVisual();
         buttons.Add(buttonPrefab);
         UpdateVisual();
     }
@@ -88,7 +88,7 @@ public class FryerVisual : MonoBehaviour, IView
     {
         foreach (var button in buttons)
         {
-            button.GetComponent<IngredientButtonDisplayer>().UpdateVisual();
+            button.GetComponent<LegacyIngredientButtonDisplayer>().UpdateVisual();
         }
     }
 

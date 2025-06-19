@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class IngredientButtonDisplayer : MonoBehaviour
+public class LegacyIngredientButtonDisplayer : MonoBehaviour
 {
     public Ingredient ingredientData;
     public bool shouldShowQuantity = false;
