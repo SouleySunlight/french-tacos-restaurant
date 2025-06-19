@@ -16,10 +16,12 @@ public class Ingredient : ScriptableObject
     public int priceToRefill = 1;
     public bool canBeAddedToTacos = true;
     public bool canBePurshased = true;
+    public bool inEveryTacos = false;
+    public int popularity = 0;
+    public ProcessingMethodEnum processingMethod = ProcessingMethodEnum.NONE;
 
     public bool NeedProcessing()
     {
-
         return category == IngredientCategoryEnum.MEAT || category == IngredientCategoryEnum.FRIES;
     }
 
@@ -31,5 +33,13 @@ public enum IngredientCategoryEnum
     VEGETABLE,
     FRIES,
     SAUCE_GRUYERE_INGREDIENT,
-    SAUCE_GRUYERE
+    SAUCE_GRUYERE,
+    SAUCE
+}
+
+public enum ProcessingMethodEnum
+{
+    HOTPLATE,
+    FRYER,
+    NONE
 }

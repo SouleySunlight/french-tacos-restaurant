@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         InitializeManagers();
+        Application.targetFrameRate = 30;
         if (Instance == null)
         {
             Instance = this;
@@ -146,6 +147,7 @@ public class GameManager : MonoBehaviour
         ShopManager.UnlockIngredient(ingredient);
         TacosMakerManager.AddAvailableIngredient(ingredient);
         HotplateManager.AddAvailableIngredient(ingredient);
+        FryerManager.AddAvailableIngredient(ingredient);
     }
 
     public void RefillIngredient(Ingredient ingredient)

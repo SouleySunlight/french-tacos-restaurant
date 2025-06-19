@@ -10,21 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 945df2e4b118f4f42ab5d24478048d00, type: 3}
-  m_Name: Fries
+  m_Name: Kebab
   m_EditorClassIdentifier: 
-  id: FRI
-  name: Fries
-  unprocessedSprite: {fileID: 7013590977263907706, guid: 4f2c7f66c3f70472ba0b7b57d8554ca7, type: 3}
-  processedSprite: {fileID: 3514841378315803860, guid: 9045b38e669d9481b89ad966577a651e, type: 3}
-  wastedSprite: {fileID: 5049984650263188997, guid: 4825d14b134de4ca880ea2fd616d56ba, type: 3}
+  id: KEB
+  name: Kebab
+  unprocessedSprite: {fileID: -3183756464830776683, guid: 258c5ef083d2a4cf5b15f31d2f3a2304, type: 3}
+  processedSprite: {fileID: -7779700207323011058, guid: b5974fe446e784fb9bd8566bf9f623be, type: 3}
+  wastedSprite: {fileID: 3626891485384884952, guid: 4adec8d4c4c2e45b89c030767fcfd84b, type: 3}
   processingTime: 20
   wastingTimeOffset: 10
-  category: 2
-  isUnlockedFromTheBeginning: 1
-  priceToUnlock: 0
+  category: 0
+  isUnlockedFromTheBeginning: 0
+  priceToUnlock: 100
   priceToRefill: 1
   canBeAddedToTacos: 1
   canBePurshased: 1
-  inEveryTacos: 1
-  popularity: 0
-  processingMethod: 1
+  popularity: 1
+  processingMethod: 0

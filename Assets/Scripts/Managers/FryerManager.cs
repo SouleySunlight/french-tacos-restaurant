@@ -63,12 +63,12 @@ public class FryerManager : MonoBehaviour, IWorkStation
 
     List<Ingredient> GetIngredientsToFry()
     {
-        return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll(ingredient => ingredient.category == IngredientCategoryEnum.FRIES);
+        return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll(ingredient => ingredient.processingMethod == ProcessingMethodEnum.FRYER);
     }
 
     public void AddAvailableIngredient(Ingredient ingredient)
     {
-        if (ingredient.category == IngredientCategoryEnum.FRIES)
+        if (ingredient.processingMethod == ProcessingMethodEnum.FRYER)
         {
             fryerVisuals.AddAvailableIngredient(ingredient);
         }

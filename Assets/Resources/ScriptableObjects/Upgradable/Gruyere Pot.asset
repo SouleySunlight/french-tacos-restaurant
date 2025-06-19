@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06a9a7151dca4e6090757541d4e70c8, type: 3}
   m_Name: Gruyere Pot
   m_EditorClassIdentifier: 
-  id: 
+  id: GRUYERE_POT
   baseCost: 5
   costEvolutionFactor: 1.5
   maxLevel: 25

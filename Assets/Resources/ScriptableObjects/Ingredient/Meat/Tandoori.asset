@@ -10,21 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 945df2e4b118f4f42ab5d24478048d00, type: 3}
-  m_Name: Sauce gruyere
+  m_Name: Tandoori
   m_EditorClassIdentifier: 
-  id: GRU_SAU
-  name: "Sauce gruy\xE8re"
-  unprocessedSprite: {fileID: 1314464321275469919, guid: 26ce91c37b5e24a4f8e7c8d0db28488d, type: 3}
-  processedSprite: {fileID: 1314464321275469919, guid: 26ce91c37b5e24a4f8e7c8d0db28488d, type: 3}
+  id: TAN
+  name: Tandoori
+  unprocessedSprite: {fileID: 326428705628688331, guid: 6d499b06acf174432884fbee0baad249, type: 3}
+  processedSprite: {fileID: -1112223530740844591, guid: bc6ac03127f8848279d255d1a9fb1efa, type: 3}
   wastedSprite: {fileID: 3626891485384884952, guid: 4adec8d4c4c2e45b89c030767fcfd84b, type: 3}
-  processingTime: 10
+  processingTime: 15
   wastingTimeOffset: 10
-  category: 4
-  isUnlockedFromTheBeginning: 1
-  priceToUnlock: 0
+  category: 0
+  isUnlockedFromTheBeginning: 0
+  priceToUnlock: 60
   priceToRefill: 1
   canBeAddedToTacos: 1
-  canBePurshased: 0
-  inEveryTacos: 1
-  popularity: 0
-  processingMethod: 2
+  canBePurshased: 1
+  popularity: 1
+  processingMethod: 0
