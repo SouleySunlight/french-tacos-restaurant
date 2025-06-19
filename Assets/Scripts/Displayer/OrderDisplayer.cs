@@ -33,7 +33,6 @@ public class OrderDisplayer : MonoBehaviour
     public string WriteMeat(OrderItem orderItem)
     {
         var meat = orderItem.tacosIngredients.Find(ingredient => ingredient.category == IngredientCategoryEnum.MEAT);
-        Debug.Log(meat.id);
         return meat.id;
     }
 
