@@ -44,8 +44,8 @@ public class HotplateVisuals : MonoBehaviour, IView
         foreach (var button in buttons)
         {
             var buttonPosition = new Vector3(
-                firstIngredientPosition.position.x + GlobalConstant.INGREDIENT_BUTTON_HORIZONTAL_GAP * (index % NUMBER_OF_BUTTON_PER_ROW),
-                firstIngredientPosition.position.y + GlobalConstant.INGREDIENT_BUTTON_VERTICAL_GAP * (index / NUMBER_OF_BUTTON_PER_ROW),
+                firstIngredientPosition.position.x + GlobalConstant.LEGACY_INGREDIENT_BUTTON_HORIZONTAL_GAP * (index % NUMBER_OF_BUTTON_PER_ROW),
+                firstIngredientPosition.position.y + GlobalConstant.LEGACY_INGREDIENT_BUTTON_VERTICAL_GAP * (index / NUMBER_OF_BUTTON_PER_ROW),
                 firstIngredientPosition.position.z
             );
 

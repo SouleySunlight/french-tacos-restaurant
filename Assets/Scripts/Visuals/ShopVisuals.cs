@@ -73,7 +73,7 @@ public class ShopVisuals : MonoBehaviour, IView
         {
             var buttonPosition = new Vector3(
                            firstButtonPosition.position.x,
-                           firstButtonPosition.position.y + GlobalConstant.INGREDIENT_BUTTON_VERTICAL_GAP * index,
+                           firstButtonPosition.position.y + GlobalConstant.LEGACY_INGREDIENT_BUTTON_VERTICAL_GAP * index,
                            firstButtonPosition.position.z
                        );
             button.GetComponent<RectTransform>().position = buttonPosition;

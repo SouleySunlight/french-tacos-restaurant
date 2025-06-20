@@ -19,10 +19,12 @@ MonoBehaviour:
   wastedSprite: {fileID: 0}
   processingTime: 0
   wastingTimeOffset: 0
-  category: 0
+  category: 5
   isUnlockedFromTheBeginning: 0
   priceToUnlock: 60
   priceToRefill: 1
   canBeAddedToTacos: 1
   canBePurshased: 1
+  inEveryTacos: 0
   popularity: 1
+  processingMethod: 2
