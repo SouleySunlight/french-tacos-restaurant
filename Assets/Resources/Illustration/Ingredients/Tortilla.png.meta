@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 291aafd287fb04e98931238b740f0699
+guid: baea998c6bace4c46a30f57e0a7bcf98
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6367466014919077051
-    second: depositphotos_68697669-stock-photo-piadina-round-italian-tortilla_0
+      213: 7733675936600132061
+    second: Tortilla_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: depositphotos_68697669-stock-photo-piadina-round-italian-tortilla_0
+      name: Tortilla_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 600
-        height: 600
+        width: 1000
+        height: 986
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bbcaf92ba98cd5850800000000000000
-      internalID: 6367466014919077051
+      spriteID: dd989012a49835b60800000000000000
+      internalID: 7733675936600132061
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      depositphotos_68697669-stock-photo-piadina-round-italian-tortilla_0: 6367466014919077051
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

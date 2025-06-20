@@ -60,8 +60,6 @@ public class OrdersManager : MonoBehaviour
         while (true)
         {
             var timeToWait = DEFAULT_DELAY_BETWEEN_ORDERS * Mathf.Pow(popularityFactor, GameManager.Instance.InventoryManager.Popularity);
-            Debug.Log(GameManager.Instance.InventoryManager.Popularity);
-            Debug.Log(timeToWait);
             yield return new WaitForSeconds(timeToWait);
             yield return new WaitUntil(() => GameManager.Instance.isGamePaused == false);
             AddNewOrder(GenerateOrder());

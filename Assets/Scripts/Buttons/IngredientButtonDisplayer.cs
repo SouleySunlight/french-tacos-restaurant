@@ -10,6 +10,7 @@ public class IngredientButtonDisplayer : MonoBehaviour
 
     [SerializeField] private Button button;
     [SerializeField] private Image ingredientImage;
+    [SerializeField] private Image borderImage;
     [SerializeField] private TMP_Text quantityText;
 
     [SerializeField] private GameObject shadow;
@@ -25,6 +26,7 @@ public class IngredientButtonDisplayer : MonoBehaviour
     {
         ingredientImage.sprite = ingredientData.processedSprite;
         UpdateQuantity();
+        UpdateBorderColor();
     }
 
     public void AddListener(UnityAction action)
@@ -35,6 +37,17 @@ public class IngredientButtonDisplayer : MonoBehaviour
     public void UpdateQuantity()
     {
         quantityText.text = GameManager.Instance.InventoryManager.GetStockString(ingredientData);
+    }
+
+    void UpdateBorderColor()
+    {
+        borderImage.color = ingredientData.category switch
+        {
+            IngredientCategoryEnum.MEAT => Colors.GetColorFromHexa(Colors.BROWN_MEAT),
+            IngredientCategoryEnum.VEGETABLE => Colors.GetColorFromHexa(Colors.GREEN_VEGETABLE),
+            IngredientCategoryEnum.SAUCE => Colors.GetColorFromHexa(Colors.YELLOW_SAUCE),
+            _ => Colors.GetColorFromHexa(Colors.GREY_EVERY_TACOS),
+        };
     }
 
     public void OnPressDown()

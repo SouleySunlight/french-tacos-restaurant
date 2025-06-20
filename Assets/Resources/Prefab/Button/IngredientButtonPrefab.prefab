@@ -340,6 +340,7 @@ MonoBehaviour:
   ingredientData: {fileID: 0}
   button: {fileID: 6148044168289923043}
   ingredientImage: {fileID: 5836331479336682949}
+  borderImage: {fileID: 7182114147430114875}
   quantityText: {fileID: 1039544934047029593}
   shadow: {fileID: 1650135476217976709}
   buttonTransform: {fileID: 7639906047380686552}
