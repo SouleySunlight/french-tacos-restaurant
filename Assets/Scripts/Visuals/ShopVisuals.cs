@@ -21,7 +21,7 @@ public class ShopVisuals : MonoBehaviour, IView
     {
         foreach (var button in buttons)
         {
-            button.GetComponent<IngredientButtonDisplayer>().GetComponent<IngredientButtonDisplayer>().UpdateVisual();
+            button.GetComponent<LegacyIngredientButtonDisplayer>().GetComponent<LegacyIngredientButtonDisplayer>().UpdateVisual();
         }
     }
 
@@ -32,9 +32,9 @@ public class ShopVisuals : MonoBehaviour, IView
         foreach (Ingredient ingredient in ingredients)
         {
             var buttonPrefab = Instantiate(ingredientButtonPrefab, firstButtonPosition.position, Quaternion.identity, firstButtonPosition);
-            buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
-            buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.UnlockIngredient(ingredient));
-            buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowUnlockPrice = true;
+            buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().ingredientData = ingredient;
+            buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().AddListener(() => GameManager.Instance.UnlockIngredient(ingredient));
+            buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().shouldShowUnlockPrice = true;
 
             buttons.Add(buttonPrefab);
         }
@@ -48,10 +48,10 @@ public class ShopVisuals : MonoBehaviour, IView
         foreach (Ingredient ingredient in ingredients)
         {
             var buttonPrefab = Instantiate(ingredientButtonPrefab, firstButtonPosition.position, Quaternion.identity, firstButtonPosition);
-            buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.RefillIngredient(ingredient));
-            buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
-            buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowRefillPrice = true;
-            buttonPrefab.GetComponent<IngredientButtonDisplayer>().shouldShowUnprocessedQuantity = true;
+            buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().AddListener(() => GameManager.Instance.RefillIngredient(ingredient));
+            buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().ingredientData = ingredient;
+            buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().shouldShowRefillPrice = true;
+            buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().shouldShowUnprocessedQuantity = true;
 
             buttons.Add(buttonPrefab);
         }
@@ -60,7 +60,7 @@ public class ShopVisuals : MonoBehaviour, IView
 
     public void RemoveIngredientToBuy(Ingredient ingredient)
     {
-        var buttonToRemove = buttons.Find(button => button.GetComponent<IngredientButtonDisplayer>().ingredientData.id == ingredient.id);
+        var buttonToRemove = buttons.Find(button => button.GetComponent<LegacyIngredientButtonDisplayer>().ingredientData.id == ingredient.id);
         Destroy(buttonToRemove);
         buttons.Remove(buttonToRemove);
         UpdateVisual();
@@ -73,7 +73,7 @@ public class ShopVisuals : MonoBehaviour, IView
         {
             var buttonPosition = new Vector3(
                            firstButtonPosition.position.x,
-                           firstButtonPosition.position.y + GlobalConstant.INGREDIENT_BUTTON_VERTICAL_GAP * index,
+                           firstButtonPosition.position.y + GlobalConstant.LEGACY_INGREDIENT_BUTTON_VERTICAL_GAP * index,
                            firstButtonPosition.position.z
                        );
             button.GetComponent<RectTransform>().position = buttonPosition;
@@ -97,6 +97,6 @@ public class ShopVisuals : MonoBehaviour, IView
 
     public void UpdateIngredientButtonVisual(Ingredient ingredient)
     {
-        buttons.Find(button => button.GetComponent<IngredientButtonDisplayer>().ingredientData.id == ingredient.id).GetComponent<IngredientButtonDisplayer>().UpdateVisual();
+        buttons.Find(button => button.GetComponent<LegacyIngredientButtonDisplayer>().ingredientData.id == ingredient.id).GetComponent<LegacyIngredientButtonDisplayer>().UpdateVisual();
     }
 }

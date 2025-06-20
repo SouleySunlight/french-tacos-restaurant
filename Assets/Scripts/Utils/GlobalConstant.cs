@@ -8,8 +8,11 @@ public class GlobalConstant
     public static readonly int DEFAULT_UPGRADE_BASE_COST = 5;
     public static readonly float DEFAULT_UPGRADE_COST_FACTOR = 1.5f;
     public static readonly float DEFAULT_SPEED_UPGRADE = 0.9f;
-    public static readonly int INGREDIENT_BUTTON_HORIZONTAL_GAP = 345;
-    public static readonly int INGREDIENT_BUTTON_VERTICAL_GAP = -200;
+    public static readonly int LEGACY_INGREDIENT_BUTTON_HORIZONTAL_GAP = 345;
+    public static readonly int LEGACY_INGREDIENT_BUTTON_VERTICAL_GAP = -200;
+
+    public static readonly int INGREDIENT_BUTTON_HORIZONTAL_GAP = 140;
+    public static readonly int INGREDIENT_BUTTON_VERTICAL_GAP = -130;
     public static readonly int INGREDIENT_IMAGE_DIMENSION = 100;
     public static readonly int INGREDIENT_FRYER_IMAGE_DIMENSION = 300;
     public static readonly int INGREDIENT_IN_TACOS_IMAGE_DIMENSION = 500;

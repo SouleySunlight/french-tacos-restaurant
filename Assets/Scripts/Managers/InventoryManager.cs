@@ -15,7 +15,7 @@ public class InventoryManager : MonoBehaviour
 
     public string GetStockString(Ingredient ingredient)
     {
-        return "(" + inventory[ingredient.id].currentAmount + "/" + processedIngredientMaxAmount + ")";
+        return inventory[ingredient.id].currentAmount + "/" + processedIngredientMaxAmount;
     }
 
     public string GetUnprocessedStockString(Ingredient ingredient)
@@ -248,7 +248,7 @@ public class InventoryManager : MonoBehaviour
 
     void OnProcessedIngredientAdded()
     {
-        GameManager.Instance.TacosMakerManager.UpdateButtonsVisual();
+        GameManager.Instance.TacosMakerManager.UpdateButtonsVisualQuantity();
     }
 
     void OnUnprocessedIngredientAdded()
