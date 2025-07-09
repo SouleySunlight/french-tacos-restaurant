@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: KET
   name: Ketchup
-  unprocessedSprite: {fileID: -9032648240131754058, guid: aa41b401907b24119b03a7af5042afdd, type: 3}
-  processedSprite: {fileID: -9032648240131754058, guid: aa41b401907b24119b03a7af5042afdd, type: 3}
+  unprocessedSprite: {fileID: -8705798204074543797, guid: 80d741a0b437e4f1da2c3d0133e963f3, type: 3}
+  processedSprite: {fileID: -8705798204074543797, guid: 80d741a0b437e4f1da2c3d0133e963f3, type: 3}
   wastedSprite: {fileID: 0}
   processingTime: 0
   wastingTimeOffset: 0
@@ -25,4 +25,6 @@ MonoBehaviour:
   priceToRefill: 1
   canBeAddedToTacos: 1
   canBePurshased: 1
+  inEveryTacos: 0
   popularity: 0
+  processingMethod: 2

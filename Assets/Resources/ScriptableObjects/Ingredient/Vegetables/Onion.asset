@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: ONI
   name: Onion
-  unprocessedSprite: {fileID: -7769210343091266914, guid: 08d60b11f78ce4b0c9e2d7dc776dba6f, type: 3}
-  processedSprite: {fileID: -7769210343091266914, guid: 08d60b11f78ce4b0c9e2d7dc776dba6f, type: 3}
+  unprocessedSprite: {fileID: 5465580561085644368, guid: 7c7b050a4cdee4df0a4ef7a4dae1c255, type: 3}
+  processedSprite: {fileID: 5465580561085644368, guid: 7c7b050a4cdee4df0a4ef7a4dae1c255, type: 3}
   wastedSprite: {fileID: -7769210343091266914, guid: 08d60b11f78ce4b0c9e2d7dc776dba6f, type: 3}
   processingTime: 0
   wastingTimeOffset: 0
@@ -25,5 +25,6 @@ MonoBehaviour:
   priceToRefill: 1
   canBeAddedToTacos: 1
   canBePurshased: 1
+  inEveryTacos: 0
   popularity: 1
   processingMethod: 2

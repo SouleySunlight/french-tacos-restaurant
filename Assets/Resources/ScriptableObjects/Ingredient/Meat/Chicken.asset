@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: CHI
   name: Chicken
-  unprocessedSprite: {fileID: 8664216723903435382, guid: 8f969bb8601ea492abc9c4efe1c98608, type: 3}
-  processedSprite: {fileID: 6165403363357119445, guid: 83876ad9272de419b8c462d3e1ae9e0a, type: 3}
-  wastedSprite: {fileID: 3626891485384884952, guid: 4adec8d4c4c2e45b89c030767fcfd84b, type: 3}
+  unprocessedSprite: {fileID: -4819368099983814320, guid: 4ebf07947b0c74156992d49a140e73bc, type: 3}
+  processedSprite: {fileID: -7684991388872741166, guid: b6e58a84e62fb4d67bfcb7f3eb995d1f, type: 3}
+  wastedSprite: {fileID: 1274350296307469334, guid: 49df8eed971a14838879508d96baf7a9, type: 3}
   processingTime: 10
   wastingTimeOffset: 10
   category: 0
@@ -25,5 +25,6 @@ MonoBehaviour:
   priceToRefill: 1
   canBeAddedToTacos: 1
   canBePurshased: 1
+  inEveryTacos: 0
   popularity: 0
   processingMethod: 0

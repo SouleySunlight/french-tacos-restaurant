@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: HAR
   name: Harissa
-  unprocessedSprite: {fileID: -7661742287759312346, guid: 591885de9032b4fbbb48c003cc02865b, type: 3}
-  processedSprite: {fileID: -7661742287759312346, guid: 591885de9032b4fbbb48c003cc02865b, type: 3}
+  unprocessedSprite: {fileID: 120917907506126235, guid: ecf935ca4891c4e7bbee9c14c0b5b906, type: 3}
+  processedSprite: {fileID: 120917907506126235, guid: ecf935ca4891c4e7bbee9c14c0b5b906, type: 3}
   wastedSprite: {fileID: 0}
   processingTime: 0
   wastingTimeOffset: 0
@@ -25,4 +25,6 @@ MonoBehaviour:
   priceToRefill: 1
   canBeAddedToTacos: 1
   canBePurshased: 1
+  inEveryTacos: 0
   popularity: 1
+  processingMethod: 2

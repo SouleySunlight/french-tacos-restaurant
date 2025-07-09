@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: TOM
   name: Tomato
-  unprocessedSprite: {fileID: 0}
-  processedSprite: {fileID: -2611690852699305752, guid: b4778249c892f4e71b82db7a10f511a9, type: 3}
-  wastedSprite: {fileID: 0}
+  unprocessedSprite: {fileID: -8113185096396602001, guid: e31b8133ad1ff4d64896da07b23d962e, type: 3}
+  processedSprite: {fileID: -8113185096396602001, guid: e31b8133ad1ff4d64896da07b23d962e, type: 3}
+  wastedSprite: {fileID: -8113185096396602001, guid: e31b8133ad1ff4d64896da07b23d962e, type: 3}
   processingTime: 0
   wastingTimeOffset: 0
   category: 1
@@ -25,4 +25,6 @@ MonoBehaviour:
   priceToRefill: 1
   canBeAddedToTacos: 1
   canBePurshased: 1
+  inEveryTacos: 0
   popularity: 1
+  processingMethod: 2

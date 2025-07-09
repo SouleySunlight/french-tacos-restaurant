@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: NUG
   name: Nuggets
-  unprocessedSprite: {fileID: 6733056002609741397, guid: 2092edbccebfe40efb1cd0a7667bd674, type: 3}
-  processedSprite: {fileID: 7829007464044354663, guid: 993fd5f61a8f04483b4e8a0e73a6a68e, type: 3}
-  wastedSprite: {fileID: 3626891485384884952, guid: 4adec8d4c4c2e45b89c030767fcfd84b, type: 3}
+  unprocessedSprite: {fileID: 9021060880313602270, guid: 4412eaa90af87481b8763fcc1e8f97d3, type: 3}
+  processedSprite: {fileID: 3694568637022925084, guid: 19ef12167c3834faf99f7e4ac24d4cee, type: 3}
+  wastedSprite: {fileID: -862449173440144770, guid: c40178316c32c469da841e3e67d6d93a, type: 3}
   processingTime: 15
   wastingTimeOffset: 10
   category: 0
@@ -25,5 +25,6 @@ MonoBehaviour:
   priceToRefill: 1
   canBeAddedToTacos: 1
   canBePurshased: 1
+  inEveryTacos: 0
   popularity: 1
   processingMethod: 1

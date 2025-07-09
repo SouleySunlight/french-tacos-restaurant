@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: GRU_SAU
   name: "Sauce gruy\xE8re"
-  unprocessedSprite: {fileID: 1314464321275469919, guid: 26ce91c37b5e24a4f8e7c8d0db28488d, type: 3}
-  processedSprite: {fileID: 1314464321275469919, guid: 26ce91c37b5e24a4f8e7c8d0db28488d, type: 3}
-  wastedSprite: {fileID: 3626891485384884952, guid: 4adec8d4c4c2e45b89c030767fcfd84b, type: 3}
+  unprocessedSprite: {fileID: 9079378957907852737, guid: 779257dda51594c3f97537bd13b83bac, type: 3}
+  processedSprite: {fileID: 9079378957907852737, guid: 779257dda51594c3f97537bd13b83bac, type: 3}
+  wastedSprite: {fileID: 9079378957907852737, guid: 779257dda51594c3f97537bd13b83bac, type: 3}
   processingTime: 10
   wastingTimeOffset: 10
   category: 4

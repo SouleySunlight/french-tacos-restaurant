@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: CB
   name: Cordon Bleu
-  unprocessedSprite: {fileID: -1453088559475682311, guid: 53568aa10c83f4e55be0c93ab15e973f, type: 3}
-  processedSprite: {fileID: 3871033751782490325, guid: f43b910a22b4d43fb9cfedcc7ba46029, type: 3}
-  wastedSprite: {fileID: 3626891485384884952, guid: 4adec8d4c4c2e45b89c030767fcfd84b, type: 3}
+  unprocessedSprite: {fileID: 9147664108285523137, guid: 842fb4c59bd044424a43ae363ce6de84, type: 3}
+  processedSprite: {fileID: 3723111353096799657, guid: 8b7812309108a48279baa4e1aaed6cc2, type: 3}
+  wastedSprite: {fileID: 6747042009559755091, guid: 3b6b2550006c04e15a28e7b9a16dd5a6, type: 3}
   processingTime: 20
   wastingTimeOffset: 10
   category: 0
@@ -25,5 +25,6 @@ MonoBehaviour:
   priceToRefill: 1
   canBeAddedToTacos: 1
   canBePurshased: 1
+  inEveryTacos: 0
   popularity: 1
   processingMethod: 1

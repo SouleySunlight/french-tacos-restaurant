@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: TAN
   name: Tandoori
-  unprocessedSprite: {fileID: 326428705628688331, guid: 6d499b06acf174432884fbee0baad249, type: 3}
-  processedSprite: {fileID: -1112223530740844591, guid: bc6ac03127f8848279d255d1a9fb1efa, type: 3}
-  wastedSprite: {fileID: 3626891485384884952, guid: 4adec8d4c4c2e45b89c030767fcfd84b, type: 3}
+  unprocessedSprite: {fileID: -6470008783012592604, guid: 08742b1aad2694e0bbf75dc8ffc453f4, type: 3}
+  processedSprite: {fileID: -8607705771408386891, guid: df2a20d7c117645f189e3b46801263c1, type: 3}
+  wastedSprite: {fileID: 1274350296307469334, guid: 49df8eed971a14838879508d96baf7a9, type: 3}
   processingTime: 15
   wastingTimeOffset: 10
   category: 0
@@ -25,5 +25,6 @@ MonoBehaviour:
   priceToRefill: 1
   canBeAddedToTacos: 1
   canBePurshased: 1
+  inEveryTacos: 0
   popularity: 1
   processingMethod: 0

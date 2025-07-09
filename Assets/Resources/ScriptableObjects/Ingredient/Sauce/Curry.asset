@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: CUR
   name: Curry
-  unprocessedSprite: {fileID: -3368903389246158836, guid: 8dc24ebf0bf5649b5b0c95bf4583672f, type: 3}
-  processedSprite: {fileID: -3368903389246158836, guid: 8dc24ebf0bf5649b5b0c95bf4583672f, type: 3}
+  unprocessedSprite: {fileID: -6989133270213786095, guid: dbb6baf87a1554ebe92b2790e2940486, type: 3}
+  processedSprite: {fileID: -6989133270213786095, guid: dbb6baf87a1554ebe92b2790e2940486, type: 3}
   wastedSprite: {fileID: 0}
   processingTime: 0
   wastingTimeOffset: 0
