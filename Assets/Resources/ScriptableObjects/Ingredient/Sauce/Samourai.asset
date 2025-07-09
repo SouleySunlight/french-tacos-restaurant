@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: SAM
   name: "Samoura\xEF"
-  unprocessedSprite: {fileID: -3550228633375677302, guid: 1755919493b87453f988288c830c71be, type: 3}
-  processedSprite: {fileID: -3550228633375677302, guid: 1755919493b87453f988288c830c71be, type: 3}
+  unprocessedSprite: {fileID: 8233281385206244771, guid: 7beac064f895e450b81799d3d0ba6dc1, type: 3}
+  processedSprite: {fileID: 8233281385206244771, guid: 7beac064f895e450b81799d3d0ba6dc1, type: 3}
   wastedSprite: {fileID: 0}
   processingTime: 0
   wastingTimeOffset: 0
@@ -25,4 +25,6 @@ MonoBehaviour:
   priceToRefill: 1
   canBeAddedToTacos: 1
   canBePurshased: 1
+  inEveryTacos: 0
   popularity: 1
+  processingMethod: 2

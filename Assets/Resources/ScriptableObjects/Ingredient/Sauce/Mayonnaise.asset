@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: MAYO
   name: Mayonnaise
-  unprocessedSprite: {fileID: -5541170273893586733, guid: 7d7adb093feaf4a458edf65bccfafb6a, type: 3}
-  processedSprite: {fileID: -5541170273893586733, guid: 7d7adb093feaf4a458edf65bccfafb6a, type: 3}
+  unprocessedSprite: {fileID: -2138821940214701139, guid: 6b6ce1638579146b5ae04a28b5df8c71, type: 3}
+  processedSprite: {fileID: -2138821940214701139, guid: 6b6ce1638579146b5ae04a28b5df8c71, type: 3}
   wastedSprite: {fileID: -5541170273893586733, guid: 7d7adb093feaf4a458edf65bccfafb6a, type: 3}
   processingTime: 0
   wastingTimeOffset: 0
@@ -25,4 +25,6 @@ MonoBehaviour:
   priceToRefill: 1
   canBeAddedToTacos: 1
   canBePurshased: 1
+  inEveryTacos: 0
   popularity: 0
+  processingMethod: 2

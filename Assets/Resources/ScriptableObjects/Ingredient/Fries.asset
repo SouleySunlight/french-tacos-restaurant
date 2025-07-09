@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: FRI
   name: Fries
-  unprocessedSprite: {fileID: 7013590977263907706, guid: 4f2c7f66c3f70472ba0b7b57d8554ca7, type: 3}
-  processedSprite: {fileID: 3514841378315803860, guid: 9045b38e669d9481b89ad966577a651e, type: 3}
-  wastedSprite: {fileID: 5049984650263188997, guid: 4825d14b134de4ca880ea2fd616d56ba, type: 3}
+  unprocessedSprite: {fileID: 8957814985966199543, guid: 6d6aa548d92614bf3afa45fa9efafef9, type: 3}
+  processedSprite: {fileID: 6965644802597094020, guid: 4de9080ffbb1b4019974f157d8dbb654, type: 3}
+  wastedSprite: {fileID: 4254866829682021798, guid: 01d74493c92d94866b7d0c2b4a3f21ec, type: 3}
   processingTime: 20
   wastingTimeOffset: 10
   category: 2
