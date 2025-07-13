@@ -64,6 +64,11 @@ public class TacosMakerManager : MonoBehaviour
         tacosMakerVisual.UpdateButtonsVisualQuantity();
     }
 
+    public int GetNumberOfSauceOfOnCreationTacos()
+    {
+        return onCreationTacos.GetNumberOfSauceInside();
+    }
+
     List<Ingredient> GetIngredientsAddableToTacos()
     {
         return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll(ingredient => ingredient.canBeAddedToTacos);

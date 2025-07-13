@@ -44,4 +44,9 @@ public class Tacos
         return isBurnt;
     }
 
+    public int GetNumberOfSauceInside()
+    {
+        return ingredients.FindAll((ingredient) => ingredient.category == IngredientCategoryEnum.SAUCE).Count;
+    }
+
 }

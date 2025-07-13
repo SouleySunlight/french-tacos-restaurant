@@ -24,7 +24,12 @@ public class IngredientDisplayer : MonoBehaviour
 
     public void DisplayInTacosImage()
     {
-        ingredientImage.sprite = ingredientData.inTacosSprite;
+        var spriteToShow = ingredientData.inTacosSprite;
+        if (ingredientData.category == IngredientCategoryEnum.SAUCE)
+        {
+            spriteToShow = GameManager.Instance.TacosMakerManager.GetNumberOfSauceOfOnCreationTacos() % 2 == 0 ? ingredientData.inTacosSpriteAlternative : ingredientData.inTacosSprite;
+        }
+        ingredientImage.sprite = spriteToShow;
         UseTacosSize();
     }
 
