@@ -24,7 +24,7 @@ public class IngredientDisplayer : MonoBehaviour
 
     public void DisplayInTacosImage()
     {
-        ingredientImage.sprite = ingredientData.processedSprite;
+        ingredientImage.sprite = ingredientData.inTacosSprite;
         UseTacosSize();
     }
 
@@ -62,7 +62,7 @@ public class IngredientDisplayer : MonoBehaviour
 
     void UseTacosSize()
     {
-        ingredientImage.GetComponent<RectTransform>().sizeDelta = new(GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_DIMENSION, GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_DIMENSION);
+        ingredientImage.GetComponent<RectTransform>().sizeDelta = new(GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_WIDTH, GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_HEIGHT);
     }
 
     void UseMediumSize()
