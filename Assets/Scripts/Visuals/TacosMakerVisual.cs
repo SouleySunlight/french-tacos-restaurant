@@ -14,8 +14,6 @@ public class TacosMakerVisual : MonoBehaviour, IView
     [SerializeField] private RectTransform vegetableIngredientFirstButtonTransform;
     [SerializeField] private RectTransform inEveryTacosIngredientFirstButtonTransform;
 
-    [SerializeField] private RectTransform doneTacosFirstPosition;
-
     private List<GameObject> buttons = new();
 
     private GameObject onCreationTacos;

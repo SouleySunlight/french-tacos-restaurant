@@ -24,7 +24,12 @@ public class IngredientDisplayer : MonoBehaviour
 
     public void DisplayInTacosImage()
     {
-        ingredientImage.sprite = ingredientData.processedSprite;
+        var spriteToShow = ingredientData.inTacosSprite;
+        if (ingredientData.category == IngredientCategoryEnum.SAUCE)
+        {
+            spriteToShow = GameManager.Instance.TacosMakerManager.GetNumberOfSauceOfOnCreationTacos() % 2 == 0 ? ingredientData.inTacosSpriteAlternative : ingredientData.inTacosSprite;
+        }
+        ingredientImage.sprite = spriteToShow;
         UseTacosSize();
     }
 
@@ -62,7 +67,7 @@ public class IngredientDisplayer : MonoBehaviour
 
     void UseTacosSize()
     {
-        ingredientImage.GetComponent<RectTransform>().sizeDelta = new(GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_DIMENSION, GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_DIMENSION);
+        ingredientImage.GetComponent<RectTransform>().sizeDelta = new(GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_WIDTH, GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_HEIGHT);
     }
 
     void UseMediumSize()

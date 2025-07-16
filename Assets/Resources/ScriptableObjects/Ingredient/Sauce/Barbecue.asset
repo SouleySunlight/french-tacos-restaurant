@@ -17,6 +17,8 @@ MonoBehaviour:
   unprocessedSprite: {fileID: 8233281385206244771, guid: 7beac064f895e450b81799d3d0ba6dc1, type: 3}
   processedSprite: {fileID: 8233281385206244771, guid: 7beac064f895e450b81799d3d0ba6dc1, type: 3}
   wastedSprite: {fileID: 0}
+  inTacosSprite: {fileID: 5229825703434398270, guid: ed15953e7531e492084acc92e1aadbc4, type: 3}
+  inTacosSpriteAlternative: {fileID: -6919186714872779119, guid: e6d796644f9254f378716592fe70ce6f, type: 3}
   processingTime: 0
   wastingTimeOffset: 0
   category: 5
