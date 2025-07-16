@@ -2469,7 +2469,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259311881}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -2596,7 +2596,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1344447735
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3472,7 +3472,7 @@ PrefabInstance:
       objectReference: {fileID: 1344447734}
     - target: {fileID: 3924062403524717276, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4369893006492422916, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -3668,6 +3668,10 @@ PrefabInstance:
     - target: {fileID: 4759084414911306781, guid: 05266e7e7cd574588b91cb729b508d76, type: 3}
       propertyPath: m_Name
       value: Sidebar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5457552676268142842, guid: 05266e7e7cd574588b91cb729b508d76, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8119134404811225055, guid: 05266e7e7cd574588b91cb729b508d76, type: 3}
       propertyPath: sidebarOptions.Array.size
