@@ -32,10 +32,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4133719094820567617}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 10}
-  m_SizeDelta: {x: -110, y: -40}
+  m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5716706515292223622
 CanvasRenderer:
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0bbeb79bf804aba9a4d2e39932d112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconSprite: {fileID: 2120790127499180277, guid: d7d9c0e4650fb4959a259ffb5b4b5f3f, type: 3}
+  shopNavbarOption: {fileID: 0}
   iconImage: {fileID: 5055990230500902306}
   backgroundImage: {fileID: 38238730310998805}
   selectedBottomBar: {fileID: 5043127721992982605}

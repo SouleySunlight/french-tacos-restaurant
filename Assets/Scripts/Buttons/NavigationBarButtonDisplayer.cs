@@ -3,16 +3,17 @@ using UnityEngine.UI;
 
 public class NavigationBarButtonDisplayer : MonoBehaviour
 {
-    [SerializeField] private Sprite iconSprite;
+    public ShopNavbarOption shopNavbarOption;
     [SerializeField] private Image iconImage;
     [SerializeField] private Image backgroundImage;
     [SerializeField] private Image selectedBottomBar;
 
     private bool isSelected = false;
 
-    void Awake()
+    void Start()
     {
-        iconImage.sprite = iconSprite;
+        iconImage.sprite = shopNavbarOption.icon;
+
         UpdateVisual();
     }
 
