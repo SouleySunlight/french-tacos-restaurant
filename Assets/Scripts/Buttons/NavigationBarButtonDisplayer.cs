@@ -8,7 +8,6 @@ public class NavigationBarButtonDisplayer : MonoBehaviour
     [SerializeField] private Image backgroundImage;
     [SerializeField] private Image selectedBottomBar;
 
-    private bool isSelected = false;
 
     void Start()
     {
@@ -17,9 +16,9 @@ public class NavigationBarButtonDisplayer : MonoBehaviour
         UpdateVisual();
     }
 
-    void UpdateVisual()
+    public void UpdateVisual()
     {
-        if (isSelected)
+        if (ShopViewVisual.currentView == shopNavbarOption.shopViewEnum)
         {
             SetSelectedVisual();
         }
@@ -42,11 +41,5 @@ public class NavigationBarButtonDisplayer : MonoBehaviour
         backgroundImage.color = Colors.GetColorFromHexa(Colors.SELECTED_NAVBAR_BUTTON_BACKGROUND);
         iconImage.color = Colors.GetColorFromHexa(Colors.SELECTED_NAVBAR_BUTTON_ICON);
         selectedBottomBar.gameObject.SetActive(true);
-    }
-
-    public void OnClick()
-    {
-        isSelected = !isSelected;
-        UpdateVisual();
     }
 }

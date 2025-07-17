@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NavbarVisual : MonoBehaviour
 {
 
-    [SerializeField] private GameObject navbarButton;
+    [SerializeField] private GameObject navbarButtonPrefab;
     [SerializeField] private List<ShopNavbarOption> options;
+
+    private List<GameObject> navbarButtons = new();
 
     void Awake()
     {
@@ -14,7 +17,7 @@ public class NavbarVisual : MonoBehaviour
         var itemWidth = totalWidth / options.Count;
         foreach (var option in options)
         {
-            var createdOption = Instantiate(navbarButton, this.transform);
+            var createdOption = Instantiate(navbarButtonPrefab, this.transform);
             var rectTransform = createdOption.GetComponent<RectTransform>();
 
             rectTransform.anchorMin = new Vector2(0f, 0.5f);
@@ -25,7 +28,30 @@ public class NavbarVisual : MonoBehaviour
             rectTransform.anchoredPosition = new Vector2(index * itemWidth, 0f);
 
             createdOption.GetComponent<NavigationBarButtonDisplayer>().shopNavbarOption = options[index];
+            createdOption.GetComponent<Button>().onClick.AddListener(() => UpdateView(option.shopViewEnum));
+
+            navbarButtons.Add(createdOption);
+
             index++;
+        }
+    }
+
+    void Start()
+    {
+        UpdateView(ShopViewEnum.SHOP);
+    }
+
+    void UpdateView(ShopViewEnum viewToShow)
+    {
+        FindFirstObjectByType<ShopViewVisual>().DisplayView(viewToShow);
+        UpdateButtonsVisual();
+    }
+
+    void UpdateButtonsVisual()
+    {
+        foreach (GameObject button in navbarButtons)
+        {
+            button.GetComponent<NavigationBarButtonDisplayer>().UpdateVisual();
         }
     }
 
