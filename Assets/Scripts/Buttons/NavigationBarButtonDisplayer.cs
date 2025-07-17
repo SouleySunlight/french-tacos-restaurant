@@ -1,0 +1,51 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class NavigationBarButtonDisplayer : MonoBehaviour
+{
+    [SerializeField] private Sprite iconSprite;
+    [SerializeField] private Image iconImage;
+    [SerializeField] private Image backgroundImage;
+    [SerializeField] private Image selectedBottomBar;
+
+    private bool isSelected = false;
+
+    void Awake()
+    {
+        iconImage.sprite = iconSprite;
+        UpdateVisual();
+    }
+
+    void UpdateVisual()
+    {
+        if (isSelected)
+        {
+            SetSelectedVisual();
+        }
+        else
+        {
+            SetIdleVisual();
+        }
+
+    }
+
+    void SetIdleVisual()
+    {
+        backgroundImage.color = Colors.GetColorFromHexa(Colors.IDLE_NAVBAR_BUTTON_BACKGROUND);
+        iconImage.color = Colors.GetColorFromHexa(Colors.IDLE_NAVBAR_BUTTON_ICON);
+        selectedBottomBar.gameObject.SetActive(false);
+    }
+
+    void SetSelectedVisual()
+    {
+        backgroundImage.color = Colors.GetColorFromHexa(Colors.SELECTED_NAVBAR_BUTTON_BACKGROUND);
+        iconImage.color = Colors.GetColorFromHexa(Colors.SELECTED_NAVBAR_BUTTON_ICON);
+        selectedBottomBar.gameObject.SetActive(true);
+    }
+
+    public void OnClick()
+    {
+        isSelected = !isSelected;
+        UpdateVisual();
+    }
+}
