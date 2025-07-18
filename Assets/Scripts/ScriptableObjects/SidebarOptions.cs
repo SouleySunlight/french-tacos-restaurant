@@ -4,7 +4,8 @@ using UnityEngine;
 public class SidebarOptions : ScriptableObject
 {
     public new string name;
-
     public ViewToShowEnum viewToShow;
+    public Sprite icon;
+    public string color;
 
 }

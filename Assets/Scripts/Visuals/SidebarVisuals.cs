@@ -7,9 +7,9 @@ public class SidebarVisuals : MonoBehaviour
 {
     [SerializeField] private GameObject sidebuttonPrefab;
     [SerializeField] private List<SidebarOptions> sidebarOptions;
-    [SerializeField] private RectTransform firstButtonTransform;
 
-    private readonly int VERTICAL_GAP = -200;
+    private readonly int VERTICAL_GAP = -120;
+    private readonly int VERTICAL_OFFSET = -200;
 
 
     void Awake()
@@ -17,10 +17,18 @@ public class SidebarVisuals : MonoBehaviour
         var index = 0;
         foreach (var sidebarOption in sidebarOptions)
         {
-            var position = new Vector3(firstButtonTransform.position.x, firstButtonTransform.position.y + index * VERTICAL_GAP, firstButtonTransform.position.z);
-            var createdOption = Instantiate(sidebuttonPrefab, position, Quaternion.identity, firstButtonTransform);
+            var createdOption = Instantiate(sidebuttonPrefab, this.transform);
             createdOption.GetComponent<Button>().onClick.AddListener(() => UpdateView(sidebarOption.viewToShow));
-            createdOption.GetComponentInChildren<TMP_Text>().text = sidebarOption.name;
+            createdOption.GetComponent<SidebarButtonDisplayer>().sidebarOption = sidebarOption;
+
+            var rectTransform = createdOption.GetComponent<RectTransform>();
+
+
+            rectTransform.anchorMin = new Vector2(0.5f, 1f);
+            rectTransform.anchorMax = new Vector2(0.5f, 1f);
+            rectTransform.pivot = new Vector2(0.5f, 0f);
+
+            rectTransform.anchoredPosition = new Vector2(20f, index * VERTICAL_GAP + VERTICAL_OFFSET);
             index++;
         }
 

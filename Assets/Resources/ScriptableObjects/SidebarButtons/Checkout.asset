@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Checkout
   viewToShow: 1
+  icon: {fileID: 1906409738154352856, guid: a7f7d9a0facb84ce19384fd51fdda4b9, type: 3}
+  color: '#EFB049'
