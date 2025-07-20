@@ -28,7 +28,7 @@ public class SidebarVisuals : MonoBehaviour
             rectTransform.anchorMax = new Vector2(0.5f, 1f);
             rectTransform.pivot = new Vector2(0.5f, 0f);
 
-            rectTransform.anchoredPosition = new Vector2(20f, index * VERTICAL_GAP + VERTICAL_OFFSET);
+            rectTransform.anchoredPosition = new Vector2(0, index * VERTICAL_GAP + VERTICAL_OFFSET);
             index++;
         }
 
