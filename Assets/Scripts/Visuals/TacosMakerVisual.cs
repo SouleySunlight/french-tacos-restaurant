@@ -8,7 +8,6 @@ public class TacosMakerVisual : MonoBehaviour, IView
     [SerializeField] private GameObject tortillaPrefab;
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private GameObject ingredientPrefab;
-    [SerializeField] private RectTransform onCreationTacosTransform;
     [SerializeField] private RectTransform meatIngredientFirstButtonTransform;
     [SerializeField] private RectTransform sauceIngredientFirstButtonTransform;
     [SerializeField] private RectTransform vegetableIngredientFirstButtonTransform;
@@ -36,7 +35,16 @@ public class TacosMakerVisual : MonoBehaviour, IView
 
     public void CreateTacos()
     {
-        onCreationTacos = Instantiate(tortillaPrefab, onCreationTacosTransform.position, Quaternion.identity, onCreationTacosTransform);
+        onCreationTacos = Instantiate(tortillaPrefab, this.transform);
+
+        var rectTransform = onCreationTacos.GetComponent<RectTransform>();
+
+
+        rectTransform.anchorMin = new Vector2(0.5f, 0.05f);
+        rectTransform.anchorMax = new Vector2(0.5f, 0.05f);
+        rectTransform.pivot = new Vector2(0.5f, 0f);
+
+        rectTransform.anchoredPosition = new Vector2(0, 0);
     }
 
     public void SetupIngredients(List<Ingredient> ingredients)
