@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0ac7f42b229e445cad67edd83ac2c22, type: 3}
-  m_Name: Shop
+  m_Script: {fileID: 11500000, guid: 0faed939a3c24401ab7c9241d717a024, type: 3}
+  m_Name: Upgrade
   m_EditorClassIdentifier: 
-  name: Shop
-  viewToShow: 4
+  shopViewEnum: 1
+  icon: {fileID: 2952564868547622667, guid: 4f45090b27be24f4cba3d92aef421003, type: 3}
