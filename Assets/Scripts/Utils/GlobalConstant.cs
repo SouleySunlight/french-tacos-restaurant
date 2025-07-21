@@ -15,8 +15,8 @@ public class GlobalConstant
     public static readonly int INGREDIENT_BUTTON_VERTICAL_GAP = -130;
     public static readonly int INGREDIENT_IMAGE_DIMENSION = 100;
     public static readonly int INGREDIENT_FRYER_IMAGE_DIMENSION = 300;
-    public static readonly int INGREDIENT_IN_TACOS_IMAGE_WIDTH = 500;
-    public static readonly int INGREDIENT_IN_TACOS_IMAGE_HEIGHT = 700;
+    public static readonly int INGREDIENT_IN_TACOS_IMAGE_WIDTH = 300;
+    public static readonly int INGREDIENT_IN_TACOS_IMAGE_HEIGHT = 500;
     public static readonly int MAX_COOKING_INGREDIENTS = 4;
     public static readonly int MAX_FRYING_INGREDIENTS = 2;
     public static readonly int PLAYZONE_WIDTH = 880;

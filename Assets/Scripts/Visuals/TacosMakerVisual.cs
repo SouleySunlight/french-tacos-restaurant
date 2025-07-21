@@ -36,8 +36,8 @@ public class TacosMakerVisual : MonoBehaviour, IView
 
         var rectTransform = onCreationTacos.GetComponent<RectTransform>();
 
-        rectTransform.anchorMin = new Vector2(0.5f, 0.05f);
-        rectTransform.anchorMax = new Vector2(0.5f, 0.05f);
+        rectTransform.anchorMin = new Vector2(0.5f, 0.15f);
+        rectTransform.anchorMax = new Vector2(0.5f, 0.15f);
         rectTransform.pivot = new Vector2(0.5f, 0f);
 
         rectTransform.anchoredPosition = new Vector2(0, 0);
