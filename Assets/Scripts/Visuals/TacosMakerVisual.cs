@@ -8,13 +8,13 @@ public class TacosMakerVisual : MonoBehaviour, IView
     [SerializeField] private GameObject tortillaPrefab;
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private GameObject ingredientPrefab;
+    [SerializeField] private GameObject trashButtonPrefab;
     [SerializeField] private RectTransform inEveryTacosIngredientFirstButtonTransform;
 
     private List<GameObject> buttons = new();
 
     private GameObject onCreationTacos;
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 2;
-    private readonly int NUMBER_OF_VEGETABLE_BUTTON_PER_ROW = 1;
 
 
     public void OnViewDisplayed()
@@ -50,6 +50,7 @@ public class TacosMakerVisual : MonoBehaviour, IView
             AddIngredient(ingredient);
         }
         PlaceButtons();
+        CreateTrashButton();
     }
 
     public void AddIngredient(Ingredient ingredient)
@@ -69,6 +70,19 @@ public class TacosMakerVisual : MonoBehaviour, IView
         PlaceVegetableButtons();
         PlaceInEveryTacosButtons();
 
+    }
+
+    void CreateTrashButton()
+    {
+        var trashButton = Instantiate(trashButtonPrefab, this.transform);
+        trashButton.GetComponent<Button>().onClick.AddListener(() => GameManager.Instance.TacosMakerManager.DiscardTacos());
+        var rectTransform = trashButton.GetComponent<RectTransform>();
+
+        rectTransform.anchorMin = new Vector2(0.05f, 0.025f);
+        rectTransform.anchorMax = new Vector2(0.05f, 0.025f);
+        rectTransform.pivot = new Vector2(0.5f, 0f);
+
+        rectTransform.anchoredPosition = new Vector2(100, 0);
     }
 
     void PlaceMeatButtons()
@@ -154,6 +168,11 @@ public class TacosMakerVisual : MonoBehaviour, IView
     }
 
     public void WrapTacos(Tacos createdTacos)
+    {
+        DiscardTacos();
+    }
+
+    public void DiscardTacos()
     {
         Destroy(onCreationTacos);
         onCreationTacos = null;
