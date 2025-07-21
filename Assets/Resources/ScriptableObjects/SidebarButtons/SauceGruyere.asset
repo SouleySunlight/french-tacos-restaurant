@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "Gruy\xE8re"
   viewToShow: 8
-  icon: {fileID: 3112589160528298819, guid: 486913df68ee045b1b3ae8ec38fa7035, type: 3}
+  icon: {fileID: -596003014090234464, guid: aa1485a7608c340bf8871dac53cf119a, type: 3}
   color: '#364D68'

@@ -8,17 +8,13 @@ public class TacosMakerVisual : MonoBehaviour, IView
     [SerializeField] private GameObject tortillaPrefab;
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private GameObject ingredientPrefab;
-    [SerializeField] private RectTransform onCreationTacosTransform;
-    [SerializeField] private RectTransform meatIngredientFirstButtonTransform;
-    [SerializeField] private RectTransform sauceIngredientFirstButtonTransform;
-    [SerializeField] private RectTransform vegetableIngredientFirstButtonTransform;
+    [SerializeField] private GameObject trashButtonPrefab;
     [SerializeField] private RectTransform inEveryTacosIngredientFirstButtonTransform;
 
     private List<GameObject> buttons = new();
 
     private GameObject onCreationTacos;
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 2;
-    private readonly int NUMBER_OF_VEGETABLE_BUTTON_PER_ROW = 1;
 
 
     public void OnViewDisplayed()
@@ -36,7 +32,15 @@ public class TacosMakerVisual : MonoBehaviour, IView
 
     public void CreateTacos()
     {
-        onCreationTacos = Instantiate(tortillaPrefab, onCreationTacosTransform.position, Quaternion.identity, onCreationTacosTransform);
+        onCreationTacos = Instantiate(tortillaPrefab, this.transform);
+
+        var rectTransform = onCreationTacos.GetComponent<RectTransform>();
+
+        rectTransform.anchorMin = new Vector2(0.5f, 0.15f);
+        rectTransform.anchorMax = new Vector2(0.5f, 0.15f);
+        rectTransform.pivot = new Vector2(0.5f, 0f);
+
+        rectTransform.anchoredPosition = new Vector2(0, 0);
     }
 
     public void SetupIngredients(List<Ingredient> ingredients)
@@ -46,11 +50,12 @@ public class TacosMakerVisual : MonoBehaviour, IView
             AddIngredient(ingredient);
         }
         PlaceButtons();
+        CreateTrashButton();
     }
 
     public void AddIngredient(Ingredient ingredient)
     {
-        var buttonPrefab = Instantiate(ingredientButtonPrefab, meatIngredientFirstButtonTransform.position, Quaternion.identity, meatIngredientFirstButtonTransform);
+        var buttonPrefab = Instantiate(ingredientButtonPrefab, this.transform);
         buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
 
         buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => OnClickToAddIngredient(ingredient));
@@ -60,44 +65,88 @@ public class TacosMakerVisual : MonoBehaviour, IView
 
     void PlaceButtons()
     {
-        PlaceButtonsByCategory(IngredientCategoryEnum.MEAT, meatIngredientFirstButtonTransform);
-        PlaceButtonsByCategory(IngredientCategoryEnum.SAUCE, sauceIngredientFirstButtonTransform);
-        PlaceButtonsByCategory(IngredientCategoryEnum.VEGETABLE, vegetableIngredientFirstButtonTransform, true);
+        PlaceMeatButtons();
+        PlaceSauceButtons();
+        PlaceVegetableButtons();
         PlaceInEveryTacosButtons();
 
     }
 
-    void PlaceButtonsByCategory(IngredientCategoryEnum category, RectTransform firstButtonTransform, bool areVegetables = false)
+    void CreateTrashButton()
     {
-        var index = 0;
-        var categoryButtons = buttons.FindAll((button) => button.GetComponent<IngredientButtonDisplayer>().ingredientData.category == category);
-        for (int i = 0; i < categoryButtons.Count; i++)
-        {
-            var buttonPosition = new Vector3(
-                            firstButtonTransform.position.x + GlobalConstant.INGREDIENT_BUTTON_HORIZONTAL_GAP * (areVegetables ? index % NUMBER_OF_VEGETABLE_BUTTON_PER_ROW : index % NUMBER_OF_BUTTON_PER_ROW),
-                            firstButtonTransform.position.y + GlobalConstant.INGREDIENT_BUTTON_VERTICAL_GAP * (areVegetables ? index / NUMBER_OF_VEGETABLE_BUTTON_PER_ROW : index / NUMBER_OF_BUTTON_PER_ROW),
-                            firstButtonTransform.position.z
-                        );
+        var trashButton = Instantiate(trashButtonPrefab, this.transform);
+        trashButton.GetComponent<Button>().onClick.AddListener(() => GameManager.Instance.TacosMakerManager.DiscardTacos());
+        var rectTransform = trashButton.GetComponent<RectTransform>();
 
-            categoryButtons[i].GetComponent<RectTransform>().position = buttonPosition;
-            index++;
-        }
+        rectTransform.anchorMin = new Vector2(0.05f, 0.025f);
+        rectTransform.anchorMax = new Vector2(0.05f, 0.025f);
+        rectTransform.pivot = new Vector2(0.5f, 0f);
+
+        rectTransform.anchoredPosition = new Vector2(100, 0);
     }
+
+    void PlaceMeatButtons()
+    {
+        var meatButtons = buttons.FindAll((button) => button.GetComponent<IngredientButtonDisplayer>().ingredientData.category == IngredientCategoryEnum.MEAT);
+        for (int i = 0; i < meatButtons.Count; i++)
+        {
+            var rectTransform = meatButtons[i].GetComponent<RectTransform>();
+
+            rectTransform.anchorMin = new Vector2(0f, 0.75f);
+            rectTransform.anchorMax = new Vector2(0f, 0.75f);
+            rectTransform.pivot = new Vector2(0.5f, 0f);
+
+            rectTransform.anchoredPosition = new Vector2(200 + GlobalConstant.INGREDIENT_BUTTON_HORIZONTAL_GAP * (i % NUMBER_OF_BUTTON_PER_ROW), GlobalConstant.INGREDIENT_BUTTON_VERTICAL_GAP * (i / NUMBER_OF_BUTTON_PER_ROW));
+        }
+
+    }
+
+    void PlaceSauceButtons()
+    {
+        var sauceButtons = buttons.FindAll((button) => button.GetComponent<IngredientButtonDisplayer>().ingredientData.category == IngredientCategoryEnum.SAUCE);
+        for (int i = 0; i < sauceButtons.Count; i++)
+        {
+            var rectTransform = sauceButtons[i].GetComponent<RectTransform>();
+
+            rectTransform.anchorMin = new Vector2(0f, 0.75f);
+            rectTransform.anchorMax = new Vector2(0f, 0.75f);
+            rectTransform.pivot = new Vector2(0.5f, 0f);
+
+            rectTransform.anchoredPosition = new Vector2(500 + GlobalConstant.INGREDIENT_BUTTON_HORIZONTAL_GAP * (i % NUMBER_OF_BUTTON_PER_ROW), GlobalConstant.INGREDIENT_BUTTON_VERTICAL_GAP * (i / NUMBER_OF_BUTTON_PER_ROW));
+        }
+
+    }
+
+
+    void PlaceVegetableButtons()
+    {
+        var vegetableButtons = buttons.FindAll((button) => button.GetComponent<IngredientButtonDisplayer>().ingredientData.category == IngredientCategoryEnum.VEGETABLE);
+        for (int i = 0; i < vegetableButtons.Count; i++)
+        {
+            var rectTransform = vegetableButtons[i].GetComponent<RectTransform>();
+
+            rectTransform.anchorMin = new Vector2(0f, 0.75f);
+            rectTransform.anchorMax = new Vector2(0f, 0.75f);
+            rectTransform.pivot = new Vector2(0.5f, 0f);
+
+            rectTransform.anchoredPosition = new Vector2(800, GlobalConstant.INGREDIENT_BUTTON_VERTICAL_GAP * i);
+        }
+
+    }
+
 
     void PlaceInEveryTacosButtons()
     {
-        var index = 0;
         var inEveryTacosButtons = buttons.FindAll((button) => button.GetComponent<IngredientButtonDisplayer>().ingredientData.inEveryTacos);
         for (int i = 0; i < inEveryTacosButtons.Count; i++)
         {
-            var buttonPosition = new Vector3(
-                            inEveryTacosIngredientFirstButtonTransform.position.x + GlobalConstant.INGREDIENT_BUTTON_HORIZONTAL_GAP * (index % NUMBER_OF_BUTTON_PER_ROW),
-                            inEveryTacosIngredientFirstButtonTransform.position.y + GlobalConstant.INGREDIENT_BUTTON_VERTICAL_GAP * (index / NUMBER_OF_BUTTON_PER_ROW),
-                            inEveryTacosIngredientFirstButtonTransform.position.z
-                        );
+            var rectTransform = inEveryTacosButtons[i].GetComponent<RectTransform>();
 
-            inEveryTacosButtons[i].GetComponent<RectTransform>().position = buttonPosition;
-            index++;
+            rectTransform.anchorMin = new Vector2(0.4f, 0.5f);
+            rectTransform.anchorMax = new Vector2(0.4f, 0.5f);
+            rectTransform.pivot = new Vector2(0.5f, 0f);
+
+            rectTransform.anchoredPosition = new Vector2(0 + GlobalConstant.INGREDIENT_BUTTON_HORIZONTAL_GAP * (i % NUMBER_OF_BUTTON_PER_ROW), GlobalConstant.INGREDIENT_BUTTON_VERTICAL_GAP * (i / NUMBER_OF_BUTTON_PER_ROW));
         }
     }
 
@@ -111,12 +160,27 @@ public class TacosMakerVisual : MonoBehaviour, IView
     {
         var createdIngredient = Instantiate(ingredientPrefab, onCreationTacos.GetComponent<RectTransform>().position, Quaternion.identity, onCreationTacos.GetComponent<RectTransform>());
         createdIngredient.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
+        createdIngredient.GetComponent<IngredientMovement>().ClickTacosMakerEvent.AddListener(OnClickOnIngredient);
+        var rectTransform = createdIngredient.GetComponent<RectTransform>();
+
+        rectTransform.anchorMin = new Vector2(0.5f, 1f);
+        rectTransform.anchorMax = new Vector2(0.5f, 1f);
         buttons.Find(button => button.GetComponent<IngredientButtonDisplayer>().ingredientData == ingredient).GetComponent<IngredientButtonDisplayer>().UpdateVisual();
     }
 
     public void WrapTacos(Tacos createdTacos)
     {
+        DiscardTacos();
+    }
+
+    public void DiscardTacos()
+    {
         Destroy(onCreationTacos);
         onCreationTacos = null;
+    }
+
+    void OnClickOnIngredient(GameObject gameObject)
+    {
+        FindFirstObjectByType<GameManager>().WrapTacos();
     }
 }
