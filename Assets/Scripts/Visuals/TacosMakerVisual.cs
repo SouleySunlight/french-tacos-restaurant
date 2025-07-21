@@ -160,6 +160,7 @@ public class TacosMakerVisual : MonoBehaviour, IView
     {
         var createdIngredient = Instantiate(ingredientPrefab, onCreationTacos.GetComponent<RectTransform>().position, Quaternion.identity, onCreationTacos.GetComponent<RectTransform>());
         createdIngredient.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
+        createdIngredient.GetComponent<IngredientMovement>().ClickTacosMakerEvent.AddListener(OnClickOnIngredient);
         var rectTransform = createdIngredient.GetComponent<RectTransform>();
 
         rectTransform.anchorMin = new Vector2(0.5f, 1f);
@@ -176,5 +177,10 @@ public class TacosMakerVisual : MonoBehaviour, IView
     {
         Destroy(onCreationTacos);
         onCreationTacos = null;
+    }
+
+    void OnClickOnIngredient(GameObject gameObject)
+    {
+        FindFirstObjectByType<GameManager>().WrapTacos();
     }
 }
