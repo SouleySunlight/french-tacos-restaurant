@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Hotplate
   viewToShow: 3
-  icon: {fileID: 21300000, guid: bf384cfead4ab4c9a8e7591431d5f04d, type: 3}
+  icon: {fileID: -689498275850064757, guid: f5a217a0b4b7c49198a39c98a5e52591, type: 3}
   color: '#E00000'
