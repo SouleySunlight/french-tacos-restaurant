@@ -4536,15 +4536,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5541840075325861097, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: m_Color.b
-      value: 0.9528302
+      value: 0.6792453
       objectReference: {fileID: 0}
     - target: {fileID: 5541840075325861097, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: m_Color.g
-      value: 0.27892184
+      value: 0.654299
       objectReference: {fileID: 0}
     - target: {fileID: 5541840075325861097, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 0.6440014
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541840075325861097, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5691638432325272317, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: viewToggleButton
@@ -4632,7 +4636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7676135352199216736, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8249144752056960608, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: m_AnchoredPosition.x
