@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Grill
   viewToShow: 2
-  icon: {fileID: -2530880790662480296, guid: 51f5b6e39987b4f438f40379ead45b45, type: 3}
+  icon: {fileID: -191655607786188055, guid: f2efcec56252e4d43b4396374165b989, type: 3}
   color: '#91C8C8'

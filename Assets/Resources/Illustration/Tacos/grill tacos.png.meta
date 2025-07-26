@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 51f5b6e39987b4f438f40379ead45b45
+guid: 6163b0774675b487f918bf826b2ac8fd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2530880790662480296
-    second: grill_0
+      213: -6655872641133200856
+    second: grill tacos_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: grill_0
+      name: grill tacos_0
       rect:
         serializedVersion: 2
-        x: 103
-        y: 57
-        width: 816
-        height: 792
+        x: 209
+        y: 47
+        width: 579
+        height: 868
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 85ef3bf745180ecd0800000000000000
-      internalID: -2530880790662480296
+      spriteID: 82ab303e81791a3a0800000000000000
+      internalID: -6655872641133200856
       vertices: []
       indices: 
       edges: []

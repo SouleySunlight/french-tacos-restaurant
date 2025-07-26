@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 62cf777f34c404c0bb5bb4acab2f23ef
+guid: b0fea0f3ea386436eac503e09281c246
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -20128374452979509
-    second: tacosMaker_0
+      213: 4634304575449945407
+    second: Ungrill tacos_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tacosMaker_0
+      name: Ungrill tacos_0
       rect:
         serializedVersion: 2
-        x: 71
-        y: 48
-        width: 898
-        height: 971
+        x: 211
+        y: 44
+        width: 579
+        height: 869
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bc8f2de995d78bff0800000000000000
-      internalID: -20128374452979509
+      spriteID: f3559a0357b505040800000000000000
+      internalID: 4634304575449945407
       vertices: []
       indices: 
       edges: []
