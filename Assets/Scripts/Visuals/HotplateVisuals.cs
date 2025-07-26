@@ -14,7 +14,7 @@ public class HotplateVisuals : MonoBehaviour, IView
 
     private List<GameObject> buttons = new();
 
-    private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
+    private readonly int NUMBER_OF_BUTTON_PER_ROW = 4;
 
     public void Setup()
     {
@@ -40,28 +40,30 @@ public class HotplateVisuals : MonoBehaviour, IView
 
     void UpdateVisual()
     {
-        var index = 0;
-        foreach (var button in buttons)
-        {
-            var buttonPosition = new Vector3(
-                firstIngredientPosition.position.x + GlobalConstant.LEGACY_INGREDIENT_BUTTON_HORIZONTAL_GAP * (index % NUMBER_OF_BUTTON_PER_ROW),
-                firstIngredientPosition.position.y + GlobalConstant.LEGACY_INGREDIENT_BUTTON_VERTICAL_GAP * (index / NUMBER_OF_BUTTON_PER_ROW),
-                firstIngredientPosition.position.z
-            );
+        var totalButtons = buttons.Count;
+        var totalWidth = this.GetComponent<RectTransform>().rect.width;
 
-            button.GetComponent<RectTransform>().position = buttonPosition;
-            index++;
+        var horizontalGap = ((totalWidth - 140) / (totalButtons + 1));
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            var rectTransform = buttons[i].GetComponent<RectTransform>();
+
+            rectTransform.anchorMin = new Vector2(0f, 0.6f);
+            rectTransform.anchorMax = new Vector2(0f, 0.6f);
+            rectTransform.pivot = new Vector2(0.5f, 0f);
+
+            rectTransform.anchoredPosition = new Vector2(horizontalGap + 50 + horizontalGap * (i % NUMBER_OF_BUTTON_PER_ROW), GlobalConstant.INGREDIENT_BUTTON_VERTICAL_GAP * (i / NUMBER_OF_BUTTON_PER_ROW));
         }
     }
 
     public void AddAvailableIngredient(Ingredient ingredient)
     {
-        var buttonPrefab = Instantiate(ingredientButtonPrefab, firstIngredientPosition.position, Quaternion.identity, firstIngredientPosition);
-        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().ingredientData = ingredient;
-        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().shouldShowUnprocessedQuantity = true;
+        var buttonPrefab = Instantiate(ingredientButtonPrefab, this.transform);
 
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().SetShouldShowUnprocessedIngredient(true);
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.HotplateManager.CookIngredients(ingredient));
 
-        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().AddListener(() => GameManager.Instance.HotplateManager.CookIngredients(ingredient));
         buttons.Add(buttonPrefab);
         UpdateVisual();
     }
@@ -108,7 +110,7 @@ public class HotplateVisuals : MonoBehaviour, IView
     {
         foreach (var button in buttons)
         {
-            button.GetComponent<LegacyIngredientButtonDisplayer>().GetComponent<LegacyIngredientButtonDisplayer>().UpdateVisual();
+            button.GetComponent<IngredientButtonDisplayer>().GetComponent<IngredientButtonDisplayer>().UpdateVisual();
         }
     }
 }
