@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class HotplateVisuals : MonoBehaviour, IView
 {
-    [SerializeField] private RectTransform firstIngredientPosition;
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private GameObject ingredientPrefab;
     [SerializeField] private List<GameObject> ingredients = new();
