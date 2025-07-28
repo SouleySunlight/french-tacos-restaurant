@@ -38,30 +38,30 @@ public class IngredientDisplayer : MonoBehaviour
         ingredientImage.sprite = ingredientData.unprocessedSprite;
         if (PlayzoneVisual.currentView == ViewToShowEnum.FRYER || PlayzoneVisual.currentView == ViewToShowEnum.SAUCE_GRUYERE)
         {
-            UseMediumSize();
+            UseLargeSize();
             return;
         }
         if (PlayzoneVisual.currentView == ViewToShowEnum.HOTPLATE)
         {
-            UseHotplateSize();
+            UseMediumSize();
             return;
         }
-        UseCommonSize();
+        UseSmallSize();
     }
     public void DisplayProcessedImage()
     {
         ingredientImage.sprite = ingredientData.processedSprite;
         if (PlayzoneVisual.currentView == ViewToShowEnum.FRYER || PlayzoneVisual.currentView == ViewToShowEnum.SAUCE_GRUYERE)
         {
-            UseMediumSize();
+            UseLargeSize();
             return;
         }
         if (PlayzoneVisual.currentView == ViewToShowEnum.HOTPLATE)
         {
-            UseHotplateSize();
+            UseMediumSize();
             return;
         }
-        UseCommonSize();
+        UseSmallSize();
     }
 
     public void DisplayWastedImage()
@@ -69,15 +69,15 @@ public class IngredientDisplayer : MonoBehaviour
         ingredientImage.sprite = ingredientData.wastedSprite;
         if (PlayzoneVisual.currentView == ViewToShowEnum.FRYER || PlayzoneVisual.currentView == ViewToShowEnum.SAUCE_GRUYERE)
         {
-            UseMediumSize();
+            UseLargeSize();
             return;
         }
         if (PlayzoneVisual.currentView == ViewToShowEnum.HOTPLATE)
         {
-            UseHotplateSize();
+            UseMediumSize();
             return;
         }
-        UseCommonSize();
+        UseSmallSize();
     }
 
     void UseTacosSize()
@@ -85,17 +85,17 @@ public class IngredientDisplayer : MonoBehaviour
         ingredientImage.GetComponent<RectTransform>().sizeDelta = new(GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_WIDTH, GlobalConstant.INGREDIENT_IN_TACOS_IMAGE_HEIGHT);
     }
 
-    void UseMediumSize()
+    void UseLargeSize()
     {
         ingredientImage.GetComponent<RectTransform>().sizeDelta = new(GlobalConstant.INGREDIENT_FRYER_IMAGE_DIMENSION, GlobalConstant.INGREDIENT_FRYER_IMAGE_DIMENSION);
     }
 
-    void UseCommonSize()
+    void UseSmallSize()
     {
         ingredientImage.GetComponent<RectTransform>().sizeDelta = new(GlobalConstant.INGREDIENT_IMAGE_DIMENSION, GlobalConstant.INGREDIENT_IMAGE_DIMENSION);
     }
 
-    void UseHotplateSize()
+    void UseMediumSize()
     {
         ingredientImage.GetComponent<RectTransform>().sizeDelta = new(150, 150);
     }
