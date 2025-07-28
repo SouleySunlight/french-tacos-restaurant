@@ -7,12 +7,12 @@ public class HotplateVisuals : MonoBehaviour, IView
 {
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private GameObject ingredientPrefab;
-    [SerializeField] private List<GameObject> ingredients = new();
-    [SerializeField] private List<RectTransform> cookPositions = new();
-    [SerializeField] private List<Image> cookingTimers = new();
+    [SerializeField] private GameObject roundedCompletionBarPrefab;
+    private List<GameObject> ingredients = new();
     [SerializeField] private RectTransform hotplateTransform;
 
     private List<GameObject> buttons = new();
+    private List<GameObject> completionBars = new();
 
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 4;
 
@@ -35,6 +35,7 @@ public class HotplateVisuals : MonoBehaviour, IView
         {
             AddAvailableIngredient(ingredient);
         }
+        AddTimers();
         UpdateVisual();
     }
 
@@ -68,9 +69,32 @@ public class HotplateVisuals : MonoBehaviour, IView
         UpdateVisual();
     }
 
+    void AddTimers()
+    {
+        for (int i = 0; i < GlobalConstant.MAX_COOKING_INGREDIENTS; i++)
+        {
+            var completionBar = Instantiate(roundedCompletionBarPrefab, hotplateTransform);
+            completionBar.GetComponent<RoundedCompletionBarDisplayer>().UpdateTimer(0);
+            completionBars.Add(completionBar);
+
+            var rectTransform = completionBar.GetComponent<RectTransform>();
+
+            var positionX = i % 2 == 0 ? 0.25f : 0.75f;
+            var positionY = i > 1 ? 0.33f : 0.6f;
+
+            rectTransform.anchorMin = new Vector2(positionX, positionY);
+            rectTransform.anchorMax = new Vector2(positionX, positionY);
+            rectTransform.pivot = new Vector2(0.5f, 0f);
+
+            rectTransform.anchoredPosition = new Vector2(100, 100);
+        }
+
+    }
+
     public void CookIngredients(Ingredient ingredient, int position)
     {
         var ingredientToCook = Instantiate(ingredientPrefab, hotplateTransform);
+        ingredientToCook.transform.SetAsFirstSibling();
 
         var rectTransform = ingredientToCook.GetComponent<RectTransform>();
 
@@ -101,7 +125,7 @@ public class HotplateVisuals : MonoBehaviour, IView
 
     public void UpdateTimer(int index, float percentage)
     {
-        cookingTimers[index].fillAmount = percentage;
+        completionBars[index].GetComponent<RoundedCompletionBarDisplayer>().UpdateTimer(percentage);
     }
 
     void OnClickOnIngredient(GameObject gameObject)
