@@ -41,6 +41,11 @@ public class IngredientDisplayer : MonoBehaviour
             UseMediumSize();
             return;
         }
+        if (PlayzoneVisual.currentView == ViewToShowEnum.HOTPLATE)
+        {
+            UseHotplateSize();
+            return;
+        }
         UseCommonSize();
     }
     public void DisplayProcessedImage()
@@ -49,6 +54,11 @@ public class IngredientDisplayer : MonoBehaviour
         if (PlayzoneVisual.currentView == ViewToShowEnum.FRYER || PlayzoneVisual.currentView == ViewToShowEnum.SAUCE_GRUYERE)
         {
             UseMediumSize();
+            return;
+        }
+        if (PlayzoneVisual.currentView == ViewToShowEnum.HOTPLATE)
+        {
+            UseHotplateSize();
             return;
         }
         UseCommonSize();
@@ -60,6 +70,11 @@ public class IngredientDisplayer : MonoBehaviour
         if (PlayzoneVisual.currentView == ViewToShowEnum.FRYER || PlayzoneVisual.currentView == ViewToShowEnum.SAUCE_GRUYERE)
         {
             UseMediumSize();
+            return;
+        }
+        if (PlayzoneVisual.currentView == ViewToShowEnum.HOTPLATE)
+        {
+            UseHotplateSize();
             return;
         }
         UseCommonSize();
@@ -78,6 +93,11 @@ public class IngredientDisplayer : MonoBehaviour
     void UseCommonSize()
     {
         ingredientImage.GetComponent<RectTransform>().sizeDelta = new(GlobalConstant.INGREDIENT_IMAGE_DIMENSION, GlobalConstant.INGREDIENT_IMAGE_DIMENSION);
+    }
+
+    void UseHotplateSize()
+    {
+        ingredientImage.GetComponent<RectTransform>().sizeDelta = new(150, 150);
     }
 
 

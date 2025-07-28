@@ -10,6 +10,7 @@ public class HotplateVisuals : MonoBehaviour, IView
     [SerializeField] private List<GameObject> ingredients = new();
     [SerializeField] private List<RectTransform> cookPositions = new();
     [SerializeField] private List<Image> cookingTimers = new();
+    [SerializeField] private RectTransform hotplateTransform;
 
     private List<GameObject> buttons = new();
 
@@ -69,8 +70,20 @@ public class HotplateVisuals : MonoBehaviour, IView
 
     public void CookIngredients(Ingredient ingredient, int position)
     {
-        var ingredientToCook = Instantiate(ingredientPrefab, cookPositions[position].position, Quaternion.identity, cookPositions[position]);
+        var ingredientToCook = Instantiate(ingredientPrefab, hotplateTransform);
+
+        var rectTransform = ingredientToCook.GetComponent<RectTransform>();
+
+        var positionX = position % 2 == 0 ? 0.25f : 0.75f;
+        var positionY = position > 1 ? 0.33f : 0.6f;
+
+        rectTransform.anchorMin = new Vector2(positionX, positionY);
+        rectTransform.anchorMax = new Vector2(positionX, positionY);
+        rectTransform.pivot = new Vector2(0.5f, 0f);
+
+
         ingredientToCook.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
+
         ingredientToCook.GetComponent<IngredientMovement>().ClickHotplateEvent.AddListener(OnClickOnIngredient);
         ingredients[position] = ingredientToCook;
         UpdateIngredientButtons();

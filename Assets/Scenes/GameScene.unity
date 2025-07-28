@@ -2520,6 +2520,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960679737}
   m_CullTransparentMesh: 1
+--- !u!224 &970166862 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5728140009009787136, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+  m_PrefabInstance: {fileID: 1342178357523527731}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &971189721
 GameObject:
   m_ObjectHideFlags: 0
@@ -4322,6 +4327,10 @@ PrefabInstance:
       propertyPath: inEveryTacosIngredientFirstButtonTransform
       value: 
       objectReference: {fileID: 2127304592}
+    - target: {fileID: 1286039901740768661, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: hotplateTransform
+      value: 
+      objectReference: {fileID: 970166862}
     - target: {fileID: 1286039901740768661, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: ingredientButtonPrefab
       value: 
