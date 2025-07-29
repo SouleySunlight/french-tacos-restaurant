@@ -59,6 +59,7 @@ public class HotplateManager : MonoBehaviour, IWorkStation
         if (ingredient.processingMethod == ProcessingMethodEnum.HOTPLATE)
         {
             hotplateVisuals.AddAvailableIngredient(ingredient);
+            hotplateVisuals.AddIngredientIndicator(ingredient);
         }
     }
 
@@ -127,6 +128,7 @@ public class HotplateManager : MonoBehaviour, IWorkStation
         {
             GameManager.Instance.InventoryManager.AddIngredient(ingredient);
             RemoveIngredientFromCooking(position);
+            hotplateVisuals.UpdateIndicatorsQuantity();
             if (doneByWorker == true)
             {
                 isWorkerTaskDone = true;

@@ -15,6 +15,7 @@ public class IngredientButtonDisplayer : MonoBehaviour
 
     [SerializeField] private GameObject shadow;
     [SerializeField] private RectTransform buttonTransform;
+    private bool shouldShowUnprocessedIngredient = false;
 
 
     void Start()
@@ -24,7 +25,7 @@ public class IngredientButtonDisplayer : MonoBehaviour
 
     public void UpdateVisual()
     {
-        ingredientImage.sprite = ingredientData.processedSprite;
+        ingredientImage.sprite = shouldShowUnprocessedIngredient ? ingredientData.unprocessedSprite : ingredientData.processedSprite;
         UpdateQuantity();
         UpdateBorderColor();
     }
@@ -36,7 +37,7 @@ public class IngredientButtonDisplayer : MonoBehaviour
 
     public void UpdateQuantity()
     {
-        quantityText.text = GameManager.Instance.InventoryManager.GetStockString(ingredientData);
+        quantityText.text = shouldShowUnprocessedIngredient ? GameManager.Instance.InventoryManager.GetUnprocessedStockString(ingredientData) : GameManager.Instance.InventoryManager.GetStockString(ingredientData);
     }
 
     void UpdateBorderColor()
@@ -62,5 +63,11 @@ public class IngredientButtonDisplayer : MonoBehaviour
         var newPosition = new Vector2(buttonTransform.anchoredPosition.x, buttonTransform.anchoredPosition.y + 5f);
         buttonTransform.anchoredPosition = newPosition;
         shadow.SetActive(true);
+    }
+
+    public void SetShouldShowUnprocessedIngredient(bool shouldShow)
+    {
+        shouldShowUnprocessedIngredient = shouldShow;
+        UpdateVisual();
     }
 }
