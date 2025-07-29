@@ -8,13 +8,18 @@ public class HotplateVisuals : MonoBehaviour, IView
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private GameObject ingredientPrefab;
     [SerializeField] private GameObject roundedCompletionBarPrefab;
+    [SerializeField] private GameObject ingredientIndicatorPrefab;
     private List<GameObject> ingredients = new();
     [SerializeField] private RectTransform hotplateTransform;
 
     private List<GameObject> buttons = new();
+    private List<GameObject> indicators = new();
+
     private List<GameObject> completionBars = new();
 
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 4;
+    private readonly int NUMBER_OF_INDICATOR_PER_ROW = 3;
+
 
     public void Setup()
     {
@@ -34,12 +39,12 @@ public class HotplateVisuals : MonoBehaviour, IView
         foreach (Ingredient ingredient in ingredients)
         {
             AddAvailableIngredient(ingredient);
+            AddIngredientIndicator(ingredient);
         }
         AddTimers();
-        UpdateVisual();
     }
 
-    void UpdateVisual()
+    void UpdateButtonsVisual()
     {
         var totalButtons = buttons.Count;
         var totalWidth = this.GetComponent<RectTransform>().rect.width;
@@ -47,13 +52,48 @@ public class HotplateVisuals : MonoBehaviour, IView
         var horizontalGap = ((totalWidth - 140) / (totalButtons + 1));
         for (int i = 0; i < buttons.Count; i++)
         {
-            var rectTransform = buttons[i].GetComponent<RectTransform>();
+            var buttonRectTransform = buttons[i].GetComponent<RectTransform>();
 
-            rectTransform.anchorMin = new Vector2(0f, 0.6f);
-            rectTransform.anchorMax = new Vector2(0f, 0.6f);
-            rectTransform.pivot = new Vector2(0.5f, 0f);
+            buttonRectTransform.anchorMin = new Vector2(0f, 0.6f);
+            buttonRectTransform.anchorMax = new Vector2(0f, 0.6f);
+            buttonRectTransform.pivot = new Vector2(0.5f, 0f);
 
-            rectTransform.anchoredPosition = new Vector2(horizontalGap + 50 + horizontalGap * (i % NUMBER_OF_BUTTON_PER_ROW), GlobalConstant.INGREDIENT_BUTTON_VERTICAL_GAP * (i / NUMBER_OF_BUTTON_PER_ROW));
+            buttonRectTransform.anchoredPosition = new Vector2(horizontalGap + 50 + horizontalGap * (i % NUMBER_OF_BUTTON_PER_ROW), GlobalConstant.INGREDIENT_BUTTON_VERTICAL_GAP * (i / NUMBER_OF_BUTTON_PER_ROW));
+        }
+    }
+
+    void UpdateIndicatorsVisual()
+    {
+        const float indicatorWidth = 230f;
+        const float indicatorHeight = 110f;
+
+        var totalIndicators = indicators.Count;
+        var totalWidth = GetComponent<RectTransform>().rect.width;
+
+        for (int i = 0; i < totalIndicators; i++)
+        {
+            var indicator = indicators[i].GetComponent<RectTransform>();
+
+            indicator.anchorMin = new Vector2(0, 0.8f);
+            indicator.anchorMax = new Vector2(0, 0.8f);
+            indicator.pivot = new Vector2(0.5f, 0f);
+
+            int col = i % NUMBER_OF_INDICATOR_PER_ROW;
+            int row = i / NUMBER_OF_INDICATOR_PER_ROW;
+
+            int itemsInRow = Mathf.Min(totalIndicators - row * NUMBER_OF_INDICATOR_PER_ROW, NUMBER_OF_INDICATOR_PER_ROW);
+
+            float totalRowWidth = itemsInRow * indicatorWidth;
+
+            float spaceLeft = totalWidth - totalRowWidth;
+
+            float gap = spaceLeft / (itemsInRow + 1);
+
+            float x = gap * (col + 1) + indicatorWidth * col + 175;
+
+            float y = -(indicatorHeight + 20f) * row - 30;
+
+            indicator.anchoredPosition = new Vector2(x, y);
         }
     }
 
@@ -66,7 +106,17 @@ public class HotplateVisuals : MonoBehaviour, IView
         buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.HotplateManager.CookIngredients(ingredient));
 
         buttons.Add(buttonPrefab);
-        UpdateVisual();
+        UpdateButtonsVisual();
+    }
+
+    public void AddIngredientIndicator(Ingredient ingredient)
+    {
+        var indicator = Instantiate(ingredientIndicatorPrefab, this.transform);
+        indicator.GetComponent<IngredientIndicatorDisplayer>().ingredientData = ingredient;
+        indicator.GetComponent<IngredientIndicatorDisplayer>().UpdateVisual();
+
+        indicators.Add(indicator);
+        UpdateIndicatorsVisual();
     }
 
     void AddTimers()

@@ -59,6 +59,7 @@ public class HotplateManager : MonoBehaviour, IWorkStation
         if (ingredient.processingMethod == ProcessingMethodEnum.HOTPLATE)
         {
             hotplateVisuals.AddAvailableIngredient(ingredient);
+            hotplateVisuals.AddIngredientIndicator(ingredient);
         }
     }
 
