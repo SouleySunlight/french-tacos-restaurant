@@ -46,19 +46,36 @@ public class HotplateVisuals : MonoBehaviour, IView
 
     void UpdateButtonsVisual()
     {
+        const float buttonWidth = 120f;
+        const float buttonHeight = 120f;
+
         var totalButtons = buttons.Count;
-        var totalWidth = this.GetComponent<RectTransform>().rect.width;
+        var totalWidth = GetComponent<RectTransform>().rect.width;
 
-        var horizontalGap = ((totalWidth - 140) / (totalButtons + 1));
-        for (int i = 0; i < buttons.Count; i++)
+        for (int i = 0; i < totalButtons; i++)
         {
-            var buttonRectTransform = buttons[i].GetComponent<RectTransform>();
+            var button = buttons[i].GetComponent<RectTransform>();
 
-            buttonRectTransform.anchorMin = new Vector2(0f, 0.6f);
-            buttonRectTransform.anchorMax = new Vector2(0f, 0.6f);
-            buttonRectTransform.pivot = new Vector2(0.5f, 0f);
+            button.anchorMin = new Vector2(0, 0.6f);
+            button.anchorMax = new Vector2(0, 0.6f);
+            button.pivot = new Vector2(0.5f, 0f);
 
-            buttonRectTransform.anchoredPosition = new Vector2(horizontalGap + 50 + horizontalGap * (i % NUMBER_OF_BUTTON_PER_ROW), GlobalConstant.INGREDIENT_BUTTON_VERTICAL_GAP * (i / NUMBER_OF_BUTTON_PER_ROW));
+            int col = i % NUMBER_OF_BUTTON_PER_ROW;
+            int row = i / NUMBER_OF_BUTTON_PER_ROW;
+
+            int itemsInRow = Mathf.Min(totalButtons - row * NUMBER_OF_BUTTON_PER_ROW, NUMBER_OF_BUTTON_PER_ROW);
+
+            float totalRowWidth = itemsInRow * buttonWidth;
+
+            float spaceLeft = totalWidth - totalRowWidth;
+
+            float gap = spaceLeft / (itemsInRow + 1);
+
+            float x = gap * (col + 1) + buttonWidth * col + 100;
+
+            float y = -(buttonHeight + 20f) * row;
+
+            button.anchoredPosition = new Vector2(x, y);
         }
     }
 
