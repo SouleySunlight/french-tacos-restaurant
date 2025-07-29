@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HotplateVisuals : MonoBehaviour, IView
 {
@@ -32,6 +30,8 @@ public class HotplateVisuals : MonoBehaviour, IView
     public void OnViewDisplayed()
     {
         UpdateIngredientButtons();
+        UpdateIndicatorsVisual();
+        UpdateIndicatorsQuantity();
     }
 
     public void SetupIngredients(List<Ingredient> ingredients)
@@ -134,6 +134,14 @@ public class HotplateVisuals : MonoBehaviour, IView
 
         indicators.Add(indicator);
         UpdateIndicatorsVisual();
+    }
+
+    public void UpdateIndicatorsQuantity()
+    {
+        foreach (var indicator in indicators)
+        {
+            indicator.GetComponent<IngredientIndicatorDisplayer>().UpdateVisual();
+        }
     }
 
     void AddTimers()

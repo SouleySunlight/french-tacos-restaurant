@@ -128,6 +128,7 @@ public class HotplateManager : MonoBehaviour, IWorkStation
         {
             GameManager.Instance.InventoryManager.AddIngredient(ingredient);
             RemoveIngredientFromCooking(position);
+            hotplateVisuals.UpdateIndicatorsQuantity();
             if (doneByWorker == true)
             {
                 isWorkerTaskDone = true;
