@@ -107,7 +107,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
         throw new NotEnoughSpaceException();
 
     }
-    public void OnIngredientClick(int position)
+    public void OnClickOnBasket(int position)
     {
         if (!isFrying[position])
         {
@@ -152,7 +152,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
         totalFryingTimes[position] = GlobalConstant.UNUSED_TIME_VALUE;
         isFrying[position] = false;
         fryingQuantities[position] = 0;
-        fryerVisuals.RemoveIngredientFromGrill(position);
+        fryerVisuals.RemoveIngredientFromFryer(position);
     }
 
     void OnIngredientCookedClicked(int position, bool? doneByWorker = false)

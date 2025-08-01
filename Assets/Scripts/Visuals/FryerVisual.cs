@@ -9,10 +9,9 @@ public class FryerVisual : MonoBehaviour, IView
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private GameObject ingredientPrefab;
     [SerializeField] private List<GameObject> quantityManager = new();
-    [SerializeField] private List<RectTransform> basketsPosition = new();
+    [SerializeField] private List<GameObject> baskets = new();
     [SerializeField] private List<Image> cookingTimers = new();
-
-    private List<GameObject> ingredients = new();
+    private List<List<GameObject>> ingredientsInBasket = new();
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
 
     private List<GameObject> buttons = new();
@@ -21,7 +20,11 @@ public class FryerVisual : MonoBehaviour, IView
     {
         for (int i = 0; i < GlobalConstant.MAX_FRYING_INGREDIENTS; i++)
         {
-            ingredients.Add(null);
+            ingredientsInBasket.Add(new List<GameObject>());
+        }
+        foreach (var basket in baskets)
+        {
+            basket.GetComponent<BasketMovement>().ClickBasket.AddListener(OnClickOnBasket);
         }
     }
 
@@ -64,20 +67,12 @@ public class FryerVisual : MonoBehaviour, IView
 
     public void FryIngredients(Ingredient ingredient, int position)
     {
-        var ingredientToFry = Instantiate(ingredientPrefab, basketsPosition[position]);
-        ingredientToFry.GetComponent<IngredientMovement>().ClickFryerEvent.AddListener(OnClickOnIngredient);
+        var ingredientToFry = Instantiate(ingredientPrefab, baskets[position].GetComponent<RectTransform>());
         ingredientToFry.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
+        ingredientsInBasket[position].Add(ingredientToFry);
 
-        if (ingredients[position] == null)
-        {
-            ingredients[position] = ingredientToFry;
-            quantityManager[position].GetComponent<QuantityDisplayer>().SetQuantity(1);
-        }
-        else
-        {
-            quantityManager[position].GetComponent<QuantityDisplayer>().SetQuantity(quantityManager[position].GetComponent<QuantityDisplayer>().currentQuantity + 1);
+        quantityManager[position].GetComponent<QuantityDisplayer>().SetQuantity(quantityManager[position].GetComponent<QuantityDisplayer>().currentQuantity + 1);
 
-        }
         PlaceIngredients(ingredientToFry, position, quantityManager[position].GetComponent<QuantityDisplayer>().currentQuantity);
 
         UpdateIngredientButtons();
@@ -91,9 +86,11 @@ public class FryerVisual : MonoBehaviour, IView
         }
     }
 
-    void OnClickOnIngredient(GameObject gameObject)
+    void OnClickOnBasket(GameObject gameObject)
     {
-        GameManager.Instance.FryerManager.OnIngredientClick(ingredients.FindIndex(ingredient => ingredient == gameObject));
+        var index = baskets.FindIndex(basket => basket == gameObject);
+        baskets[index].transform.SetAsFirstSibling();
+        GameManager.Instance.FryerManager.OnClickOnBasket(index);
     }
 
     public void UpdateTimer(int index, float percentage)
@@ -103,20 +100,30 @@ public class FryerVisual : MonoBehaviour, IView
 
     public void OnIngredientCooked(int position)
     {
-        ingredients[position].GetComponent<IngredientDisplayer>().DisplayProcessedImage();
+        foreach (var ingredient in ingredientsInBasket[position])
+        {
+            ingredient.GetComponent<IngredientDisplayer>().DisplayProcessedInFryerImage();
+        }
     }
 
     public void OnIngredientBurnt(int position)
     {
-        ingredients[position].GetComponent<IngredientDisplayer>().DisplayWastedImage();
+        foreach (var ingredient in ingredientsInBasket[position])
+        {
+            ingredient.GetComponent<IngredientDisplayer>().DisplayWastedInFryerImage();
+        }
+
     }
 
 
-    public void RemoveIngredientFromGrill(int position)
+    public void RemoveIngredientFromFryer(int position)
     {
-        var ingredientToRemove = ingredients[position];
-        Destroy(ingredientToRemove);
-        ingredients[position] = null;
+        baskets[position].transform.SetAsLastSibling();
+        foreach (var ingredient in ingredientsInBasket[position])
+        {
+            Destroy(ingredient);
+        }
+        ingredientsInBasket[position].Clear();
         UpdateTimer(position, 0);
         quantityManager[position].GetComponent<QuantityDisplayer>().SetQuantity(0);
         UpdateIngredientButtons();

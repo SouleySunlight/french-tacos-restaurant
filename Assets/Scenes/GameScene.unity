@@ -619,9 +619,9 @@ MonoBehaviour:
   quantityManager:
   - {fileID: 2089479166}
   - {fileID: 1354792520}
-  basketsPosition:
-  - {fileID: 690993947}
-  - {fileID: 366478073}
+  baskets:
+  - {fileID: 690993946}
+  - {fileID: 366478072}
   cookingTimers:
   - {fileID: 985570019}
   - {fileID: 101391688}
@@ -905,6 +905,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347432753}
   m_CullTransparentMesh: 1
+--- !u!1 &366478072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4092405070114464194, guid: 34b672945b413444eb613523242eecfa, type: 3}
+  m_PrefabInstance: {fileID: 1409468029}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &366478073 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7480595137709216357, guid: 34b672945b413444eb613523242eecfa, type: 3}
@@ -1851,7 +1856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1875,6 +1880,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687552938}
   m_CullTransparentMesh: 1
+--- !u!1 &690993946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4092405070114464194, guid: 34b672945b413444eb613523242eecfa, type: 3}
+  m_PrefabInstance: {fileID: 1467147160388669204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &690993947 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7480595137709216357, guid: 34b672945b413444eb613523242eecfa, type: 3}

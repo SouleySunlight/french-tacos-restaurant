@@ -22,6 +22,7 @@ public class IngredientDisplayer : MonoBehaviour
         if (PlayzoneVisual.currentView == ViewToShowEnum.FRYER)
         {
             DisplayUnprocessedInFryerImage();
+            ingredientImage.raycastTarget = false;
             return;
         }
 
@@ -44,6 +45,18 @@ public class IngredientDisplayer : MonoBehaviour
         ingredientImage.sprite = ingredientData.uncookedFryerSprite;
         UseFryerSize();
     }
+    public void DisplayProcessedInFryerImage()
+    {
+        ingredientImage.sprite = ingredientData.cookedFryerSprite;
+        UseFryerSize();
+    }
+
+    public void DisplayWastedInFryerImage()
+    {
+        ingredientImage.sprite = ingredientData.burntFryerSprite;
+        UseFryerSize();
+    }
+
 
     public void DisplayUnprocessedImage()
     {
