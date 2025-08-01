@@ -4352,6 +4352,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3788280034557678561, guid: 6acfae9cecf9e421a9ee1aa4133cdc8e, type: 3}
     - target: {fileID: 1286039901740768661, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: ingredientIndicatorPrefab
+      value: 
+      objectReference: {fileID: 1991254214831741297, guid: eb34b7bb5264d4c75911c7e3a73981b7, type: 3}
+    - target: {fileID: 1286039901740768661, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: roundedCompletionBarPrefab
       value: 
       objectReference: {fileID: 4657796638849379191, guid: 48419ec368d364875a89f7c09779893e, type: 3}
