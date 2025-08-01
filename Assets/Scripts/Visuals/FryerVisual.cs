@@ -9,7 +9,7 @@ public class FryerVisual : MonoBehaviour, IView
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private GameObject ingredientPrefab;
     [SerializeField] private List<GameObject> quantityManager = new();
-    [SerializeField] private List<RectTransform> fryPositions = new();
+    [SerializeField] private List<RectTransform> basketsPosition = new();
     [SerializeField] private List<Image> cookingTimers = new();
 
     private List<GameObject> ingredients = new();
@@ -64,23 +64,22 @@ public class FryerVisual : MonoBehaviour, IView
 
     public void FryIngredients(Ingredient ingredient, int position)
     {
+        var ingredientToFry = Instantiate(ingredientPrefab, basketsPosition[position]);
+        ingredientToFry.GetComponent<IngredientMovement>().ClickFryerEvent.AddListener(OnClickOnIngredient);
+        ingredientToFry.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
 
         if (ingredients[position] == null)
         {
-            var ingredientToFry = Instantiate(ingredientPrefab, fryPositions[position].position, Quaternion.identity, fryPositions[position]);
-            ingredientToFry.GetComponent<IngredientMovement>().ClickFryerEvent.AddListener(OnClickOnIngredient);
-            ingredientToFry.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
             ingredients[position] = ingredientToFry;
             quantityManager[position].GetComponent<QuantityDisplayer>().SetQuantity(1);
         }
         else
         {
-            if (ingredients[position].GetComponent<IngredientDisplayer>().ingredientData == ingredient)
-            {
-                quantityManager[position].GetComponent<QuantityDisplayer>().SetQuantity(quantityManager[position].GetComponent<QuantityDisplayer>().currentQuantity + 1);
+            quantityManager[position].GetComponent<QuantityDisplayer>().SetQuantity(quantityManager[position].GetComponent<QuantityDisplayer>().currentQuantity + 1);
 
-            }
         }
+        PlaceIngredients(ingredientToFry, position, quantityManager[position].GetComponent<QuantityDisplayer>().currentQuantity);
+
         UpdateIngredientButtons();
     }
 
@@ -126,6 +125,31 @@ public class FryerVisual : MonoBehaviour, IView
     public void OnViewDisplayed()
     {
         UpdateIngredientButtons();
+    }
+
+    public void PlaceIngredients(GameObject ingredient, int position, int quantity)
+    {
+        var rect = ingredient.GetComponent<RectTransform>();
+
+        if (quantity == 1)
+        {
+            rect.anchoredPosition = new(0, 100);
+            rect.rotation = Quaternion.Euler(0, 0, 0);
+            return;
+        }
+
+        if (quantity == 2)
+        {
+            rect.anchoredPosition = new(0, 0);
+            rect.rotation = Quaternion.Euler(0, 0, 30);
+            return;
+        }
+        if (quantity == 3)
+        {
+            rect.anchoredPosition = new(0, 200);
+            rect.rotation = Quaternion.Euler(0, 0, -30);
+            return;
+        }
     }
 
 }

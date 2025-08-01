@@ -19,6 +19,9 @@ MonoBehaviour:
   wastedSprite: {fileID: 4254866829682021798, guid: 01d74493c92d94866b7d0c2b4a3f21ec, type: 3}
   inTacosSprite: {fileID: 21300000, guid: 75614a2a5ebc74efbadbd59643d3e25a, type: 3}
   inTacosSpriteAlternative: {fileID: 0}
+  uncookedFryerSprite: {fileID: 21300000, guid: b22bbb406e9324f39ae46de1272c3a56, type: 3}
+  cookedFryerSprite: {fileID: 21300000, guid: 3b9fdeb9d19b245e88d841e61eafcb8a, type: 3}
+  burntFryerSprite: {fileID: 21300000, guid: 5e3ebbec3524b4ef6ba96a1f1e4eaed2, type: 3}
   processingTime: 20
   wastingTimeOffset: 10
   category: 2

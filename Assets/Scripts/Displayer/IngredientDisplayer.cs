@@ -19,6 +19,12 @@ public class IngredientDisplayer : MonoBehaviour
             return;
         }
 
+        if (PlayzoneVisual.currentView == ViewToShowEnum.FRYER)
+        {
+            DisplayUnprocessedInFryerImage();
+            return;
+        }
+
         DisplayUnprocessedImage();
     }
 
@@ -31,6 +37,12 @@ public class IngredientDisplayer : MonoBehaviour
         }
         ingredientImage.sprite = spriteToShow;
         UseTacosSize();
+    }
+
+    public void DisplayUnprocessedInFryerImage()
+    {
+        ingredientImage.sprite = ingredientData.uncookedFryerSprite;
+        UseFryerSize();
     }
 
     public void DisplayUnprocessedImage()
@@ -98,6 +110,12 @@ public class IngredientDisplayer : MonoBehaviour
     void UseMediumSize()
     {
         ingredientImage.GetComponent<RectTransform>().sizeDelta = new(150, 150);
+    }
+
+    void UseFryerSize()
+    {
+        ingredientImage.GetComponent<RectTransform>().sizeDelta = new(205, 350);
+
     }
 
 
