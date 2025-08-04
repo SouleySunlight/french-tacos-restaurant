@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 549a5067941eb439cb5eaaa40401d7c6
+guid: 44a5cc53240a244529450f7bf5d33b5e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3568358688326578985
-    second: Completion bar round_0
+      213: 6672326112574553914
+    second: burnt fryer nuggets_0
+  - first:
+      213: -2204460966745225049
+    second: burnt fryer nuggets_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -126,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Completion bar round_0
+      name: burnt fryer nuggets_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 200
-        height: 200
+        x: 11
+        y: 209
+        width: 165
+        height: 115
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +144,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7dc8d1fcda4aa7ec0800000000000000
-      internalID: -3568358688326578985
+      spriteID: a3fb1957f3dd89c50800000000000000
+      internalID: 6672326112574553914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burnt fryer nuggets_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 5
+        width: 154
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a8cfe33e6e2861e0800000000000000
+      internalID: -2204460966745225049
       vertices: []
       indices: 
       edges: []
@@ -151,7 +176,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +186,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Completion bar round_0: -3568358688326578985
+      burnt fryer nuggets_0: 6672326112574553914
+      burnt fryer nuggets_1: -2204460966745225049
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

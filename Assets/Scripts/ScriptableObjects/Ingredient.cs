@@ -10,6 +10,9 @@ public class Ingredient : ScriptableObject
     public Sprite wastedSprite;
     public Sprite inTacosSprite;
     public Sprite inTacosSpriteAlternative;
+    public Sprite uncookedFryerSprite;
+    public Sprite cookedFryerSprite;
+    public Sprite burntFryerSprite;
     public float processingTime;
     public float wastingTimeOffset;
     public IngredientCategoryEnum category;
