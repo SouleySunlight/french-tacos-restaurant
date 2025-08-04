@@ -110,8 +110,13 @@ public class FryerVisual : MonoBehaviour, IView
     void OnClickOnBasket(GameObject gameObject)
     {
         var index = baskets.FindIndex(basket => basket == gameObject);
-        baskets[index].transform.SetAsFirstSibling();
         GameManager.Instance.FryerManager.OnClickOnBasket(index);
+    }
+
+    public void StartFrying(int position)
+    {
+        baskets[position].transform.SetAsFirstSibling();
+
     }
 
     public void UpdateTimer(int index, float percentage)
