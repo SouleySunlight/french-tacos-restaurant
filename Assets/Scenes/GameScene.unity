@@ -614,7 +614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstButtonPosition: {fileID: 413984090}
-  ingredientButtonPrefab: {fileID: 7813578882716834325, guid: 00d21511e35e24f16bf33bf8234b51ef, type: 3}
+  ingredientButtonPrefab: {fileID: 3788280034557678561, guid: 6acfae9cecf9e421a9ee1aa4133cdc8e, type: 3}
   ingredientPrefab: {fileID: 2624213403382393968, guid: c47743246aeac47bd88a8a604859dcee, type: 3}
   quantityManager:
   - {fileID: 2089479166}
@@ -625,6 +625,7 @@ MonoBehaviour:
   cookingTimers:
   - {fileID: 985570019}
   - {fileID: 101391688}
+  ingredientIndicatorPrefab: {fileID: 1991254214831741297, guid: eb34b7bb5264d4c75911c7e3a73981b7, type: 3}
 --- !u!224 &193898524 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6986233735202492822, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
@@ -3728,9 +3729,9 @@ RectTransform:
   - {fileID: 366478073}
   m_Father: {fileID: 192292309}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 500, y: -300}
   m_SizeDelta: {x: 800, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1575575884

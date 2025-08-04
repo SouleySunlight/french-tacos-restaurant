@@ -11,10 +11,12 @@ public class FryerVisual : MonoBehaviour, IView
     [SerializeField] private List<GameObject> quantityManager = new();
     [SerializeField] private List<GameObject> baskets = new();
     [SerializeField] private List<Image> cookingTimers = new();
+    [SerializeField] private GameObject ingredientIndicatorPrefab;
     private List<List<GameObject>> ingredientsInBasket = new();
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
 
     private List<GameObject> buttons = new();
+    private List<GameObject> indicators = new();
 
     public void Setup()
     {
@@ -33,35 +35,54 @@ public class FryerVisual : MonoBehaviour, IView
         foreach (Ingredient ingredient in ingredients)
         {
             AddAvailableIngredient(ingredient);
+            AddIngredientIndicator(ingredient);
         }
         UpdateVisual();
     }
     public void AddAvailableIngredient(Ingredient ingredient)
     {
-        var buttonPrefab = Instantiate(ingredientButtonPrefab, firstButtonPosition.position, Quaternion.identity, firstButtonPosition);
-        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().ingredientData = ingredient;
-        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().shouldShowUnprocessedQuantity = true;
-
-
-        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().AddListener(() => GameManager.Instance.FryerManager.FryIngredients(ingredient));
-        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().UpdateVisual();
+        var buttonPrefab = Instantiate(ingredientButtonPrefab, this.transform);
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().SetShouldShowUnprocessedIngredient(true);
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.FryerManager.FryIngredients(ingredient));
         buttons.Add(buttonPrefab);
-        UpdateVisual();
+        UpdateButtonsVisual();
+    }
+
+    public void AddIngredientIndicator(Ingredient ingredient)
+    {
+        var indicator = Instantiate(ingredientIndicatorPrefab, this.transform);
+        indicator.GetComponent<IngredientIndicatorDisplayer>().ingredientData = ingredient;
+        indicator.GetComponent<IngredientIndicatorDisplayer>().UpdateVisual();
+
+        indicators.Add(indicator);
+        UpdateIndicatorsVisual();
     }
 
     void UpdateVisual()
     {
-        var index = 0;
-        foreach (var button in buttons)
-        {
-            var buttonPosition = new Vector3(
-                firstButtonPosition.position.x + GlobalConstant.LEGACY_INGREDIENT_BUTTON_HORIZONTAL_GAP * (index % NUMBER_OF_BUTTON_PER_ROW),
-                firstButtonPosition.position.y + GlobalConstant.LEGACY_INGREDIENT_BUTTON_VERTICAL_GAP * (index / NUMBER_OF_BUTTON_PER_ROW),
-                firstButtonPosition.position.z
-            );
+        UpdateButtonsVisual();
+        UpdateIndicatorsVisual();
+        UpdateIndicatorsQuantity();
+    }
 
-            button.GetComponent<RectTransform>().position = buttonPosition;
-            index++;
+    void UpdateButtonsVisual()
+    {
+        var totalWidth = GetComponent<RectTransform>().rect.width;
+        UIPlacement.PlaceIngredientButtons(buttons, totalWidth);
+    }
+
+    void UpdateIndicatorsVisual()
+    {
+        var totalWidth = GetComponent<RectTransform>().rect.width;
+        UIPlacement.PlaceIngredientIndicators(indicators, totalWidth);
+    }
+
+    public void UpdateIndicatorsQuantity()
+    {
+        foreach (var indicator in indicators)
+        {
+            indicator.GetComponent<IngredientIndicatorDisplayer>().UpdateVisual();
         }
     }
 
@@ -82,7 +103,7 @@ public class FryerVisual : MonoBehaviour, IView
     {
         foreach (var button in buttons)
         {
-            button.GetComponent<LegacyIngredientButtonDisplayer>().UpdateVisual();
+            button.GetComponent<IngredientButtonDisplayer>().UpdateVisual();
         }
     }
 
@@ -127,11 +148,12 @@ public class FryerVisual : MonoBehaviour, IView
         UpdateTimer(position, 0);
         quantityManager[position].GetComponent<QuantityDisplayer>().SetQuantity(0);
         UpdateIngredientButtons();
+        UpdateIndicatorsQuantity();
     }
 
     public void OnViewDisplayed()
     {
-        UpdateIngredientButtons();
+        UpdateVisual();
     }
 
     public void PlaceIngredients(GameObject ingredient, int position, int quantity)
