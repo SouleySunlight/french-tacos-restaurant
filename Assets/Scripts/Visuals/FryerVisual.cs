@@ -8,12 +8,12 @@ public class FryerVisual : MonoBehaviour, IView
     [SerializeField] private RectTransform firstButtonPosition;
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private GameObject ingredientPrefab;
+    [SerializeField] private GameObject roundedCompletionBarPrefab;
     [SerializeField] private List<GameObject> quantityManager = new();
     [SerializeField] private List<GameObject> baskets = new();
-    [SerializeField] private List<Image> cookingTimers = new();
+    [SerializeField] private List<GameObject> completionBars = new();
     [SerializeField] private GameObject ingredientIndicatorPrefab;
     private List<List<GameObject>> ingredientsInBasket = new();
-    private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
 
     private List<GameObject> buttons = new();
     private List<GameObject> indicators = new();
@@ -121,7 +121,7 @@ public class FryerVisual : MonoBehaviour, IView
 
     public void UpdateTimer(int index, float percentage)
     {
-        cookingTimers[index].fillAmount = percentage;
+        completionBars[index].GetComponent<RoundedCompletionBarDisplayer>().UpdateTimer(percentage);
     }
 
     public void OnIngredientCooked(int position)
