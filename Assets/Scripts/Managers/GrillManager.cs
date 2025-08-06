@@ -22,11 +22,13 @@ public class GrillManager : MonoBehaviour, IWorkStation
     private GameManager gameManager;
     private Worker currentWorker = null;
     private bool isWorkerTaskDone = false;
+    private bool isGrillOpened = true;
 
     void Awake()
     {
         gameManager = FindFirstObjectByType<GameManager>();
         grillVisual = FindFirstObjectByType<GrillVisual>(FindObjectsInactive.Include);
+        grillVisual.Setup();
         for (int i = 0; i < MAX_GRILLING_TACOS; i++)
         {
             grillingTacos.Add(null);
@@ -228,5 +230,23 @@ public class GrillManager : MonoBehaviour, IWorkStation
         if (!CanAddTacosToGrill()) { return; }
         AddTacosToGrill(waitingToGrillTacos[0]);
         isWorkerTaskDone = true;
+    }
+
+    public void CloseGrill(GameObject gameObject)
+    {
+        if (isGrillOpened)
+        {
+            isGrillOpened = false;
+            grillVisual.UpdateAnimation(isGrillOpened);
+        }
+    }
+
+    public void OpenGrill(GameObject gameObject)
+    {
+        if (!isGrillOpened)
+        {
+            isGrillOpened = true;
+            grillVisual.UpdateAnimation(isGrillOpened);
+        }
     }
 }

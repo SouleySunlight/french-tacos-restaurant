@@ -10,6 +10,15 @@ public class GrillVisual : MonoBehaviour, IView
     private List<GameObject> grillingTacos = new();
     [SerializeField] private List<RectTransform> grillTransforms = new();
     [SerializeField] private List<Image> grillTimers = new();
+    [SerializeField] private Animator animator;
+
+
+    public void Setup()
+    {
+        GetComponentInChildren<GrillMovement>().CloseGrill.AddListener(CloseGrill);
+        GetComponentInChildren<GrillMovement>().OpenGrill.AddListener(OpenGrill);
+
+    }
 
     public void UpdateVisual()
     {
@@ -68,5 +77,19 @@ public class GrillVisual : MonoBehaviour, IView
         grillingTacos.RemoveAt(tacosToRemoveIndex);
         grillTimers[index].fillAmount = 0;
 
+    }
+
+    public void CloseGrill(GameObject gameObject)
+    {
+        GameManager.Instance.GrillManager.CloseGrill(gameObject);
+    }
+    public void OpenGrill(GameObject gameObject)
+    {
+        GameManager.Instance.GrillManager.OpenGrill(gameObject);
+    }
+
+    public void UpdateAnimation(bool isGrillOpened)
+    {
+        animator.SetBool("isGrillOpened", isGrillOpened);
     }
 }
