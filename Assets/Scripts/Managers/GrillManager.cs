@@ -49,7 +49,6 @@ public class GrillManager : MonoBehaviour, IWorkStation
 
             if (grillingTime[i] >= totalGrillingTime[i] + BURN_BASE_DURATION && !grillingTacos[i].isBurnt)
             {
-                Debug.Log($"Tacos {grillingTacos[i].guid} is burnt");
                 grillingTacos[i].BurnTacos();
                 grillVisual.UpdateTacosVisual(grillingTacos[i]);
                 continue;
@@ -58,7 +57,6 @@ public class GrillManager : MonoBehaviour, IWorkStation
 
             if (grillingTime[i] >= totalGrillingTime[i] && !grillingTacos[i].isGrilled)
             {
-                Debug.Log($"Tacos {grillingTacos[i].guid} is grilled");
                 grillingTacos[i].GrillTacos();
                 grillVisual.UpdateTacosVisual(grillingTacos[i]);
                 continue;

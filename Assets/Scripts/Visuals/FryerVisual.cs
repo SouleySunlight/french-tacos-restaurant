@@ -8,7 +8,6 @@ public class FryerVisual : MonoBehaviour, IView
     [SerializeField] private RectTransform firstButtonPosition;
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private GameObject ingredientPrefab;
-    [SerializeField] private GameObject roundedCompletionBarPrefab;
     [SerializeField] private List<GameObject> quantityManager = new();
     [SerializeField] private List<GameObject> baskets = new();
     [SerializeField] private List<GameObject> completionBars = new();

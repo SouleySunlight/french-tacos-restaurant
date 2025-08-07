@@ -1901,6 +1901,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   workerButtonPrefab: {fileID: 1494327487557313040, guid: 124de583e1dc443afbbc82b0ec2e231f, type: 3}
   firstButtonPosition: {fileID: 971189722}
+--- !u!224 &894535925 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7688910059753343328, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+  m_PrefabInstance: {fileID: 1342178357523527731}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &971189721
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,6 +3191,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2069625897}
     m_Modifications:
+    - target: {fileID: 190985847914835799, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: tacosGrill
+      value: 
+      objectReference: {fileID: 894535925}
+    - target: {fileID: 190985847914835799, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: grillPosition
+      value: 
+      objectReference: {fileID: 894535925}
     - target: {fileID: 866786952895768032, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: m_FillAmount
       value: 0
@@ -3274,12 +3287,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5373067267956981578, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373067267956981578, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
     - target: {fileID: 5400345693225674405, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: m_FillAmount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7688910059753343328, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688910059753343328, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8062555902739492465, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}

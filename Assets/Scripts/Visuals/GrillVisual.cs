@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class GrillVisual : MonoBehaviour, IView
 {
     [SerializeField] private GameObject tacosToGrillPrefab;
-    [SerializeField] private RectTransform tacosToGrillFirstTransform;
+    [SerializeField] private RectTransform grillPosition = new();
     private List<GameObject> tacosToGrillList = new();
     private List<GameObject> grillingTacos = new();
     [SerializeField] private List<RectTransform> grillTransforms = new();
@@ -30,15 +30,21 @@ public class GrillVisual : MonoBehaviour, IView
         var index = 0;
         foreach (GameObject prefab in tacosToGrillList)
         {
-            var position = new Vector3(tacosToGrillFirstTransform.position.x + index * GlobalConstant.TACOS_HORIZONTAL_GAP, tacosToGrillFirstTransform.position.y, tacosToGrillFirstTransform.position.z);
-            prefab.GetComponent<RectTransform>().position = position;
+            var rectTransform = prefab.GetComponent<RectTransform>();
+
+
+
+            rectTransform.anchorMin = new Vector2(0.3f + index * 0.4f, 1);
+            rectTransform.anchorMax = new Vector2(0.3f + index * 0.4f, 1);
+            rectTransform.pivot = new Vector2(0.5f, 0f);
+            rectTransform.anchoredPosition = new Vector2(0, 0);
             index++;
         }
     }
 
     public void ReceiveTacosToGrill(Tacos tacos)
     {
-        var tacosToGrill = Instantiate(tacosToGrillPrefab, tacosToGrillFirstTransform.position, Quaternion.identity, tacosToGrillFirstTransform);
+        var tacosToGrill = Instantiate(tacosToGrillPrefab, grillPosition);
         tacosToGrill.GetComponent<TacosMovemement>().ClickEventGrill.AddListener(OnClickOnTacos);
         tacosToGrill.GetComponent<TacosDisplayer>().tacosData = tacos;
         tacosToGrillList.Add(tacosToGrill);
