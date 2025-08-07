@@ -9,7 +9,7 @@ public class GrillVisual : MonoBehaviour, IView
     [SerializeField] private GameObject grillTop;
     private List<GameObject> tacosToGrillList = new();
     private List<GameObject> grillingTacos = new();
-    [SerializeField] private List<Image> grillTimers = new();
+    [SerializeField] private List<GameObject> completionBars = new();
     [SerializeField] private Animator animator;
 
 
@@ -76,7 +76,7 @@ public class GrillVisual : MonoBehaviour, IView
 
     public void UpdateTimer(int index, float percentage)
     {
-        grillTimers[index].fillAmount = percentage;
+        completionBars[index].GetComponent<RoundedCompletionBarDisplayer>().UpdateTimer(percentage);
     }
 
     public void RemoveTacosOfTheGrill(Tacos tacosToServe, int index)
@@ -84,7 +84,7 @@ public class GrillVisual : MonoBehaviour, IView
         var tacosToRemoveIndex = grillingTacos.FindIndex((tacos) => tacos.GetComponent<TacosDisplayer>().tacosData.guid == tacosToServe.guid);
         Destroy(grillingTacos[tacosToRemoveIndex]);
         grillingTacos.RemoveAt(tacosToRemoveIndex);
-        grillTimers[index].fillAmount = 0;
+        completionBars[index].GetComponent<RoundedCompletionBarDisplayer>().UpdateTimer(0);
 
     }
 
