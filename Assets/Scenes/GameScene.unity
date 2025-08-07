@@ -3203,6 +3203,10 @@ PrefabInstance:
       propertyPath: m_FillAmount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 887160551549832702, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2303933431091396998, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: m_Name
       value: PlayZone
@@ -3310,6 +3314,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8062555902739492465, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+    - {fileID: 1502523807425167527, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+    - {fileID: 4441270089112299533, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+    - {fileID: 4855130794312200525, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+    - {fileID: 3661118590248568295, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
