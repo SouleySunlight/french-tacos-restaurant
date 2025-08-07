@@ -22,11 +22,13 @@ public class GrillManager : MonoBehaviour, IWorkStation
     private GameManager gameManager;
     private Worker currentWorker = null;
     private bool isWorkerTaskDone = false;
+    public bool isGrillOpened { get; private set; } = true;
 
     void Awake()
     {
         gameManager = FindFirstObjectByType<GameManager>();
         grillVisual = FindFirstObjectByType<GrillVisual>(FindObjectsInactive.Include);
+        grillVisual.Setup();
         for (int i = 0; i < MAX_GRILLING_TACOS; i++)
         {
             grillingTacos.Add(null);
@@ -38,6 +40,7 @@ public class GrillManager : MonoBehaviour, IWorkStation
     void Update()
     {
         if (GameManager.Instance.isGamePaused) { return; }
+        if (isGrillOpened) { return; }
         for (int i = 0; i < grillingTime.Count; i++)
         {
             if (grillingTime[i] == -10f) { continue; }
@@ -91,6 +94,10 @@ public class GrillManager : MonoBehaviour, IWorkStation
     {
         try
         {
+            if (!isGrillOpened)
+            {
+                return;
+            }
             if (waitingToGrillTacos.Contains(tacos))
             {
                 AddTacosToGrill(tacos);
@@ -228,5 +235,23 @@ public class GrillManager : MonoBehaviour, IWorkStation
         if (!CanAddTacosToGrill()) { return; }
         AddTacosToGrill(waitingToGrillTacos[0]);
         isWorkerTaskDone = true;
+    }
+
+    public void CloseGrill(GameObject gameObject)
+    {
+        if (isGrillOpened)
+        {
+            isGrillOpened = false;
+            grillVisual.UpdateAnimation(isGrillOpened);
+        }
+    }
+
+    public void OpenGrill(GameObject gameObject)
+    {
+        if (!isGrillOpened)
+        {
+            isGrillOpened = true;
+            grillVisual.UpdateAnimation(isGrillOpened);
+        }
     }
 }
