@@ -7,6 +7,7 @@ public class TacosDisplayer : MonoBehaviour
     [SerializeField] private Sprite ungrilledTacosImage;
     [SerializeField] private Sprite grilledTacosImage;
     [SerializeField] private Sprite burntTacos;
+    [SerializeField] private Image tacosImage;
 
 
 
@@ -18,11 +19,11 @@ public class TacosDisplayer : MonoBehaviour
     {
         if (tacosData.IsBurnt())
         {
-            GetComponentInChildren<Image>().sprite = burntTacos;
+            tacosImage.sprite = burntTacos;
             return;
         }
 
-        GetComponentInChildren<Image>().sprite = tacosData.IsGrilled() ? grilledTacosImage : ungrilledTacosImage;
+        tacosImage.sprite = tacosData.IsGrilled() ? grilledTacosImage : ungrilledTacosImage;
     }
 
 }

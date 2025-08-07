@@ -40,6 +40,7 @@ public class GrillManager : MonoBehaviour, IWorkStation
     void Update()
     {
         if (GameManager.Instance.isGamePaused) { return; }
+        if (isGrillOpened) { return; }
         for (int i = 0; i < grillingTime.Count; i++)
         {
             if (grillingTime[i] == -10f) { continue; }
@@ -48,6 +49,7 @@ public class GrillManager : MonoBehaviour, IWorkStation
 
             if (grillingTime[i] >= totalGrillingTime[i] + BURN_BASE_DURATION && !grillingTacos[i].isBurnt)
             {
+                Debug.Log($"Tacos {grillingTacos[i].guid} is burnt");
                 grillingTacos[i].BurnTacos();
                 grillVisual.UpdateTacosVisual(grillingTacos[i]);
                 continue;
@@ -56,6 +58,7 @@ public class GrillManager : MonoBehaviour, IWorkStation
 
             if (grillingTime[i] >= totalGrillingTime[i] && !grillingTacos[i].isGrilled)
             {
+                Debug.Log($"Tacos {grillingTacos[i].guid} is grilled");
                 grillingTacos[i].GrillTacos();
                 grillVisual.UpdateTacosVisual(grillingTacos[i]);
                 continue;
@@ -93,6 +96,10 @@ public class GrillManager : MonoBehaviour, IWorkStation
     {
         try
         {
+            if (!isGrillOpened)
+            {
+                return;
+            }
             if (waitingToGrillTacos.Contains(tacos))
             {
                 AddTacosToGrill(tacos);
