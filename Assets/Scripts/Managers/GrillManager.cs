@@ -22,7 +22,7 @@ public class GrillManager : MonoBehaviour, IWorkStation
     private GameManager gameManager;
     private Worker currentWorker = null;
     private bool isWorkerTaskDone = false;
-    private bool isGrillOpened = true;
+    public bool isGrillOpened { get; private set; } = true;
 
     void Awake()
     {

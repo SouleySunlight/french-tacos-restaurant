@@ -2410,6 +2410,29 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2324949575971121632, guid: 48419ec368d364875a89f7c09779893e, type: 3}
   m_PrefabInstance: {fileID: 2074181368}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &959719331 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7676135352199216736, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+  m_PrefabInstance: {fileID: 1342178357523527731}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &959719333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959719331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bed8597813eb947a3bb65249b34e2e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OpenGrill:
+    m_PersistentCalls:
+      m_Calls: []
+  CloseGrill:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &960679737
 GameObject:
   m_ObjectHideFlags: 0
@@ -4315,7 +4338,6 @@ GameObject:
   - component: {fileID: 2073864332}
   - component: {fileID: 2073864331}
   - component: {fileID: 2073864330}
-  - component: {fileID: 2073864333}
   m_Layer: 5
   m_Name: TacosGrillTop
   m_TagString: Untagged
@@ -4378,7 +4400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4402,24 +4424,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2073864328}
   m_CullTransparentMesh: 1
---- !u!114 &2073864333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2073864328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bed8597813eb947a3bb65249b34e2e3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OpenGrill:
-    m_PersistentCalls:
-      m_Calls: []
-  CloseGrill:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &2074181368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5101,7 +5105,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 44423112226281117, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2073864329}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7676135352199216736, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 959719333}
   m_SourcePrefab: {fileID: 100100000, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
 --- !u!1001 &1344307157296160407
 PrefabInstance:

@@ -15,8 +15,8 @@ public class GrillVisual : MonoBehaviour, IView
 
     public void Setup()
     {
-        GetComponentInChildren<GrillMovement>().CloseGrill.AddListener(CloseGrill);
-        GetComponentInChildren<GrillMovement>().OpenGrill.AddListener(OpenGrill);
+        GetComponent<GrillMovement>().CloseGrill.AddListener(CloseGrill);
+        GetComponent<GrillMovement>().OpenGrill.AddListener(OpenGrill);
 
     }
 
