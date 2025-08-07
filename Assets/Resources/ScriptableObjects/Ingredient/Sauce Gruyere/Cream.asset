@@ -14,9 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: CRE
   name: Cream
-  unprocessedSprite: {fileID: 618604502413755460, guid: d09c8592282c84765b9ad507351a0be0, type: 3}
+  unprocessedSprite: {fileID: 21300000, guid: 467ae6d5939f54e77ba3f4538f5d8a99, type: 3}
   processedSprite: {fileID: 0}
   wastedSprite: {fileID: 0}
+  inTacosSprite: {fileID: 21300000, guid: 467ae6d5939f54e77ba3f4538f5d8a99, type: 3}
+  inTacosSpriteAlternative: {fileID: 0}
+  uncookedFryerSprite: {fileID: 0}
+  cookedFryerSprite: {fileID: 0}
+  burntFryerSprite: {fileID: 0}
   processingTime: 0
   wastingTimeOffset: 0
   category: 3
@@ -24,3 +29,7 @@ MonoBehaviour:
   priceToUnlock: 0
   priceToRefill: 1
   canBeAddedToTacos: 0
+  canBePurshased: 1
+  inEveryTacos: 0
+  popularity: 0
+  processingMethod: 2

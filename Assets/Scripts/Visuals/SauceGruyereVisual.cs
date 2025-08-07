@@ -7,15 +7,13 @@ public class SauceGruyereVisual : MonoBehaviour, IView
 {
     [SerializeField] private RectTransform firstIngredientPosition;
     [SerializeField] private GameObject ingredientButtonPrefab;
-    [SerializeField] private GameObject ingredientPrefab;
-    [SerializeField] private RectTransform sauceGruyerePosition;
     [SerializeField] private Image cookingTimer;
-    [SerializeField] private Ingredient sauceGruyereIngredient;
-
+    [SerializeField] private Image creamImage;
+    [SerializeField] private Image cheeseImage;
+    [SerializeField] private Image sauceGruyereImage;
+    [SerializeField] private Image burntSauceGruyereImage;
 
     private List<GameObject> buttons = new();
-    private List<GameObject> ingredientsInSauceGruyere = new();
-    private GameObject sauceGruyerePrefab = null;
     private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
 
     public void OnViewDisplayed()
@@ -27,7 +25,11 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     void Awake()
     {
         CreateSauceGruyere();
-        sauceGruyerePrefab.SetActive(false);
+        sauceGruyereImage.gameObject.SetActive(false);
+        cheeseImage.gameObject.SetActive(false);
+        creamImage.gameObject.SetActive(false);
+        burntSauceGruyereImage.gameObject.SetActive(false);
+
 
     }
     public void AddAvailableIngredient(Ingredient ingredient)
@@ -70,18 +72,23 @@ public class SauceGruyereVisual : MonoBehaviour, IView
 
     public void AddIngredientToSauceGruyere(Ingredient ingredient)
     {
-        var ingredientToCook = Instantiate(ingredientPrefab, sauceGruyerePosition.position, Quaternion.identity, sauceGruyerePosition);
-        ingredientToCook.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
-        ingredientToCook.GetComponent<IngredientMovement>().ClickSauceGruyereEvent.AddListener(OnClickOnIngredient);
-        ingredientsInSauceGruyere.Add(ingredientToCook);
+        if (ingredient.id == "CRE")
+        {
+            creamImage.gameObject.SetActive(true);
+            return;
+        }
+
+        if (ingredient.id == "GRU")
+        {
+            cheeseImage.gameObject.SetActive(true);
+            return;
+        }
         UpdateIngredientButtons();
     }
 
     public void CreateSauceGruyere()
     {
-        sauceGruyerePrefab = Instantiate(ingredientPrefab, sauceGruyerePosition.position, Quaternion.identity, sauceGruyerePosition);
-        sauceGruyerePrefab.GetComponent<IngredientDisplayer>().ingredientData = sauceGruyereIngredient;
-        sauceGruyerePrefab.GetComponent<IngredientMovement>().ClickSauceGruyereEvent.AddListener(OnClickOnIngredient);
+        sauceGruyereImage.gameObject.SetActive(true);
 
     }
 
@@ -101,33 +108,30 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     public void OnSauceGruyereCooked()
     {
         RemoveIngredientsFromSauceGruyere();
-        sauceGruyerePrefab.SetActive(true);
+        sauceGruyereImage.gameObject.SetActive(true);
     }
 
     public void OnSauceGruyereBurnt()
     {
-        sauceGruyerePrefab.GetComponent<IngredientDisplayer>().DisplayWastedImage();
+        burntSauceGruyereImage.gameObject.SetActive(true);
     }
 
 
     public void RemoveIngredientsFromSauceGruyere()
     {
-        foreach (var ingredient in ingredientsInSauceGruyere)
-        {
-            Destroy(ingredient);
-        }
-        ingredientsInSauceGruyere.Clear();
+        creamImage.gameObject.SetActive(false);
+        cheeseImage.gameObject.SetActive(false);
         UpdateIngredientButtons();
     }
-    void OnClickOnIngredient(GameObject gameObject)
+    public void OnClickOnPot()
     {
-        GameManager.Instance.SauceGruyereManager.OnClickOnIngredient(gameObject.GetComponent<IngredientDisplayer>().ingredientData);
+        GameManager.Instance.SauceGruyereManager.OnClickOnPot();
     }
 
     public void RemoveSauceGruyere()
     {
-        sauceGruyerePrefab.GetComponent<IngredientDisplayer>().DisplayProcessedImage();
-        sauceGruyerePrefab.SetActive(false);
+        sauceGruyereImage.gameObject.SetActive(false);
+        burntSauceGruyereImage.gameObject.SetActive(false);
     }
 
 

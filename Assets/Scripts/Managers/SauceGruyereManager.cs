@@ -101,12 +101,8 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
         UpdateCookingTime();
     }
 
-    public void OnClickOnIngredient(Ingredient ingredient)
+    public void OnClickOnPot()
     {
-        if (ingredient.id != sauceGruyere.id)
-        {
-            return;
-        }
         if (isSauceGruyereBurnt)
         {
             RemoveSauceGruyere();
