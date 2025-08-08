@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SauceGruyereVisual : MonoBehaviour, IView
 {
     [SerializeField] private GameObject ingredientButtonPrefab;
+    [SerializeField] private GameObject ingredientIndicatorPrefab;
     [SerializeField] private Image cookingTimer;
     [SerializeField] private Image creamImage;
     [SerializeField] private Image cheeseImage;
@@ -13,10 +14,12 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     [SerializeField] private Image burntSauceGruyereImage;
 
     private List<GameObject> buttons = new();
+    private List<GameObject> indicators = new();
+
 
     public void OnViewDisplayed()
     {
-        UpdateIngredientButtons();
+        UpdateIngredients();
     }
 
 
@@ -39,13 +42,14 @@ public class SauceGruyereVisual : MonoBehaviour, IView
 
         buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.SauceGruyereManager.AddIngredientToSauceGruyere(ingredient));
         buttons.Add(buttonPrefab);
-        UpdateVisual();
+        UpdateUIPositions();
     }
 
-    void UpdateVisual()
+    void UpdateUIPositions()
     {
         var totalWidth = GetComponent<RectTransform>().rect.width;
         UIPlacement.PlaceIngredientButtons(buttons, totalWidth);
+        UIPlacement.PlaceIngredientIndicators(indicators, totalWidth);
     }
 
     public void SetupIngredients(List<Ingredient> ingredients)
@@ -54,7 +58,21 @@ public class SauceGruyereVisual : MonoBehaviour, IView
         {
             AddAvailableIngredient(ingredient);
         }
-        UpdateVisual();
+        UpdateUIPositions();
+    }
+
+    public void SetupIngredientIndicators(List<Ingredient> ingredients)
+    {
+
+        foreach (var ingredient in ingredients)
+        {
+            var indicator = Instantiate(ingredientIndicatorPrefab, this.transform);
+            indicator.GetComponent<IngredientIndicatorDisplayer>().ingredientData = ingredient;
+            indicator.GetComponent<IngredientIndicatorDisplayer>().UpdateVisual();
+            indicators.Add(indicator);
+        }
+        UpdateUIPositions();
+
     }
 
     public void AddIngredientToSauceGruyere(Ingredient ingredient)
@@ -70,7 +88,7 @@ public class SauceGruyereVisual : MonoBehaviour, IView
             cheeseImage.gameObject.SetActive(true);
             return;
         }
-        UpdateIngredientButtons();
+        UpdateIngredients();
     }
 
     public void CreateSauceGruyere()
@@ -85,6 +103,20 @@ public class SauceGruyereVisual : MonoBehaviour, IView
         {
             button.GetComponent<IngredientButtonDisplayer>().UpdateVisual();
         }
+    }
+
+    void UpdateIngredientIndicators()
+    {
+        foreach (var indicator in indicators)
+        {
+            indicator.GetComponent<IngredientIndicatorDisplayer>().UpdateVisual();
+        }
+    }
+
+    void UpdateIngredients()
+    {
+        UpdateIngredientButtons();
+        UpdateIngredientIndicators();
     }
 
     public void UpdateTimer(float percentage)
@@ -108,7 +140,7 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     {
         creamImage.gameObject.SetActive(false);
         cheeseImage.gameObject.SetActive(false);
-        UpdateIngredientButtons();
+        UpdateIngredients();
     }
     public void OnClickOnPot()
     {
@@ -119,6 +151,7 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     {
         sauceGruyereImage.gameObject.SetActive(false);
         burntSauceGruyereImage.gameObject.SetActive(false);
+        UpdateIngredients();
     }
 
 

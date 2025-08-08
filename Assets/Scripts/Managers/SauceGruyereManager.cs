@@ -59,11 +59,17 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
     public void SetupIngredients()
     {
         sauceGruyereVisual.SetupIngredients(GetSauceGruyereComponent());
+        sauceGruyereVisual.SetupIngredientIndicators(GetSauceGruyere());
     }
 
     List<Ingredient> GetSauceGruyereComponent()
     {
         return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll((ingredient) => ingredient.category == IngredientCategoryEnum.SAUCE_GRUYERE_INGREDIENT);
+    }
+
+    List<Ingredient> GetSauceGruyere()
+    {
+        return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll((ingredient) => ingredient.category == IngredientCategoryEnum.SAUCE_GRUYERE);
     }
 
     public void AddIngredientToSauceGruyere(Ingredient ingredient, bool? isDoneByWorker = false)

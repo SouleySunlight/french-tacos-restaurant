@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: CRE
   name: Cream
-  unprocessedSprite: {fileID: 21300000, guid: 467ae6d5939f54e77ba3f4538f5d8a99, type: 3}
+  unprocessedSprite: {fileID: 21300000, guid: 46a0d5a21ace841b98fb68f58f47353e, type: 3}
   processedSprite: {fileID: 0}
   wastedSprite: {fileID: 0}
   inTacosSprite: {fileID: 21300000, guid: 467ae6d5939f54e77ba3f4538f5d8a99, type: 3}

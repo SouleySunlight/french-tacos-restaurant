@@ -4027,6 +4027,10 @@ PrefabInstance:
       propertyPath: ingredientButtonPrefab
       value: 
       objectReference: {fileID: 3788280034557678561, guid: 6acfae9cecf9e421a9ee1aa4133cdc8e, type: 3}
+    - target: {fileID: 5371132674167194366, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: ingredientIndicatorPrefab
+      value: 
+      objectReference: {fileID: 1991254214831741297, guid: eb34b7bb5264d4c75911c7e3a73981b7, type: 3}
     - target: {fileID: 5373067267956981578, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 50
