@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class SauceGruyereVisual : MonoBehaviour, IView
 {
-    [SerializeField] private RectTransform firstIngredientPosition;
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private Image cookingTimer;
     [SerializeField] private Image creamImage;
@@ -14,7 +13,6 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     [SerializeField] private Image burntSauceGruyereImage;
 
     private List<GameObject> buttons = new();
-    private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
 
     public void OnViewDisplayed()
     {
@@ -34,31 +32,20 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     }
     public void AddAvailableIngredient(Ingredient ingredient)
     {
-        var buttonPrefab = Instantiate(ingredientButtonPrefab, firstIngredientPosition.position, Quaternion.identity, firstIngredientPosition);
-        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().ingredientData = ingredient;
-        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().shouldShowUnprocessedQuantity = true;
+        var buttonPrefab = Instantiate(ingredientButtonPrefab, this.transform);
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().SetShouldShowUnprocessedIngredient(true);
 
 
-        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().AddListener(() => GameManager.Instance.SauceGruyereManager.AddIngredientToSauceGruyere(ingredient));
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.SauceGruyereManager.AddIngredientToSauceGruyere(ingredient));
         buttons.Add(buttonPrefab);
         UpdateVisual();
     }
 
     void UpdateVisual()
     {
-        var index = 0;
-        foreach (var button in buttons)
-        {
-            var buttonPosition = new Vector3(
-                firstIngredientPosition.position.x + GlobalConstant.LEGACY_INGREDIENT_BUTTON_HORIZONTAL_GAP * (index % NUMBER_OF_BUTTON_PER_ROW),
-                firstIngredientPosition.position.y + GlobalConstant.LEGACY_INGREDIENT_BUTTON_VERTICAL_GAP * (index / NUMBER_OF_BUTTON_PER_ROW),
-                firstIngredientPosition.position.z
-            );
-
-            button.GetComponent<RectTransform>().position = buttonPosition;
-
-            index++;
-        }
+        var totalWidth = GetComponent<RectTransform>().rect.width;
+        UIPlacement.PlaceIngredientButtons(buttons, totalWidth);
     }
 
     public void SetupIngredients(List<Ingredient> ingredients)
@@ -96,7 +83,7 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     {
         foreach (var button in buttons)
         {
-            button.GetComponent<LegacyIngredientButtonDisplayer>().GetComponent<LegacyIngredientButtonDisplayer>().UpdateVisual();
+            button.GetComponent<IngredientButtonDisplayer>().UpdateVisual();
         }
     }
 

@@ -79,6 +79,7 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
         GameManager.Instance.InventoryManager.ConsumeIngredient(ingredient);
         sauceGruyereIngredients.Add(ingredient);
         sauceGruyereVisual.AddIngredientToSauceGruyere(ingredient);
+        sauceGruyereVisual.UpdateIngredientButtons();
         isDoneByWorker = true;
         if (sauceGruyereIngredients.Count == GetSauceGruyereComponent().Count)
         {
