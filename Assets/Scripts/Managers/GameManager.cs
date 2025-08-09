@@ -150,16 +150,6 @@ public class GameManager : MonoBehaviour
         FryerManager.AddAvailableIngredient(ingredient);
     }
 
-    public void RefillIngredient(Ingredient ingredient)
-    {
-        if (!WalletManager.HasEnoughMoney(ingredient.priceToRefill))
-        {
-            return;
-        }
-        WalletManager.SpendMoney(ingredient.priceToRefill);
-        ShopManager.RefillIngredient(ingredient);
-    }
-
     public void UpgradeElement(UpgradeSlot upgrade)
     {
         if (!WalletManager.HasEnoughMoney(upgrade.upgrade.GetCostAtLevel(upgrade.currentLevel)))

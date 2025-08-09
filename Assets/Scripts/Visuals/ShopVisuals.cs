@@ -11,12 +11,6 @@ public class ShopVisuals : MonoBehaviour, IView
 
     private List<GameObject> buttons = new();
 
-
-    void Start()
-    {
-        viewToggleButton.onClick.AddListener(() => GameManager.Instance.ShopManager.ChangeView());
-    }
-
     public void OnViewDisplayed()
     {
         foreach (var button in buttons)
@@ -35,23 +29,6 @@ public class ShopVisuals : MonoBehaviour, IView
             buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().ingredientData = ingredient;
             buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().AddListener(() => GameManager.Instance.UnlockIngredient(ingredient));
             buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().shouldShowUnlockPrice = true;
-
-            buttons.Add(buttonPrefab);
-        }
-        UpdateVisual();
-    }
-
-    public void SetupIngredientToRefill(List<Ingredient> ingredients)
-    {
-        DestroyAllButtons();
-        buttons.Clear();
-        foreach (Ingredient ingredient in ingredients)
-        {
-            var buttonPrefab = Instantiate(ingredientButtonPrefab, firstButtonPosition.position, Quaternion.identity, firstButtonPosition);
-            buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().AddListener(() => GameManager.Instance.RefillIngredient(ingredient));
-            buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().ingredientData = ingredient;
-            buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().shouldShowRefillPrice = true;
-            buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().shouldShowUnprocessedQuantity = true;
 
             buttons.Add(buttonPrefab);
         }
@@ -79,12 +56,6 @@ public class ShopVisuals : MonoBehaviour, IView
             button.GetComponent<RectTransform>().position = buttonPosition;
             index++;
         }
-        UpdateToggleButtonVisual();
-    }
-
-    public void UpdateToggleButtonVisual()
-    {
-        viewToggleButton.GetComponentInChildren<TMP_Text>().text = GameManager.Instance.ShopManager.isInUnlockMode ? "To Refill" : "To Unlock";
     }
 
     void DestroyAllButtons()
