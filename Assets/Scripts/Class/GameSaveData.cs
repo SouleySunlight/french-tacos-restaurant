@@ -1,6 +1,6 @@
 public class GameSaveData
 {
-    public int playerMoney;
+    public float playerMoney;
     public int currentDay;
     public InventorySaveData inventorySaveData = new();
     public InventorySaveData unprocessedInventorySaveData = new();

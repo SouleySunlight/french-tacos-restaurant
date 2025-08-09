@@ -17,8 +17,8 @@ public class Ingredient : ScriptableObject
     public float wastingTimeOffset;
     public IngredientCategoryEnum category;
     public bool isUnlockedFromTheBeginning;
-    public int priceToUnlock = 0;
-    public int priceToRefill = 1;
+    public float priceToUnlock = 0;
+    public float priceToRefill = 1;
     public bool canBeAddedToTacos = true;
     public bool canBePurshased = true;
     public bool inEveryTacos = false;

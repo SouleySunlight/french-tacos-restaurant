@@ -18,7 +18,7 @@ public class DayCycleVisual : MonoBehaviour
         nextDayButton.onClick.AddListener(() => OnClickOnNextDay());
     }
 
-    public void OnDayOver(int dayOver, int moneyEarned, int moneySpend)
+    public void OnDayOver(int dayOver, float moneyEarned, float moneySpend)
     {
         dayOverModal.SetActive(true);
         modalTitle.text = "Day " + dayOver + " is over.";
