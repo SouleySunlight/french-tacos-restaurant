@@ -5,58 +5,51 @@ using UnityEngine.UI;
 
 public class SauceGruyereVisual : MonoBehaviour, IView
 {
-    [SerializeField] private RectTransform firstIngredientPosition;
     [SerializeField] private GameObject ingredientButtonPrefab;
-    [SerializeField] private GameObject ingredientPrefab;
-    [SerializeField] private RectTransform sauceGruyerePosition;
+    [SerializeField] private GameObject ingredientIndicatorPrefab;
     [SerializeField] private Image cookingTimer;
-    [SerializeField] private Ingredient sauceGruyereIngredient;
-
+    [SerializeField] private Image creamImage;
+    [SerializeField] private Image cheeseImage;
+    [SerializeField] private Image sauceGruyereImage;
+    [SerializeField] private Image burntSauceGruyereImage;
 
     private List<GameObject> buttons = new();
-    private List<GameObject> ingredientsInSauceGruyere = new();
-    private GameObject sauceGruyerePrefab = null;
-    private readonly int NUMBER_OF_BUTTON_PER_ROW = 3;
+    private List<GameObject> indicators = new();
+
 
     public void OnViewDisplayed()
     {
-        UpdateIngredientButtons();
+        UpdateIngredients();
     }
 
 
     void Awake()
     {
         CreateSauceGruyere();
-        sauceGruyerePrefab.SetActive(false);
+        sauceGruyereImage.gameObject.SetActive(false);
+        cheeseImage.gameObject.SetActive(false);
+        creamImage.gameObject.SetActive(false);
+        burntSauceGruyereImage.gameObject.SetActive(false);
+
 
     }
     public void AddAvailableIngredient(Ingredient ingredient)
     {
-        var buttonPrefab = Instantiate(ingredientButtonPrefab, firstIngredientPosition.position, Quaternion.identity, firstIngredientPosition);
-        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().ingredientData = ingredient;
-        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().shouldShowUnprocessedQuantity = true;
+        var buttonPrefab = Instantiate(ingredientButtonPrefab, this.transform);
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().ingredientData = ingredient;
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().SetShouldShowUnprocessedIngredient(true);
 
 
-        buttonPrefab.GetComponent<LegacyIngredientButtonDisplayer>().AddListener(() => GameManager.Instance.SauceGruyereManager.AddIngredientToSauceGruyere(ingredient));
+        buttonPrefab.GetComponent<IngredientButtonDisplayer>().AddListener(() => GameManager.Instance.SauceGruyereManager.AddIngredientToSauceGruyere(ingredient));
         buttons.Add(buttonPrefab);
-        UpdateVisual();
+        UpdateUIPositions();
     }
 
-    void UpdateVisual()
+    void UpdateUIPositions()
     {
-        var index = 0;
-        foreach (var button in buttons)
-        {
-            var buttonPosition = new Vector3(
-                firstIngredientPosition.position.x + GlobalConstant.LEGACY_INGREDIENT_BUTTON_HORIZONTAL_GAP * (index % NUMBER_OF_BUTTON_PER_ROW),
-                firstIngredientPosition.position.y + GlobalConstant.LEGACY_INGREDIENT_BUTTON_VERTICAL_GAP * (index / NUMBER_OF_BUTTON_PER_ROW),
-                firstIngredientPosition.position.z
-            );
-
-            button.GetComponent<RectTransform>().position = buttonPosition;
-
-            index++;
-        }
+        var totalWidth = GetComponent<RectTransform>().rect.width;
+        UIPlacement.PlaceIngredientButtons(buttons, totalWidth);
+        UIPlacement.PlaceIngredientIndicators(indicators, totalWidth);
     }
 
     public void SetupIngredients(List<Ingredient> ingredients)
@@ -65,23 +58,42 @@ public class SauceGruyereVisual : MonoBehaviour, IView
         {
             AddAvailableIngredient(ingredient);
         }
-        UpdateVisual();
+        UpdateUIPositions();
+    }
+
+    public void SetupIngredientIndicators(List<Ingredient> ingredients)
+    {
+
+        foreach (var ingredient in ingredients)
+        {
+            var indicator = Instantiate(ingredientIndicatorPrefab, this.transform);
+            indicator.GetComponent<IngredientIndicatorDisplayer>().ingredientData = ingredient;
+            indicator.GetComponent<IngredientIndicatorDisplayer>().UpdateVisual();
+            indicators.Add(indicator);
+        }
+        UpdateUIPositions();
+
     }
 
     public void AddIngredientToSauceGruyere(Ingredient ingredient)
     {
-        var ingredientToCook = Instantiate(ingredientPrefab, sauceGruyerePosition.position, Quaternion.identity, sauceGruyerePosition);
-        ingredientToCook.GetComponent<IngredientDisplayer>().ingredientData = ingredient;
-        ingredientToCook.GetComponent<IngredientMovement>().ClickSauceGruyereEvent.AddListener(OnClickOnIngredient);
-        ingredientsInSauceGruyere.Add(ingredientToCook);
-        UpdateIngredientButtons();
+        if (ingredient.id == "CRE")
+        {
+            creamImage.gameObject.SetActive(true);
+            return;
+        }
+
+        if (ingredient.id == "GRU")
+        {
+            cheeseImage.gameObject.SetActive(true);
+            return;
+        }
+        UpdateIngredients();
     }
 
     public void CreateSauceGruyere()
     {
-        sauceGruyerePrefab = Instantiate(ingredientPrefab, sauceGruyerePosition.position, Quaternion.identity, sauceGruyerePosition);
-        sauceGruyerePrefab.GetComponent<IngredientDisplayer>().ingredientData = sauceGruyereIngredient;
-        sauceGruyerePrefab.GetComponent<IngredientMovement>().ClickSauceGruyereEvent.AddListener(OnClickOnIngredient);
+        sauceGruyereImage.gameObject.SetActive(true);
 
     }
 
@@ -89,8 +101,22 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     {
         foreach (var button in buttons)
         {
-            button.GetComponent<LegacyIngredientButtonDisplayer>().GetComponent<LegacyIngredientButtonDisplayer>().UpdateVisual();
+            button.GetComponent<IngredientButtonDisplayer>().UpdateVisual();
         }
+    }
+
+    void UpdateIngredientIndicators()
+    {
+        foreach (var indicator in indicators)
+        {
+            indicator.GetComponent<IngredientIndicatorDisplayer>().UpdateVisual();
+        }
+    }
+
+    void UpdateIngredients()
+    {
+        UpdateIngredientButtons();
+        UpdateIngredientIndicators();
     }
 
     public void UpdateTimer(float percentage)
@@ -101,33 +127,31 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     public void OnSauceGruyereCooked()
     {
         RemoveIngredientsFromSauceGruyere();
-        sauceGruyerePrefab.SetActive(true);
+        sauceGruyereImage.gameObject.SetActive(true);
     }
 
     public void OnSauceGruyereBurnt()
     {
-        sauceGruyerePrefab.GetComponent<IngredientDisplayer>().DisplayWastedImage();
+        burntSauceGruyereImage.gameObject.SetActive(true);
     }
 
 
     public void RemoveIngredientsFromSauceGruyere()
     {
-        foreach (var ingredient in ingredientsInSauceGruyere)
-        {
-            Destroy(ingredient);
-        }
-        ingredientsInSauceGruyere.Clear();
-        UpdateIngredientButtons();
+        creamImage.gameObject.SetActive(false);
+        cheeseImage.gameObject.SetActive(false);
+        UpdateIngredients();
     }
-    void OnClickOnIngredient(GameObject gameObject)
+    public void OnClickOnPot()
     {
-        GameManager.Instance.SauceGruyereManager.OnClickOnIngredient(gameObject.GetComponent<IngredientDisplayer>().ingredientData);
+        GameManager.Instance.SauceGruyereManager.OnClickOnPot();
     }
 
     public void RemoveSauceGruyere()
     {
-        sauceGruyerePrefab.GetComponent<IngredientDisplayer>().DisplayProcessedImage();
-        sauceGruyerePrefab.SetActive(false);
+        sauceGruyereImage.gameObject.SetActive(false);
+        burntSauceGruyereImage.gameObject.SetActive(false);
+        UpdateIngredients();
     }
 
 

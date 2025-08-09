@@ -20,6 +20,21 @@ public class GrillVisual : MonoBehaviour, IView
 
     }
 
+    public void OnViewDisplayed()
+    {
+        UpdateVisual();
+        UpdateUngrilledTacosVisual();
+        if (GameManager.Instance.GrillManager.isGrillOpened)
+        {
+            animator.Play("OPENED_Grill");
+            animator.SetBool("isGrillOpened", true);
+            return;
+        }
+        animator.Play("CLOSED_Grill");
+        animator.SetBool("isGrillOpened", false);
+    }
+
+
     public void UpdateVisual()
     {
         UpdateUngrilledTacosVisual();

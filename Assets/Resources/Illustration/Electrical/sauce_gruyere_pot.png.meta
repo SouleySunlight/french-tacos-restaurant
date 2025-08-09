@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d09c8592282c84765b9ad507351a0be0
+guid: c4031bc747bea4a21a3cc91d9346a51e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 618604502413755460
-    second: sour cream_0
+      213: 3173812692447317863
+    second: sauce_gruyere_pot_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sour cream_0
+      name: sauce_gruyere_pot_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 612
-        height: 433
+        x: 39
+        y: 147
+        width: 942
+        height: 726
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 44444d67489b59800800000000000000
-      internalID: 618604502413755460
+      spriteID: 76fc2f404d5ab0c20800000000000000
+      internalID: 3173812692447317863
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sauce_gruyere_pot_0: 3173812692447317863
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -13,7 +13,7 @@ public class IngredientDisplayer : MonoBehaviour
 
     void UpdateIngredientVisual()
     {
-        if (PlayzoneVisual.currentView == ViewToShowEnum.TACOS_MAKER)
+        if (PlayzoneVisual.currentView == ViewToShowEnum.TACOS_MAKER || PlayzoneVisual.currentView == ViewToShowEnum.SAUCE_GRUYERE)
         {
             DisplayInTacosImage();
             return;
@@ -37,6 +37,12 @@ public class IngredientDisplayer : MonoBehaviour
             spriteToShow = GameManager.Instance.TacosMakerManager.GetNumberOfSauceOfOnCreationTacos() % 2 == 0 ? ingredientData.inTacosSpriteAlternative : ingredientData.inTacosSprite;
         }
         ingredientImage.sprite = spriteToShow;
+        if (PlayzoneVisual.currentView == ViewToShowEnum.SAUCE_GRUYERE)
+        {
+            UseGruyereSize();
+            return;
+
+        }
         UseTacosSize();
     }
 
@@ -131,5 +137,10 @@ public class IngredientDisplayer : MonoBehaviour
 
     }
 
+    void UseGruyereSize()
+    {
+        ingredientImage.GetComponent<RectTransform>().sizeDelta = new(700, 700);
 
+
+    }
 }

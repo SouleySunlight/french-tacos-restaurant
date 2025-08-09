@@ -59,11 +59,17 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
     public void SetupIngredients()
     {
         sauceGruyereVisual.SetupIngredients(GetSauceGruyereComponent());
+        sauceGruyereVisual.SetupIngredientIndicators(GetSauceGruyere());
     }
 
     List<Ingredient> GetSauceGruyereComponent()
     {
         return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll((ingredient) => ingredient.category == IngredientCategoryEnum.SAUCE_GRUYERE_INGREDIENT);
+    }
+
+    List<Ingredient> GetSauceGruyere()
+    {
+        return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll((ingredient) => ingredient.category == IngredientCategoryEnum.SAUCE_GRUYERE);
     }
 
     public void AddIngredientToSauceGruyere(Ingredient ingredient, bool? isDoneByWorker = false)
@@ -79,6 +85,7 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
         GameManager.Instance.InventoryManager.ConsumeIngredient(ingredient);
         sauceGruyereIngredients.Add(ingredient);
         sauceGruyereVisual.AddIngredientToSauceGruyere(ingredient);
+        sauceGruyereVisual.UpdateIngredientButtons();
         isDoneByWorker = true;
         if (sauceGruyereIngredients.Count == GetSauceGruyereComponent().Count)
         {
@@ -101,12 +108,8 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
         UpdateCookingTime();
     }
 
-    public void OnClickOnIngredient(Ingredient ingredient)
+    public void OnClickOnPot()
     {
-        if (ingredient.id != sauceGruyere.id)
-        {
-            return;
-        }
         if (isSauceGruyereBurnt)
         {
             RemoveSauceGruyere();

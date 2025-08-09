@@ -14,9 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: GRU
   name: "Gruy\xE8re"
-  unprocessedSprite: {fileID: 7878119325011488169, guid: a062ae28b1a4046f8b7f2e746bcc96db, type: 3}
+  unprocessedSprite: {fileID: 21300000, guid: 588a5940ed4d2461189c481a43d57cab, type: 3}
   processedSprite: {fileID: 0}
   wastedSprite: {fileID: 0}
+  inTacosSprite: {fileID: 21300000, guid: 37a1aec48f5a5493bafe6a0e63b00de7, type: 3}
+  inTacosSpriteAlternative: {fileID: 0}
+  uncookedFryerSprite: {fileID: 0}
+  cookedFryerSprite: {fileID: 0}
+  burntFryerSprite: {fileID: 0}
   processingTime: 0
   wastingTimeOffset: 0
   category: 3
@@ -25,3 +30,6 @@ MonoBehaviour:
   priceToRefill: 1
   canBeAddedToTacos: 0
   canBePurshased: 1
+  inEveryTacos: 0
+  popularity: 0
+  processingMethod: 2

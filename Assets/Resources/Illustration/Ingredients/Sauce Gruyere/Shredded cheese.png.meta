@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: a062ae28b1a4046f8b7f2e746bcc96db
+guid: 37a1aec48f5a5493bafe6a0e63b00de7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7878119325011488169
-    second: istockphoto-685689158-612x612_0
+      213: 1147938901521790005
+    second: Shredded cheese_0
+  - first:
+      213: 3418869430470392909
+    second: Shredded cheese_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -126,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: istockphoto-685689158-612x612_0
+      name: Shredded cheese_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 612
-        height: 612
+        x: 327
+        y: 349
+        width: 923
+        height: 922
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +144,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ad237939c3b45d60800000000000000
-      internalID: 7878119325011488169
+      spriteID: 534fe01595c4eef00800000000000000
+      internalID: 1147938901521790005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shredded cheese_1
+      rect:
+        serializedVersion: 2
+        x: 1097
+        y: 822
+        width: 172
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4c31a012a3427f20800000000000000
+      internalID: 3418869430470392909
       vertices: []
       indices: 
       edges: []
@@ -151,7 +176,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +186,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      istockphoto-685689158-612x612_0: 7878119325011488169
+      Shredded cheese_0: 1147938901521790005
+      Shredded cheese_1: 3418869430470392909
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
