@@ -76,6 +76,10 @@ public class HotplateManager : MonoBehaviour, IWorkStation
             {
                 continue;
             }
+            if (!GameManager.Instance.InventoryManager.IsUnprocessedIngredientAvailable(ingredient))
+            {
+                return;
+            }
             GameManager.Instance.InventoryManager.ConsumeUnprocessedIngredient(ingredient);
             cookingIngredients[i] = ingredient;
             cookingTimes[i] = 0;

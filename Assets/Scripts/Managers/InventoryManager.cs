@@ -16,9 +16,23 @@ public class InventoryManager : MonoBehaviour
         return processedIngredientInventory[ingredient.id].currentAmount + "/" + processedIngredientMaxAmount;
     }
 
-    public bool IsIngredientAvailable(Ingredient ingredient)
+    public bool IsProcessedIngredientAvailable(Ingredient ingredient)
     {
-        return ingredient.NeedProcessing() ? processedIngredientInventory[ingredient.id].currentAmount > 0 : "TO-DO" == "TO-DO";
+        return processedIngredientInventory[ingredient.id].currentAmount > 0;
+    }
+
+    public bool IsUnprocessedIngredientAvailable(Ingredient ingredient)
+    {
+        return GameManager.Instance.WalletManager.HasEnoughMoney(ingredient.priceToRefill);
+    }
+
+    public bool IsIngredientAvailableForTacos(Ingredient ingredient)
+    {
+        if (ingredient.NeedProcessing())
+        {
+            return IsProcessedIngredientAvailable(ingredient);
+        }
+        return IsUnprocessedIngredientAvailable(ingredient);
     }
     public void ConsumeUnprocessedIngredient(Ingredient ingredient)
     {

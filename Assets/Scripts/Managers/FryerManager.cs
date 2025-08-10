@@ -91,6 +91,10 @@ public class FryerManager : MonoBehaviour, IWorkStation
             {
                 continue;
             }
+            if (!GameManager.Instance.InventoryManager.IsUnprocessedIngredientAvailable(ingredient))
+            {
+                return;
+            }
             GameManager.Instance.InventoryManager.ConsumeUnprocessedIngredient(ingredient);
             if (fryingIngredients[i] == null)
             {

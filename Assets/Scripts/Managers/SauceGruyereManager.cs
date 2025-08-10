@@ -74,7 +74,7 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
 
     public void AddIngredientToSauceGruyere(Ingredient ingredient, bool? isDoneByWorker = false)
     {
-        if (!GameManager.Instance.InventoryManager.IsIngredientAvailable(ingredient))
+        if (!GameManager.Instance.InventoryManager.IsUnprocessedIngredientAvailable(ingredient))
         {
             return;
         }

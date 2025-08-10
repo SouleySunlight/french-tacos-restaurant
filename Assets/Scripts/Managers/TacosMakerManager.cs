@@ -32,7 +32,7 @@ public class TacosMakerManager : MonoBehaviour
 
     public void AddIngredientsToTacos(Ingredient ingredient)
     {
-        if (GameManager.Instance.InventoryManager.IsIngredientAvailable(ingredient) && "TO-DO" == "TO-DO")
+        if (GameManager.Instance.InventoryManager.IsIngredientAvailableForTacos(ingredient))
         {
             onCreationTacos.AddIngredient(ingredient);
             GameManager.Instance.InventoryManager.ConsumeIngredientForTacos(ingredient);
