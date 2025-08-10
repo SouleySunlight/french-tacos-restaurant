@@ -22,12 +22,25 @@ public class InventoryManager : MonoBehaviour
     }
     public void ConsumeUnprocessedIngredient(Ingredient ingredient)
     {
-        //TO-DO
+        if (!GameManager.Instance.WalletManager.HasEnoughMoney(ingredient.priceToRefill)) { return; }
+        GameManager.Instance.WalletManager.SpendMoney(ingredient.priceToRefill);
     }
     public void ConsumeProcessedIngredient(Ingredient ingredient)
     {
         if (processedIngredientInventory[ingredient.id].currentAmount <= 0) { return; }
         processedIngredientInventory[ingredient.id].currentAmount -= 1;
+    }
+
+    public void ConsumeIngredientForTacos(Ingredient ingredient)
+    {
+        if (ingredient.NeedProcessing())
+        {
+            ConsumeProcessedIngredient(ingredient);
+        }
+        else
+        {
+            ConsumeUnprocessedIngredient(ingredient);
+        }
     }
 
     public bool CanAddProcessedIngredient(Ingredient ingredient)
