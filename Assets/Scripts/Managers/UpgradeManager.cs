@@ -34,9 +34,6 @@ public class UpgradeManager : MonoBehaviour
             case "GRILL":
                 GameManager.Instance.GrillManager.UpdateGrillingTime();
                 return;
-            case "FRIDGE":
-                GameManager.Instance.InventoryManager.UpdateUnprocessedInventoryMaxAmount();
-                return;
             case "INGREDIENT_DISPLAYER":
                 GameManager.Instance.InventoryManager.UpdateProcessedInventoryMaxAmount();
                 return;

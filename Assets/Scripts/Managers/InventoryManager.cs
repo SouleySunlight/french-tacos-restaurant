@@ -7,82 +7,54 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private List<Ingredient> allIngredients = new();
     [HideInInspector] public List<Ingredient> UnlockedIngredients { get; private set; } = new();
     [HideInInspector] public int Popularity { get; private set; } = new();
-    private Dictionary<string, InventorySlot> inventory = new();
-    private Dictionary<string, InventorySlot> unprocessedInventory = new();
+    private Dictionary<string, InventorySlot> processedIngredientInventory = new();
 
     private int processedIngredientMaxAmount;
-    private int unprocessedIngredientMaxAmount;
 
-    public string GetStockString(Ingredient ingredient)
+    public string GetProcessedIngredientStockString(Ingredient ingredient)
     {
-        return inventory[ingredient.id].currentAmount + "/" + processedIngredientMaxAmount;
-    }
-
-    public string GetUnprocessedStockString(Ingredient ingredient)
-    {
-        if (ingredient.NeedProcessing())
-        {
-            return "(" + unprocessedInventory[ingredient.id].currentAmount + "/" + unprocessedIngredientMaxAmount + ")";
-        }
-        return GetStockString(ingredient);
+        return processedIngredientInventory[ingredient.id].currentAmount + "/" + processedIngredientMaxAmount;
     }
 
     public bool IsIngredientAvailable(Ingredient ingredient)
     {
-        return inventory[ingredient.id].currentAmount > 0;
+        return ingredient.NeedProcessing() ? processedIngredientInventory[ingredient.id].currentAmount > 0 : "TO-DO" == "TO-DO";
     }
-    public bool IsUnprocessedIngredientAvailable(Ingredient ingredient)
-    {
-        return unprocessedInventory[ingredient.id].currentAmount > 0;
-    }
-
     public void ConsumeUnprocessedIngredient(Ingredient ingredient)
     {
-        if (unprocessedInventory[ingredient.id].currentAmount <= 0) { return; }
-        unprocessedInventory[ingredient.id].currentAmount -= 1;
+        //TO-DO
     }
-    public void ConsumeIngredient(Ingredient ingredient)
+    public void ConsumeProcessedIngredient(Ingredient ingredient)
     {
-        if (inventory[ingredient.id].currentAmount <= 0) { return; }
-        inventory[ingredient.id].currentAmount -= 1;
-    }
-
-    public bool CanAddIngredient(Ingredient ingredient)
-    {
-        return inventory[ingredient.id].currentAmount < processedIngredientMaxAmount;
-    }
-    public bool CanAddUnprocessedIngredient(Ingredient ingredient)
-    {
-        return unprocessedInventory[ingredient.id].currentAmount < unprocessedIngredientMaxAmount;
+        if (processedIngredientInventory[ingredient.id].currentAmount <= 0) { return; }
+        processedIngredientInventory[ingredient.id].currentAmount -= 1;
     }
 
-    public void AddIngredient(Ingredient ingredient)
+    public bool CanAddProcessedIngredient(Ingredient ingredient)
     {
-        inventory[ingredient.id].currentAmount += 1;
+        return processedIngredientInventory[ingredient.id].currentAmount < processedIngredientMaxAmount;
+    }
+
+    public void AddProcessedIngredient(Ingredient ingredient)
+    {
+        processedIngredientInventory[ingredient.id].currentAmount += 1;
         OnProcessedIngredientAdded();
     }
 
-    public void AddIngredient(Ingredient ingredient, int amount)
+    public void AddProcessedIngredients(Ingredient ingredient, int amount)
     {
         for (int i = 0; i < amount; i++)
         {
-            if (!CanAddIngredient(ingredient)) { return; }
-            AddIngredient(ingredient);
+            if (!CanAddProcessedIngredient(ingredient)) { return; }
+            AddProcessedIngredient(ingredient);
         }
         OnProcessedIngredientAdded();
     }
 
-    public void AddUnprocessedIngredient(Ingredient ingredient)
-    {
-        unprocessedInventory[ingredient.id].currentAmount += 1;
-        OnUnprocessedIngredientAdded();
-
-    }
-
-    public InventorySaveData GetInventorySaveData()
+    public InventorySaveData GetInventoryProcessedIngredientSaveData()
     {
         var data = new InventorySaveData();
-        foreach (var pair in inventory)
+        foreach (var pair in processedIngredientInventory)
         {
             data.slots.Add(new InventorySlotSaveData
             {
@@ -93,72 +65,45 @@ public class InventoryManager : MonoBehaviour
         return data;
     }
 
-    public InventorySaveData GetUnprocessedInventorySaveData()
+    public List<Ingredient> GetUnlockedIngredients()
     {
-        var data = new InventorySaveData();
-        foreach (var pair in unprocessedInventory)
-        {
-            data.slots.Add(new InventorySlotSaveData
-            {
-                ingredientID = pair.Key,
-                currentAmount = pair.Value.currentAmount,
-            });
-        }
-        return data;
+        return UnlockedIngredients;
     }
 
-    public void LoadInventoryFromSaveData(InventorySaveData data)
+    public void LoadUnlockedIngredientsFromSaveData(List<Ingredient> ingredients)
     {
-        inventory.Clear();
-
-        if (data.slots.Count == 0)
+        UnlockedIngredients.Clear();
+        if (ingredients.Count == 0)
         {
             foreach (var ingredient in allIngredients)
             {
                 if (ingredient.isUnlockedFromTheBeginning)
                 {
-                    inventory[ingredient.id] = new InventorySlot(
-                        ingredient.NeedProcessing() ? 0 : GlobalConstant.DEFAULT_INGREDIENT_AMOUNT
-                        );
                     UnlockedIngredients.Add(ingredient);
+                    if (ingredient.NeedProcessing())
+                    {
+                        processedIngredientInventory[ingredient.id] = new InventorySlot(0);
+
+                    }
                 }
             }
-            LoadPopularity();
             return;
         }
-
-        foreach (var slot in data.slots)
+        foreach (var ingredient in ingredients)
         {
-            inventory[slot.ingredientID] = new InventorySlot(slot.currentAmount);
-            var ingredientToAdd = allIngredients.Find(ingredient => slot.ingredientID == ingredient.id);
-            if (!ingredientToAdd)
+            if (ingredient.isUnlockedFromTheBeginning)
             {
-                continue;
+                UnlockedIngredients.Add(ingredient);
             }
-            UnlockedIngredients.Add(ingredientToAdd);
-            LoadPopularity();
         }
     }
 
-    public void LoadUnprocessedInventoryFromSaveData(InventorySaveData data)
+    public void LoadProcessedInventoryFromSaveData(InventorySaveData data)
     {
-        unprocessedInventory.Clear();
-
-        if (data.slots.Count == 0)
-        {
-            foreach (var ingredient in allIngredients)
-            {
-                if (ingredient.isUnlockedFromTheBeginning && ingredient.NeedProcessing())
-                {
-                    unprocessedInventory[ingredient.id] = new InventorySlot(GlobalConstant.DEFAULT_INGREDIENT_AMOUNT);
-                }
-            }
-            return;
-        }
-
+        processedIngredientInventory.Clear();
         foreach (var slot in data.slots)
         {
-            unprocessedInventory[slot.ingredientID] = new InventorySlot(slot.currentAmount);
+            processedIngredientInventory[slot.ingredientID] = new InventorySlot(slot.currentAmount);
         }
     }
 
@@ -169,6 +114,13 @@ public class InventoryManager : MonoBehaviour
         {
             Popularity += ingredient.popularity;
         }
+    }
+
+    public void LoadInventory(InventorySaveData data, List<Ingredient> unlockedIngredients)
+    {
+        LoadProcessedInventoryFromSaveData(data);
+        LoadUnlockedIngredientsFromSaveData(unlockedIngredients);
+        LoadPopularity();
     }
 
     public List<Ingredient> GetIngredientsToUnlock()
@@ -187,63 +139,32 @@ public class InventoryManager : MonoBehaviour
     }
     public void UnlockIngredient(Ingredient ingredient)
     {
-        if (ingredient.NeedProcessing())
-        {
-            unprocessedInventory[ingredient.id] = new InventorySlot(GlobalConstant.DEFAULT_INGREDIENT_AMOUNT);
-            inventory[ingredient.id] = new InventorySlot(0);
-            UnlockedIngredients.Add(ingredient);
-            Popularity += ingredient.popularity;
-            return;
-        }
-        inventory[ingredient.id] = new InventorySlot(GlobalConstant.DEFAULT_INGREDIENT_AMOUNT);
         UnlockedIngredients.Add(ingredient);
         Popularity += ingredient.popularity;
-    }
-
-    public void RefillIngredient(Ingredient ingredient)
-    {
         if (ingredient.NeedProcessing())
         {
-            if (!CanAddUnprocessedIngredient(ingredient)) { return; }
-            AddUnprocessedIngredient(ingredient);
-            return;
+            processedIngredientInventory[ingredient.id] = new InventorySlot(0);
         }
-
-        if (!CanAddIngredient(ingredient)) { return; }
-        AddIngredient(ingredient);
     }
 
     public void UpdateProcessedInventoryMaxAmount()
     {
         processedIngredientMaxAmount = GlobalConstant.DEFAULT_INGREDIENT_MAX_AMOUNT + (int)GameManager.Instance.UpgradeManager.GetEffect("INGREDIENT_DISPLAYER");
     }
-    public void UpdateUnprocessedInventoryMaxAmount()
-    {
-        unprocessedIngredientMaxAmount = GlobalConstant.DEFAULT_INGREDIENT_MAX_AMOUNT + (int)GameManager.Instance.UpgradeManager.GetEffect("FRIDGE");
-    }
+
 
     public void SetupInventoriesMaxAmount()
     {
         UpdateProcessedInventoryMaxAmount();
-        UpdateUnprocessedInventoryMaxAmount();
-    }
-
-    public int GetUnprocessedIngredientQuantity(Ingredient ingredient)
-    {
-        return unprocessedInventory.ContainsKey(ingredient.id) ? unprocessedInventory[ingredient.id].currentAmount : 0;
     }
     public int GetProcessedIngredientQuantity(Ingredient ingredient)
     {
-        return inventory.ContainsKey(ingredient.id) ? inventory[ingredient.id].currentAmount : 0;
+        return processedIngredientInventory.ContainsKey(ingredient.id) ? processedIngredientInventory[ingredient.id].currentAmount : 0;
     }
 
     public int GetProcessedIngredientMaxAmount()
     {
         return processedIngredientMaxAmount;
-    }
-    public int GetUnprocessedIngredientMaxAmount()
-    {
-        return unprocessedIngredientMaxAmount;
     }
 
     void OnProcessedIngredientAdded()
@@ -251,9 +172,4 @@ public class InventoryManager : MonoBehaviour
         GameManager.Instance.TacosMakerManager.UpdateButtonsVisualQuantity();
     }
 
-    void OnUnprocessedIngredientAdded()
-    {
-        GameManager.Instance.HotplateManager.UpdateButtonsVisual();
-        GameManager.Instance.FryerManager.UpdateButtonsVisual();
-    }
 }

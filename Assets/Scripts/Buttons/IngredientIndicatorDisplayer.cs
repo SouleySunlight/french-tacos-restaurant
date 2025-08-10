@@ -17,6 +17,6 @@ public class IngredientIndicatorDisplayer : MonoBehaviour
     public void UpdateVisual()
     {
         ingredientImage.sprite = ingredientData.processedSprite;
-        ingredientQuantityText.text = GameManager.Instance.InventoryManager.GetStockString(ingredientData);
+        ingredientQuantityText.text = GameManager.Instance.InventoryManager.GetProcessedIngredientStockString(ingredientData);
     }
 }

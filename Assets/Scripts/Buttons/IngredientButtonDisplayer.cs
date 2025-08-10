@@ -37,7 +37,7 @@ public class IngredientButtonDisplayer : MonoBehaviour
 
     public void UpdateQuantity()
     {
-        quantityText.text = shouldShowUnprocessedIngredient ? GameManager.Instance.InventoryManager.GetUnprocessedStockString(ingredientData) : GameManager.Instance.InventoryManager.GetStockString(ingredientData);
+        quantityText.text = !ingredientData.NeedProcessing() ? "TO-DO" : GameManager.Instance.InventoryManager.GetProcessedIngredientStockString(ingredientData);
     }
 
     void UpdateBorderColor()

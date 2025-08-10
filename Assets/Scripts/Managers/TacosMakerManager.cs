@@ -35,7 +35,7 @@ public class TacosMakerManager : MonoBehaviour
         if (GameManager.Instance.InventoryManager.IsIngredientAvailable(ingredient))
         {
             onCreationTacos.AddIngredient(ingredient);
-            GameManager.Instance.InventoryManager.ConsumeIngredient(ingredient);
+            GameManager.Instance.InventoryManager.ConsumeProcessedIngredient(ingredient);
             tacosMakerVisual.AddIngredientToTacos(ingredient);
         }
     }

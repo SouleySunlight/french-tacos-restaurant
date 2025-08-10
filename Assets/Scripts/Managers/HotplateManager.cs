@@ -76,10 +76,6 @@ public class HotplateManager : MonoBehaviour, IWorkStation
             {
                 continue;
             }
-            if (!GameManager.Instance.InventoryManager.IsUnprocessedIngredientAvailable(ingredient))
-            {
-                return;
-            }
             GameManager.Instance.InventoryManager.ConsumeUnprocessedIngredient(ingredient);
             cookingIngredients[i] = ingredient;
             cookingTimes[i] = 0;
@@ -124,9 +120,9 @@ public class HotplateManager : MonoBehaviour, IWorkStation
     void OnIngredientCookedClicked(int position, bool? doneByWorker = false)
     {
         var ingredient = cookingIngredients[position];
-        if (GameManager.Instance.InventoryManager.CanAddIngredient(ingredient))
+        if (GameManager.Instance.InventoryManager.CanAddProcessedIngredient(ingredient))
         {
-            GameManager.Instance.InventoryManager.AddIngredient(ingredient);
+            GameManager.Instance.InventoryManager.AddProcessedIngredient(ingredient);
             RemoveIngredientFromCooking(position);
             hotplateVisuals.UpdateIndicatorsQuantity();
             if (doneByWorker == true)
@@ -245,10 +241,6 @@ public class HotplateManager : MonoBehaviour, IWorkStation
         int minIngredientAvailable = 1000;
         foreach (var unprocessedIngredient in unprocessedIngredients)
         {
-            if (!GameManager.Instance.InventoryManager.IsUnprocessedIngredientAvailable(unprocessedIngredient))
-            {
-                continue;
-            }
             var currentIngredientAvailableQuantity = GameManager.Instance.InventoryManager.GetProcessedIngredientQuantity(unprocessedIngredient) + GetNumberOfIngredientsCooking(unprocessedIngredient);
 
             if (currentIngredientAvailableQuantity >= GameManager.Instance.InventoryManager.GetProcessedIngredientMaxAmount())

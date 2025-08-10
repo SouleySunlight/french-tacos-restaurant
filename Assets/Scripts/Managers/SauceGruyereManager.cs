@@ -82,7 +82,7 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
         {
             return;
         }
-        GameManager.Instance.InventoryManager.ConsumeIngredient(ingredient);
+        GameManager.Instance.InventoryManager.ConsumeUnprocessedIngredient(ingredient);
         sauceGruyereIngredients.Add(ingredient);
         sauceGruyereVisual.AddIngredientToSauceGruyere(ingredient);
         sauceGruyereVisual.UpdateIngredientButtons();
@@ -134,7 +134,7 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
 
     void RemoveCookedSauceGruyere()
     {
-        GameManager.Instance.InventoryManager.AddIngredient(sauceGruyere, SAUCE_GRUYERE_CREATED_QUANTITY);
+        GameManager.Instance.InventoryManager.AddProcessedIngredients(sauceGruyere, SAUCE_GRUYERE_CREATED_QUANTITY);
         RemoveSauceGruyere();
     }
 

@@ -91,10 +91,6 @@ public class FryerManager : MonoBehaviour, IWorkStation
             {
                 continue;
             }
-            if (!GameManager.Instance.InventoryManager.IsUnprocessedIngredientAvailable(ingredient))
-            {
-                return;
-            }
             GameManager.Instance.InventoryManager.ConsumeUnprocessedIngredient(ingredient);
             if (fryingIngredients[i] == null)
             {
@@ -161,9 +157,9 @@ public class FryerManager : MonoBehaviour, IWorkStation
         var ingredientToAdd = fryingIngredients[position];
         for (int i = 0; i < fryingQuantities[position]; i++)
         {
-            if (GameManager.Instance.InventoryManager.CanAddIngredient(ingredientToAdd))
+            if (GameManager.Instance.InventoryManager.CanAddProcessedIngredient(ingredientToAdd))
             {
-                GameManager.Instance.InventoryManager.AddIngredient(ingredientToAdd);
+                GameManager.Instance.InventoryManager.AddProcessedIngredient(ingredientToAdd);
             }
         }
         RemoveIngredientFromFrying(position);
@@ -281,11 +277,6 @@ public class FryerManager : MonoBehaviour, IWorkStation
         foreach (var unprocessedIngredient in unprocessedIngredients)
         {
             if (!CanAddIngredientToFry(unprocessedIngredient)) { return; }
-
-            if (!GameManager.Instance.InventoryManager.IsUnprocessedIngredientAvailable(unprocessedIngredient))
-            {
-                continue;
-            }
             var currentIngredientAvailableQuantity = GameManager.Instance.InventoryManager.GetProcessedIngredientQuantity(unprocessedIngredient) + GetNumberOfIngredientsFrying(unprocessedIngredient);
 
             if (currentIngredientAvailableQuantity >= GameManager.Instance.InventoryManager.GetProcessedIngredientMaxAmount())

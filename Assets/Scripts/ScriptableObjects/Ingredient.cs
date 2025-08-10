@@ -27,7 +27,7 @@ public class Ingredient : ScriptableObject
 
     public bool NeedProcessing()
     {
-        return category == IngredientCategoryEnum.MEAT || category == IngredientCategoryEnum.FRIES;
+        return category == IngredientCategoryEnum.MEAT || category == IngredientCategoryEnum.FRIES || category == IngredientCategoryEnum.SAUCE_GRUYERE;
     }
 
 }
