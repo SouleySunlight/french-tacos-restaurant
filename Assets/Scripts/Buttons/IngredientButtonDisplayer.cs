@@ -11,8 +11,8 @@ public class IngredientButtonDisplayer : MonoBehaviour
     [SerializeField] private Button button;
     [SerializeField] private Image ingredientImage;
     [SerializeField] private Image borderImage;
-    [SerializeField] private TMP_Text quantityText;
-
+    [SerializeField] private GameObject quantityDisplayer;
+    [SerializeField] private GameObject priceDisplayer;
     [SerializeField] private GameObject shadow;
     [SerializeField] private RectTransform buttonTransform;
     private bool shouldShowUnprocessedIngredient = false;
@@ -39,10 +39,14 @@ public class IngredientButtonDisplayer : MonoBehaviour
     {
         if (ingredientData.NeedProcessing() && !shouldShowUnprocessedIngredient)
         {
-            quantityText.text = GameManager.Instance.InventoryManager.GetProcessedIngredientStockString(ingredientData);
+            quantityDisplayer.SetActive(true);
+            priceDisplayer.SetActive(false);
+            quantityDisplayer.GetComponentInChildren<TMP_Text>().text = GameManager.Instance.InventoryManager.GetProcessedIngredientStockString(ingredientData);
             return;
         }
-        quantityText.text = "$ " + ingredientData.priceToRefill;
+        quantityDisplayer.SetActive(false);
+        priceDisplayer.SetActive(true);
+        priceDisplayer.GetComponentInChildren<TMP_Text>().text = ingredientData.priceToRefill.ToString();
         return;
     }
 

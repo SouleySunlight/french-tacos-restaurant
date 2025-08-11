@@ -13,7 +13,7 @@ public class InventoryManager : MonoBehaviour
 
     public string GetProcessedIngredientStockString(Ingredient ingredient)
     {
-        return processedIngredientInventory[ingredient.id].currentAmount + "/" + processedIngredientMaxAmount;
+        return processedIngredientInventory[ingredient.id].currentAmount + " / " + processedIngredientMaxAmount;
     }
 
     public bool IsProcessedIngredientAvailable(Ingredient ingredient)

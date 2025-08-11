@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 16d611aefa51a4732a8b5059638d2af1
+guid: c7aa8439db5204b129e955b77cc3df2a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1998067904355856062
-    second: ingredient-button-inside_0
+      213: 6349289520336799579
+    second: ingredient button backgroud_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ingredient-button-inside_0
+      name: ingredient button backgroud_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ebe6d3c3c209abb10800000000000000
-      internalID: 1998067904355856062
+      spriteID: b5709c3cd253d1850800000000000000
+      internalID: 6349289520336799579
       vertices: []
       indices: 
       edges: []
