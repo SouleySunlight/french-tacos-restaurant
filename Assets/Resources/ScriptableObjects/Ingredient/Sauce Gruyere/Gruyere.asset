@@ -27,7 +27,7 @@ MonoBehaviour:
   category: 3
   isUnlockedFromTheBeginning: 1
   priceToUnlock: 0
-  priceToRefill: 1
+  priceToRefill: 0.5
   canBeAddedToTacos: 0
   canBePurshased: 1
   inEveryTacos: 0

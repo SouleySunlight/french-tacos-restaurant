@@ -54,8 +54,8 @@ public class GameManager : MonoBehaviour
         {
             playerMoney = WalletManager.GetCurrentAmount(),
             currentDay = DayCycleManager.GetCurrentDay(),
-            inventorySaveData = InventoryManager.GetInventorySaveData(),
-            unprocessedInventorySaveData = InventoryManager.GetUnprocessedInventorySaveData(),
+            processedIngredientInventorySaveData = InventoryManager.GetInventoryProcessedIngredientSaveData(),
+            unlockedIngredients = InventoryManager.GetUnlockedIngredients(),
             upgradeSaveData = UpgradeManager.GetInventorySaveData()
         };
 
@@ -67,8 +67,7 @@ public class GameManager : MonoBehaviour
         GameSaveData data = SaveSystem.Load();
         WalletManager.SetCurrentAmount(data.playerMoney);
         DayCycleManager.SetCurrentDay(data.currentDay == 0 ? 1 : data.currentDay);
-        InventoryManager.LoadInventoryFromSaveData(data.inventorySaveData);
-        InventoryManager.LoadUnprocessedInventoryFromSaveData(data.unprocessedInventorySaveData);
+        InventoryManager.LoadInventory(data.processedIngredientInventorySaveData, data.unlockedIngredients);
         UpgradeManager.LoadUpgradesFromSaveData(data.upgradeSaveData);
         isLoaded = true;
     }
@@ -148,16 +147,6 @@ public class GameManager : MonoBehaviour
         TacosMakerManager.AddAvailableIngredient(ingredient);
         HotplateManager.AddAvailableIngredient(ingredient);
         FryerManager.AddAvailableIngredient(ingredient);
-    }
-
-    public void RefillIngredient(Ingredient ingredient)
-    {
-        if (!WalletManager.HasEnoughMoney(ingredient.priceToRefill))
-        {
-            return;
-        }
-        WalletManager.SpendMoney(ingredient.priceToRefill);
-        ShopManager.RefillIngredient(ingredient);
     }
 
     public void UpgradeElement(UpgradeSlot upgrade)

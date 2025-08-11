@@ -25,11 +25,11 @@ public class LegacyIngredientButtonDisplayer : MonoBehaviour
         buttonText.text = ingredientData.name;
         if (shouldShowQuantity)
         {
-            buttonText.text += " " + GameManager.Instance.InventoryManager.GetStockString(ingredientData);
+            buttonText.text += " " + GameManager.Instance.InventoryManager.GetProcessedIngredientStockString(ingredientData);
         }
         if (shouldShowUnprocessedQuantity)
         {
-            buttonText.text += " " + GameManager.Instance.InventoryManager.GetUnprocessedStockString(ingredientData);
+            buttonText.text += " TEMP";
 
         }
         if (shouldShowUnlockPrice)
