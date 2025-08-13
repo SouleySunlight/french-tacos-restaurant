@@ -35,6 +35,10 @@ public class DayCycleVisual : MonoBehaviour
     {
         dayText.text = currentDay.ToString();
     }
+    public void UpdateDayCycleCompletionBar(float completionPercentage)
+    {
+        dayCycleCompletionBar.GetComponent<RoundedCompletionBarDisplayer>().UpdateTimer(completionPercentage);
+    }
     void OnClickOnNextDay()
     {
         dayOverModal.SetActive(false);

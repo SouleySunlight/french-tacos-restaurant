@@ -4,7 +4,9 @@ using UnityEngine;
 public class DayCycleManager : MonoBehaviour
 {
     private int currentDay = 1;
-    private float dayDurationInSeconds = 180f;
+    private static readonly float DAY_DURATION_IN_SECONDS = 120f;
+    private float currentDayTimeElapsed = 0f;
+    private bool isDayOver = false;
     private DayCycleVisual dayCycleVisual;
 
     void Awake()
@@ -12,20 +14,36 @@ public class DayCycleManager : MonoBehaviour
         dayCycleVisual = FindFirstObjectByType<DayCycleVisual>(FindObjectsInactive.Include);
     }
 
-    public void StartNewDay()
+    void Update()
     {
-        StartCoroutine(DayCoroutine());
+        if (GameManager.Instance.isGamePaused) { return; }
+        if (isDayOver) { return; }
+
+        currentDayTimeElapsed += Time.deltaTime;
+        dayCycleVisual.UpdateDayCycleCompletionBar(currentDayTimeElapsed / DAY_DURATION_IN_SECONDS);
+
+        if (currentDayTimeElapsed >= DAY_DURATION_IN_SECONDS)
+        {
+            FinishDay();
+        }
     }
 
-    private IEnumerator DayCoroutine()
+    public void StartNewDay()
     {
-        yield return new WaitForSeconds(dayDurationInSeconds);
+        isDayOver = false;
+        currentDayTimeElapsed = 0f;
+        dayCycleVisual.UpdateDayDisplay(currentDay);
+    }
+
+    private void FinishDay()
+    {
         GameManager.Instance.PauseGame();
         dayCycleVisual.OnDayOver(currentDay, GameManager.Instance.WalletManager.moneyEarnedThisDay, GameManager.Instance.WalletManager.moneySpendThisDay);
         currentDay++;
         GameManager.Instance.SaveGame();
-
+        isDayOver = true;
     }
+
 
     public void SetupDayCycle()
     {
