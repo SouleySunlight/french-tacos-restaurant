@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class DayCycleVisual : MonoBehaviour
 {
     [SerializeField] private TMP_Text dayText;
+    [SerializeField] private GameObject dayCycleCompletionBar;
     [SerializeField] private GameObject dayOverModal;
     [SerializeField] private TMP_Text modalTitle;
     [SerializeField] private Button nextDayButton;
@@ -32,7 +33,7 @@ public class DayCycleVisual : MonoBehaviour
 
     public void UpdateDayDisplay(int currentDay)
     {
-        dayText.text = "Day " + currentDay;
+        dayText.text = currentDay.ToString();
     }
     void OnClickOnNextDay()
     {
