@@ -38,7 +38,6 @@ public class DayCycleManager : MonoBehaviour
     private void FinishDay()
     {
         GameManager.Instance.PauseGame();
-        dayCycleVisual.OnDayOver(currentDay, GameManager.Instance.WalletManager.moneyEarnedThisDay, GameManager.Instance.WalletManager.moneySpendThisDay);
         currentDay++;
         GameManager.Instance.SaveGame();
         isDayOver = true;
