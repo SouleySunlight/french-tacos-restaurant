@@ -1,10 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
 
 public class DayOverModalVisuals : MonoBehaviour
 {
     [SerializeField] private GameObject dayOverModal;
-    [SerializeField] private TMP_Text dayOverTitle;
+    [SerializeField] private LocalizeStringEvent dayOverTitle;
     [SerializeField] private TMP_Text moneyEarnedText;
     [SerializeField] private TMP_Text moneySpentText;
     [SerializeField] private TMP_Text benefitsText;
@@ -14,7 +16,10 @@ public class DayOverModalVisuals : MonoBehaviour
 
     public void ShowDayOverModal()
     {
-        dayOverTitle.text = "Day " + GameManager.Instance.DayCycleManager.GetCurrentDay() + " Over";
+        //dayOverTitle.text = "Day " + GameManager.Instance.DayCycleManager.GetCurrentDay() + " Over";
+        dayOverTitle.StringReference.Arguments = new object[] { GameManager.Instance.DayCycleManager.GetCurrentDay().ToString() };
+        dayOverTitle.RefreshString();
+
         moneyEarnedText.text = MoneyUtils.FormatAmount(GameManager.Instance.WalletManager.moneyEarnedThisDay);
         moneySpentText.text = MoneyUtils.FormatAmount(GameManager.Instance.WalletManager.GetMoneySpentThisDay());
         benefitsText.text = MoneyUtils.FormatAmount((GameManager.Instance.WalletManager.moneyEarnedThisDay - GameManager.Instance.WalletManager.GetMoneySpentThisDay()));
