@@ -4,7 +4,7 @@ using UnityEngine;
 public class DayCycleManager : MonoBehaviour
 {
     private int currentDay = 1;
-    private static readonly float DAY_DURATION_IN_SECONDS = 5f;
+    private static readonly float DAY_DURATION_IN_SECONDS = 120f;
     private float currentDayTimeElapsed = 0f;
     private bool isDayOver = false;
     private DayCycleVisual dayCycleVisual;
@@ -59,6 +59,7 @@ public class DayCycleManager : MonoBehaviour
         GameManager.Instance.WalletManager.ResetDailyCount();
         GameManager.Instance.WorkersManager.RenewWorkers();
         GameManager.Instance.ResumeGame();
+        dayOverModalVisuals.HideDayOverModal();
         StartNewDay();
     }
 

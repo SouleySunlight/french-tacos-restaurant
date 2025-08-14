@@ -46,6 +46,10 @@ MonoBehaviour:
     m_Localized: DAY {0} OVER!
     m_Metadata:
       m_Items: []
+  - m_Id: 67820124626944
+    m_Localized: To next day
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

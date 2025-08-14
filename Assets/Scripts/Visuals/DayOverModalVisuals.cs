@@ -31,7 +31,7 @@ public class DayOverModalVisuals : MonoBehaviour
         dayOverModal.SetActive(true);
     }
 
-    void HideDayOverModal()
+    public void HideDayOverModal()
     {
         dayOverModal.SetActive(false);
     }

@@ -46,6 +46,10 @@ MonoBehaviour:
     m_Localized: "JOUR {0} TERMIN\xC9 !"
     m_Metadata:
       m_Items: []
+  - m_Id: 67820124626944
+    m_Localized: Jour suivant
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
