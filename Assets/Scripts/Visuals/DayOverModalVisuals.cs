@@ -15,13 +15,13 @@ public class DayOverModalVisuals : MonoBehaviour
     public void ShowDayOverModal()
     {
         dayOverTitle.text = "Day " + GameManager.Instance.DayCycleManager.GetCurrentDay() + " Over";
-        moneyEarnedText.text = GameManager.Instance.WalletManager.moneyEarnedThisDay.ToString();
-        moneySpentText.text = GameManager.Instance.WalletManager.GetMoneySpentThisDay().ToString();
-        benefitsText.text = (GameManager.Instance.WalletManager.moneyEarnedThisDay - GameManager.Instance.WalletManager.GetMoneySpentThisDay()).ToString();
+        moneyEarnedText.text = MoneyUtils.FormatAmount(GameManager.Instance.WalletManager.moneyEarnedThisDay);
+        moneySpentText.text = MoneyUtils.FormatAmount(GameManager.Instance.WalletManager.GetMoneySpentThisDay());
+        benefitsText.text = MoneyUtils.FormatAmount((GameManager.Instance.WalletManager.moneyEarnedThisDay - GameManager.Instance.WalletManager.GetMoneySpentThisDay()));
 
-        ingredientsMoneySpentText.text = GameManager.Instance.WalletManager.moneySpentOnIngredientsThisDay.ToString();
-        upgradesMoneySpentText.text = GameManager.Instance.WalletManager.moneySpentOnUpgradeThisDay.ToString();
-        workersMoneySpentText.text = GameManager.Instance.WalletManager.moneySpentOnWorkersThisDay.ToString();
+        ingredientsMoneySpentText.text = MoneyUtils.FormatAmount(GameManager.Instance.WalletManager.moneySpentOnIngredientsThisDay);
+        upgradesMoneySpentText.text = MoneyUtils.FormatAmount(GameManager.Instance.WalletManager.moneySpentOnUpgradeThisDay);
+        workersMoneySpentText.text = MoneyUtils.FormatAmount(GameManager.Instance.WalletManager.moneySpentOnWorkersThisDay);
 
         dayOverModal.SetActive(true);
     }
