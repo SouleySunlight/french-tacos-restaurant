@@ -6,7 +6,10 @@ public class WalletManager : MonoBehaviour
 
     private float currentWalletAmount = 0;
     public float moneyEarnedThisDay { get; private set; } = 0;
-    public float moneySpendThisDay { get; private set; } = 0;
+    public float moneySpentOnIngredientsThisDay { get; private set; } = 0;
+    public float moneySpentOnWorkersThisDay { get; private set; } = 0;
+    public float moneySpentOnUpgradeThisDay { get; private set; } = 0;
+
 
 
     void Awake()
@@ -37,16 +40,34 @@ public class WalletManager : MonoBehaviour
         return currentWalletAmount >= amount;
     }
 
-    public void SpendMoney(float amount)
+    public void SpendMoney(float amount, SpentCategoryEnum spentCategoryEnum)
     {
         currentWalletAmount -= amount;
-        moneySpendThisDay += amount;
+        switch (spentCategoryEnum)
+        {
+            case SpentCategoryEnum.INGREDIENTS:
+                moneySpentOnIngredientsThisDay += amount;
+                break;
+            case SpentCategoryEnum.WORKERS:
+                moneySpentOnWorkersThisDay += amount;
+                break;
+            case SpentCategoryEnum.UPGRADE:
+                moneySpentOnUpgradeThisDay += amount;
+                break;
+        }
         walletVisual.UpdateWalletAmount(currentWalletAmount);
     }
 
     public void ResetDailyCount()
     {
         moneyEarnedThisDay = 0;
-        moneySpendThisDay = 0;
+        moneySpentOnIngredientsThisDay = 0;
+        moneySpentOnUpgradeThisDay = 0;
+        moneySpentOnWorkersThisDay = 0;
+    }
+
+    public float GetMoneySpentThisDay()
+    {
+        return moneySpentOnIngredientsThisDay + moneySpentOnWorkersThisDay + moneySpentOnUpgradeThisDay;
     }
 }

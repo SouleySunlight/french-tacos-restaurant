@@ -37,7 +37,7 @@ public class InventoryManager : MonoBehaviour
     public void ConsumeUnprocessedIngredient(Ingredient ingredient)
     {
         if (!GameManager.Instance.WalletManager.HasEnoughMoney(ingredient.priceToRefill)) { return; }
-        GameManager.Instance.WalletManager.SpendMoney(ingredient.priceToRefill);
+        GameManager.Instance.WalletManager.SpendMoney(ingredient.priceToRefill, SpentCategoryEnum.INGREDIENTS);
     }
     public void ConsumeProcessedIngredient(Ingredient ingredient)
     {

@@ -30,7 +30,7 @@ public class WorkersManager : MonoBehaviour
         availableWorkers.Remove(worker);
         hiredWorkers.Add(worker);
         workersVisual.UpdateButtonsVisual();
-        GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay);
+        GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay, SpentCategoryEnum.WORKERS);
 
         switch (worker.role)
         {
@@ -92,7 +92,7 @@ public class WorkersManager : MonoBehaviour
                 continue;
             }
 
-            GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay);
+            GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay, SpentCategoryEnum.WORKERS);
         }
         foreach (var worker in workerToFire)
         {

@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        WalletManager.SpendMoney(ingredient.priceToUnlock);
+        WalletManager.SpendMoney(ingredient.priceToUnlock, SpentCategoryEnum.UPGRADE);
         ShopManager.UnlockIngredient(ingredient);
         TacosMakerManager.AddAvailableIngredient(ingredient);
         HotplateManager.AddAvailableIngredient(ingredient);
@@ -155,7 +155,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        WalletManager.SpendMoney(upgrade.upgrade.GetCostAtLevel(upgrade.currentLevel));
+        WalletManager.SpendMoney(upgrade.upgrade.GetCostAtLevel(upgrade.currentLevel), SpentCategoryEnum.UPGRADE);
         UpgradeManager.UpgradeElement(upgrade.upgrade.id);
 
     }

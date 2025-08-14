@@ -16,8 +16,12 @@ public class DayOverModalVisuals : MonoBehaviour
     {
         dayOverTitle.text = "Day " + GameManager.Instance.DayCycleManager.GetCurrentDay() + " Over";
         moneyEarnedText.text = GameManager.Instance.WalletManager.moneyEarnedThisDay.ToString();
-        moneySpentText.text = GameManager.Instance.WalletManager.moneySpendThisDay.ToString();
-        benefitsText.text = (GameManager.Instance.WalletManager.moneyEarnedThisDay - GameManager.Instance.WalletManager.moneySpendThisDay).ToString();
+        moneySpentText.text = GameManager.Instance.WalletManager.GetMoneySpentThisDay().ToString();
+        benefitsText.text = (GameManager.Instance.WalletManager.moneyEarnedThisDay - GameManager.Instance.WalletManager.GetMoneySpentThisDay()).ToString();
+
+        ingredientsMoneySpentText.text = GameManager.Instance.WalletManager.moneySpentOnIngredientsThisDay.ToString();
+        upgradesMoneySpentText.text = GameManager.Instance.WalletManager.moneySpentOnUpgradeThisDay.ToString();
+        workersMoneySpentText.text = GameManager.Instance.WalletManager.moneySpentOnWorkersThisDay.ToString();
 
         dayOverModal.SetActive(true);
     }
