@@ -9,7 +9,7 @@ public class SidebarVisuals : MonoBehaviour
     [SerializeField] private List<SidebarOptions> sidebarOptions;
 
     private readonly int VERTICAL_GAP = -120;
-    private readonly int VERTICAL_OFFSET = -200;
+    private readonly int VERTICAL_OFFSET = -220;
 
 
     void Awake()

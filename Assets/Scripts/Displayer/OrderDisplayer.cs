@@ -1,71 +1,32 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OrderDisplayer : MonoBehaviour
 {
     public Order orderData;
-    public TMP_Text orderText;
+    [SerializeField] private GameObject ingredientPrefab;
 
     void Start()
     {
         UpdateOrder();
     }
 
-    public void UpdateOrder()
+    void UpdateOrder()
     {
-        var text = "";
-
-        text += "- ";
-        text += WriteMeat(orderData.expectedOrder) + " - ";
-        text += WriteSauces(orderData.expectedOrder);
-        text += WriteSauces(orderData.expectedOrder) == "" ? "" : " - ";
-        text += WriteVegetables(orderData.expectedOrder);
-        text += "<br>";
-
-        orderText.text = text;
-    }
-
-    public string WriteMeat(List<Ingredient> orderItem)
-    {
-        var meat = orderItem.Find(ingredient => ingredient.category == IngredientCategoryEnum.MEAT);
-        return meat.id;
-    }
-
-    public string WriteSauces(List<Ingredient> orderItem)
-    {
-        var sauces = orderItem.FindAll(ingredient => ingredient.category == IngredientCategoryEnum.SAUCE);
-        var stringedSauces = "";
-        for (int i = 0; i < sauces.Count; i++)
+        var index = 0;
+        foreach (var ingredient in orderData.expectedOrder)
         {
-            stringedSauces += sauces[i].id;
-            stringedSauces += i == sauces.Count - 1 ? "" : "/";
-        }
-        return stringedSauces;
-    }
+            var ingredientGO = Instantiate(ingredientPrefab, transform);
+            var rectTransform = ingredientGO.GetComponent<RectTransform>();
+            ingredientGO.GetComponentInChildren<Image>().sprite = ingredient.processedSprite;
 
-    public string WriteVegetables(List<Ingredient> orderItem)
-    {
-        var stringedVegetables = "";
+            rectTransform.anchorMin = new Vector2(0, 1);
+            rectTransform.anchorMax = new Vector2(0, 1);
+            rectTransform.anchoredPosition = new Vector2(30 + (index % 4) * 60, -30 + (index / 4) * -60);
 
-        var vegetables = orderItem.FindAll(ingredient => ingredient.category == IngredientCategoryEnum.VEGETABLE);
-        if (vegetables.Count == 0)
-        {
-            return stringedVegetables;
+            index++;
         }
-        if (vegetables.Find((vegetable) => vegetable.id == "SAL") != null)
-        {
-            stringedVegetables += "S";
-        }
-        if (vegetables.Find((vegetable) => vegetable.id == "TOM") != null)
-        {
-            stringedVegetables += "T";
-        }
-        if (vegetables.Find((vegetable) => vegetable.id == "ONI") != null)
-        {
-            stringedVegetables += "O";
-        }
-        return stringedVegetables;
-
     }
 }

@@ -7,9 +7,9 @@ public class OrdersManager : MonoBehaviour
 {
     private OrdersVisual ordersVisual;
     private List<Order> orders = new();
-    private readonly int DEFAULT_DELAY_BETWEEN_ORDERS = 40;
+    private readonly int DEFAULT_DELAY_BETWEEN_ORDERS = 3;
     private readonly float popularityFactor = 0.9f;
-    private readonly int MAX_NUMBER_OF_ORDERS = 3;
+    private readonly int MAX_NUMBER_OF_ORDERS = 6;
     private float timeSinceLastOrder = 0f;
 
     void Awake()
