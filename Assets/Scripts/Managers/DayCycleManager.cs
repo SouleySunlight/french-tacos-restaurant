@@ -4,9 +4,9 @@ using UnityEngine;
 public class DayCycleManager : MonoBehaviour
 {
     private int currentDay = 1;
-    private static readonly float DAY_DURATION_IN_SECONDS = 10f;
+    private static readonly float DAY_DURATION_IN_SECONDS = 120f;
     private float currentDayTimeElapsed = 0f;
-    private bool isDayOver = false;
+    public bool isDayOver { get; private set; } = false;
     private DayCycleVisual dayCycleVisual;
     private DayOverModalVisuals dayOverModalVisuals;
 
@@ -35,6 +35,7 @@ public class DayCycleManager : MonoBehaviour
         isDayOver = false;
         currentDayTimeElapsed = 0f;
         dayCycleVisual.UpdateDayDisplay(currentDay);
+        GameManager.Instance.OrdersManager.AddFirstOrderOfTheDay();
     }
 
     private void FinishDay()
@@ -61,6 +62,7 @@ public class DayCycleManager : MonoBehaviour
         GameManager.Instance.WorkersManager.RenewWorkers();
         GameManager.Instance.ResumeGame();
         dayOverModalVisuals.HideDayOverModal();
+
         StartNewDay();
     }
 
