@@ -4,13 +4,11 @@ using UnityEngine;
 public class OrdersVisual : MonoBehaviour
 {
     [SerializeField] private GameObject orderPrefab;
-    [SerializeField] private RectTransform orderFirstPosition;
     private List<GameObject> orderPrefabs = new();
-    private readonly int HORIZONTAL_PADDING = 80;
 
     public void AddOrder(Order order)
     {
-        var newOrder = Instantiate(orderPrefab, orderFirstPosition.position, Quaternion.identity, orderFirstPosition);
+        var newOrder = Instantiate(orderPrefab, this.transform);
         newOrder.GetComponent<OrderDisplayer>().orderData = order;
         orderPrefabs.Add(newOrder);
         UpdateVisuals();
@@ -19,28 +17,18 @@ public class OrdersVisual : MonoBehaviour
     public void UpdateVisuals()
     {
         var orderWidth = orderPrefab.GetComponent<RectTransform>().rect.width;
-        var availableWidth = GlobalConstant.PLAYZONE_WIDTH - 2 * HORIZONTAL_PADDING;
-        var gap = (orderPrefabs.Count - 1) * orderWidth < availableWidth ?
-             availableWidth - (orderPrefabs.Count - 1) * orderWidth :
-             orderWidth / 2;
+        var orderHeight = orderPrefab.GetComponent<RectTransform>().rect.height;
+
         var index = 0;
         foreach (var prefab in orderPrefabs)
         {
-            var newPosition = new Vector3(orderFirstPosition.position.x - gap * index, orderFirstPosition.position.y, orderFirstPosition.position.z);
-            prefab.GetComponent<RectTransform>().position = newPosition;
+            var rectTransform = prefab.GetComponent<RectTransform>();
+            rectTransform.anchorMin = new Vector2(0, 0.5f);
+            rectTransform.anchorMax = new Vector2(0, 0.5f);
+            rectTransform.anchoredPosition = new Vector2(orderWidth / 2 + 20 + (index % 3) * (orderWidth + 20), (index / 3) * -(orderHeight + 20));
             prefab.GetComponent<RectTransform>().SetAsFirstSibling();
             index++;
         }
-    }
-
-    public void UpdateOrderVisual(Order order)
-    {
-        var orderToUpdate = orderPrefabs.Find(orderPrefab => orderPrefab.GetComponent<OrderDisplayer>().orderData.guid == order.guid);
-        if (orderToUpdate == null)
-        {
-            return;
-        }
-        orderToUpdate.GetComponent<OrderDisplayer>().UpdateOrder();
     }
 
     public void CompleteOrder(Order order)

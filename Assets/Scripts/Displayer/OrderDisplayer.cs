@@ -1,75 +1,101 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OrderDisplayer : MonoBehaviour
 {
     public Order orderData;
-    public TMP_Text orderText;
+    [SerializeField] private GameObject ingredientPrefab;
+    private List<GameObject> ingredientObjects = new();
 
     void Start()
     {
         UpdateOrder();
     }
 
-    public void UpdateOrder()
+    void UpdateOrder()
     {
-        var text = "";
+        InstantiateMeat();
+        InstantiateSauce();
+        InstantiateVegetable();
+        InstantiateFries();
+        InstantiateSauceGruyere();
 
-        foreach (var orderItem in orderData.expectedOrder)
-        {
-            text += "- ";
-            if (orderItem.isServed) { text += "<s>"; }
-            text += WriteMeat(orderItem) + " - ";
-            text += WriteSauces(orderItem);
-            text += WriteSauces(orderItem) == "" ? "" : " - ";
-            text += WriteVegetables(orderItem);
-            if (orderItem.isServed) { text += "</s>"; }
-            text += "<br>";
-        }
-
-        orderText.text = text;
+        UpdatePosition();
     }
 
-    public string WriteMeat(OrderItem orderItem)
+    void InstantiateMeat()
     {
-        var meat = orderItem.tacosIngredients.Find(ingredient => ingredient.category == IngredientCategoryEnum.MEAT);
-        return meat.id;
+        var meats = orderData.expectedOrder.FindAll(x => x.category == IngredientCategoryEnum.MEAT);
+        foreach (var meat in meats)
+        {
+            var ingredientGO = Instantiate(ingredientPrefab, transform);
+            ingredientGO.GetComponentInChildren<Image>().sprite = meat.processedSprite;
+
+            ingredientObjects.Add(ingredientGO);
+        }
     }
 
-    public string WriteSauces(OrderItem orderItem)
+    void InstantiateSauce()
     {
-        var sauces = orderItem.tacosIngredients.FindAll(ingredient => ingredient.category == IngredientCategoryEnum.SAUCE);
-        var stringedSauces = "";
-        for (int i = 0; i < sauces.Count; i++)
+        var sauces = orderData.expectedOrder.FindAll(x => x.category == IngredientCategoryEnum.SAUCE);
+        foreach (var sauce in sauces)
         {
-            stringedSauces += sauces[i].id;
-            stringedSauces += i == sauces.Count - 1 ? "" : "/";
+            var ingredientGO = Instantiate(ingredientPrefab, transform);
+            ingredientGO.GetComponentInChildren<Image>().sprite = sauce.processedSprite;
+
+            ingredientObjects.Add(ingredientGO);
         }
-        return stringedSauces;
     }
 
-    public string WriteVegetables(OrderItem orderItem)
+    void InstantiateVegetable()
     {
-        var stringedVegetables = "";
+        var vegetables = orderData.expectedOrder.FindAll(x => x.category == IngredientCategoryEnum.VEGETABLE);
+        foreach (var vegetable in vegetables)
+        {
+            var ingredientGO = Instantiate(ingredientPrefab, transform);
+            ingredientGO.GetComponentInChildren<Image>().sprite = vegetable.processedSprite;
 
-        var vegetables = orderItem.tacosIngredients.FindAll(ingredient => ingredient.category == IngredientCategoryEnum.VEGETABLE);
-        if (vegetables.Count == 0)
-        {
-            return stringedVegetables;
+            ingredientObjects.Add(ingredientGO);
         }
-        if (vegetables.Find((vegetable) => vegetable.id == "SAL") != null)
-        {
-            stringedVegetables += "S";
-        }
-        if (vegetables.Find((vegetable) => vegetable.id == "TOM") != null)
-        {
-            stringedVegetables += "T";
-        }
-        if (vegetables.Find((vegetable) => vegetable.id == "ONI") != null)
-        {
-            stringedVegetables += "O";
-        }
-        return stringedVegetables;
+    }
 
+    void InstantiateFries()
+    {
+        var fries = orderData.expectedOrder.FindAll(x => x.category == IngredientCategoryEnum.FRIES);
+        foreach (var fry in fries)
+        {
+            var ingredientGO = Instantiate(ingredientPrefab, transform);
+            ingredientGO.GetComponentInChildren<Image>().sprite = fry.processedSprite;
+
+            ingredientObjects.Add(ingredientGO);
+        }
+    }
+
+    void InstantiateSauceGruyere()
+    {
+        var sauceGruyeres = orderData.expectedOrder.FindAll(x => x.category == IngredientCategoryEnum.SAUCE_GRUYERE);
+        foreach (var sauceGruyere in sauceGruyeres)
+        {
+            var ingredientGO = Instantiate(ingredientPrefab, transform);
+            ingredientGO.GetComponentInChildren<Image>().sprite = sauceGruyere.processedSprite;
+
+            ingredientObjects.Add(ingredientGO);
+        }
+    }
+
+    void UpdatePosition()
+    {
+        var index = 0;
+        foreach (var ingredient in ingredientObjects)
+        {
+            var rectTransform = ingredient.GetComponent<RectTransform>();
+            rectTransform.anchorMin = new Vector2(0, 1);
+            rectTransform.anchorMax = new Vector2(0, 1);
+            rectTransform.anchoredPosition = new Vector2(30 + (index % 4) * 60, -30 + (index / 4) * -60);
+
+            index++;
+        }
     }
 }

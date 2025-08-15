@@ -50,7 +50,7 @@ public class GrillVisual : MonoBehaviour, IView
             rectTransform.anchorMin = new Vector2(0.3f + index * 0.4f, 1);
             rectTransform.anchorMax = new Vector2(0.3f + index * 0.4f, 1);
             rectTransform.pivot = new Vector2(0.5f, 0f);
-            rectTransform.anchoredPosition = new Vector2(0, 0);
+            rectTransform.anchoredPosition = new Vector2(0, -75);
             index++;
         }
     }
@@ -78,6 +78,8 @@ public class GrillVisual : MonoBehaviour, IView
         var rectTransform = tacosToGrill.GetComponent<RectTransform>();
         rectTransform.anchorMin = new Vector2(0.3f + position * 0.4f, 0.175f);
         rectTransform.anchorMax = new Vector2(0.3f + position * 0.4f, 0.175f);
+        rectTransform.anchoredPosition = new Vector2(0, 0);
+
 
         grillingTacos.Add(tacosToGrill);
     }

@@ -69,7 +69,7 @@ public static class UIPlacement
 
             float x = gap * (col + 1) + indicatorWidth * col + 175;
 
-            float y = -(indicatorHeight + 20f) * row - 30;
+            float y = -(indicatorHeight + 20f) * row - 50;
 
             indicator.anchoredPosition = new Vector2(x, y);
         }

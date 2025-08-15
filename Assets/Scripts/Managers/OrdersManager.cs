@@ -7,7 +7,7 @@ public class OrdersManager : MonoBehaviour
 {
     private OrdersVisual ordersVisual;
     private List<Order> orders = new();
-    private readonly int DEFAULT_DELAY_BETWEEN_ORDERS = 40;
+    private readonly int DEFAULT_DELAY_BETWEEN_ORDERS = 20;
     private readonly float popularityFactor = 0.9f;
     private readonly int MAX_NUMBER_OF_ORDERS = 3;
     private float timeSinceLastOrder = 0f;
@@ -52,16 +52,7 @@ public class OrdersManager : MonoBehaviour
 
     Order GenerateOrder()
     {
-        List<List<Ingredient>> orderList = new();
-
-        var numberOfTacos = Random.Range(1, 4);
-
-        for (int i = 0; i < numberOfTacos; i++)
-        {
-            orderList.Add(GenerateSingleTacosComposition());
-        }
-
-        return new Order(orderList);
+        return new Order(GenerateSingleTacosComposition());
     }
 
     List<Ingredient> GenerateSingleTacosComposition()
@@ -102,14 +93,12 @@ public class OrdersManager : MonoBehaviour
             return;
         }
 
-        var matchingOrderItem = FindMatchingOrderIdem(order, tacos);
-
-        if (matchingOrderItem == null)
+        if (!IsTacosCompositionCorrect(order, tacos))
         {
             RefuseTacos();
             return;
         }
-        ServeTacos(order, tacos, matchingOrderItem);
+        ServeTacos(order, tacos);
     }
 
     public void WorkerTryToServeTacos(Tacos tacos)
@@ -126,30 +115,20 @@ public class OrdersManager : MonoBehaviour
 
         foreach (var order in orders)
         {
-            var matchingOrderItem = FindMatchingOrderIdem(order, tacos);
-
-            if (matchingOrderItem == null)
+            if (!IsTacosCompositionCorrect(order, tacos))
             {
                 continue;
             }
-            ServeTacos(order, tacos, matchingOrderItem);
+            ServeTacos(order, tacos);
             GameManager.Instance.CheckoutManager.MarkWorkerTaskAsDone();
             return;
 
         }
     }
 
-    public void ServeTacos(Order order, Tacos tacos, OrderItem orderItem)
+    public void ServeTacos(Order order, Tacos tacos)
     {
         GameManager.Instance.ServeTacos(tacos);
-
-        orderItem.isServed = true;
-        if (order.expectedOrder.Exists(orderItem => !orderItem.isServed))
-        {
-            ordersVisual.UpdateOrderVisual(order);
-            return;
-        }
-
         CompleteOrder(order);
     }
 
@@ -170,16 +149,9 @@ public class OrdersManager : MonoBehaviour
         GameManager.Instance.RefuseTacos();
     }
 
-    OrderItem FindMatchingOrderIdem(Order order, Tacos tacos)
+    bool IsTacosCompositionCorrect(Order order, Tacos tacos)
     {
-        var matchingOrderItem = order.expectedOrder.Find((orderItem) => orderItem.tacosIngredients.OrderBy(x => x.GetInstanceID()).SequenceEqual(tacos.ingredients.OrderBy(x => x.GetInstanceID())) && !orderItem.isServed);
-
-        return matchingOrderItem;
-    }
-
-    public Order GetOrderWithTacos(Tacos tacos)
-    {
-        return orders.Find(order => order.expectedOrder.Exists(orderItem => orderItem.tacosIngredients.OrderBy(x => x.GetInstanceID()).SequenceEqual(tacos.ingredients.OrderBy(x => x.GetInstanceID()))));
+        return order.expectedOrder.OrderBy(x => x.GetInstanceID()).SequenceEqual(tacos.ingredients.OrderBy(x => x.GetInstanceID()));
     }
 
     List<Ingredient> GetVegetablesOfTheTacos()
@@ -222,8 +194,17 @@ public class OrdersManager : MonoBehaviour
 
     List<Ingredient> GetInEveryTacosIngredients()
     {
-        return GameManager.Instance.InventoryManager.UnlockedIngredients
+        var ingredients = new List<Ingredient>();
+        var inEveryTacosIngredient = GameManager.Instance.InventoryManager.UnlockedIngredients
             .FindAll(ingredient => ingredient.inEveryTacos);
+        foreach (var ingredient in inEveryTacosIngredient)
+        {
+            if (Random.value <= 0.8f)
+            {
+                ingredients.Add(ingredient);
+            }
+        }
+        return ingredients;
     }
 
     public int GetCurrentOrdersCount()
