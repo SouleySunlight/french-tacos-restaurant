@@ -43,11 +43,6 @@ public class GameManager : MonoBehaviour
         LoadGame();
     }
 
-    void OnApplicationQuit()
-    {
-        SaveGame();
-    }
-
     public void SaveGame()
     {
         GameSaveData gameSaveData = new()
@@ -133,7 +128,6 @@ public class GameManager : MonoBehaviour
     public void CompleteOrder(Order order)
     {
         WalletManager.ReceiveMoney(order.price);
-        SaveGame();
     }
 
     public void UnlockIngredient(Ingredient ingredient)
