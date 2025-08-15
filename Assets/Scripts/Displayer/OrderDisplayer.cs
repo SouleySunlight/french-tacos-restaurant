@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -15,30 +16,25 @@ public class OrderDisplayer : MonoBehaviour
     {
         var text = "";
 
-        foreach (var orderItem in orderData.expectedOrder)
-        {
-            text += "- ";
-            if (orderItem.isServed) { text += "<s>"; }
-            text += WriteMeat(orderItem) + " - ";
-            text += WriteSauces(orderItem);
-            text += WriteSauces(orderItem) == "" ? "" : " - ";
-            text += WriteVegetables(orderItem);
-            if (orderItem.isServed) { text += "</s>"; }
-            text += "<br>";
-        }
+        text += "- ";
+        text += WriteMeat(orderData.expectedOrder) + " - ";
+        text += WriteSauces(orderData.expectedOrder);
+        text += WriteSauces(orderData.expectedOrder) == "" ? "" : " - ";
+        text += WriteVegetables(orderData.expectedOrder);
+        text += "<br>";
 
         orderText.text = text;
     }
 
-    public string WriteMeat(OrderItem orderItem)
+    public string WriteMeat(List<Ingredient> orderItem)
     {
-        var meat = orderItem.tacosIngredients.Find(ingredient => ingredient.category == IngredientCategoryEnum.MEAT);
+        var meat = orderItem.Find(ingredient => ingredient.category == IngredientCategoryEnum.MEAT);
         return meat.id;
     }
 
-    public string WriteSauces(OrderItem orderItem)
+    public string WriteSauces(List<Ingredient> orderItem)
     {
-        var sauces = orderItem.tacosIngredients.FindAll(ingredient => ingredient.category == IngredientCategoryEnum.SAUCE);
+        var sauces = orderItem.FindAll(ingredient => ingredient.category == IngredientCategoryEnum.SAUCE);
         var stringedSauces = "";
         for (int i = 0; i < sauces.Count; i++)
         {
@@ -48,11 +44,11 @@ public class OrderDisplayer : MonoBehaviour
         return stringedSauces;
     }
 
-    public string WriteVegetables(OrderItem orderItem)
+    public string WriteVegetables(List<Ingredient> orderItem)
     {
         var stringedVegetables = "";
 
-        var vegetables = orderItem.tacosIngredients.FindAll(ingredient => ingredient.category == IngredientCategoryEnum.VEGETABLE);
+        var vegetables = orderItem.FindAll(ingredient => ingredient.category == IngredientCategoryEnum.VEGETABLE);
         if (vegetables.Count == 0)
         {
             return stringedVegetables;
