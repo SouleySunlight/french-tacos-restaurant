@@ -47,6 +47,10 @@ MonoBehaviour:
     m_Key: DAY_OVER_MODAL.TO_NEXT_DAY
     m_Metadata:
       m_Items: []
+  - m_Id: 371294011908096
+    m_Key: DAY_OVER_MODAL.INFO
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

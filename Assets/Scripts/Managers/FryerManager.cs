@@ -337,4 +337,17 @@ public class FryerManager : MonoBehaviour, IWorkStation
     {
         fryerVisuals.UpdateIngredientButtons();
     }
+
+    public void FinishProcessingIngredients()
+    {
+        for (int i = 0; i < fryingIngredients.Count; i++)
+        {
+            if (fryingIngredients[i] == null) { continue; }
+            if (fryingTimes[i] >= totalFryingTimes[i] + fryingIngredients[i].wastingTimeOffset)
+            {
+                OnIngredientBurntClicked(i);
+            }
+            OnIngredientCookedClicked(i);
+        }
+    }
 }

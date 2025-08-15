@@ -50,6 +50,11 @@ MonoBehaviour:
     m_Localized: Jour suivant
     m_Metadata:
       m_Items: []
+  - m_Id: 371294011908096
+    m_Localized: "(Les ingr\xE9dients en cours de pr\xE9paration ont \xE9t\xE9 termin\xE9
+      avant la fermeture)"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

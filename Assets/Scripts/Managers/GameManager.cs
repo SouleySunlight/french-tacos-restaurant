@@ -154,6 +154,17 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void ResetViewForNewDay()
+    {
+        GrillManager.RemoveAllTacos();
+        CheckoutManager.RemoveAllTacos();
+        TacosMakerManager.DiscardTacos();
+        HotplateManager.FinishProcessingIngredients();
+        FryerManager.FinishProcessingIngredients();
+        SauceGruyereManager.FinishProcessingIngredients();
+
+    }
+
     void InitializeManagers()
     {
         TacosMakerManager = GetComponentInChildren<TacosMakerManager>();

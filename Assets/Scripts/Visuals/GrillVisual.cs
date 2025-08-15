@@ -118,4 +118,15 @@ public class GrillVisual : MonoBehaviour, IView
     {
         animator.SetBool("isGrillOpened", isGrillOpened);
     }
+
+    public void RemoveAllTacosFromGrill()
+    {
+        foreach (GameObject tacos in grillingTacos)
+        {
+            Destroy(tacos);
+        }
+        grillingTacos.Clear();
+        tacosToGrillList.Clear();
+        UpdateVisual();
+    }
 }

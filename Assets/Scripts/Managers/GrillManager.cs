@@ -254,4 +254,19 @@ public class GrillManager : MonoBehaviour, IWorkStation
             grillVisual.UpdateAnimation(isGrillOpened);
         }
     }
+
+    public void RemoveAllTacos()
+    {
+        for (int i = 0; i < grillingTacos.Count; i++)
+        {
+            if (grillingTacos[i] != null)
+            {
+                RemoveTacosOfTheGrill(grillingTacos[i]);
+            }
+        }
+        waitingToGrillTacos.Clear();
+        grillVisual.RemoveAllTacosFromGrill();
+        grillVisual.UpdateVisual();
+
+    }
 }
