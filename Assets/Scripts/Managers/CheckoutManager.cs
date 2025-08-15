@@ -29,6 +29,15 @@ public class CheckoutManager : MonoBehaviour, IWorkStation
         checkoutVisual.RemoveTacosToServe(tacos);
     }
 
+    public void RemoveAllTacos()
+    {
+        foreach (Tacos tacos in tacosToServe)
+        {
+            checkoutVisual.RemoveTacosToServe(tacos);
+        }
+        tacosToServe.Clear();
+    }
+
     public void RefuseTacos()
     {
         checkoutVisual.UpdateVisuals();

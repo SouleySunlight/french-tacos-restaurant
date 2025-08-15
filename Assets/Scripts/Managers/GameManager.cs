@@ -43,11 +43,6 @@ public class GameManager : MonoBehaviour
         LoadGame();
     }
 
-    void OnApplicationQuit()
-    {
-        SaveGame();
-    }
-
     public void SaveGame()
     {
         GameSaveData gameSaveData = new()
@@ -130,11 +125,6 @@ public class GameManager : MonoBehaviour
     {
         CheckoutManager.RefuseTacos();
     }
-    public void CompleteOrder(Order order)
-    {
-        WalletManager.ReceiveMoney(order.price);
-        SaveGame();
-    }
 
     public void UnlockIngredient(Ingredient ingredient)
     {
@@ -142,7 +132,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        WalletManager.SpendMoney(ingredient.priceToUnlock);
+        WalletManager.SpendMoney(ingredient.priceToUnlock, SpentCategoryEnum.UPGRADE);
         ShopManager.UnlockIngredient(ingredient);
         TacosMakerManager.AddAvailableIngredient(ingredient);
         HotplateManager.AddAvailableIngredient(ingredient);
@@ -155,8 +145,19 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        WalletManager.SpendMoney(upgrade.upgrade.GetCostAtLevel(upgrade.currentLevel));
+        WalletManager.SpendMoney(upgrade.upgrade.GetCostAtLevel(upgrade.currentLevel), SpentCategoryEnum.UPGRADE);
         UpgradeManager.UpgradeElement(upgrade.upgrade.id);
+
+    }
+
+    public void ResetViewForNewDay()
+    {
+        GrillManager.RemoveAllTacos();
+        CheckoutManager.RemoveAllTacos();
+        TacosMakerManager.DiscardTacos();
+        HotplateManager.FinishProcessingIngredients();
+        FryerManager.FinishProcessingIngredients();
+        SauceGruyereManager.FinishProcessingIngredients();
 
     }
 

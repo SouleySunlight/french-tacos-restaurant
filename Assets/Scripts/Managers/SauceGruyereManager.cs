@@ -226,4 +226,14 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
         }
         AddIngredientToSauceGruyere(missingIngredients[0]);
     }
+
+    public void FinishProcessingIngredients()
+    {
+        if (cookingTime == GlobalConstant.UNUSED_TIME_VALUE) { return; }
+        if (isSauceGruyereBurnt)
+        {
+            RemoveSauceGruyere();
+        }
+        RemoveCookedSauceGruyere();
+    }
 }

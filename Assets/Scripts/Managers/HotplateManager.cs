@@ -273,4 +273,20 @@ public class HotplateManager : MonoBehaviour, IWorkStation
     {
         hotplateVisuals.UpdateIngredientButtons();
     }
+
+    public void FinishProcessingIngredients()
+    {
+        for (int i = 0; i < cookingIngredients.Count; i++)
+        {
+            if (cookingIngredients[i] == null) { continue; }
+            if (cookingTimes[i] < totalCookingTimes[i])
+            {
+                OnIngredientCookedClicked(i);
+            }
+            else if (cookingTimes[i] >= totalCookingTimes[i] + cookingIngredients[i].wastingTimeOffset)
+            {
+                OnIngredientBurntClicked(i);
+            }
+        }
+    }
 }

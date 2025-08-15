@@ -149,6 +149,7 @@ public class SauceGruyereVisual : MonoBehaviour, IView
 
     public void RemoveSauceGruyere()
     {
+        RemoveIngredientsFromSauceGruyere();
         sauceGruyereImage.gameObject.SetActive(false);
         burntSauceGruyereImage.gameObject.SetActive(false);
         UpdateIngredients();

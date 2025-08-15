@@ -7,17 +7,41 @@ public class OrdersManager : MonoBehaviour
 {
     private OrdersVisual ordersVisual;
     private List<Order> orders = new();
-    private readonly int DEFAULT_DELAY_BETWEEN_ORDERS = 60;
+    private readonly int DEFAULT_DELAY_BETWEEN_ORDERS = 40;
     private readonly float popularityFactor = 0.9f;
+    private readonly int MAX_NUMBER_OF_ORDERS = 3;
+    private float timeSinceLastOrder = 0f;
 
     void Awake()
     {
         ordersVisual = FindFirstObjectByType<OrdersVisual>(FindObjectsInactive.Include);
     }
 
-    void Start()
+    void Update()
     {
-        LaunchOrderProvider();
+        timeSinceLastOrder += Time.deltaTime;
+
+        if (GameManager.Instance.isGamePaused)
+        {
+            return;
+        }
+        if (orders.Count > MAX_NUMBER_OF_ORDERS)
+        {
+            return;
+        }
+        if (GameManager.Instance.DayCycleManager.isDayOver)
+        {
+            return;
+        }
+
+        if (timeSinceLastOrder >= DEFAULT_DELAY_BETWEEN_ORDERS * Mathf.Pow(popularityFactor, GameManager.Instance.InventoryManager.Popularity))
+        {
+            if (orders.Count < MAX_NUMBER_OF_ORDERS)
+            {
+                AddNewOrder(GenerateOrder());
+                timeSinceLastOrder = 0f;
+            }
+        }
     }
 
     void AddNewOrder(Order order)
@@ -52,23 +76,16 @@ public class OrdersManager : MonoBehaviour
         return ingredients;
     }
 
-    private IEnumerator OrderProviderCoroutine()
+    IEnumerator AddFirstOrderOfTheDayCoroutine()
     {
         yield return new WaitForSeconds(2);
         AddNewOrder(GenerateOrder());
-
-        while (true)
-        {
-            var timeToWait = DEFAULT_DELAY_BETWEEN_ORDERS * Mathf.Pow(popularityFactor, GameManager.Instance.InventoryManager.Popularity);
-            yield return new WaitForSeconds(timeToWait);
-            yield return new WaitUntil(() => GameManager.Instance.isGamePaused == false);
-            AddNewOrder(GenerateOrder());
-        }
+        timeSinceLastOrder = 0f;
     }
 
-    void LaunchOrderProvider()
+    public void AddFirstOrderOfTheDay()
     {
-        StartCoroutine(OrderProviderCoroutine());
+        StartCoroutine(AddFirstOrderOfTheDayCoroutine());
     }
 
     public void TryToServeTacos(Order order, Tacos tacos)
@@ -138,8 +155,13 @@ public class OrdersManager : MonoBehaviour
 
     void CompleteOrder(Order order)
     {
-        GameManager.Instance.CompleteOrder(order);
+        orders.Remove(order);
+        GameManager.Instance.WalletManager.ReceiveMoney(order.price);
         ordersVisual.CompleteOrder(order);
+        if (GameManager.Instance.DayCycleManager.isDayOver && GameManager.Instance.OrdersManager.GetCurrentOrdersCount() == 0)
+        {
+            GameManager.Instance.DayCycleManager.TryToFinishDay();
+        }
     }
 
 
@@ -202,5 +224,10 @@ public class OrdersManager : MonoBehaviour
     {
         return GameManager.Instance.InventoryManager.UnlockedIngredients
             .FindAll(ingredient => ingredient.inEveryTacos);
+    }
+
+    public int GetCurrentOrdersCount()
+    {
+        return orders.Count;
     }
 }
