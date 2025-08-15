@@ -125,10 +125,6 @@ public class GameManager : MonoBehaviour
     {
         CheckoutManager.RefuseTacos();
     }
-    public void CompleteOrder(Order order)
-    {
-        WalletManager.ReceiveMoney(order.price);
-    }
 
     public void UnlockIngredient(Ingredient ingredient)
     {

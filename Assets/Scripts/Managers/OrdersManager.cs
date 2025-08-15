@@ -155,8 +155,13 @@ public class OrdersManager : MonoBehaviour
 
     void CompleteOrder(Order order)
     {
-        GameManager.Instance.CompleteOrder(order);
+        orders.Remove(order);
+        GameManager.Instance.WalletManager.ReceiveMoney(order.price);
         ordersVisual.CompleteOrder(order);
+        if (GameManager.Instance.DayCycleManager.isDayOver && GameManager.Instance.OrdersManager.GetCurrentOrdersCount() == 0)
+        {
+            GameManager.Instance.DayCycleManager.TryToFinishDay();
+        }
     }
 
 
@@ -219,5 +224,10 @@ public class OrdersManager : MonoBehaviour
     {
         return GameManager.Instance.InventoryManager.UnlockedIngredients
             .FindAll(ingredient => ingredient.inEveryTacos);
+    }
+
+    public int GetCurrentOrdersCount()
+    {
+        return orders.Count;
     }
 }

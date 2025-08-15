@@ -26,7 +26,8 @@ public class DayCycleManager : MonoBehaviour
 
         if (currentDayTimeElapsed >= DAY_DURATION_IN_SECONDS)
         {
-            FinishDay();
+            isDayOver = true;
+            TryToFinishDay();
         }
     }
 
@@ -45,7 +46,14 @@ public class DayCycleManager : MonoBehaviour
         dayOverModalVisuals.ShowDayOverModal();
         currentDay++;
         GameManager.Instance.SaveGame();
-        isDayOver = true;
+    }
+
+    public void TryToFinishDay()
+    {
+        if (GameManager.Instance.OrdersManager.GetCurrentOrdersCount() == 0)
+        {
+            FinishDay();
+        }
     }
 
 
