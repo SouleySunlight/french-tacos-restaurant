@@ -7,9 +7,9 @@ public class OrdersManager : MonoBehaviour
 {
     private OrdersVisual ordersVisual;
     private List<Order> orders = new();
-    private readonly int DEFAULT_DELAY_BETWEEN_ORDERS = 3;
+    private readonly int DEFAULT_DELAY_BETWEEN_ORDERS = 20;
     private readonly float popularityFactor = 0.9f;
-    private readonly int MAX_NUMBER_OF_ORDERS = 6;
+    private readonly int MAX_NUMBER_OF_ORDERS = 3;
     private float timeSinceLastOrder = 0f;
 
     void Awake()
@@ -194,8 +194,17 @@ public class OrdersManager : MonoBehaviour
 
     List<Ingredient> GetInEveryTacosIngredients()
     {
-        return GameManager.Instance.InventoryManager.UnlockedIngredients
+        var ingredients = new List<Ingredient>();
+        var inEveryTacosIngredient = GameManager.Instance.InventoryManager.UnlockedIngredients
             .FindAll(ingredient => ingredient.inEveryTacos);
+        foreach (var ingredient in inEveryTacosIngredient)
+        {
+            if (Random.value <= 0.8f)
+            {
+                ingredients.Add(ingredient);
+            }
+        }
+        return ingredients;
     }
 
     public int GetCurrentOrdersCount()
