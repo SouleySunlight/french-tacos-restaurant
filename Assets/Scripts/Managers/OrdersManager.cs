@@ -21,7 +21,6 @@ public class OrdersManager : MonoBehaviour
 
     void Update()
     {
-        timeSinceLastOrder += Time.deltaTime;
 
         if (GameManager.Instance.isGamePaused)
         {
@@ -29,12 +28,15 @@ public class OrdersManager : MonoBehaviour
         }
         if (orders.Count > maxNumberOfOrders)
         {
+            timeSinceLastOrder += Time.deltaTime;
             return;
         }
         if (GameManager.Instance.DayCycleManager.isDayOver)
         {
+            timeSinceLastOrder = 0f;
             return;
         }
+        timeSinceLastOrder += Time.deltaTime;
 
         if (timeSinceLastOrder >= DEFAULT_DELAY_BETWEEN_ORDERS * Mathf.Pow(popularityFactor, GameManager.Instance.InventoryManager.Popularity))
         {
@@ -223,6 +225,11 @@ public class OrdersManager : MonoBehaviour
     public void SetMaxNumberOfOrders(int maxNumberOfOrders)
     {
         this.maxNumberOfOrders = maxNumberOfOrders;
+    }
+
+    public void IncrelmentMaxNumberOfOrders()
+    {
+        maxNumberOfOrders++;
     }
 
     public int GetTacosPrice()

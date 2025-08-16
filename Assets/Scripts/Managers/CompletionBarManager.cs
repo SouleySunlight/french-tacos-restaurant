@@ -82,7 +82,7 @@ public class CompletionBarManager : MonoBehaviour
                 GameManager.Instance.OrdersManager.IncrementTacosPrice();
                 break;
             case RewardType.MORE_ORDERS:
-                // Logic to handle coupon reward
+                GameManager.Instance.OrdersManager.IncrelmentMaxNumberOfOrders();
                 break;
         }
     }
