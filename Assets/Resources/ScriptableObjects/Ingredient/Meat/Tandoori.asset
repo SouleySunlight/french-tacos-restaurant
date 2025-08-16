@@ -19,12 +19,15 @@ MonoBehaviour:
   wastedSprite: {fileID: 1274350296307469334, guid: 49df8eed971a14838879508d96baf7a9, type: 3}
   inTacosSprite: {fileID: 21300000, guid: dc6b083977a934ae89be3ebe318e1ff7, type: 3}
   inTacosSpriteAlternative: {fileID: 0}
+  uncookedFryerSprite: {fileID: 0}
+  cookedFryerSprite: {fileID: 0}
+  burntFryerSprite: {fileID: 0}
   processingTime: 15
   wastingTimeOffset: 10
   category: 0
   isUnlockedFromTheBeginning: 0
-  priceToUnlock: 60
   priceToRefill: 1
+  tacosToServeToUnlock: 1765
   canBeAddedToTacos: 1
   canBePurshased: 1
   inEveryTacos: 0

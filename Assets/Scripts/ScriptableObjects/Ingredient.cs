@@ -18,6 +18,7 @@ public class Ingredient : ScriptableObject
     public IngredientCategoryEnum category;
     public bool isUnlockedFromTheBeginning;
     public float priceToRefill = 1;
+    public int tacosToServeToUnlock = 0;
     public bool canBeAddedToTacos = true;
     public bool canBePurshased = true;
     public bool inEveryTacos = false;
