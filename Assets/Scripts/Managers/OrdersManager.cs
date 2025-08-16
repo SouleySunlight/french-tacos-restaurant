@@ -233,4 +233,8 @@ public class OrdersManager : MonoBehaviour
     {
         this.tacosPrice = tacosPrice;
     }
+    public void IncrementTacosPrice()
+    {
+        tacosPrice++;
+    }
 }

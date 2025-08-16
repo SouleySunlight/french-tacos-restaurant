@@ -79,7 +79,7 @@ public class CompletionBarManager : MonoBehaviour
                 GameManager.Instance.InventoryManager.UnlockIngredient(rewards[currentRewardIndex].ingredientToUnlock);
                 break;
             case RewardType.PRICE_INCREASE:
-                // Logic to handle gift reward
+                GameManager.Instance.OrdersManager.IncrementTacosPrice();
                 break;
             case RewardType.MORE_ORDERS:
                 // Logic to handle coupon reward
