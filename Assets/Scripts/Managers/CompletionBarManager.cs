@@ -1,15 +1,21 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CompletionBarManager : MonoBehaviour
 {
     private CompletionBarVisual completionBarVisual;
 
+    [SerializeField] List<Reward> rewards = new();
+
     private int numberOfTacosServed = 0;
+
+
 
     void Awake()
     {
         completionBarVisual = FindFirstObjectByType<CompletionBarVisual>(FindObjectsInactive.Include);
         completionBarVisual.UpdateVisual(0, 100);
+        OrderReward();
     }
 
     public int GetNumberOfTacosServed()
@@ -26,6 +32,15 @@ public class CompletionBarManager : MonoBehaviour
     public void IncrementNumberOfTacosServed()
     {
         numberOfTacosServed++;
+    }
+
+    void OrderReward()
+    {
+        rewards.Sort((x, y) => x.numberOfTacosToUnlock.CompareTo(y.numberOfTacosToUnlock));
+        foreach (var reward in rewards)
+        {
+            Debug.Log($"Checking reward: {reward.numberOfTacosToUnlock} tacos needed for {reward.rewardType} {reward.ingredientToUnlock?.name ?? "No ingredient"}");
+        }
     }
 
 }
