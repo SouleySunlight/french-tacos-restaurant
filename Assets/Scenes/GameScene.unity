@@ -148,7 +148,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1111659606}
   - {fileID: 636651507}
   - {fileID: 861562428}
   m_Father: {fileID: 208681262}
@@ -172,10 +171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewEntries:
   - viewType: 0
-    viewObject: {fileID: 1111659605}
-  - viewType: 1
     viewObject: {fileID: 636651506}
-  - viewType: 2
+  - viewType: 1
     viewObject: {fileID: 861562427}
 --- !u!1 &71432253
 GameObject:
@@ -4560,58 +4557,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105442773}
   m_CullTransparentMesh: 1
---- !u!1 &1111659605
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1111659606}
-  - component: {fileID: 1111659607}
-  m_Layer: 5
-  m_Name: ShopPrefab
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1111659606
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111659605}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1941852360}
-  m_Father: {fileID: 11121699}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1111659607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111659605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddea6ccc74ab2476ba68fba7defa77b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ingredientButtonPrefab: {fileID: 7813578882716834325, guid: 00d21511e35e24f16bf33bf8234b51ef, type: 3}
-  firstButtonPosition: {fileID: 1941852360}
-  viewToggleButton: {fileID: 0}
 --- !u!1 &1176123852
 GameObject:
   m_ObjectHideFlags: 0
@@ -5318,7 +5263,6 @@ MonoBehaviour:
   navbarButtonPrefab: {fileID: 8960985989937679192, guid: 3861b5d6ed7994e7cb4adf9cd7a90356, type: 3}
   options:
   - {fileID: 11400000, guid: ccf0241baef484c808d5eff80841c74e, type: 2}
-  - {fileID: 11400000, guid: 2da73f4cf6d9740239617402f99ef886, type: 2}
   - {fileID: 11400000, guid: ee48430f6e2a846b5aa4bade3a5f5a42, type: 2}
 --- !u!1 &1642821342
 GameObject:
@@ -5801,41 +5745,6 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 381.00006, y: 0}
   m_SizeDelta: {x: 300, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1941852359
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1941852360}
-  m_Layer: 5
-  m_Name: FirstButtonPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1941852360
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1941852359}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1111659606}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -59, y: 738}
-  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1978053334
 GameObject:
@@ -7249,7 +7158,8 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7775660097289626678, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3085991473500790815, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
       insertIndex: -1

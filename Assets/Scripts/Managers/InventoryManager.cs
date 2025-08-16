@@ -149,21 +149,6 @@ public class InventoryManager : MonoBehaviour
         LoadUnlockedIngredientsFromSaveData(unlockedIngredients);
         LoadPopularity();
     }
-
-    public List<Ingredient> GetIngredientsToUnlock()
-    {
-        List<Ingredient> ingredientsToUnlock = new();
-
-        foreach (var ingredient in allIngredients)
-        {
-            if (!UnlockedIngredients.Contains(ingredient))
-            {
-                ingredientsToUnlock.Add(ingredient);
-            }
-        }
-        ingredientsToUnlock.Sort((x, y) => x.priceToUnlock.CompareTo(y.priceToUnlock));
-        return ingredientsToUnlock;
-    }
     public void UnlockIngredient(Ingredient ingredient)
     {
         UnlockedIngredients.Add(ingredient);

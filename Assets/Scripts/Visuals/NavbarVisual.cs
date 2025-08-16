@@ -38,7 +38,7 @@ public class NavbarVisual : MonoBehaviour
 
     void Start()
     {
-        UpdateView(ShopViewEnum.SHOP);
+        UpdateView(ShopViewEnum.WORKERS);
     }
 
     void UpdateView(ShopViewEnum viewToShow)
