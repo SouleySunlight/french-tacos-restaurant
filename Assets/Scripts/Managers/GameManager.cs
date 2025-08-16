@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
             playerMoney = WalletManager.GetCurrentAmount(),
             currentDay = DayCycleManager.GetCurrentDay(),
             numberOfTacosServed = CompletionBarManager.GetNumberOfTacosServed(),
+            maxNumberOfOrders = OrdersManager.GetMaxNumberOfOrders(),
+            tacosPrice = OrdersManager.GetTacosPrice(),
             processedIngredientInventorySaveData = InventoryManager.GetInventoryProcessedIngredientSaveData(),
             unlockedIngredients = InventoryManager.GetUnlockedIngredients(),
             upgradeSaveData = UpgradeManager.GetInventorySaveData()
@@ -65,6 +67,8 @@ public class GameManager : MonoBehaviour
         InventoryManager.LoadInventory(data.processedIngredientInventorySaveData, data.unlockedIngredients);
         UpgradeManager.LoadUpgradesFromSaveData(data.upgradeSaveData);
         CompletionBarManager.LoadNumberOfTacosServed(data.numberOfTacosServed);
+        OrdersManager.SetMaxNumberOfOrders(data.maxNumberOfOrders);
+        OrdersManager.SetTacosPrice(data.tacosPrice);
         isLoaded = true;
     }
 

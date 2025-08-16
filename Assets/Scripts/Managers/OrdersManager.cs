@@ -9,7 +9,9 @@ public class OrdersManager : MonoBehaviour
     private List<Order> orders = new();
     private readonly int DEFAULT_DELAY_BETWEEN_ORDERS = 20;
     private readonly float popularityFactor = 0.9f;
-    private readonly int MAX_NUMBER_OF_ORDERS = 3;
+    private int maxNumberOfOrders = 3;
+    private int tacosPrice = 5;
+
     private float timeSinceLastOrder = 0f;
 
     void Awake()
@@ -25,7 +27,7 @@ public class OrdersManager : MonoBehaviour
         {
             return;
         }
-        if (orders.Count > MAX_NUMBER_OF_ORDERS)
+        if (orders.Count > maxNumberOfOrders)
         {
             return;
         }
@@ -36,7 +38,7 @@ public class OrdersManager : MonoBehaviour
 
         if (timeSinceLastOrder >= DEFAULT_DELAY_BETWEEN_ORDERS * Mathf.Pow(popularityFactor, GameManager.Instance.InventoryManager.Popularity))
         {
-            if (orders.Count < MAX_NUMBER_OF_ORDERS)
+            if (orders.Count < maxNumberOfOrders)
             {
                 AddNewOrder(GenerateOrder());
                 timeSinceLastOrder = 0f;
@@ -135,7 +137,7 @@ public class OrdersManager : MonoBehaviour
     void CompleteOrder(Order order)
     {
         orders.Remove(order);
-        GameManager.Instance.WalletManager.ReceiveMoney(order.price);
+        GameManager.Instance.WalletManager.ReceiveMoney(tacosPrice);
         GameManager.Instance.CompletionBarManager.IncrementNumberOfTacosServed();
         ordersVisual.CompleteOrder(order);
         if (GameManager.Instance.DayCycleManager.isDayOver && GameManager.Instance.OrdersManager.GetCurrentOrdersCount() == 0)
@@ -211,5 +213,24 @@ public class OrdersManager : MonoBehaviour
     public int GetCurrentOrdersCount()
     {
         return orders.Count;
+    }
+
+    public int GetMaxNumberOfOrders()
+    {
+        return maxNumberOfOrders;
+    }
+
+    public void SetMaxNumberOfOrders(int maxNumberOfOrders)
+    {
+        this.maxNumberOfOrders = maxNumberOfOrders;
+    }
+
+    public int GetTacosPrice()
+    {
+        return tacosPrice;
+    }
+    public void SetTacosPrice(int tacosPrice)
+    {
+        this.tacosPrice = tacosPrice;
     }
 }

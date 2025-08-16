@@ -37,10 +37,6 @@ public class CompletionBarManager : MonoBehaviour
     void OrderReward()
     {
         rewards.Sort((x, y) => x.numberOfTacosToUnlock.CompareTo(y.numberOfTacosToUnlock));
-        foreach (var reward in rewards)
-        {
-            Debug.Log($"Checking reward: {reward.numberOfTacosToUnlock} tacos needed for {reward.rewardType} {reward.ingredientToUnlock?.name ?? "No ingredient"}");
-        }
     }
 
 }
