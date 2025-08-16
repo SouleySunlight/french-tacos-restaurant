@@ -12,4 +12,10 @@ public class CompletionBarVisual : MonoBehaviour
         completionBarImage.fillAmount = (float)currentNumberOfTacos / target;
         completionText.text = $"{currentNumberOfTacos}/{target}";
     }
+
+    public void ShowMaximum()
+    {
+        completionBarImage.fillAmount = 1f;
+        completionText.text = "MAX";
+    }
 }

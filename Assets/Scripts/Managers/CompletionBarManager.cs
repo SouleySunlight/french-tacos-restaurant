@@ -10,6 +10,7 @@ public class CompletionBarManager : MonoBehaviour
     private int target = 0;
     private int current = 0;
     private int numberOfTacosServed = 0;
+    private bool isMaximumReached = false;
 
 
 
@@ -33,6 +34,7 @@ public class CompletionBarManager : MonoBehaviour
 
     public void IncrementNumberOfTacosServed()
     {
+        if (isMaximumReached) return;
         numberOfTacosServed++;
         current++;
         completionBarVisual.UpdateVisual(current, target);
@@ -57,7 +59,8 @@ public class CompletionBarManager : MonoBehaviour
             }
             current -= rewards[i].numberOfTacosToUnlock;
         }
-        completionBarVisual.UpdateVisual(current, target);
+        completionBarVisual.ShowMaximum();
+        isMaximumReached = true;
 
     }
 
