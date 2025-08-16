@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         {
             playerMoney = WalletManager.GetCurrentAmount(),
             currentDay = DayCycleManager.GetCurrentDay(),
+            numberOfTacosServed = CompletionBarManager.GetNumberOfTacosServed(),
             processedIngredientInventorySaveData = InventoryManager.GetInventoryProcessedIngredientSaveData(),
             unlockedIngredients = InventoryManager.GetUnlockedIngredients(),
             upgradeSaveData = UpgradeManager.GetInventorySaveData()
@@ -63,6 +64,7 @@ public class GameManager : MonoBehaviour
         DayCycleManager.SetCurrentDay(data.currentDay == 0 ? 1 : data.currentDay);
         InventoryManager.LoadInventory(data.processedIngredientInventorySaveData, data.unlockedIngredients);
         UpgradeManager.LoadUpgradesFromSaveData(data.upgradeSaveData);
+        CompletionBarManager.LoadNumberOfTacosServed(data.numberOfTacosServed);
         isLoaded = true;
     }
 

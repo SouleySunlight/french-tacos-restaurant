@@ -136,6 +136,7 @@ public class OrdersManager : MonoBehaviour
     {
         orders.Remove(order);
         GameManager.Instance.WalletManager.ReceiveMoney(order.price);
+        GameManager.Instance.CompletionBarManager.IncrementNumberOfTacosServed();
         ordersVisual.CompleteOrder(order);
         if (GameManager.Instance.DayCycleManager.isDayOver && GameManager.Instance.OrdersManager.GetCurrentOrdersCount() == 0)
         {
