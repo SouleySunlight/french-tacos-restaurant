@@ -149,15 +149,15 @@ public class InventoryManager : MonoBehaviour
         LoadUnlockedIngredientsFromSaveData(unlockedIngredients);
         LoadPopularity();
     }
-    public void UnlockIngredient(Ingredient ingredient)
-    {
-        UnlockedIngredients.Add(ingredient);
-        Popularity += ingredient.popularity;
-        if (ingredient.NeedProcessing())
-        {
-            processedIngredientInventory[ingredient.id] = new InventorySlot(0);
-        }
-    }
+    // public void UnlockIngredient(Ingredient ingredient)
+    // {
+    //     UnlockedIngredients.Add(ingredient);
+    //     Popularity += ingredient.popularity;
+    //     if (ingredient.NeedProcessing())
+    //     {
+    //         processedIngredientInventory[ingredient.id] = new InventorySlot(0);
+    //     }
+    // }
 
     public void UpdateProcessedInventoryMaxAmount()
     {
@@ -182,6 +182,20 @@ public class InventoryManager : MonoBehaviour
     void OnProcessedIngredientAdded()
     {
         GameManager.Instance.TacosMakerManager.UpdateButtonsVisualQuantity();
+    }
+
+    public void UnlockIngredient(Ingredient ingredient)
+    {
+        if (UnlockedIngredients.Contains(ingredient)) return;
+        UnlockedIngredients.Add(ingredient);
+        Popularity += ingredient.popularity;
+        if (ingredient.NeedProcessing())
+        {
+            processedIngredientInventory[ingredient.id] = new InventorySlot(0);
+        }
+        GameManager.Instance.TacosMakerManager.AddIngredient(ingredient);
+        GameManager.Instance.HotplateManager.AddAvailableIngredient(ingredient);
+        GameManager.Instance.FryerManager.AddAvailableIngredient(ingredient);
     }
 
 }

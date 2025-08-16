@@ -37,6 +37,13 @@ public class CompletionBarManager : MonoBehaviour
         if (isMaximumReached) return;
         numberOfTacosServed++;
         current++;
+        if (current >= target)
+        {
+            UnlockReward();
+            currentRewardIndex++;
+            current = 0;
+            target = rewards[currentRewardIndex].numberOfTacosToUnlock;
+        }
         completionBarVisual.UpdateVisual(current, target);
     }
 
@@ -62,6 +69,22 @@ public class CompletionBarManager : MonoBehaviour
         completionBarVisual.ShowMaximum();
         isMaximumReached = true;
 
+    }
+
+    void UnlockReward()
+    {
+        switch (rewards[currentRewardIndex].rewardType)
+        {
+            case RewardType.UNLOCK_INGREDIENT:
+                GameManager.Instance.InventoryManager.UnlockIngredient(rewards[currentRewardIndex].ingredientToUnlock);
+                break;
+            case RewardType.PRICE_INCREASE:
+                // Logic to handle gift reward
+                break;
+            case RewardType.MORE_ORDERS:
+                // Logic to handle coupon reward
+                break;
+        }
     }
 
 }
