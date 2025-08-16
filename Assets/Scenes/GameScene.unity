@@ -6398,6 +6398,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2069625897}
     m_Modifications:
+    - target: {fileID: 9526977582305338, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 411
+      objectReference: {fileID: 0}
     - target: {fileID: 190985847914835799, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: grillTop
       value: 
