@@ -6,7 +6,9 @@ public class CompletionBarManager : MonoBehaviour
     private CompletionBarVisual completionBarVisual;
 
     [SerializeField] List<Reward> rewards = new();
-
+    private int currentRewardIndex = 0;
+    private int target = 0;
+    private int current = 0;
     private int numberOfTacosServed = 0;
 
 
@@ -14,7 +16,6 @@ public class CompletionBarManager : MonoBehaviour
     void Awake()
     {
         completionBarVisual = FindFirstObjectByType<CompletionBarVisual>(FindObjectsInactive.Include);
-        completionBarVisual.UpdateVisual(0, 100);
         OrderReward();
     }
 
@@ -26,17 +27,38 @@ public class CompletionBarManager : MonoBehaviour
     public void LoadNumberOfTacosServed(int numberOfTacos)
     {
         numberOfTacosServed = numberOfTacos;
-        completionBarVisual.UpdateVisual(numberOfTacosServed, 100);
+        SetObjectives();
+
     }
 
     public void IncrementNumberOfTacosServed()
     {
         numberOfTacosServed++;
+        current++;
+        completionBarVisual.UpdateVisual(current, target);
     }
 
     void OrderReward()
     {
         rewards.Sort((x, y) => x.numberOfTacosToUnlock.CompareTo(y.numberOfTacosToUnlock));
+    }
+
+    void SetObjectives()
+    {
+        current = numberOfTacosServed;
+        for (int i = 0; i < rewards.Count; i++)
+        {
+            if (current < rewards[i].numberOfTacosToUnlock)
+            {
+                target = rewards[i].numberOfTacosToUnlock;
+                currentRewardIndex = i;
+                completionBarVisual.UpdateVisual(current, target);
+                return;
+            }
+            current -= rewards[i].numberOfTacosToUnlock;
+        }
+        completionBarVisual.UpdateVisual(current, target);
+
     }
 
 }
