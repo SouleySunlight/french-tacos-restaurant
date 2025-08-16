@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public WorkersManager WorkersManager { get; private set; }
     public FryerManager FryerManager { get; private set; }
     public SauceGruyereManager SauceGruyereManager { get; private set; }
-
+    public CompletionBarManager CompletionBarManager { get; private set; }
     public bool isGamePaused { get; private set; } = false;
     private bool isLoaded = false;
 
@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
         WorkersManager = GetComponentInChildren<WorkersManager>();
         FryerManager = GetComponentInChildren<FryerManager>();
         SauceGruyereManager = GetComponentInChildren<SauceGruyereManager>();
-
+        CompletionBarManager = GetComponentInChildren<CompletionBarManager>();
 
         if (TacosMakerManager == null)
         {
@@ -294,6 +294,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             SauceGruyereManager = GetComponentInChildren<SauceGruyereManager>();
+        }
+        if (CompletionBarManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/CompletionBarManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load CompletionBarManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            CompletionBarManager = GetComponentInChildren<CompletionBarManager>();
         }
     }
 
