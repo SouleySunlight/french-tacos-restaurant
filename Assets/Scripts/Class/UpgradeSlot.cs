@@ -2,10 +2,10 @@ using System.Collections.Generic;
 
 public class UpgradeSlot
 {
-    public BaseUpgrade upgrade;
+    public Upgrade upgrade;
     public int currentLevel;
 
-    public UpgradeSlot(BaseUpgrade up, int level)
+    public UpgradeSlot(Upgrade up, int level)
     {
         upgrade = up;
         currentLevel = level;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
-    [SerializeField] List<BaseUpgrade> upgradables = new();
+    [SerializeField] List<Upgrade> upgradables = new();
     private Dictionary<string, UpgradeSlot> upgrades = new();
 
 
@@ -35,9 +35,9 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-    public float GetEffect(string id)
+    public float GetSpeedfactor(string id)
     {
-        return upgrades[id].upgrade.GetEffect(upgrades[id].currentLevel);
+        return upgrades[id].upgrade.GetSpeedFactor(upgrades[id].currentLevel);
     }
 
     public UpgradeSaveData GetInventorySaveData()
