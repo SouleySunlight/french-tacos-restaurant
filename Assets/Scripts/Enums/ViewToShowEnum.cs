@@ -7,8 +7,6 @@ public enum ViewToShowEnum
     GRILL,
     HOTPLATE,
     SHOP,
-    UPGRADE,
-    WORKERS,
     FRYER,
     SAUCE_GRUYERE
 }
