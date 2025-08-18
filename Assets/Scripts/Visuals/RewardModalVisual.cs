@@ -31,6 +31,11 @@ public class RewardModalVisual : MonoBehaviour
         rewardModal.SetActive(true);
     }
 
+    public void HideRewardModal()
+    {
+        rewardModal.SetActive(false);
+    }
+
     void ShowIngredientRewardModal(Ingredient ingredient)
     {
         quantityDisplay.SetActive(false);

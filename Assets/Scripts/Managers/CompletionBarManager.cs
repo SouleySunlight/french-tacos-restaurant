@@ -90,4 +90,9 @@ public class CompletionBarManager : MonoBehaviour
         }
     }
 
+    public void OnClickOnRewardModalButton()
+    {
+        rewardModalVisual.HideRewardModal();
+    }
+
 }
