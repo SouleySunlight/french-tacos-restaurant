@@ -130,6 +130,14 @@ MonoBehaviour:
     m_Localized: Onion
     m_Metadata:
       m_Items: []
+  - m_Id: 1469256825823232
+    m_Localized: 'Tacos price:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1469362610364416
+    m_Localized: 'Max number of tacos:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
