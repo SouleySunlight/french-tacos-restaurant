@@ -55,6 +55,90 @@ MonoBehaviour:
       avant la fermeture)"
     m_Metadata:
       m_Items: []
+  - m_Id: 1452144744980480
+    m_Localized: Trop bien !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1454957231333376
+    m_Localized: "Nouvel ingr\xE9dient d\xE9bloqu\xE9 !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1455194394058752
+    m_Localized: "Nombre de commande max augment\xE9 !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1455400456019968
+    m_Localized: "Prix des tacos augment\xE9 ! "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1455995359322112
+    m_Localized: Steak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456182291062784
+    m_Localized: Poulet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456274498641920
+    m_Localized: Cordon bleu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456337555808256
+    m_Localized: Merguez
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456386033573888
+    m_Localized: Nuggets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456548000817152
+    m_Localized: Poulet tandoori
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456678082961408
+    m_Localized: "Sauce alg\xE9rienne"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456750640226304
+    m_Localized: Sauce barbecue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456815056347136
+    m_Localized: Sauce curry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456884958617600
+    m_Localized: Harissa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456930714279936
+    m_Localized: Ketchup
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456988599869440
+    m_Localized: Mayonnaise
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1457097022627840
+    m_Localized: Salade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1457135077548032
+    m_Localized: Tomate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1457178505371648
+    m_Localized: Oignon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1469256825823232
+    m_Localized: 'Prix du tacos : '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1469362610364416
+    m_Localized: 'Nombre max de commande :'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

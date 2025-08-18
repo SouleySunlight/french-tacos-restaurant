@@ -8,7 +8,6 @@ public class LegacyIngredientButtonDisplayer : MonoBehaviour
     public Ingredient ingredientData;
     public bool shouldShowQuantity = false;
     public bool shouldShowUnprocessedQuantity = false;
-    public bool shouldShowUnlockPrice = false;
     public bool shouldShowRefillPrice = false;
 
     [SerializeField] private TMP_Text buttonText;
@@ -31,10 +30,6 @@ public class LegacyIngredientButtonDisplayer : MonoBehaviour
         {
             buttonText.text += " TEMP";
 
-        }
-        if (shouldShowUnlockPrice)
-        {
-            buttonText.text += " " + ingredientData.priceToUnlock + " €";
         }
         if (shouldShowRefillPrice)
         {

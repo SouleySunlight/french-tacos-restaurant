@@ -16,7 +16,6 @@ public class DayOverModalVisuals : MonoBehaviour
 
     public void ShowDayOverModal()
     {
-        //dayOverTitle.text = "Day " + GameManager.Instance.DayCycleManager.GetCurrentDay() + " Over";
         dayOverTitle.StringReference.Arguments = new object[] { GameManager.Instance.DayCycleManager.GetCurrentDay().ToString() };
         dayOverTitle.RefreshString();
 

@@ -13,13 +13,12 @@ public class GameManager : MonoBehaviour
     public WalletManager WalletManager { get; private set; }
     public HotplateManager HotplateManager { get; private set; }
     public InventoryManager InventoryManager { get; private set; }
-    public ShopManager ShopManager { get; private set; }
     public UpgradeManager UpgradeManager { get; private set; }
     public DayCycleManager DayCycleManager { get; private set; }
     public WorkersManager WorkersManager { get; private set; }
     public FryerManager FryerManager { get; private set; }
     public SauceGruyereManager SauceGruyereManager { get; private set; }
-
+    public CompletionBarManager CompletionBarManager { get; private set; }
     public bool isGamePaused { get; private set; } = false;
     private bool isLoaded = false;
 
@@ -49,6 +48,9 @@ public class GameManager : MonoBehaviour
         {
             playerMoney = WalletManager.GetCurrentAmount(),
             currentDay = DayCycleManager.GetCurrentDay(),
+            numberOfTacosServed = CompletionBarManager.GetNumberOfTacosServed(),
+            maxNumberOfOrders = OrdersManager.GetMaxNumberOfOrders(),
+            tacosPrice = OrdersManager.GetTacosPrice(),
             processedIngredientInventorySaveData = InventoryManager.GetInventoryProcessedIngredientSaveData(),
             unlockedIngredients = InventoryManager.GetUnlockedIngredients(),
             upgradeSaveData = UpgradeManager.GetInventorySaveData()
@@ -64,6 +66,9 @@ public class GameManager : MonoBehaviour
         DayCycleManager.SetCurrentDay(data.currentDay == 0 ? 1 : data.currentDay);
         InventoryManager.LoadInventory(data.processedIngredientInventorySaveData, data.unlockedIngredients);
         UpgradeManager.LoadUpgradesFromSaveData(data.upgradeSaveData);
+        CompletionBarManager.LoadNumberOfTacosServed(data.numberOfTacosServed);
+        OrdersManager.SetMaxNumberOfOrders(data.maxNumberOfOrders);
+        OrdersManager.SetTacosPrice(data.tacosPrice);
         isLoaded = true;
     }
 
@@ -74,7 +79,6 @@ public class GameManager : MonoBehaviour
         TacosMakerManager.SetupIngredients();
         FryerManager.SetupIngredients();
         SauceGruyereManager.SetupIngredients();
-        ShopManager.SetupShop();
         UpgradeManager.SetupUpgrades();
         GrillManager.SetupGrillingTime();
         SauceGruyereManager.UpdateCookingTime();
@@ -126,19 +130,6 @@ public class GameManager : MonoBehaviour
         CheckoutManager.RefuseTacos();
     }
 
-    public void UnlockIngredient(Ingredient ingredient)
-    {
-        if (!WalletManager.HasEnoughMoney(ingredient.priceToUnlock))
-        {
-            return;
-        }
-        WalletManager.SpendMoney(ingredient.priceToUnlock, SpentCategoryEnum.UPGRADE);
-        ShopManager.UnlockIngredient(ingredient);
-        TacosMakerManager.AddAvailableIngredient(ingredient);
-        HotplateManager.AddAvailableIngredient(ingredient);
-        FryerManager.AddAvailableIngredient(ingredient);
-    }
-
     public void UpgradeElement(UpgradeSlot upgrade)
     {
         if (!WalletManager.HasEnoughMoney(upgrade.upgrade.GetCostAtLevel(upgrade.currentLevel)))
@@ -170,13 +161,12 @@ public class GameManager : MonoBehaviour
         WalletManager = GetComponentInChildren<WalletManager>();
         HotplateManager = GetComponentInChildren<HotplateManager>();
         InventoryManager = GetComponentInChildren<InventoryManager>();
-        ShopManager = GetComponentInChildren<ShopManager>();
         UpgradeManager = GetComponentInChildren<UpgradeManager>();
         DayCycleManager = GetComponentInChildren<DayCycleManager>();
         WorkersManager = GetComponentInChildren<WorkersManager>();
         FryerManager = GetComponentInChildren<FryerManager>();
         SauceGruyereManager = GetComponentInChildren<SauceGruyereManager>();
-
+        CompletionBarManager = GetComponentInChildren<CompletionBarManager>();
 
         if (TacosMakerManager == null)
         {
@@ -256,17 +246,6 @@ public class GameManager : MonoBehaviour
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             InventoryManager = GetComponentInChildren<InventoryManager>();
         }
-        if (ShopManager == null)
-        {
-            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/ShopManager");
-            if (prefab == null)
-            {
-                Debug.LogError("Unable to load ShopManager");
-                return;
-            }
-            Instantiate(prefab, transform.position, Quaternion.identity, transform);
-            ShopManager = GetComponentInChildren<ShopManager>();
-        }
         if (UpgradeManager == null)
         {
             GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/UpgradeManager");
@@ -321,6 +300,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             SauceGruyereManager = GetComponentInChildren<SauceGruyereManager>();
+        }
+        if (CompletionBarManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/CompletionBarManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load CompletionBarManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            CompletionBarManager = GetComponentInChildren<CompletionBarManager>();
         }
     }
 

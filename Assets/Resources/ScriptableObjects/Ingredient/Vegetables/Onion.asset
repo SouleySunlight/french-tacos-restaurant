@@ -26,8 +26,8 @@ MonoBehaviour:
   wastingTimeOffset: 0
   category: 1
   isUnlockedFromTheBeginning: 0
-  priceToUnlock: 35
   priceToRefill: 0.25
+  tacosToServeToUnlock: 265
   canBeAddedToTacos: 1
   canBePurshased: 1
   inEveryTacos: 0

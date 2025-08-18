@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0faed939a3c24401ab7c9241d717a024, type: 3}
   m_Name: Upgrade
   m_EditorClassIdentifier: 
-  shopViewEnum: 1
+  shopViewEnum: 0
   icon: {fileID: 2952564868547622667, guid: 4f45090b27be24f4cba3d92aef421003, type: 3}
