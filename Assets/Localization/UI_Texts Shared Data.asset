@@ -51,6 +51,82 @@ MonoBehaviour:
     m_Key: DAY_OVER_MODAL.INFO
     m_Metadata:
       m_Items: []
+  - m_Id: 1452144744980480
+    m_Key: BUTTON.NICE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1454957231333376
+    m_Key: REWARD.INGREDIENT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1455194394058752
+    m_Key: REWARD.ORDER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1455400456019968
+    m_Key: REWARD.TACOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1455995359322112
+    m_Key: INGREDIENT_BEE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456182291062784
+    m_Key: INGREDIENT_CHI
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456274498641920
+    m_Key: INGREDIENT_CB
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456337555808256
+    m_Key: INGREDIENT_MER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456386033573888
+    m_Key: INGREDIENT_NUG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456548000817152
+    m_Key: INGREDIENT_TAN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456678082961408
+    m_Key: INGREDIENT_ALG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456750640226304
+    m_Key: INGREDIENT_BBQ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456815056347136
+    m_Key: INGREDIENT_CUR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456884958617600
+    m_Key: INGREDIENT_HAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456930714279936
+    m_Key: INGREDIENT_KET
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1456988599869440
+    m_Key: INGREDIENT_MAYO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1457097022627840
+    m_Key: INGREDIENT_SAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1457135077548032
+    m_Key: INGREDIENT_TOM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1457178505371648
+    m_Key: INGREDIENT_ONI
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

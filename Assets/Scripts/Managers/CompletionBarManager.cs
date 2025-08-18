@@ -4,6 +4,7 @@ using UnityEngine;
 public class CompletionBarManager : MonoBehaviour
 {
     private CompletionBarVisual completionBarVisual;
+    private RewardModalVisual rewardModalVisual;
 
     [SerializeField] List<Reward> rewards = new();
     private int currentRewardIndex = 0;
@@ -17,6 +18,7 @@ public class CompletionBarManager : MonoBehaviour
     void Awake()
     {
         completionBarVisual = FindFirstObjectByType<CompletionBarVisual>(FindObjectsInactive.Include);
+        rewardModalVisual = FindFirstObjectByType<RewardModalVisual>(FindObjectsInactive.Include);
         OrderReward();
     }
 
@@ -40,6 +42,7 @@ public class CompletionBarManager : MonoBehaviour
         if (current >= target)
         {
             UnlockReward();
+            rewardModalVisual.ShowRewardModal(rewards[currentRewardIndex]);
             currentRewardIndex++;
             current = 0;
             target = rewards[currentRewardIndex].numberOfTacosToUnlock;
