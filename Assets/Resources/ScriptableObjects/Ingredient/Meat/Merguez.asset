@@ -22,12 +22,11 @@ MonoBehaviour:
   uncookedFryerSprite: {fileID: 0}
   cookedFryerSprite: {fileID: 0}
   burntFryerSprite: {fileID: 0}
-  processingTime: 20
+  processingTime: 30
   wastingTimeOffset: 10
   category: 0
   isUnlockedFromTheBeginning: 0
   priceToRefill: 1
-  tacosToServeToUnlock: 10265
   canBeAddedToTacos: 1
   canBePurshased: 1
   inEveryTacos: 0
