@@ -6,8 +6,13 @@ public class UpgradeManager : MonoBehaviour
 {
     [SerializeField] List<Upgrade> upgradables = new();
     private Dictionary<string, UpgradeSlot> upgrades = new();
+    private UpgradeButtonDisplayer upgradeButtonDisplayer;
 
 
+    void Awake()
+    {
+        upgradeButtonDisplayer = FindFirstObjectByType<UpgradeButtonDisplayer>(FindObjectsInactive.Include);
+    }
 
     public void UpgradeElement(string id)
     {
@@ -72,5 +77,10 @@ public class UpgradeManager : MonoBehaviour
             var upgradeToAdd = upgradables.Find(upgradable => upgradable.id == slot.upgradeID);
             upgrades[slot.upgradeID] = new UpgradeSlot(upgradeToAdd, slot.currentLevel);
         }
+    }
+
+    public void UpdateUpgradeButtonVisuals()
+    {
+        upgradeButtonDisplayer.UpdateVisual();
     }
 }

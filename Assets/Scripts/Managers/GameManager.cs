@@ -151,6 +151,11 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void OnViewChanged()
+    {
+        UpgradeManager.UpdateUpgradeButtonVisuals();
+    }
+
     void InitializeManagers()
     {
         TacosMakerManager = GetComponentInChildren<TacosMakerManager>();
