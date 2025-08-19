@@ -21,6 +21,21 @@ public class UpgradeManager : MonoBehaviour
         OnUpgradeElement(id);
     }
 
+    public int GetCurrentLevel(string id)
+    {
+        return upgrades[id].currentLevel;
+    }
+
+    public int GetMaxLevel(string id)
+    {
+        return upgrades[id].upgrade.maxLevel;
+    }
+
+    public float GetUpgradeCost(string id)
+    {
+        return upgrades[id].upgrade.GetCostAtLevel(GetCurrentLevel(id));
+    }
+
     void OnUpgradeElement(string id)
     {
         switch (id)

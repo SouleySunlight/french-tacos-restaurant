@@ -8418,6 +8418,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -300
       objectReference: {fileID: 0}
+    - target: {fileID: 3341695851007084656, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: viewEntries.Array.data[4].viewType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341695851007084656, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: viewEntries.Array.data[5].viewType
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5371132674167194366, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: creamImage
       value: 
