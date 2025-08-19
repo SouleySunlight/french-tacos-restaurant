@@ -7,7 +7,7 @@ public class SauceGruyereVisual : MonoBehaviour, IView
 {
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private GameObject ingredientIndicatorPrefab;
-    [SerializeField] private Image cookingTimer;
+    [SerializeField] private GameObject roundedCompletionBar;
     [SerializeField] private Image creamImage;
     [SerializeField] private Image cheeseImage;
     [SerializeField] private Image sauceGruyereImage;
@@ -121,7 +121,7 @@ public class SauceGruyereVisual : MonoBehaviour, IView
 
     public void UpdateTimer(float percentage)
     {
-        cookingTimer.fillAmount = percentage;
+        roundedCompletionBar.GetComponent<RoundedCompletionBarDisplayer>().UpdateTimer(percentage);
     }
 
     public void OnSauceGruyereCooked()
