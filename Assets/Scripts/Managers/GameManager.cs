@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
             maxNumberOfOrders = OrdersManager.GetMaxNumberOfOrders(),
             tacosPrice = OrdersManager.GetTacosPrice(),
             processedIngredientInventorySaveData = InventoryManager.GetInventoryProcessedIngredientSaveData(),
-            unlockedIngredients = InventoryManager.GetUnlockedIngredients(),
+            unlockedIngredients = InventoryManager.GetUnlockedIngredientIds(),
             upgradeSaveData = UpgradeManager.GetInventorySaveData()
         };
 

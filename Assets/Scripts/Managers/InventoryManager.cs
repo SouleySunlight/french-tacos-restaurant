@@ -92,15 +92,20 @@ public class InventoryManager : MonoBehaviour
         return data;
     }
 
-    public List<Ingredient> GetUnlockedIngredients()
+    public List<string> GetUnlockedIngredientIds()
     {
-        return UnlockedIngredients;
+        var ids = new List<string>();
+        foreach (var ingredient in UnlockedIngredients)
+        {
+            ids.Add(ingredient.id);
+        }
+        return ids;
     }
 
-    public void LoadUnlockedIngredientsFromSaveData(List<Ingredient> ingredients)
+    public void LoadUnlockedIngredientsFromSaveData(List<string> ingredientIds)
     {
         UnlockedIngredients.Clear();
-        if (ingredients.Count == 0)
+        if (ingredientIds.Count == 0)
         {
             foreach (var ingredient in allIngredients)
             {
@@ -116,12 +121,14 @@ public class InventoryManager : MonoBehaviour
             }
             return;
         }
-        foreach (var ingredient in ingredients)
+        foreach (var ingredientId in ingredientIds)
         {
-            if (ingredient.isUnlockedFromTheBeginning)
+            var unlockedIngredient = allIngredients.Find(ingredient => ingredient.id == ingredientId);
+            if (unlockedIngredient == null)
             {
-                UnlockedIngredients.Add(ingredient);
+                continue;
             }
+            UnlockedIngredients.Add(unlockedIngredient);
         }
     }
 
@@ -143,10 +150,10 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void LoadInventory(InventorySaveData data, List<Ingredient> unlockedIngredients)
+    public void LoadInventory(InventorySaveData data, List<string> unlockedIngredientIds)
     {
         LoadProcessedInventoryFromSaveData(data);
-        LoadUnlockedIngredientsFromSaveData(unlockedIngredients);
+        LoadUnlockedIngredientsFromSaveData(unlockedIngredientIds);
         LoadPopularity();
     }
 
