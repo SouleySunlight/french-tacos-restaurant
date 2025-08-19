@@ -8,7 +8,7 @@ public class GameSaveData
     public int maxNumberOfOrders = 3;
     public int tacosPrice = 5;
     public InventorySaveData processedIngredientInventorySaveData = new();
-    public List<Ingredient> unlockedIngredients = new();
+    public List<string> unlockedIngredients = new();
     public UpgradeSaveData upgradeSaveData = new();
 
 }

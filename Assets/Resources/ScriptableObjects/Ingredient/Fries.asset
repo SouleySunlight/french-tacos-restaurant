@@ -22,11 +22,10 @@ MonoBehaviour:
   uncookedFryerSprite: {fileID: 21300000, guid: b22bbb406e9324f39ae46de1272c3a56, type: 3}
   cookedFryerSprite: {fileID: 21300000, guid: 3b9fdeb9d19b245e88d841e61eafcb8a, type: 3}
   burntFryerSprite: {fileID: 21300000, guid: 5e3ebbec3524b4ef6ba96a1f1e4eaed2, type: 3}
-  processingTime: 20
+  processingTime: 15
   wastingTimeOffset: 10
   category: 2
   isUnlockedFromTheBeginning: 1
-  priceToUnlock: 0
   priceToRefill: 0.2
   canBeAddedToTacos: 1
   canBePurshased: 1
