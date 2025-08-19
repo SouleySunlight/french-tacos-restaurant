@@ -4,6 +4,8 @@ using UnityEngine;
 public class UpgradeButtonDisplayer : MonoBehaviour
 {
     [SerializeField] private GameObject upgradeButton;
+    [SerializeField] private GameObject buttonBody;
+    [SerializeField] private GameObject shadow;
     [SerializeField] private TMP_Text upgradeCostText;
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private TMP_Text percentText;
@@ -17,11 +19,32 @@ public class UpgradeButtonDisplayer : MonoBehaviour
             return;
         }
         var upgradeKey = GetViewUpgradeId(currentView);
-        upgradeCostText.text = GameManager.Instance.UpgradeManager.GetUpgradeCost(upgradeKey).ToString();
+        upgradeCostText.text = MoneyUtils.FormatAmount(GameManager.Instance.UpgradeManager.GetUpgradeCost(upgradeKey));
         levelText.text = $"{GameManager.Instance.UpgradeManager.GetCurrentLevel(upgradeKey)}/{GameManager.Instance.UpgradeManager.GetMaxLevel(upgradeKey)}";
-        percentText.text = $"{GameManager.Instance.UpgradeManager.GetSpeedfactor(upgradeKey) * 100}%";
+        percentText.text = $"{MoneyUtils.FormatAmount(1 / GameManager.Instance.UpgradeManager.GetSpeedfactor(upgradeKey) * 100)}%";
 
         upgradeButton.SetActive(true);
+    }
+
+    public void OnUpgradeButtonClicked()
+    {
+        GameManager.Instance.UpgradeManager.UpgradeElement(GetViewUpgradeId(PlayzoneVisual.currentView));
+    }
+
+    public void OnPressDown()
+    {
+        var rectTransform = buttonBody.GetComponent<RectTransform>();
+        var newPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - 15f);
+        rectTransform.anchoredPosition = newPosition;
+        shadow.SetActive(false);
+    }
+
+    public void OnRelease()
+    {
+        var rectTransform = buttonBody.GetComponent<RectTransform>();
+        var newPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 15f);
+        rectTransform.anchoredPosition = newPosition;
+        shadow.SetActive(true);
     }
 
     string GetViewUpgradeId(ViewToShowEnum view)

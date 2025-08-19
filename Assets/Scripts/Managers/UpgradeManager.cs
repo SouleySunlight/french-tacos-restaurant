@@ -16,9 +16,18 @@ public class UpgradeManager : MonoBehaviour
 
     public void UpgradeElement(string id)
     {
+
         if (upgrades[id].currentLevel >= upgrades[id].upgrade.maxLevel) { return; }
+        var upgrade = upgrades[id];
+
+        if (!GameManager.Instance.WalletManager.HasEnoughMoney(upgrade.upgrade.GetCostAtLevel(upgrade.currentLevel)))
+        {
+            return;
+        }
+        GameManager.Instance.WalletManager.SpendMoney(upgrade.upgrade.GetCostAtLevel(upgrade.currentLevel), SpentCategoryEnum.UPGRADE);
         upgrades[id].currentLevel += 1;
         OnUpgradeElement(id);
+        UpdateUpgradeButtonVisuals();
     }
 
     public int GetCurrentLevel(string id)

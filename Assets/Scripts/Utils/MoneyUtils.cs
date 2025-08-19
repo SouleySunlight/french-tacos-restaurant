@@ -23,4 +23,26 @@ public static class MoneyUtils
 
         return absAmount.ToString("0.##") + suffixes[suffixIndex];
     }
+
+    public static int TruncateTo3Significant(int value)
+    {
+        if (value == 0) return 0;
+
+        int sign = value < 0 ? -1 : 1;
+        value = Mathf.Abs(value);
+
+        int digits = Mathf.FloorToInt(Mathf.Log10(value)) + 1;
+
+        if (digits <= 3)
+        {
+            return value * sign;
+        }
+
+        int power = digits - 3;
+        int factor = (int)Mathf.Pow(10, power);
+
+        int truncated = (value / factor) * factor;
+
+        return truncated * sign;
+    }
 }

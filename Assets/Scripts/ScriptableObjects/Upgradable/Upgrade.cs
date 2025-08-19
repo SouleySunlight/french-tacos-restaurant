@@ -10,7 +10,7 @@ public class Upgrade : ScriptableObject
     public float speedMultiplier = GlobalConstant.DEFAULT_SPEED_UPGRADE;
 
     public int GetCostAtLevel(int level)
-        => Mathf.RoundToInt(baseCost * Mathf.Pow(costEvolutionFactor, level));
+        => MoneyUtils.TruncateTo3Significant(Mathf.RoundToInt(baseCost * Mathf.Pow(costEvolutionFactor, level)));
 
     public float GetSpeedFactor(int level)
     {
