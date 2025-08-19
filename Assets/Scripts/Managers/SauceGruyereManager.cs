@@ -100,7 +100,7 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
 
     public void UpdateCookingTime()
     {
-        currentCookingTime = sauceGruyere.processingTime * GameManager.Instance.UpgradeManager.GetEffect("GRUYERE_POT");
+        currentCookingTime = sauceGruyere.processingTime * GameManager.Instance.UpgradeManager.GetSpeedfactor("GRUYERE_POT");
     }
 
     public void SetupCookingTime()

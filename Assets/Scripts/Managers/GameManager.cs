@@ -79,7 +79,6 @@ public class GameManager : MonoBehaviour
         TacosMakerManager.SetupIngredients();
         FryerManager.SetupIngredients();
         SauceGruyereManager.SetupIngredients();
-        UpgradeManager.SetupUpgrades();
         GrillManager.SetupGrillingTime();
         SauceGruyereManager.UpdateCookingTime();
         DayCycleManager.SetupDayCycle();
@@ -150,6 +149,11 @@ public class GameManager : MonoBehaviour
         FryerManager.FinishProcessingIngredients();
         SauceGruyereManager.FinishProcessingIngredients();
 
+    }
+
+    public void OnViewChanged()
+    {
+        UpgradeManager.UpdateUpgradeButtonVisuals();
     }
 
     void InitializeManagers()

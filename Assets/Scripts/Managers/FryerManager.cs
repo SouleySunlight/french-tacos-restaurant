@@ -142,7 +142,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
 
         isFrying[position] = true;
         fryingTimes[position] = 0;
-        totalFryingTimes[position] = fryingIngredients[position].processingTime * GameManager.Instance.UpgradeManager.GetEffect("FRYER");
+        totalFryingTimes[position] = fryingIngredients[position].processingTime * GameManager.Instance.UpgradeManager.GetSpeedfactor("FRYER");
         fryerVisuals.StartFrying(position);
     }
 

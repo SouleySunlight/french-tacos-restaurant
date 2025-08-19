@@ -83,7 +83,7 @@ public class HotplateManager : MonoBehaviour, IWorkStation
             GameManager.Instance.InventoryManager.ConsumeUnprocessedIngredient(ingredient);
             cookingIngredients[i] = ingredient;
             cookingTimes[i] = 0;
-            totalCookingTimes[i] = cookingIngredients[i].processingTime * GameManager.Instance.UpgradeManager.GetEffect("HOTPLATE");
+            totalCookingTimes[i] = cookingIngredients[i].processingTime * GameManager.Instance.UpgradeManager.GetSpeedfactor("HOTPLATE");
             hotplateVisuals.CookIngredients(ingredient, i);
             return;
         }

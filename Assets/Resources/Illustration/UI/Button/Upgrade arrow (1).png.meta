@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ec13935606fbb4285967f373b1be16ca
+guid: 820baf786c26f4c6aa684d4fdd58228f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2493561782711934647
-    second: Shop button_0
+      213: 5063377666851640264
+    second: Upgrade arrow (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shop button_0
+      name: Upgrade arrow (1)_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 4
-        width: 182
-        height: 187
+        x: 1
+        y: 0
+        width: 164
+        height: 194
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 94127f325c6156dd0800000000000000
-      internalID: -2493561782711934647
+      spriteID: 8c3965c392bb44640800000000000000
+      internalID: 5063377666851640264
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Shop button_0: -2493561782711934647
+      Upgrade arrow (1)_0: 5063377666851640264
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

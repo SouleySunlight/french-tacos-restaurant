@@ -33,6 +33,7 @@ public class PlayzoneVisual : MonoBehaviour
             view.Value.SetActive(zoneToShow == view.Key);
         }
         views[zoneToShow].GetComponent<IView>().OnViewDisplayed();
+        GameManager.Instance.OnViewChanged();
 
     }
 }

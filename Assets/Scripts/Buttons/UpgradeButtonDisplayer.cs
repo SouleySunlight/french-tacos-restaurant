@@ -1,27 +1,63 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class UpgradeButtonDisplayer : MonoBehaviour
 {
-    public UpgradeSlot upgradeData;
-
-    [SerializeField] private TMP_Text buttonText;
-    [SerializeField] private Button button;
-
-    void Start()
-    {
-        UpdateVisual();
-    }
-
+    [SerializeField] private GameObject upgradeButton;
+    [SerializeField] private GameObject buttonBody;
+    [SerializeField] private GameObject shadow;
+    [SerializeField] private TMP_Text upgradeCostText;
+    [SerializeField] private TMP_Text levelText;
+    [SerializeField] private TMP_Text percentText;
     public void UpdateVisual()
     {
-        buttonText.text = upgradeData.upgrade.id + " <br> LVL: " + upgradeData.currentLevel + "/" + upgradeData.upgrade.maxLevel + "(" + upgradeData.upgrade.GetCostAtLevel(upgradeData.currentLevel) + " € )";
+        var currentView = PlayzoneVisual.currentView;
+
+        if (currentView == ViewToShowEnum.TACOS_MAKER || currentView == ViewToShowEnum.CHECKOUT)
+        {
+            upgradeButton.SetActive(false);
+            return;
+        }
+        var upgradeKey = GetViewUpgradeId(currentView);
+        upgradeCostText.text = MoneyUtils.FormatAmount(GameManager.Instance.UpgradeManager.GetUpgradeCost(upgradeKey));
+        levelText.text = $"{GameManager.Instance.UpgradeManager.GetCurrentLevel(upgradeKey)}/{GameManager.Instance.UpgradeManager.GetMaxLevel(upgradeKey)}";
+        percentText.text = $"{MoneyUtils.FormatAmount(1 / GameManager.Instance.UpgradeManager.GetSpeedfactor(upgradeKey) * 100)}%";
+
+        upgradeButton.SetActive(true);
     }
 
-    public void AddListener(UnityAction action)
+    public void OnUpgradeButtonClicked()
     {
-        button.onClick.AddListener(action);
+        GameManager.Instance.UpgradeManager.UpgradeElement(GetViewUpgradeId(PlayzoneVisual.currentView));
     }
+
+    public void OnPressDown()
+    {
+        var rectTransform = buttonBody.GetComponent<RectTransform>();
+        var newPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - 15f);
+        rectTransform.anchoredPosition = newPosition;
+        shadow.SetActive(false);
+    }
+
+    public void OnRelease()
+    {
+        var rectTransform = buttonBody.GetComponent<RectTransform>();
+        var newPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 15f);
+        rectTransform.anchoredPosition = newPosition;
+        shadow.SetActive(true);
+    }
+
+    string GetViewUpgradeId(ViewToShowEnum view)
+    {
+        return view switch
+        {
+            ViewToShowEnum.GRILL => "GRILL",
+            ViewToShowEnum.HOTPLATE => "HOTPLATE",
+            ViewToShowEnum.SAUCE_GRUYERE => "GRUYERE_POT",
+            ViewToShowEnum.FRYER => "FRYER",
+            _ => string.Empty,
+        };
+    }
+
+
 }

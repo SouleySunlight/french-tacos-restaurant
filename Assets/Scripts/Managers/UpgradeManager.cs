@@ -4,27 +4,45 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
-    [SerializeField] List<BaseUpgrade> upgradables = new();
+    [SerializeField] List<Upgrade> upgradables = new();
     private Dictionary<string, UpgradeSlot> upgrades = new();
+    private UpgradeButtonDisplayer upgradeButtonDisplayer;
 
-    private UpgradeVisual upgradeVisual;
 
     void Awake()
     {
-        upgradeVisual = FindAnyObjectByType<UpgradeVisual>(FindObjectsInactive.Include);
-    }
-
-    public void SetupUpgrades()
-    {
-        upgradeVisual.SetupUpgrades(upgrades.Values.ToList());
+        upgradeButtonDisplayer = FindFirstObjectByType<UpgradeButtonDisplayer>(FindObjectsInactive.Include);
     }
 
     public void UpgradeElement(string id)
     {
+
         if (upgrades[id].currentLevel >= upgrades[id].upgrade.maxLevel) { return; }
+        var upgrade = upgrades[id];
+
+        if (!GameManager.Instance.WalletManager.HasEnoughMoney(upgrade.upgrade.GetCostAtLevel(upgrade.currentLevel)))
+        {
+            return;
+        }
+        GameManager.Instance.WalletManager.SpendMoney(upgrade.upgrade.GetCostAtLevel(upgrade.currentLevel), SpentCategoryEnum.UPGRADE);
         upgrades[id].currentLevel += 1;
-        upgradeVisual.UpdateUpgradeButton(id);
         OnUpgradeElement(id);
+        UpdateUpgradeButtonVisuals();
+    }
+
+    public int GetCurrentLevel(string id)
+    {
+        return upgrades[id].currentLevel;
+    }
+
+    public int GetMaxLevel(string id)
+    {
+        return upgrades[id].upgrade.maxLevel;
+    }
+
+    public float GetUpgradeCost(string id)
+    {
+        return upgrades[id].upgrade.GetCostAtLevel(GetCurrentLevel(id));
     }
 
     void OnUpgradeElement(string id)
@@ -46,9 +64,9 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-    public float GetEffect(string id)
+    public float GetSpeedfactor(string id)
     {
-        return upgrades[id].upgrade.GetEffect(upgrades[id].currentLevel);
+        return upgrades[id].upgrade.GetSpeedFactor(upgrades[id].currentLevel);
     }
 
     public UpgradeSaveData GetInventorySaveData()
@@ -83,5 +101,10 @@ public class UpgradeManager : MonoBehaviour
             var upgradeToAdd = upgradables.Find(upgradable => upgradable.id == slot.upgradeID);
             upgrades[slot.upgradeID] = new UpgradeSlot(upgradeToAdd, slot.currentLevel);
         }
+    }
+
+    public void UpdateUpgradeButtonVisuals()
+    {
+        upgradeButtonDisplayer.UpdateVisual();
     }
 }

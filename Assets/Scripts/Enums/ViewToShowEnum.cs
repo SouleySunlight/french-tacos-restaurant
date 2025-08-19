@@ -6,9 +6,6 @@ public enum ViewToShowEnum
     CHECKOUT,
     GRILL,
     HOTPLATE,
-    SHOP,
-    UPGRADE,
-    WORKERS,
     FRYER,
     SAUCE_GRUYERE
 }

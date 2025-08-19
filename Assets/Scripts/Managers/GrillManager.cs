@@ -163,7 +163,7 @@ public class GrillManager : MonoBehaviour, IWorkStation
 
     public void UpdateGrillingTime()
     {
-        currentGrillDuration = GRILL_BASE_DURATION * GameManager.Instance.UpgradeManager.GetEffect("GRILL");
+        currentGrillDuration = GRILL_BASE_DURATION * GameManager.Instance.UpgradeManager.GetSpeedfactor("GRILL");
     }
 
     public void SetupGrillingTime()

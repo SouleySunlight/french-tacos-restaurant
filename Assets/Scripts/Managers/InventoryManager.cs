@@ -149,19 +149,10 @@ public class InventoryManager : MonoBehaviour
         LoadUnlockedIngredientsFromSaveData(unlockedIngredients);
         LoadPopularity();
     }
-    // public void UnlockIngredient(Ingredient ingredient)
-    // {
-    //     UnlockedIngredients.Add(ingredient);
-    //     Popularity += ingredient.popularity;
-    //     if (ingredient.NeedProcessing())
-    //     {
-    //         processedIngredientInventory[ingredient.id] = new InventorySlot(0);
-    //     }
-    // }
 
     public void UpdateProcessedInventoryMaxAmount()
     {
-        processedIngredientMaxAmount = GlobalConstant.DEFAULT_INGREDIENT_MAX_AMOUNT + (int)GameManager.Instance.UpgradeManager.GetEffect("INGREDIENT_DISPLAYER");
+        processedIngredientMaxAmount = GlobalConstant.DEFAULT_INGREDIENT_MAX_AMOUNT;
     }
 
 

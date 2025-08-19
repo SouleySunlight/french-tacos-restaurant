@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Fryer
   m_EditorClassIdentifier: 
   name: Fryer
-  viewToShow: 7
+  viewToShow: 4
   icon: {fileID: 7968764910808098343, guid: 974d9290130c04b1c96e2e5dd666c61a, type: 3}
   color: '#BEC3C4'

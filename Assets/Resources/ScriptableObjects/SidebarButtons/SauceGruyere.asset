@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SauceGruyere
   m_EditorClassIdentifier: 
   name: "Gruy\xE8re"
-  viewToShow: 8
+  viewToShow: 5
   icon: {fileID: 3215418461062856094, guid: 48bb9202c5d9247efac8b6768c201a91, type: 3}
   color: '#364D68'
