@@ -83,7 +83,6 @@ public class GameManager : MonoBehaviour
         SauceGruyereManager.UpdateCookingTime();
         DayCycleManager.SetupDayCycle();
         InventoryManager.SetupInventoriesMaxAmount();
-        WorkersManager.SetupWorkers();
 
     }
 

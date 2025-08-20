@@ -7,18 +7,6 @@ public class WorkersManager : MonoBehaviour
     private List<Worker> hiredWorkers = new();
 
 
-    private WorkersVisual workersVisual;
-
-    void Awake()
-    {
-        workersVisual = FindFirstObjectByType<WorkersVisual>(FindObjectsInactive.Include);
-    }
-
-    public void SetupWorkers()
-    {
-        workersVisual.SetupWorkers(availableWorkers);
-    }
-
     public void HireWorker(Worker worker)
     {
         if (!availableWorkers.Contains(worker))
@@ -29,7 +17,6 @@ public class WorkersManager : MonoBehaviour
 
         availableWorkers.Remove(worker);
         hiredWorkers.Add(worker);
-        workersVisual.UpdateButtonsVisual();
         GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay, SpentCategoryEnum.WORKERS);
 
         switch (worker.role)
@@ -59,7 +46,6 @@ public class WorkersManager : MonoBehaviour
 
         hiredWorkers.Remove(worker);
         availableWorkers.Add(worker);
-        workersVisual.UpdateButtonsVisual();
 
         switch (worker.role)
         {
