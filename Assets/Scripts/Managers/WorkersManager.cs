@@ -5,6 +5,14 @@ public class WorkersManager : MonoBehaviour
 {
     [SerializeField] private List<Worker> availableWorkers = new();
     private List<Worker> hiredWorkers = new();
+    private WorkerModalVisual workerModalVisual;
+    private WorkersButtonDisplayer workersButtonDisplayer;
+
+    void Awake()
+    {
+        workerModalVisual = FindFirstObjectByType<WorkerModalVisual>(FindObjectsInactive.Include);
+        workersButtonDisplayer = FindFirstObjectByType<WorkersButtonDisplayer>(FindObjectsInactive.Include);
+    }
 
 
     public void HireWorker(Worker worker)
@@ -84,5 +92,15 @@ public class WorkersManager : MonoBehaviour
         {
             FireWorker(worker);
         }
+    }
+
+    public void ShowWorkerModal()
+    {
+        workerModalVisual.ShowWorkerModal();
+    }
+
+    public void UpdateWorkerModalVisual()
+    {
+        workersButtonDisplayer.UpdateVisual();
     }
 }

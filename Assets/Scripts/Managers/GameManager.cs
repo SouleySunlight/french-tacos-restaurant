@@ -153,6 +153,7 @@ public class GameManager : MonoBehaviour
     public void OnViewChanged()
     {
         UpgradeManager.UpdateUpgradeButtonVisuals();
+        WorkersManager.UpdateWorkerModalVisual();
     }
 
     void InitializeManagers()
