@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public FryerManager FryerManager { get; private set; }
     public SauceGruyereManager SauceGruyereManager { get; private set; }
     public CompletionBarManager CompletionBarManager { get; private set; }
-    public bool isGamePaused { get; private set; } = false;
+    public bool isGamePaused = false;
     private bool isLoaded = false;
 
 

@@ -2812,8 +2812,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rewardModal: {fileID: 606232115}
-  rewardTitle: {fileID: 1715262354}
-  rewardSubtitle: {fileID: 1148016062}
+  rewardTitle: {fileID: 1715262352}
+  rewardSubtitle: {fileID: 1148016060}
   image: {fileID: 812742311}
   quantityDisplay: {fileID: 1818532827}
   previousValue: {fileID: 424660361}
