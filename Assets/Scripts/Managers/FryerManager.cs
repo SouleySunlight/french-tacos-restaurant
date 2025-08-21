@@ -219,7 +219,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
             return;
         }
         WorkerRemoveBurntIngredient();
-        if (isWorkerTaskDone)
+        if (isWorkerTaskDone || currentWorker.level < 2)
         {
             return;
         }
@@ -231,6 +231,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
         for (int i = 0; i < fryingIngredients.Count; i++)
         {
             if (fryingIngredients[i] == null) { continue; }
+            if (fryingTimes[i] == GlobalConstant.UNUSED_TIME_VALUE) { continue; }
 
             if (fryingTimes[i] < totalFryingTimes[i]) { continue; }
             if (fryingTimes[i] > totalFryingTimes[i] + fryingIngredients[i].wastingTimeOffset)
