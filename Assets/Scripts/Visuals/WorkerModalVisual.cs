@@ -11,9 +11,7 @@ public class WorkerModalVisual : MonoBehaviour
     public void UpdateModalContent()
     {
         var role = GetRoleByView();
-        Debug.Log($"Updating modal content for role: {role}");
         var workers = GameManager.Instance.WorkersManager.GetWorkersByType(role);
-        Debug.Log($"Found {workers.Count} workers for role: {role}");
         foreach (var container in workerContainers)
         {
             Destroy(container);

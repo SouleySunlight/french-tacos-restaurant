@@ -18,4 +18,8 @@ public class WorkerContainerDisplayer : MonoBehaviour
         costPerDayLocalize.StringReference.Arguments = new object[] { worker.pricePerDay.ToString() };
         costPerDayLocalize.RefreshString();
     }
+
+    public void OnButtonPressed()
+    {
+    }
 }
