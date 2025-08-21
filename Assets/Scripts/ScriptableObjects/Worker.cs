@@ -5,7 +5,6 @@ public class Worker : ScriptableObject
 {
     public string id;
     public int level = 1;
-    public float secondsBetweenTasks;
     public float pricePerDay;
     public WorkersRole role = WorkersRole.GRILL;
 

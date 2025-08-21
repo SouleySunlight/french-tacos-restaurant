@@ -24,4 +24,6 @@ public class GlobalConstant
     public static readonly int TACOS_PRICE = 5;
     public static readonly int TACOS_VERTICAL_GAP = -500;
     public static readonly float UNUSED_TIME_VALUE = -10f;
+
+    public static readonly float DELAY_BETWEEN_WORKER_TASKS = 0.5f;
 }
