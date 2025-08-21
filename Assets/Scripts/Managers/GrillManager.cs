@@ -207,8 +207,10 @@ public class GrillManager : MonoBehaviour, IWorkStation
         {
             return;
         }
-        WorkerAddTacosToGrill();
-
+        if (currentWorker.level >= 2)
+        {
+            WorkerAddTacosToGrill();
+        }
     }
 
     void WorkerRemoveDoneTacosFromGrill()
@@ -249,9 +251,12 @@ public class GrillManager : MonoBehaviour, IWorkStation
             isWorkerTaskDone = true;
         }
 
-        while (waitingToGrillTacos.Count != 0 && CanAddTacosToGrill())
+        if (currentWorker.level >= 2)
         {
-            AddTacosToGrill(waitingToGrillTacos[0]);
+            while (waitingToGrillTacos.Count != 0 && CanAddTacosToGrill())
+            {
+                AddTacosToGrill(waitingToGrillTacos[0]);
+            }
         }
         yield return new WaitForSeconds(0.5f);
         CloseGrill();
