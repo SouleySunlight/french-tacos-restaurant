@@ -10,7 +10,10 @@ public class WorkerModalVisual : MonoBehaviour
 
     public void UpdateModalContent()
     {
-        var workers = GameManager.Instance.WorkersManager.GetAvailableWorkers();
+        var role = GetRoleByView();
+        Debug.Log($"Updating modal content for role: {role}");
+        var workers = GameManager.Instance.WorkersManager.GetWorkersByType(role);
+        Debug.Log($"Found {workers.Count} workers for role: {role}");
         foreach (var container in workerContainers)
         {
             Destroy(container);
@@ -45,5 +48,24 @@ public class WorkerModalVisual : MonoBehaviour
     {
         GameManager.Instance.isGamePaused = false;
         workerModal.SetActive(false);
+    }
+
+    private WorkersRole GetRoleByView()
+    {
+        switch (PlayzoneVisual.currentView)
+        {
+            case ViewToShowEnum.GRILL:
+                return WorkersRole.GRILL;
+            case ViewToShowEnum.HOTPLATE:
+                return WorkersRole.HOTPLATE;
+            case ViewToShowEnum.CHECKOUT:
+                return WorkersRole.CHECKOUT;
+            case ViewToShowEnum.FRYER:
+                return WorkersRole.FRYER;
+            case ViewToShowEnum.SAUCE_GRUYERE:
+                return WorkersRole.GRUYERE;
+            default:
+                return WorkersRole.GRILL;
+        }
     }
 }

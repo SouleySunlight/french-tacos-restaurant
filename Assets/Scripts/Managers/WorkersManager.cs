@@ -109,4 +109,17 @@ public class WorkersManager : MonoBehaviour
     {
         return availableWorkers;
     }
+
+    public List<Worker> GetWorkersByType(WorkersRole role)
+    {
+        List<Worker> workersByType = new();
+        foreach (var worker in availableWorkers)
+        {
+            if (worker.role == role)
+            {
+                workersByType.Add(worker);
+            }
+        }
+        return workersByType;
+    }
 }
