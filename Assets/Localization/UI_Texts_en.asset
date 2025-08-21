@@ -154,6 +154,54 @@ MonoBehaviour:
     m_Localized: Fire
     m_Metadata:
       m_Items: []
+  - m_Id: 2546674453962752
+    m_Localized: Rookie grillman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2546819824345088
+    m_Localized: Remove grilled tacos before they burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547011415957504
+    m_Localized: Expert grillman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547079132995584
+    m_Localized: Perfectly manage the grill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547166059945984
+    m_Localized: Rookie cooker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547258343022592
+    m_Localized: Remove cooked ingredients before they burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547472080560128
+    m_Localized: Expert cooker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547551038332928
+    m_Localized: Perfectly manage the hotplate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547648434266112
+    m_Localized: Rookie sauce preparator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547849622446080
+    m_Localized: Expert sauce preparator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547931822415872
+    m_Localized: Remove sauce before it burns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548081059946496
+    m_Localized: Perfectly manage the sauce preparation
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

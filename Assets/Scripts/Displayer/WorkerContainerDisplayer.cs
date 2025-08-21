@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 public class WorkerContainerDisplayer : MonoBehaviour
@@ -18,8 +19,10 @@ public class WorkerContainerDisplayer : MonoBehaviour
 
     public void UpdateVisuals()
     {
-        workerName.text = worker.id;
-        workerDescription.text = worker.id;
+        workerName.text = LocalizationSettings.StringDatabase
+            .GetLocalizedString("UI_Texts", "WORKERS.TITLE." + worker.id); ;
+        workerDescription.text = LocalizationSettings.StringDatabase
+            .GetLocalizedString("UI_Texts", "WORKERS.DESCRIPTION." + worker.id);
         cost.text = worker.pricePerDay.ToString();
         costPerDayLocalize.StringReference.Arguments = new object[] { worker.pricePerDay.ToString() };
         costPerDayLocalize.RefreshString();
