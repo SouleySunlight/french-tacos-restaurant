@@ -86,7 +86,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3940347529290552429}
         m_TargetAssemblyTypeName: WorkerContainerDisplayer, Assembly-CSharp
-        m_MethodName: OnHireButtonClicked
+        m_MethodName: OnHireForADayButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

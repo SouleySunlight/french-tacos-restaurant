@@ -5,6 +5,7 @@ public class WorkersManager : MonoBehaviour
 {
     [SerializeField] private List<Worker> availableWorkers = new();
     private List<Worker> hiredWorkers = new();
+    private List<Worker> hiredForADayWorkers = new();
     private WorkerModalVisual workerModalVisual;
     private WorkersButtonDisplayer workersButtonDisplayer;
 
@@ -14,7 +15,20 @@ public class WorkersManager : MonoBehaviour
         workersButtonDisplayer = FindFirstObjectByType<WorkersButtonDisplayer>(FindObjectsInactive.Include);
     }
 
+    public void HireForADayWorker(Worker worker)
+    {
+        if (!availableWorkers.Contains(worker))
+        { return; }
 
+        if (hiredForADayWorkers.Contains(worker))
+        { return; }
+
+        if (hiredWorkers.Contains(worker))
+        { return; }
+
+        hiredForADayWorkers.Add(worker);
+        HireWorker(worker);
+    }
     public void HireWorker(Worker worker)
     {
         if (!availableWorkers.Contains(worker))
@@ -55,6 +69,7 @@ public class WorkersManager : MonoBehaviour
         { return; }
 
         hiredWorkers.Remove(worker);
+        hiredForADayWorkers.Remove(worker);
 
         switch (worker.role)
         {
@@ -85,6 +100,12 @@ public class WorkersManager : MonoBehaviour
             {
                 workerToFire.Add(worker);
                 continue;
+            }
+
+            if (hiredForADayWorkers.Contains(worker))
+            {
+                hiredForADayWorkers.Remove(worker);
+                workerToFire.Add(worker);
             }
 
             GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay, SpentCategoryEnum.WORKERS);

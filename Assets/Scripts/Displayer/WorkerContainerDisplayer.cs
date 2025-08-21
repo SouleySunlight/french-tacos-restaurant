@@ -31,6 +31,11 @@ public class WorkerContainerDisplayer : MonoBehaviour
         GameManager.Instance.WorkersManager.HireWorker(worker);
         UpdateHiredRelativeVisuals();
     }
+    public void OnHireForADayButtonClicked()
+    {
+        GameManager.Instance.WorkersManager.HireForADayWorker(worker);
+        UpdateHiredRelativeVisuals();
+    }
 
     public void OnFireButtonClicked()
     {
