@@ -138,6 +138,18 @@ MonoBehaviour:
     m_Localized: 'Max number of tacos:'
     m_Metadata:
       m_Items: []
+  - m_Id: 2513029626322944
+    m_Localized: '{0}/day'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2514668336701440
+    m_Localized: Hire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2514745729998848
+    m_Localized: Hire for a day
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

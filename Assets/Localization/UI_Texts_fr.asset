@@ -139,6 +139,18 @@ MonoBehaviour:
     m_Localized: 'Nombre max de commande :'
     m_Metadata:
       m_Items: []
+  - m_Id: 2513029626322944
+    m_Localized: '{0}/jour'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2514668336701440
+    m_Localized: Engager
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2514745729998848
+    m_Localized: "Engager une journ\xE9e"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

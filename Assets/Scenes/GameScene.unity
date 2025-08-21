@@ -3009,7 +3009,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &637927334
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3044,6 +3044,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   workerModal: {fileID: 637927333}
+  modalBody: {fileID: 899360491}
+  workerContainerDisplayer: {fileID: 680680299953636213, guid: dfa31ad14252d40efacf73f49b2ee23c, type: 3}
 --- !u!1 &660613172
 GameObject:
   m_ObjectHideFlags: 0

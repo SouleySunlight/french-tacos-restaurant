@@ -101,6 +101,12 @@ public class WorkersManager : MonoBehaviour
 
     public void UpdateWorkerModalVisual()
     {
+        workerModalVisual.UpdateModalContent();
         workersButtonDisplayer.UpdateVisual();
+    }
+
+    public List<Worker> GetAvailableWorkers()
+    {
+        return availableWorkers;
     }
 }
