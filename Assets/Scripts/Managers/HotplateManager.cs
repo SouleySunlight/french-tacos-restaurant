@@ -190,7 +190,7 @@ public class HotplateManager : MonoBehaviour, IWorkStation
             return;
         }
         WorkerRemoveBurntIngredient();
-        if (isWorkerTaskDone)
+        if (isWorkerTaskDone || currentWorker.level < 2)
         {
             return;
         }
