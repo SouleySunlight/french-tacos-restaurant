@@ -139,6 +139,102 @@ MonoBehaviour:
     m_Localized: 'Nombre max de commande :'
     m_Metadata:
       m_Items: []
+  - m_Id: 2513029626322944
+    m_Localized: '{0}/jour'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2514668336701440
+    m_Localized: Engager
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2514745729998848
+    m_Localized: "Engager une journ\xE9e"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2527947901624320
+    m_Localized: Renvoyer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2546674453962752
+    m_Localized: "Grilleur d\xE9butant"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2546819824345088
+    m_Localized: "Retire les tacos grill\xE9s avant qu'ils ne br\xFBlent"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547011415957504
+    m_Localized: Grilleur expert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547079132995584
+    m_Localized: "G\xE8re parfaitement le grill"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547166059945984
+    m_Localized: "Cuisinier d\xE9butant"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547258343022592
+    m_Localized: "Retire les ingr\xE9dients cuits avant qu'ils ne br\xFBlent"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547472080560128
+    m_Localized: Cuisinier expert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547551038332928
+    m_Localized: "G\xE8re parfaitement la cuisson"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547648434266112
+    m_Localized: "Pr\xE9parateur de sauce d\xE9butant"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547849622446080
+    m_Localized: "Pr\xE9parateur de sauce expert"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547931822415872
+    m_Localized: "Retire la sauce avant qu'elle ne br\xFBle"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548081059946496
+    m_Localized: "G\xE8re parfaitement la pr\xE9paration de la sauce"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548167760404480
+    m_Localized: "Friteur d\xE9butant"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548254943207424
+    m_Localized: Friteur expert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548315584454656
+    m_Localized: "Retire la friture avant qu'elle ne br\xFBle"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548471734198272
+    m_Localized: "G\xE8re parfaitement la friture"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548586272251904
+    m_Localized: Caissier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548692811767808
+    m_Localized: Sert les clients
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2550568600985600
+    m_Localized: Actif
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2550606437801984
+    m_Localized: Inactif
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

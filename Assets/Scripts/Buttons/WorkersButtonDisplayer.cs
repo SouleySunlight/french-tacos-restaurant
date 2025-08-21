@@ -1,38 +1,50 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
+using UnityEngine.Localization.Settings;
 
 public class WorkersButtonDisplayer : MonoBehaviour
 {
-    public Worker workerData;
-    [SerializeField] private TMP_Text descriptionText;
-    [SerializeField] private Button button;
+    [SerializeField] private GameObject buttonBody;
+    [SerializeField] private GameObject shadow;
+    [SerializeField] private TMP_Text buttonText;
 
-    private bool isWorkerHired = false;
-
-    void Start()
-    {
-        UpdateVisual();
-    }
     public void UpdateVisual()
     {
-        descriptionText.text = workerData.role + " - LVL " + workerData.level + " - " + workerData.pricePerDay + " €";
-        button.GetComponentInChildren<TMP_Text>().text = isWorkerHired ? "Fire" : "Hire";
+        var currentView = PlayzoneVisual.currentView;
+
+        if (currentView == ViewToShowEnum.TACOS_MAKER)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        gameObject.SetActive(true);
+    }
+    public void OnClick()
+    {
+        GameManager.Instance.WorkersManager.ShowWorkerModal();
     }
 
-    public void AddListener(UnityAction action)
+    public void OnPressDown()
     {
-        button.onClick.AddListener(action);
+        var rectTransform = buttonBody.GetComponent<RectTransform>();
+        var newPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - 15f);
+        rectTransform.anchoredPosition = newPosition;
+        shadow.SetActive(false);
     }
 
-    public bool IsWorkerHired()
+    public void OnRelease()
     {
-        return isWorkerHired;
-    }
-    public void SetIsWorkerHired(bool isHired)
-    {
-        isWorkerHired = isHired;
+        var rectTransform = buttonBody.GetComponent<RectTransform>();
+        var newPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 15f);
+        rectTransform.anchoredPosition = newPosition;
+        shadow.SetActive(true);
     }
 
+    public void UpdateButtonText(bool hasWorkerActive)
+    {
+        var key = hasWorkerActive ? "WORKERS.ACTIVE" : "WORKERS.INACTIVE";
+        buttonText.text = LocalizationSettings.StringDatabase
+            .GetLocalizedString("UI_Texts", key);
+    }
 }

@@ -5,32 +5,56 @@ public class WorkersManager : MonoBehaviour
 {
     [SerializeField] private List<Worker> availableWorkers = new();
     private List<Worker> hiredWorkers = new();
-
-
-    private WorkersVisual workersVisual;
+    private List<Worker> hiredForADayWorkers = new();
+    private WorkerModalVisual workerModalVisual;
+    private WorkersButtonDisplayer workersButtonDisplayer;
 
     void Awake()
     {
-        workersVisual = FindFirstObjectByType<WorkersVisual>(FindObjectsInactive.Include);
+        workerModalVisual = FindFirstObjectByType<WorkerModalVisual>(FindObjectsInactive.Include);
+        workersButtonDisplayer = FindFirstObjectByType<WorkersButtonDisplayer>(FindObjectsInactive.Include);
     }
 
-    public void SetupWorkers()
+    public void HireForADayWorker(Worker worker)
     {
-        workersVisual.SetupWorkers(availableWorkers);
-    }
+        if (!availableWorkers.Contains(worker))
+        { return; }
 
+        if (hiredForADayWorkers.Contains(worker))
+        { return; }
+
+        if (hiredWorkers.Contains(worker))
+        { return; }
+
+        hiredForADayWorkers.Add(worker);
+        HireWorker(worker);
+    }
     public void HireWorker(Worker worker)
     {
         if (!availableWorkers.Contains(worker))
         { return; }
 
+        if (hiredWorkers.Contains(worker))
+        { return; }
+
         if (!GameManager.Instance.WalletManager.HasEnoughMoney(worker.pricePerDay))
         { return; }
 
-        availableWorkers.Remove(worker);
+        var sameRoleHiredWorkers = hiredWorkers.FindAll((hiredWorker) => hiredWorker.role == worker.role);
+
+        if (sameRoleHiredWorkers.Count >= 0)
+        {
+            foreach (var sameRoleHiredWorker in sameRoleHiredWorkers)
+            {
+                FireWorker(sameRoleHiredWorker);
+            }
+        }
+
         hiredWorkers.Add(worker);
-        workersVisual.UpdateButtonsVisual();
         GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay, SpentCategoryEnum.WORKERS);
+        workerModalVisual.UpdateContainerHiredRelatedVisual();
+        workersButtonDisplayer.UpdateButtonText(HasRoleHiredWorker(GetRoleByView()));
+
 
         switch (worker.role)
         {
@@ -58,8 +82,11 @@ public class WorkersManager : MonoBehaviour
         { return; }
 
         hiredWorkers.Remove(worker);
-        availableWorkers.Add(worker);
-        workersVisual.UpdateButtonsVisual();
+        hiredForADayWorkers.Remove(worker);
+
+        workerModalVisual.UpdateContainerHiredRelatedVisual();
+        workersButtonDisplayer.UpdateButtonText(HasRoleHiredWorker(GetRoleByView()));
+
 
         switch (worker.role)
         {
@@ -92,11 +119,77 @@ public class WorkersManager : MonoBehaviour
                 continue;
             }
 
+            if (hiredForADayWorkers.Contains(worker))
+            {
+                hiredForADayWorkers.Remove(worker);
+                workerToFire.Add(worker);
+            }
+
             GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay, SpentCategoryEnum.WORKERS);
         }
         foreach (var worker in workerToFire)
         {
             FireWorker(worker);
         }
+    }
+
+    public void ShowWorkerModal()
+    {
+        workerModalVisual.ShowWorkerModal();
+    }
+
+    public void UpdateWorkerModalVisual()
+    {
+        workerModalVisual.UpdateModalContent();
+        workersButtonDisplayer.UpdateVisual();
+        workersButtonDisplayer.UpdateButtonText(HasRoleHiredWorker(GetRoleByView()));
+    }
+
+    public List<Worker> GetAvailableWorkers()
+    {
+        return availableWorkers;
+    }
+
+    public List<Worker> GetWorkersByType(WorkersRole role)
+    {
+        List<Worker> workersByType = new();
+        foreach (var worker in availableWorkers)
+        {
+            if (worker.role == role)
+            {
+                workersByType.Add(worker);
+            }
+        }
+        return workersByType;
+    }
+
+    public bool IsWorkerHired(Worker worker)
+    {
+        return hiredWorkers.Contains(worker);
+    }
+
+    public bool HasRoleHiredWorker(WorkersRole role)
+    {
+        foreach (var worker in hiredWorkers)
+        {
+            if (worker.role == role)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public WorkersRole GetRoleByView()
+    {
+        return PlayzoneVisual.currentView switch
+        {
+            ViewToShowEnum.GRILL => WorkersRole.GRILL,
+            ViewToShowEnum.HOTPLATE => WorkersRole.HOTPLATE,
+            ViewToShowEnum.CHECKOUT => WorkersRole.CHECKOUT,
+            ViewToShowEnum.FRYER => WorkersRole.FRYER,
+            ViewToShowEnum.SAUCE_GRUYERE => WorkersRole.GRUYERE,
+            _ => WorkersRole.GRILL,
+        };
     }
 }

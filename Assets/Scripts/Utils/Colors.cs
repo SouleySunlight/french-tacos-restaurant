@@ -12,6 +12,8 @@ public static class Colors
     public static readonly string SELECTED_NAVBAR_BUTTON_BACKGROUND = "#FFFFFF";
     public static readonly string SELECTED_NAVBAR_BUTTON_ICON = "#5AA9E6";
 
+    public static readonly string SELECTED_WORKERS_CONTAINER = "#00FF04";
+    public static readonly string UNSELECTED_WORKERS_CONTAINER = "#FFFFFF";
 
 
     public static Color GetColorFromHexa(string code)

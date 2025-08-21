@@ -135,6 +135,102 @@ MonoBehaviour:
     m_Key: REWARD.ORDER_SUBTITLE
     m_Metadata:
       m_Items: []
+  - m_Id: 2513029626322944
+    m_Key: WORKERS.PRICE_PER_DAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2514668336701440
+    m_Key: WORKERS.HIRE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2514745729998848
+    m_Key: WORKERS.HIRE_FOR_A_DAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2527947901624320
+    m_Key: WORKERS.FIRE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2546674453962752
+    m_Key: WORKERS.TITLE.GRILL1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2546819824345088
+    m_Key: WORKERS.DESCRIPTION.GRILL1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547011415957504
+    m_Key: WORKERS.TITLE.GRILL2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547079132995584
+    m_Key: WORKERS.DESCRIPTION.GRILL2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547166059945984
+    m_Key: WORKERS.TITLE.HOTPLATE1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547258343022592
+    m_Key: WORKERS.DESCRIPTION.HOTPLATE1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547472080560128
+    m_Key: WORKERS.TITLE.HOTPLATE2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547551038332928
+    m_Key: WORKERS.DESCRIPTION.HOTPLATE2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547648434266112
+    m_Key: WORKERS.TITLE.GRUYERE1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547849622446080
+    m_Key: WORKERS.TITLE.GRUYERE2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547931822415872
+    m_Key: WORKERS.DESCRIPTION.GRUYERE1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548081059946496
+    m_Key: WORKERS.DESCRIPTION.GRUYERE2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548167760404480
+    m_Key: WORKERS.TITLE.FRYER1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548254943207424
+    m_Key: WORKERS.TITLE.FRYER2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548315584454656
+    m_Key: WORKERS.DESCRIPTION.FRYER1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548471734198272
+    m_Key: WORKERS.DESCRIPTION.FRYER2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548586272251904
+    m_Key: WORKERS.TITLE.CHECKOUT1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548692811767808
+    m_Key: WORKERS.DESCRIPTION.CHECKOUT1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2550568600985600
+    m_Key: WORKERS.ACTIVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2550606437801984
+    m_Key: WORKERS.INACTIVE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

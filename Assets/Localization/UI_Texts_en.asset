@@ -138,6 +138,102 @@ MonoBehaviour:
     m_Localized: 'Max number of tacos:'
     m_Metadata:
       m_Items: []
+  - m_Id: 2513029626322944
+    m_Localized: '{0}/day'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2514668336701440
+    m_Localized: Hire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2514745729998848
+    m_Localized: Hire for a day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2527947901624320
+    m_Localized: Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2546674453962752
+    m_Localized: Rookie grillman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2546819824345088
+    m_Localized: Remove grilled tacos before they burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547011415957504
+    m_Localized: Expert grillman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547079132995584
+    m_Localized: Perfectly manage the grill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547166059945984
+    m_Localized: Rookie cooker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547258343022592
+    m_Localized: Remove cooked ingredients before they burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547472080560128
+    m_Localized: Expert cooker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547551038332928
+    m_Localized: Perfectly manage the hotplate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547648434266112
+    m_Localized: Rookie sauce preparator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547849622446080
+    m_Localized: Expert sauce preparator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2547931822415872
+    m_Localized: Remove sauce before it burns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548081059946496
+    m_Localized: Perfectly manage the sauce preparation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548167760404480
+    m_Localized: Rookier fryer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548254943207424
+    m_Localized: Expert fryer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548315584454656
+    m_Localized: Remove fried ingredients before they burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548471734198272
+    m_Localized: Perfectly manage the fryer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548586272251904
+    m_Localized: Cashier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548692811767808
+    m_Localized: Serve clients
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2550568600985600
+    m_Localized: Active
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2550606437801984
+    m_Localized: Inactive
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

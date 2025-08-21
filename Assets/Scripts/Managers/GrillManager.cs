@@ -185,7 +185,7 @@ public class GrillManager : MonoBehaviour, IWorkStation
     {
         if (currentWorker == null) { yield break; }
 
-        yield return new WaitForSeconds(currentWorker.secondsBetweenTasks);
+        yield return new WaitForSeconds(GlobalConstant.DELAY_BETWEEN_WORKER_TASKS);
         while (!isWorkerTaskDone && currentWorker != null)
         {
             yield return new WaitUntil(() => !GameManager.Instance.isGamePaused);
@@ -207,25 +207,59 @@ public class GrillManager : MonoBehaviour, IWorkStation
         {
             return;
         }
-        WorkerAddTacosToGrill();
-
+        if (currentWorker.level >= 2)
+        {
+            WorkerAddTacosToGrill();
+        }
     }
 
     void WorkerRemoveDoneTacosFromGrill()
     {
+
+        if (GetTacosDone().Count == 0) { return; }
+        StartCoroutine(WorkerRemoveTacosCoroutine());
+        return;
+
+    }
+
+    List<Tacos> GetTacosDone()
+    {
+        List<Tacos> doneTacos = new();
         for (int i = 0; i < grillingTacos.Count; i++)
         {
             if (grillingTacos[i] == null) { continue; }
 
             if (grillingTacos[i].isGrilled || grillingTacos[i].isBurnt)
             {
-                var tacosToRemove = grillingTacos[i];
-                gameManager.OnTacosGrilled(tacosToRemove);
-                RemoveTacosOfTheGrill(tacosToRemove);
-                isWorkerTaskDone = true;
-                return;
+                doneTacos.Add(grillingTacos[i]);
             }
         }
+        return doneTacos;
+    }
+
+    IEnumerator WorkerRemoveTacosCoroutine()
+    {
+        if (!isGrillOpened)
+        {
+            OpenGrill();
+            yield return new WaitForSeconds(0.5f);
+        }
+        foreach (var tacos in GetTacosDone())
+        {
+            gameManager.OnTacosGrilled(tacos);
+            RemoveTacosOfTheGrill(tacos);
+            isWorkerTaskDone = true;
+        }
+
+        if (currentWorker.level >= 2)
+        {
+            while (waitingToGrillTacos.Count != 0 && CanAddTacosToGrill())
+            {
+                AddTacosToGrill(waitingToGrillTacos[0]);
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
+        CloseGrill();
     }
 
     void WorkerAddTacosToGrill()
@@ -233,8 +267,41 @@ public class GrillManager : MonoBehaviour, IWorkStation
 
         if (waitingToGrillTacos.Count == 0) { return; }
         if (!CanAddTacosToGrill()) { return; }
-        AddTacosToGrill(waitingToGrillTacos[0]);
+        StartCoroutine(WorkerAddTacosToGrillCoroutine());
         isWorkerTaskDone = true;
+    }
+
+    IEnumerator WorkerAddTacosToGrillCoroutine()
+    {
+        if (!isGrillOpened)
+        {
+            OpenGrill();
+            yield return new WaitForSeconds(0.5f);
+        }
+        while (waitingToGrillTacos.Count != 0 && CanAddTacosToGrill())
+        {
+            AddTacosToGrill(waitingToGrillTacos[0]);
+        }
+        yield return new WaitForSeconds(0.5f);
+        CloseGrill();
+
+    }
+
+    void CloseGrill()
+    {
+        if (isGrillOpened)
+        {
+            isGrillOpened = false;
+            grillVisual.UpdateAnimation(isGrillOpened);
+        }
+    }
+    void OpenGrill()
+    {
+        if (!isGrillOpened)
+        {
+            isGrillOpened = true;
+            grillVisual.UpdateAnimation(isGrillOpened);
+        }
     }
 
     public void CloseGrill(GameObject gameObject)

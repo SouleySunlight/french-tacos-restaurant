@@ -59,7 +59,7 @@ public class CheckoutManager : MonoBehaviour, IWorkStation
     {
         if (currentWorker == null) { yield break; }
 
-        yield return new WaitForSeconds(currentWorker.secondsBetweenTasks);
+        yield return new WaitForSeconds(GlobalConstant.DELAY_BETWEEN_WORKER_TASKS);
         while (!isWorkerTaskDone && currentWorker != null)
         {
             yield return new WaitUntil(() => !GameManager.Instance.isGamePaused);

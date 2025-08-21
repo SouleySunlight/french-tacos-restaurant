@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public FryerManager FryerManager { get; private set; }
     public SauceGruyereManager SauceGruyereManager { get; private set; }
     public CompletionBarManager CompletionBarManager { get; private set; }
-    public bool isGamePaused { get; private set; } = false;
+    public bool isGamePaused = false;
     private bool isLoaded = false;
 
 
@@ -83,7 +83,6 @@ public class GameManager : MonoBehaviour
         SauceGruyereManager.UpdateCookingTime();
         DayCycleManager.SetupDayCycle();
         InventoryManager.SetupInventoriesMaxAmount();
-        WorkersManager.SetupWorkers();
 
     }
 
@@ -154,6 +153,7 @@ public class GameManager : MonoBehaviour
     public void OnViewChanged()
     {
         UpgradeManager.UpdateUpgradeButtonVisuals();
+        WorkersManager.UpdateWorkerModalVisual();
     }
 
     void InitializeManagers()
