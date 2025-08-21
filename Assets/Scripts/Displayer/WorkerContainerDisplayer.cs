@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
+using UnityEngine.UI;
 
 public class WorkerContainerDisplayer : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class WorkerContainerDisplayer : MonoBehaviour
     [SerializeField] private TMP_Text workerDescription;
     [SerializeField] private TMP_Text cost;
     [SerializeField] private LocalizeStringEvent costPerDayLocalize;
+    [SerializeField] private GameObject hireButton;
+    [SerializeField] private GameObject hireForADayButton;
+    [SerializeField] private Image containerImage;
 
     public void UpdateVisuals()
     {
@@ -17,9 +21,31 @@ public class WorkerContainerDisplayer : MonoBehaviour
         cost.text = worker.pricePerDay.ToString();
         costPerDayLocalize.StringReference.Arguments = new object[] { worker.pricePerDay.ToString() };
         costPerDayLocalize.RefreshString();
+        UpdateHiredRelativeVisuals();
     }
 
-    public void OnButtonPressed()
+    public void OnHireButtonClicked()
     {
+        GameManager.Instance.WorkersManager.HireWorker(worker);
+        UpdateHiredRelativeVisuals();
+    }
+    void UpdateHiredRelativeVisuals()
+    {
+        if (GameManager.Instance.WorkersManager.IsWorkerHired(worker))
+        {
+            hireButton.SetActive(false);
+            hireForADayButton.SetActive(false);
+            Color selectedColor = Colors.GetColorFromHexa(Colors.SELECTED_WORKERS_CONTAINER);
+            selectedColor.a = 0.25f;
+            containerImage.color = selectedColor;
+
+            return;
+        }
+
+        hireButton.SetActive(true);
+        hireForADayButton.SetActive(true);
+        Color unselectedColor = Colors.GetColorFromHexa(Colors.UNSELECTED_WORKERS_CONTAINER);
+        unselectedColor.a = 0.5f;
+        containerImage.color = unselectedColor;
     }
 }

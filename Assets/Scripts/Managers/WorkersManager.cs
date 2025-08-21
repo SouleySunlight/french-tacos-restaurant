@@ -20,10 +20,12 @@ public class WorkersManager : MonoBehaviour
         if (!availableWorkers.Contains(worker))
         { return; }
 
+        if (hiredWorkers.Contains(worker))
+        { return; }
+
         if (!GameManager.Instance.WalletManager.HasEnoughMoney(worker.pricePerDay))
         { return; }
 
-        availableWorkers.Remove(worker);
         hiredWorkers.Add(worker);
         GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay, SpentCategoryEnum.WORKERS);
 
@@ -53,7 +55,6 @@ public class WorkersManager : MonoBehaviour
         { return; }
 
         hiredWorkers.Remove(worker);
-        availableWorkers.Add(worker);
 
         switch (worker.role)
         {
@@ -121,5 +122,10 @@ public class WorkersManager : MonoBehaviour
             }
         }
         return workersByType;
+    }
+
+    public bool IsWorkerHired(Worker worker)
+    {
+        return hiredWorkers.Contains(worker);
     }
 }

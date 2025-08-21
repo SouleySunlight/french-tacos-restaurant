@@ -83,7 +83,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3940347529290552429}
+        m_TargetAssemblyTypeName: WorkerContainerDisplayer, Assembly-CSharp
+        m_MethodName: OnHireButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7880969758635679329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +210,9 @@ MonoBehaviour:
   workerDescription: {fileID: 717093103063910093}
   cost: {fileID: 713571716485115408}
   costPerDayLocalize: {fileID: 1915861768935872905}
+  hireButton: {fileID: 4476042092801373429}
+  hireForADayButton: {fileID: 651783792499820833}
+  containerImage: {fileID: 2081859415102676968}
 --- !u!1 &958455205354406505
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +524,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3940347529290552429}
+        m_TargetAssemblyTypeName: WorkerContainerDisplayer, Assembly-CSharp
+        m_MethodName: OnHireButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7168811626105722602
 MonoBehaviour:
   m_ObjectHideFlags: 0
