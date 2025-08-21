@@ -43,7 +43,7 @@ public class WorkerContainerDisplayer : MonoBehaviour
         UpdateHiredRelativeVisuals();
     }
 
-    void UpdateHiredRelativeVisuals()
+    public void UpdateHiredRelativeVisuals()
     {
         if (GameManager.Instance.WorkersManager.IsWorkerHired(worker))
         {

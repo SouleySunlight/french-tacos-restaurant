@@ -48,6 +48,14 @@ public class WorkerModalVisual : MonoBehaviour
         workerModal.SetActive(false);
     }
 
+    public void UpdateContainerHiredRelatedVisual()
+    {
+        foreach (var container in workerContainers)
+        {
+            container.GetComponent<WorkerContainerDisplayer>().UpdateHiredRelativeVisuals();
+        }
+    }
+
     private WorkersRole GetRoleByView()
     {
         switch (PlayzoneVisual.currentView)

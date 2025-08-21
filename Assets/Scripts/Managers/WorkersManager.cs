@@ -40,8 +40,19 @@ public class WorkersManager : MonoBehaviour
         if (!GameManager.Instance.WalletManager.HasEnoughMoney(worker.pricePerDay))
         { return; }
 
+        var sameRoleHiredWorkers = hiredWorkers.FindAll((hiredWorker) => hiredWorker.role == worker.role);
+
+        if (sameRoleHiredWorkers.Count >= 0)
+        {
+            foreach (var sameRoleHiredWorker in sameRoleHiredWorkers)
+            {
+                FireWorker(sameRoleHiredWorker);
+            }
+        }
+
         hiredWorkers.Add(worker);
         GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay, SpentCategoryEnum.WORKERS);
+        workerModalVisual.UpdateContainerHiredRelatedVisual();
 
         switch (worker.role)
         {
@@ -70,6 +81,8 @@ public class WorkersManager : MonoBehaviour
 
         hiredWorkers.Remove(worker);
         hiredForADayWorkers.Remove(worker);
+
+        workerModalVisual.UpdateContainerHiredRelatedVisual();
 
         switch (worker.role)
         {
