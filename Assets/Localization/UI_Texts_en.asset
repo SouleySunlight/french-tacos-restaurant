@@ -150,6 +150,10 @@ MonoBehaviour:
     m_Localized: Hire for a day
     m_Metadata:
       m_Items: []
+  - m_Id: 2527947901624320
+    m_Localized: Fire
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

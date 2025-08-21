@@ -151,6 +151,10 @@ MonoBehaviour:
     m_Localized: "Engager une journ\xE9e"
     m_Metadata:
       m_Items: []
+  - m_Id: 2527947901624320
+    m_Localized: Renvoyer
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -12,6 +12,8 @@ public class WorkerContainerDisplayer : MonoBehaviour
     [SerializeField] private LocalizeStringEvent costPerDayLocalize;
     [SerializeField] private GameObject hireButton;
     [SerializeField] private GameObject hireForADayButton;
+    [SerializeField] private GameObject fireButton;
+
     [SerializeField] private Image containerImage;
 
     public void UpdateVisuals()
@@ -29,12 +31,20 @@ public class WorkerContainerDisplayer : MonoBehaviour
         GameManager.Instance.WorkersManager.HireWorker(worker);
         UpdateHiredRelativeVisuals();
     }
+
+    public void OnFireButtonClicked()
+    {
+        GameManager.Instance.WorkersManager.FireWorker(worker);
+        UpdateHiredRelativeVisuals();
+    }
+
     void UpdateHiredRelativeVisuals()
     {
         if (GameManager.Instance.WorkersManager.IsWorkerHired(worker))
         {
             hireButton.SetActive(false);
             hireForADayButton.SetActive(false);
+            fireButton.SetActive(true);
             Color selectedColor = Colors.GetColorFromHexa(Colors.SELECTED_WORKERS_CONTAINER);
             selectedColor.a = 0.25f;
             containerImage.color = selectedColor;
@@ -44,6 +54,7 @@ public class WorkerContainerDisplayer : MonoBehaviour
 
         hireButton.SetActive(true);
         hireForADayButton.SetActive(true);
+        fireButton.SetActive(false);
         Color unselectedColor = Colors.GetColorFromHexa(Colors.UNSELECTED_WORKERS_CONTAINER);
         unselectedColor.a = 0.5f;
         containerImage.color = unselectedColor;
