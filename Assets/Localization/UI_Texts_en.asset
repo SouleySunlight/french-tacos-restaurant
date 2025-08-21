@@ -202,6 +202,38 @@ MonoBehaviour:
     m_Localized: Perfectly manage the sauce preparation
     m_Metadata:
       m_Items: []
+  - m_Id: 2548167760404480
+    m_Localized: Rookier fryer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548254943207424
+    m_Localized: Expert fryer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548315584454656
+    m_Localized: Remove fried ingredients before they burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548471734198272
+    m_Localized: Perfectly manage the fryer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548586272251904
+    m_Localized: Cashier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548692811767808
+    m_Localized: Serve clients
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2550568600985600
+    m_Localized: Active
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2550606437801984
+    m_Localized: Inactive
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

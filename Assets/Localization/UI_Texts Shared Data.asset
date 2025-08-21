@@ -199,6 +199,38 @@ MonoBehaviour:
     m_Key: WORKERS.DESCRIPTION.GRUYERE2
     m_Metadata:
       m_Items: []
+  - m_Id: 2548167760404480
+    m_Key: WORKERS.TITLE.FRYER1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548254943207424
+    m_Key: WORKERS.TITLE.FRYER2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548315584454656
+    m_Key: WORKERS.DESCRIPTION.FRYER1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548471734198272
+    m_Key: WORKERS.DESCRIPTION.FRYER2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548586272251904
+    m_Key: WORKERS.TITLE.CHECKOUT1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548692811767808
+    m_Key: WORKERS.DESCRIPTION.CHECKOUT1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2550568600985600
+    m_Key: WORKERS.ACTIVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2550606437801984
+    m_Key: WORKERS.INACTIVE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

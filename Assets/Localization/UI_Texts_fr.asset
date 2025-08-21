@@ -203,6 +203,38 @@ MonoBehaviour:
     m_Localized: "G\xE8re parfaitement la pr\xE9paration de la sauce"
     m_Metadata:
       m_Items: []
+  - m_Id: 2548167760404480
+    m_Localized: "Friteur d\xE9butant"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548254943207424
+    m_Localized: Friteur expert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548315584454656
+    m_Localized: "Retire la friture avant qu'elle ne br\xFBle"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548471734198272
+    m_Localized: "G\xE8re parfaitement la friture"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548586272251904
+    m_Localized: Caissier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2548692811767808
+    m_Localized: Sert les clients
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2550568600985600
+    m_Localized: Actif
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2550606437801984
+    m_Localized: Inactif
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

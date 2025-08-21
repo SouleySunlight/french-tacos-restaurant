@@ -1,10 +1,12 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 public class WorkersButtonDisplayer : MonoBehaviour
 {
     [SerializeField] private GameObject buttonBody;
     [SerializeField] private GameObject shadow;
-
+    [SerializeField] private TMP_Text buttonText;
 
     public void UpdateVisual()
     {
@@ -37,5 +39,12 @@ public class WorkersButtonDisplayer : MonoBehaviour
         var newPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 15f);
         rectTransform.anchoredPosition = newPosition;
         shadow.SetActive(true);
+    }
+
+    public void UpdateButtonText(bool hasWorkerActive)
+    {
+        var key = hasWorkerActive ? "WORKERS.ACTIVE" : "WORKERS.INACTIVE";
+        buttonText.text = LocalizationSettings.StringDatabase
+            .GetLocalizedString("UI_Texts", key);
     }
 }

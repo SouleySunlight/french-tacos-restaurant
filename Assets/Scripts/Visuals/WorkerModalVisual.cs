@@ -10,7 +10,7 @@ public class WorkerModalVisual : MonoBehaviour
 
     public void UpdateModalContent()
     {
-        var role = GetRoleByView();
+        var role = GameManager.Instance.WorkersManager.GetRoleByView();
         var workers = GameManager.Instance.WorkersManager.GetWorkersByType(role);
         foreach (var container in workerContainers)
         {
@@ -53,25 +53,6 @@ public class WorkerModalVisual : MonoBehaviour
         foreach (var container in workerContainers)
         {
             container.GetComponent<WorkerContainerDisplayer>().UpdateHiredRelativeVisuals();
-        }
-    }
-
-    private WorkersRole GetRoleByView()
-    {
-        switch (PlayzoneVisual.currentView)
-        {
-            case ViewToShowEnum.GRILL:
-                return WorkersRole.GRILL;
-            case ViewToShowEnum.HOTPLATE:
-                return WorkersRole.HOTPLATE;
-            case ViewToShowEnum.CHECKOUT:
-                return WorkersRole.CHECKOUT;
-            case ViewToShowEnum.FRYER:
-                return WorkersRole.FRYER;
-            case ViewToShowEnum.SAUCE_GRUYERE:
-                return WorkersRole.GRUYERE;
-            default:
-                return WorkersRole.GRILL;
         }
     }
 }

@@ -53,6 +53,8 @@ public class WorkersManager : MonoBehaviour
         hiredWorkers.Add(worker);
         GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay, SpentCategoryEnum.WORKERS);
         workerModalVisual.UpdateContainerHiredRelatedVisual();
+        workersButtonDisplayer.UpdateButtonText(HasRoleHiredWorker(GetRoleByView()));
+
 
         switch (worker.role)
         {
@@ -83,6 +85,8 @@ public class WorkersManager : MonoBehaviour
         hiredForADayWorkers.Remove(worker);
 
         workerModalVisual.UpdateContainerHiredRelatedVisual();
+        workersButtonDisplayer.UpdateButtonText(HasRoleHiredWorker(GetRoleByView()));
+
 
         switch (worker.role)
         {
@@ -138,6 +142,7 @@ public class WorkersManager : MonoBehaviour
     {
         workerModalVisual.UpdateModalContent();
         workersButtonDisplayer.UpdateVisual();
+        workersButtonDisplayer.UpdateButtonText(HasRoleHiredWorker(GetRoleByView()));
     }
 
     public List<Worker> GetAvailableWorkers()
@@ -161,5 +166,30 @@ public class WorkersManager : MonoBehaviour
     public bool IsWorkerHired(Worker worker)
     {
         return hiredWorkers.Contains(worker);
+    }
+
+    public bool HasRoleHiredWorker(WorkersRole role)
+    {
+        foreach (var worker in hiredWorkers)
+        {
+            if (worker.role == role)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public WorkersRole GetRoleByView()
+    {
+        return PlayzoneVisual.currentView switch
+        {
+            ViewToShowEnum.GRILL => WorkersRole.GRILL,
+            ViewToShowEnum.HOTPLATE => WorkersRole.HOTPLATE,
+            ViewToShowEnum.CHECKOUT => WorkersRole.CHECKOUT,
+            ViewToShowEnum.FRYER => WorkersRole.FRYER,
+            ViewToShowEnum.SAUCE_GRUYERE => WorkersRole.GRUYERE,
+            _ => WorkersRole.GRILL,
+        };
     }
 }
