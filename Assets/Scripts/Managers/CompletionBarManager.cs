@@ -45,7 +45,6 @@ public class CompletionBarManager : MonoBehaviour
             rewardModalVisual.ShowRewardModal();
             currentRewardIndex++;
             current = 0;
-            rewardModalVisual.LoadNextRewardModal(rewards[currentRewardIndex]);
             target = rewards[currentRewardIndex].numberOfTacosToUnlock;
         }
         completionBarVisual.UpdateVisual(current, target);
@@ -94,6 +93,7 @@ public class CompletionBarManager : MonoBehaviour
 
     public void OnClickOnRewardModalButton()
     {
+        rewardModalVisual.LoadNextRewardModal(rewards[currentRewardIndex]);
         rewardModalVisual.HideRewardModal();
     }
 
