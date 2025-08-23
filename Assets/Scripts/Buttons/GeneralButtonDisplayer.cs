@@ -13,7 +13,6 @@ public class GeneralButtonDisplayer : MonoBehaviour
         buttonTransform.anchoredPosition = newPosition;
         shadow.SetActive(false);
         GameManager.Instance.SoundManager.PlaySFX(buttonSound);
-        Debug.Log("Play sound");
 
     }
 
@@ -22,7 +21,6 @@ public class GeneralButtonDisplayer : MonoBehaviour
         var newPosition = new Vector2(buttonTransform.anchoredPosition.x, buttonTransform.anchoredPosition.y + verticalMovement);
         buttonTransform.anchoredPosition = newPosition;
         shadow.SetActive(true);
-        Debug.Log("dont Play sound");
 
     }
 }

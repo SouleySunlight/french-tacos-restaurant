@@ -11,6 +11,7 @@ public class GrillVisual : MonoBehaviour, IView
     private List<GameObject> grillingTacos = new();
     [SerializeField] private List<GameObject> completionBars = new();
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioClip grillOpening;
 
 
     public void Setup()
@@ -109,11 +110,14 @@ public class GrillVisual : MonoBehaviour, IView
     {
         grillTop.GetComponent<Image>().raycastTarget = true;
         GameManager.Instance.GrillManager.CloseGrill(gameObject);
+        GameManager.Instance.SoundManager.PlaySFX(grillOpening);
+
     }
     public void OpenGrill(GameObject gameObject)
     {
         grillTop.GetComponent<Image>().raycastTarget = false;
         GameManager.Instance.GrillManager.OpenGrill(gameObject);
+        GameManager.Instance.SoundManager.PlaySFX(grillOpening);
     }
 
     public void UpdateAnimation(bool isGrillOpened)
