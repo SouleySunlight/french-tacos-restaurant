@@ -61,20 +61,6 @@ public class IngredientButtonDisplayer : MonoBehaviour
         };
     }
 
-    public void OnPressDown()
-    {
-        var newPosition = new Vector2(buttonTransform.anchoredPosition.x, buttonTransform.anchoredPosition.y - 5f);
-        buttonTransform.anchoredPosition = newPosition;
-        shadow.SetActive(false);
-    }
-
-    public void OnRelease()
-    {
-        var newPosition = new Vector2(buttonTransform.anchoredPosition.x, buttonTransform.anchoredPosition.y + 5f);
-        buttonTransform.anchoredPosition = newPosition;
-        shadow.SetActive(true);
-    }
-
     public void SetShouldShowUnprocessedIngredient(bool shouldShow)
     {
         shouldShowUnprocessedIngredient = shouldShow;

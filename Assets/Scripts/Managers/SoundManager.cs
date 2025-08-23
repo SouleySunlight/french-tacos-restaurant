@@ -3,6 +3,8 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource sfxSource;
+
     [SerializeField] private AudioClip mainTheme;
 
     void Start()
@@ -16,6 +18,11 @@ public class SoundManager : MonoBehaviour
         musicSource.loop = true;
         musicSource.volume = 0.5f;
         musicSource.Play();
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        sfxSource.PlayOneShot(clip);
     }
 
 
