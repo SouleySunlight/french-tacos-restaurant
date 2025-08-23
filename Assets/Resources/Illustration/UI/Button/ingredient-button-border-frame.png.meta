@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ingredient-button-border-frame_0: 5676856714820728530
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

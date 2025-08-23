@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Raw tandoori_0: -6470008783012592604
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

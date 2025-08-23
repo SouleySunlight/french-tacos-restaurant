@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      french-tacos_0: 97308224008602805
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

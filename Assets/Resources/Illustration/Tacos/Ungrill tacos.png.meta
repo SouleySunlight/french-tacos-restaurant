@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Ungrill tacos_0: 4634304575449945407
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

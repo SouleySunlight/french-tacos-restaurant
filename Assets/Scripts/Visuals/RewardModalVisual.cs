@@ -61,8 +61,8 @@ public class RewardModalVisual : MonoBehaviour
         rewardSubtitle.text = LocalizationSettings.StringDatabase
             .GetLocalizedString("UI_Texts", "REWARD.TACOS_SUBTITLE");
         image.gameObject.SetActive(false);
-        previousValue.text = (GameManager.Instance.OrdersManager.GetTacosPrice() - 1).ToString();
-        newValue.text = GameManager.Instance.OrdersManager.GetTacosPrice().ToString();
+        previousValue.text = GameManager.Instance.OrdersManager.GetTacosPrice().ToString();
+        newValue.text = (GameManager.Instance.OrdersManager.GetTacosPrice() + 1).ToString();
         quantityDisplay.SetActive(true);
     }
 
@@ -73,8 +73,9 @@ public class RewardModalVisual : MonoBehaviour
         rewardSubtitle.text = LocalizationSettings.StringDatabase
             .GetLocalizedString("UI_Texts", "REWARD.ORDER_SUBTITLE");
         image.gameObject.SetActive(false);
-        previousValue.text = (GameManager.Instance.OrdersManager.GetMaxNumberOfOrders() - 1).ToString();
-        newValue.text = GameManager.Instance.OrdersManager.GetMaxNumberOfOrders().ToString();
+        Debug.Log("Max orders: " + GameManager.Instance.OrdersManager.GetMaxNumberOfOrders());
+        previousValue.text = GameManager.Instance.OrdersManager.GetMaxNumberOfOrders().ToString();
+        newValue.text = (GameManager.Instance.OrdersManager.GetMaxNumberOfOrders() + 1).ToString();
         quantityDisplay.SetActive(true);
     }
 }

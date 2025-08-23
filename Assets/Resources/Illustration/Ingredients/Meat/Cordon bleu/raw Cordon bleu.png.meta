@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      raw Cordon bleu_0: 9147664108285523137
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

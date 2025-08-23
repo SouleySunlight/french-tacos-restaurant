@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      In tacos BBQ_0: 5229825703434398270
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

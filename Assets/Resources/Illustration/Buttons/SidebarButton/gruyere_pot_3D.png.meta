@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gruyere_pot_3D_0: 3215418461062856094
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

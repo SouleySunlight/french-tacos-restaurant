@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cooked nuggets_0: 3694568637022925084
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

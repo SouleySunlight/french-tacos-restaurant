@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      paninigrill_0: -191655607786188055
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

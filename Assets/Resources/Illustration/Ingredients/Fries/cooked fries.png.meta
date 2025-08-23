@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cooked fries_0: 6965644802597094020
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

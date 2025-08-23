@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      grill tacos_0: -6655872641133200856
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
