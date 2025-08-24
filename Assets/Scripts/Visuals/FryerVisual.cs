@@ -158,6 +158,7 @@ public class FryerVisual : MonoBehaviour, IView
     public void OnViewDisplayed()
     {
         UpdateVisual();
+        GameManager.Instance.FryerManager.ManageFryingSoundOnViewChanged();
     }
 
     public void PlaceIngredients(GameObject ingredient, int position, int quantity)

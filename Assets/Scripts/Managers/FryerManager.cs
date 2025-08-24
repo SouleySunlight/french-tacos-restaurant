@@ -18,6 +18,8 @@ public class FryerManager : MonoBehaviour, IWorkStation
 
     private Worker currentWorker = null;
     private bool isWorkerTaskDone = false;
+    [SerializeField] private AudioClip fryingSound;
+    private bool isAmbientPlaying = false;
 
     void Awake()
     {
@@ -144,6 +146,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
         fryingTimes[position] = 0;
         totalFryingTimes[position] = fryingIngredients[position].processingTime * GameManager.Instance.UpgradeManager.GetSpeedfactor("FRYER");
         fryerVisuals.StartFrying(position);
+        ManageFryingSound();
     }
 
     void RemoveIngredientFromFrying(int position)
@@ -167,6 +170,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
             }
         }
         RemoveIngredientFromFrying(position);
+        ManageFryingSound();
         if (doneByWorker == true)
         {
             isWorkerTaskDone = true;
@@ -176,6 +180,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
     void OnIngredientBurntClicked(int position, bool? doneByWorker = false)
     {
         RemoveIngredientFromFrying(position);
+        ManageFryingSound();
         if (doneByWorker == true)
         {
             isWorkerTaskDone = true;
@@ -350,5 +355,43 @@ public class FryerManager : MonoBehaviour, IWorkStation
             }
             OnIngredientCookedClicked(i);
         }
+    }
+
+    bool AreSomeIngredientsCooking()
+    {
+        for (int i = 0; i < isFrying.Count; i++)
+        {
+            if (isFrying[i])
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void ManageFryingSound()
+    {
+        if (AreSomeIngredientsCooking() && !isAmbientPlaying)
+        {
+            GameManager.Instance.SoundManager.PlayAmbient(fryingSound);
+            isAmbientPlaying = true;
+        }
+        if (isAmbientPlaying && !AreSomeIngredientsCooking())
+        {
+            GameManager.Instance.SoundManager.StopAmbient();
+            isAmbientPlaying = false;
+        }
+    }
+
+    public void ManageFryingSoundOnViewChanged()
+    {
+        if (isAmbientPlaying)
+        {
+            GameManager.Instance.SoundManager.PlayAmbient(fryingSound);
+            return;
+        }
+
+        GameManager.Instance.SoundManager.StopAmbient();
+
     }
 }

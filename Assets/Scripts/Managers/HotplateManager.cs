@@ -304,6 +304,16 @@ public class HotplateManager : MonoBehaviour, IWorkStation
         }
     }
 
+    public void ManageCookingSoundOnViewChanged()
+    {
+        if (isAmbientPlaying)
+        {
+            GameManager.Instance.SoundManager.PlayAmbient(cookingSound);
+            return;
+        }
+        GameManager.Instance.SoundManager.StopAmbient();
+    }
+
     public void UpdateButtonsVisual()
     {
         hotplateVisuals.UpdateIngredientButtons();
