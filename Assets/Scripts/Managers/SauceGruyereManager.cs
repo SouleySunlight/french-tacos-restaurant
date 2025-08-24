@@ -245,8 +245,11 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
         var AreSomeIngredientsCooking = sauceGruyereIngredients.Count == GetSauceGruyereComponent().Count;
         if (AreSomeIngredientsCooking && !isAmbientPlaying)
         {
-            GameManager.Instance.SoundManager.PlayAmbient(cookingSound);
             isAmbientPlaying = true;
+            if (PlayzoneVisual.currentView == ViewToShowEnum.SAUCE_GRUYERE)
+            {
+                GameManager.Instance.SoundManager.PlayAmbient(cookingSound);
+            }
         }
         if (isAmbientPlaying && !AreSomeIngredientsCooking)
         {

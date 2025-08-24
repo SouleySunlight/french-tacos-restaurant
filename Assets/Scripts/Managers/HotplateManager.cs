@@ -294,8 +294,11 @@ public class HotplateManager : MonoBehaviour, IWorkStation
     {
         if (AreSomeIngredientsCooking() && !isAmbientPlaying)
         {
-            GameManager.Instance.SoundManager.PlayAmbient(cookingSound);
             isAmbientPlaying = true;
+            if (PlayzoneVisual.currentView == ViewToShowEnum.HOTPLATE)
+            {
+                GameManager.Instance.SoundManager.PlayAmbient(cookingSound);
+            }
         }
         if (isAmbientPlaying && !AreSomeIngredientsCooking())
         {

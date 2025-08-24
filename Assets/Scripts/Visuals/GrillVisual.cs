@@ -23,6 +23,7 @@ public class GrillVisual : MonoBehaviour, IView
 
     public void OnViewDisplayed()
     {
+        GameManager.Instance.SoundManager.StopAmbient();
         UpdateVisual();
         UpdateUngrilledTacosVisual();
         if (GameManager.Instance.GrillManager.isGrillOpened)

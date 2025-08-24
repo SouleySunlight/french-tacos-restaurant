@@ -373,8 +373,11 @@ public class FryerManager : MonoBehaviour, IWorkStation
     {
         if (AreSomeIngredientsCooking() && !isAmbientPlaying)
         {
-            GameManager.Instance.SoundManager.PlayAmbient(fryingSound);
             isAmbientPlaying = true;
+            if (PlayzoneVisual.currentView == ViewToShowEnum.FRYER)
+            {
+                GameManager.Instance.SoundManager.PlayAmbient(fryingSound);
+            }
         }
         if (isAmbientPlaying && !AreSomeIngredientsCooking())
         {
