@@ -318,7 +318,14 @@ public class FryerManager : MonoBehaviour, IWorkStation
         {
             if (CanAddIngredientToFry(ingredientToAdd))
             {
-                FryIngredients(ingredientToAdd);
+                try
+                {
+                    FryIngredients(ingredientToAdd);
+                }
+                catch (NotEnoughSpaceException e)
+                {
+                    Debug.Log(e);
+                }
             }
         }
         StartFryingIngredient(positionOfIngredient);

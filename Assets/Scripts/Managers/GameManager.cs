@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public SauceGruyereManager SauceGruyereManager { get; private set; }
     public CompletionBarManager CompletionBarManager { get; private set; }
     public SoundManager SoundManager { get; private set; }
+    public BackgroundManager BackgroundManager { get; private set; }
     public bool isGamePaused = false;
     private bool isLoaded = false;
 
@@ -173,6 +174,7 @@ public class GameManager : MonoBehaviour
         SauceGruyereManager = GetComponentInChildren<SauceGruyereManager>();
         CompletionBarManager = GetComponentInChildren<CompletionBarManager>();
         SoundManager = GetComponentInChildren<SoundManager>();
+        BackgroundManager = GetComponentInChildren<BackgroundManager>();
 
         if (TacosMakerManager == null)
         {
@@ -329,7 +331,18 @@ public class GameManager : MonoBehaviour
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             SoundManager = GetComponentInChildren<SoundManager>();
         }
+        if (BackgroundManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/BackgroundManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load BackgroundManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            BackgroundManager = GetComponentInChildren<BackgroundManager>();
+
+
+        }
     }
-
-
 }
