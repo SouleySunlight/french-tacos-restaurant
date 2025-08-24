@@ -4,6 +4,7 @@ using UnityEngine;
 public class OrdersVisual : MonoBehaviour
 {
     [SerializeField] private GameObject orderPrefab;
+    [SerializeField] private AudioClip orderAddedSound;
     private List<GameObject> orderPrefabs = new();
 
     public void AddOrder(Order order)
@@ -11,6 +12,7 @@ public class OrdersVisual : MonoBehaviour
         var newOrder = Instantiate(orderPrefab, this.transform);
         newOrder.GetComponent<OrderDisplayer>().orderData = order;
         orderPrefabs.Add(newOrder);
+        GameManager.Instance.SoundManager.PlaySFX(orderAddedSound);
         UpdateVisuals();
     }
 

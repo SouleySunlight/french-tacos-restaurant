@@ -3086,6 +3086,7 @@ MonoBehaviour:
   quantityDisplay: {fileID: 1818532827}
   previousValue: {fileID: 424660361}
   newValue: {fileID: 1632409594}
+  rewardSound: {fileID: 8300000, guid: 99c5135d271aa470580d5e62c11b9abf, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -4529,6 +4530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orderPrefab: {fileID: 6659161461995990105, guid: b9581d99a85fe478289942c96d79e537, type: 3}
+  orderAddedSound: {fileID: 8300000, guid: 35d15f3f65d5540fea793f451f337091, type: 3}
 --- !u!224 &894535925 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7688910059753343328, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
@@ -6598,6 +6600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sauceGruyere: {fileID: 11400000, guid: 06988970e591b46888559f895e37f4ce, type: 2}
+  cookingSound: {fileID: 8300000, guid: afad604628af34740b934b863f5e565b, type: 3}
 --- !u!114 &1344447736 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5371132674167194366, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
