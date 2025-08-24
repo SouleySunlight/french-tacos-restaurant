@@ -13,11 +13,13 @@ public class RewardModalVisual : MonoBehaviour
     [SerializeField] private GameObject quantityDisplay;
     [SerializeField] private TMP_Text previousValue;
     [SerializeField] private TMP_Text newValue;
+    [SerializeField] private AudioClip rewardSound;
 
 
     public void ShowRewardModal()
     {
         GameManager.Instance.isGamePaused = true;
+        GameManager.Instance.SoundManager.PlaySFX(rewardSound);
         rewardModal.SetActive(true);
     }
 
