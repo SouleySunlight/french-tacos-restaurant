@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Background Fryer (1)_0: -4824478352227394513
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
