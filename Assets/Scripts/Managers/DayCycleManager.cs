@@ -9,6 +9,10 @@ public class DayCycleManager : MonoBehaviour
     public bool isDayOver { get; private set; } = false;
     private DayCycleVisual dayCycleVisual;
     private DayOverModalVisuals dayOverModalVisuals;
+    [SerializeField] private AudioClip closeShopSound;
+    [SerializeField] private AudioClip dayOverSound;
+
+
 
     void Awake()
     {
@@ -26,6 +30,7 @@ public class DayCycleManager : MonoBehaviour
 
         if (currentDayTimeElapsed >= DAY_DURATION_IN_SECONDS)
         {
+            GameManager.Instance.SoundManager.PlaySFX(closeShopSound);
             isDayOver = true;
             TryToFinishDay();
         }
@@ -41,6 +46,7 @@ public class DayCycleManager : MonoBehaviour
 
     private void FinishDay()
     {
+        GameManager.Instance.SoundManager.PlaySFX(dayOverSound);
         GameManager.Instance.PauseGame();
         GameManager.Instance.ResetViewForNewDay();
         dayOverModalVisuals.ShowDayOverModal();
