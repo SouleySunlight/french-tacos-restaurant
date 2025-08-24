@@ -569,6 +569,7 @@ GameObject:
   - component: {fileID: 7182114147430114875}
   - component: {fileID: 6148044168289923043}
   - component: {fileID: 167653026851679190}
+  - component: {fileID: 6781458418454227665}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -697,8 +698,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7726437860440206754}
-          m_TargetAssemblyTypeName: IngredientButtonDisplayer, Assembly-CSharp
+        - m_Target: {fileID: 6781458418454227665}
+          m_TargetAssemblyTypeName: GeneralButtonDisplayer, Assembly-CSharp
           m_MethodName: OnPressDown
           m_Mode: 1
           m_Arguments:
@@ -713,8 +714,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7726437860440206754}
-          m_TargetAssemblyTypeName: IngredientButtonDisplayer, Assembly-CSharp
+        - m_Target: {fileID: 6781458418454227665}
+          m_TargetAssemblyTypeName: GeneralButtonDisplayer, Assembly-CSharp
           m_MethodName: OnRelease
           m_Mode: 1
           m_Arguments:
@@ -725,6 +726,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &6781458418454227665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6245264483600592666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad3e0c26a2a042bfac4275b50e7dd2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonTransform: {fileID: 6345501309991528653}
+  shadow: {fileID: 1650135476217976709}
+  verticalMovement: 5
+  buttonSound: {fileID: 8300000, guid: 394da570808c4458e986e993ffe71537, type: 3}
 --- !u!1 &7708415629126307577
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,5 @@
 public interface IView
 {
-    void OnViewDisplayed() { return; }
+    void OnViewDisplayed() { GameManager.Instance.SoundManager.StopAmbient(); }
 
 }

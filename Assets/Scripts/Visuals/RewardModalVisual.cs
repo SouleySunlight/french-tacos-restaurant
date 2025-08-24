@@ -13,11 +13,13 @@ public class RewardModalVisual : MonoBehaviour
     [SerializeField] private GameObject quantityDisplay;
     [SerializeField] private TMP_Text previousValue;
     [SerializeField] private TMP_Text newValue;
+    [SerializeField] private AudioClip rewardSound;
 
 
     public void ShowRewardModal()
     {
         GameManager.Instance.isGamePaused = true;
+        GameManager.Instance.SoundManager.PlaySFX(rewardSound);
         rewardModal.SetActive(true);
     }
 
@@ -73,7 +75,6 @@ public class RewardModalVisual : MonoBehaviour
         rewardSubtitle.text = LocalizationSettings.StringDatabase
             .GetLocalizedString("UI_Texts", "REWARD.ORDER_SUBTITLE");
         image.gameObject.SetActive(false);
-        Debug.Log("Max orders: " + GameManager.Instance.OrdersManager.GetMaxNumberOfOrders());
         previousValue.text = GameManager.Instance.OrdersManager.GetMaxNumberOfOrders().ToString();
         newValue.text = (GameManager.Instance.OrdersManager.GetMaxNumberOfOrders() + 1).ToString();
         quantityDisplay.SetActive(true);

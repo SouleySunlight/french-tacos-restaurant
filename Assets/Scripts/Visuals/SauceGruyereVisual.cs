@@ -20,6 +20,7 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     public void OnViewDisplayed()
     {
         UpdateIngredients();
+        GameManager.Instance.SauceGruyereManager.ManageCookingSoundOnViewChanged();
     }
 
 

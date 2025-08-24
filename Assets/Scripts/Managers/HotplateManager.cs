@@ -12,6 +12,9 @@ public class HotplateManager : MonoBehaviour, IWorkStation
     private Worker currentWorker = null;
     private bool isWorkerTaskDone = false;
 
+    [SerializeField] private AudioClip cookingSound;
+    private bool isAmbientPlaying = false;
+
 
     void Awake()
     {
@@ -85,8 +88,10 @@ public class HotplateManager : MonoBehaviour, IWorkStation
             cookingTimes[i] = 0;
             totalCookingTimes[i] = cookingIngredients[i].processingTime * GameManager.Instance.UpgradeManager.GetSpeedfactor("HOTPLATE");
             hotplateVisuals.CookIngredients(ingredient, i);
+            ManageCookingSound();
             return;
         }
+        ManageCookingSound();
         throw new NotEnoughSpaceException();
 
     }
@@ -139,6 +144,8 @@ public class HotplateManager : MonoBehaviour, IWorkStation
     void OnIngredientBurntClicked(int position, bool? doneByWorker = false)
     {
         RemoveIngredientFromCooking(position);
+        ManageCookingSound();
+
         if (doneByWorker == true)
         {
             isWorkerTaskDone = true;
@@ -152,6 +159,8 @@ public class HotplateManager : MonoBehaviour, IWorkStation
         cookingTimes[position] = GlobalConstant.UNUSED_TIME_VALUE;
         totalCookingTimes[position] = GlobalConstant.UNUSED_TIME_VALUE;
         hotplateVisuals.RemoveIngredientFromGrill(position);
+        ManageCookingSound();
+
     }
     public void HireWorker(Worker worker)
     {
@@ -267,6 +276,45 @@ public class HotplateManager : MonoBehaviour, IWorkStation
             return;
         }
         CookIngredients(ingredientToAdd);
+    }
+
+    bool AreSomeIngredientsCooking()
+    {
+        for (int i = 0; i < cookingIngredients.Count; i++)
+        {
+            if (cookingIngredients[i] != null)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void ManageCookingSound()
+    {
+        if (AreSomeIngredientsCooking() && !isAmbientPlaying)
+        {
+            isAmbientPlaying = true;
+            if (PlayzoneVisual.currentView == ViewToShowEnum.HOTPLATE)
+            {
+                GameManager.Instance.SoundManager.PlayAmbient(cookingSound);
+            }
+        }
+        if (isAmbientPlaying && !AreSomeIngredientsCooking())
+        {
+            GameManager.Instance.SoundManager.StopAmbient();
+            isAmbientPlaying = false;
+        }
+    }
+
+    public void ManageCookingSoundOnViewChanged()
+    {
+        if (isAmbientPlaying)
+        {
+            GameManager.Instance.SoundManager.PlayAmbient(cookingSound);
+            return;
+        }
+        GameManager.Instance.SoundManager.StopAmbient();
     }
 
     public void UpdateButtonsVisual()

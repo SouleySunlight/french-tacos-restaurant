@@ -25,14 +25,6 @@ public class WorkersButtonDisplayer : MonoBehaviour
         GameManager.Instance.WorkersManager.ShowWorkerModal();
     }
 
-    public void OnPressDown()
-    {
-        var rectTransform = buttonBody.GetComponent<RectTransform>();
-        var newPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - 15f);
-        rectTransform.anchoredPosition = newPosition;
-        shadow.SetActive(false);
-    }
-
     public void OnRelease()
     {
         var rectTransform = buttonBody.GetComponent<RectTransform>();

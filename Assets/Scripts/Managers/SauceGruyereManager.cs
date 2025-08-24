@@ -8,7 +8,8 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
     private SauceGruyereVisual sauceGruyereVisual;
     private List<Ingredient> sauceGruyereIngredients = new();
     [SerializeField] private Ingredient sauceGruyere;
-
+    [SerializeField] private AudioClip cookingSound;
+    private bool isAmbientPlaying = false;
 
     private float cookingTime = GlobalConstant.UNUSED_TIME_VALUE;
     private float currentCookingTime = GlobalConstant.UNUSED_TIME_VALUE;
@@ -86,6 +87,7 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
         sauceGruyereIngredients.Add(ingredient);
         sauceGruyereVisual.AddIngredientToSauceGruyere(ingredient);
         sauceGruyereVisual.UpdateIngredientButtons();
+        ManageCookingSound();
         isDoneByWorker = true;
         if (sauceGruyereIngredients.Count == GetSauceGruyereComponent().Count)
         {
@@ -129,6 +131,7 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
         isSauceGruyereCooked = false;
         isSauceGruyereBurnt = false;
         sauceGruyereVisual.UpdateTimer(0);
+        ManageCookingSound();
 
     }
 
@@ -236,4 +239,33 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
         }
         RemoveCookedSauceGruyere();
     }
+
+    void ManageCookingSound()
+    {
+        var AreSomeIngredientsCooking = sauceGruyereIngredients.Count == GetSauceGruyereComponent().Count;
+        if (AreSomeIngredientsCooking && !isAmbientPlaying)
+        {
+            isAmbientPlaying = true;
+            if (PlayzoneVisual.currentView == ViewToShowEnum.SAUCE_GRUYERE)
+            {
+                GameManager.Instance.SoundManager.PlayAmbient(cookingSound);
+            }
+        }
+        if (isAmbientPlaying && !AreSomeIngredientsCooking)
+        {
+            GameManager.Instance.SoundManager.StopAmbient();
+            isAmbientPlaying = false;
+        }
+    }
+
+    public void ManageCookingSoundOnViewChanged()
+    {
+        if (isAmbientPlaying)
+        {
+            GameManager.Instance.SoundManager.PlayAmbient(cookingSound);
+            return;
+        }
+        GameManager.Instance.SoundManager.StopAmbient();
+    }
+
 }

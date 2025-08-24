@@ -31,22 +31,6 @@ public class UpgradeButtonDisplayer : MonoBehaviour
         GameManager.Instance.UpgradeManager.UpgradeElement(GetViewUpgradeId(PlayzoneVisual.currentView));
     }
 
-    public void OnPressDown()
-    {
-        var rectTransform = buttonBody.GetComponent<RectTransform>();
-        var newPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - 15f);
-        rectTransform.anchoredPosition = newPosition;
-        shadow.SetActive(false);
-    }
-
-    public void OnRelease()
-    {
-        var rectTransform = buttonBody.GetComponent<RectTransform>();
-        var newPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 15f);
-        rectTransform.anchoredPosition = newPosition;
-        shadow.SetActive(true);
-    }
-
     string GetViewUpgradeId(ViewToShowEnum view)
     {
         return view switch

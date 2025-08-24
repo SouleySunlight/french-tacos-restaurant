@@ -19,6 +19,7 @@ public class TacosMakerVisual : MonoBehaviour, IView
 
     public void OnViewDisplayed()
     {
+        GameManager.Instance.SoundManager.StopAmbient();
         UpdateButtonsVisualQuantity();
     }
 

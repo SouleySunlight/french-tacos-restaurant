@@ -30,6 +30,7 @@ public class HotplateVisuals : MonoBehaviour, IView
         UpdateIngredientButtons();
         UpdateIndicatorsVisual();
         UpdateIndicatorsQuantity();
+        GameManager.Instance.HotplateManager.ManageCookingSoundOnViewChanged();
     }
 
     public void SetupIngredients(List<Ingredient> ingredients)

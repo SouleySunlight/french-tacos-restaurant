@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public FryerManager FryerManager { get; private set; }
     public SauceGruyereManager SauceGruyereManager { get; private set; }
     public CompletionBarManager CompletionBarManager { get; private set; }
+    public SoundManager SoundManager { get; private set; }
     public bool isGamePaused = false;
     private bool isLoaded = false;
 
@@ -171,6 +172,7 @@ public class GameManager : MonoBehaviour
         FryerManager = GetComponentInChildren<FryerManager>();
         SauceGruyereManager = GetComponentInChildren<SauceGruyereManager>();
         CompletionBarManager = GetComponentInChildren<CompletionBarManager>();
+        SoundManager = GetComponentInChildren<SoundManager>();
 
         if (TacosMakerManager == null)
         {
@@ -315,6 +317,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             CompletionBarManager = GetComponentInChildren<CompletionBarManager>();
+        }
+        if (SoundManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/SoundManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load SoundManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            SoundManager = GetComponentInChildren<SoundManager>();
         }
     }
 
