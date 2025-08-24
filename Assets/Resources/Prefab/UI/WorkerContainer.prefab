@@ -111,7 +111,7 @@ MonoBehaviour:
   buttonTransform: {fileID: 8521913160557422711}
   shadow: {fileID: 5173673395332051723}
   verticalMovement: 10
-  buttonSound: {fileID: 8300000, guid: 394da570808c4458e986e993ffe71537, type: 3}
+  buttonSound: {fileID: 8300000, guid: ba7501c3cd74248abbf9982041021f50, type: 3}
 --- !u!114 &4351452483852722022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,7 +554,7 @@ MonoBehaviour:
   buttonTransform: {fileID: 6890103173190509953}
   shadow: {fileID: 5032520442226837274}
   verticalMovement: 10
-  buttonSound: {fileID: 8300000, guid: 394da570808c4458e986e993ffe71537, type: 3}
+  buttonSound: {fileID: 8300000, guid: ba7501c3cd74248abbf9982041021f50, type: 3}
 --- !u!114 &4878342526052795768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1997,7 +1997,7 @@ MonoBehaviour:
   buttonTransform: {fileID: 8605783843337288647}
   shadow: {fileID: 7565641895839435313}
   verticalMovement: 10
-  buttonSound: {fileID: 8300000, guid: 394da570808c4458e986e993ffe71537, type: 3}
+  buttonSound: {fileID: 8300000, guid: bc25002bacb1e4487aef3933a5aab824, type: 3}
 --- !u!114 &5847541886663927219
 MonoBehaviour:
   m_ObjectHideFlags: 0
