@@ -31,6 +31,10 @@ public class PlayzoneVisual : MonoBehaviour
         foreach (var view in views)
         {
             view.Value.SetActive(zoneToShow == view.Key);
+            if (zoneToShow == view.Key)
+            {
+                GameManager.Instance.BackgroundManager.UpdateBackground();
+            }
         }
         views[zoneToShow].GetComponent<IView>().OnViewDisplayed();
         GameManager.Instance.OnViewChanged();
