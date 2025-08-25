@@ -6,6 +6,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource ambientSource;
 
+    public static bool isMusicOn { get; private set; } = true;
+
 
     [SerializeField] private AudioClip mainTheme;
 
@@ -16,10 +18,28 @@ public class SoundManager : MonoBehaviour
 
     public void PlayMusic()
     {
+        if (!isMusicOn)
+        {
+            musicSource.Stop();
+            return;
+        }
         musicSource.clip = mainTheme;
         musicSource.loop = true;
         musicSource.volume = 0.5f;
         musicSource.Play();
+    }
+
+    public void TurnOnMusic()
+    {
+        isMusicOn = true;
+        PlayMusic();
+    }
+
+    public void TurnOffMusic()
+    {
+        isMusicOn = false;
+        PlayMusic();
+
     }
 
     public void PlaySFX(AudioClip clip)

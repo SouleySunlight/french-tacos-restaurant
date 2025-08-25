@@ -231,6 +231,18 @@ MonoBehaviour:
     m_Key: WORKERS.INACTIVE
     m_Metadata:
       m_Items: []
+  - m_Id: 3966130719809536
+    m_Key: SETTINGS.MUSIC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3969551430574080
+    m_Key: SETTINGS.ON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3969617138540544
+    m_Key: SETTINGS.OFF
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

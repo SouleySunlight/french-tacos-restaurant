@@ -235,6 +235,18 @@ MonoBehaviour:
     m_Localized: Inactif
     m_Metadata:
       m_Items: []
+  - m_Id: 3966130719809536
+    m_Localized: Musique
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3969551430574080
+    m_Localized: Act.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3969617138540544
+    m_Localized: "D\xE9s."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
