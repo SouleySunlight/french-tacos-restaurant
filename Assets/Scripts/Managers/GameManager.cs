@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
     public CompletionBarManager CompletionBarManager { get; private set; }
     public SoundManager SoundManager { get; private set; }
     public BackgroundManager BackgroundManager { get; private set; }
+    public SettingsManager SettingsManager { get; private set; }
     public bool isGamePaused = false;
     private bool isLoaded = false;
 
@@ -41,7 +44,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(OnGameLoadedCoroutine());
+        LoadSettings();
         LoadGame();
+        LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
     }
 
     public void SaveGame()
@@ -72,6 +77,33 @@ public class GameManager : MonoBehaviour
         OrdersManager.SetMaxNumberOfOrders(data.maxNumberOfOrders);
         OrdersManager.SetTacosPrice(data.tacosPrice);
         isLoaded = true;
+    }
+
+    public void SaveSettings()
+    {
+        SettingsSaveData settingsSaveData = new()
+        {
+            isSoundOn = SoundManager.areSoundsOn,
+            isMusicOn = SoundManager.isMusicOn,
+            language = LocalizationSettings.SelectedLocale.Identifier.Code
+        };
+
+
+        SaveSystem.SaveSettings(settingsSaveData);
+    }
+
+    void LoadSettings()
+    {
+        SettingsSaveData settingsSaveData = SaveSystem.LoadSettings();
+        SoundManager.LoadIsMusicOn(settingsSaveData.isMusicOn);
+        SoundManager.LoadAreSoundsOn(settingsSaveData.isSoundOn);
+
+        var locale = LocalizationSettings.AvailableLocales.GetLocale(settingsSaveData.language);
+        if (locale != null)
+        {
+            LocalizationSettings.SelectedLocale = locale;
+        }
+
     }
 
     private IEnumerator OnGameLoadedCoroutine()
@@ -158,6 +190,22 @@ public class GameManager : MonoBehaviour
         WorkersManager.UpdateWorkerModalVisual();
     }
 
+    void OnLocaleChanged(UnityEngine.Localization.Locale newLocale)
+    {
+        var languageButtons = FindObjectsByType<LanguageButtonDisplayer>(FindObjectsSortMode.None);
+        foreach (var languageButton in languageButtons)
+        {
+            languageButton.GetComponent<LanguageButtonDisplayer>().UpdateVisual();
+        }
+        FindFirstObjectByType<SoundsButtonDisplayer>().UpdateVisual();
+        FindFirstObjectByType<MusicButtonDisplayer>().UpdateVisual();
+        WorkersManager.UpdateWorkerModalVisual();
+
+
+
+    }
+
+
     void InitializeManagers()
     {
         TacosMakerManager = GetComponentInChildren<TacosMakerManager>();
@@ -175,6 +223,7 @@ public class GameManager : MonoBehaviour
         CompletionBarManager = GetComponentInChildren<CompletionBarManager>();
         SoundManager = GetComponentInChildren<SoundManager>();
         BackgroundManager = GetComponentInChildren<BackgroundManager>();
+        SettingsManager = GetComponentInChildren<SettingsManager>();
 
         if (TacosMakerManager == null)
         {
@@ -341,6 +390,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             BackgroundManager = GetComponentInChildren<BackgroundManager>();
+        }
+        if (SettingsManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/SettingsManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load SettingsManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            SettingsManager = GetComponentInChildren<SettingsManager>();
 
 
         }

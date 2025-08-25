@@ -234,6 +234,26 @@ MonoBehaviour:
     m_Localized: Inactive
     m_Metadata:
       m_Items: []
+  - m_Id: 3966130719809536
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3969551430574080
+    m_Localized: On
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3969617138540544
+    m_Localized: Off
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3972661339217920
+    m_Localized: SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3992874176733184
+    m_Localized: Languages
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

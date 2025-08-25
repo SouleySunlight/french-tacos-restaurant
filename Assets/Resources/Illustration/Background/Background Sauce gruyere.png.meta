@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Background Sauce gruyere_0: 8827836448318004953
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

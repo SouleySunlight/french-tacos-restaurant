@@ -231,6 +231,26 @@ MonoBehaviour:
     m_Key: WORKERS.INACTIVE
     m_Metadata:
       m_Items: []
+  - m_Id: 3966130719809536
+    m_Key: SETTINGS.MUSIC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3969551430574080
+    m_Key: SETTINGS.ON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3969617138540544
+    m_Key: SETTINGS.OFF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3972661339217920
+    m_Key: SETTINGS.SOUNDS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3992874176733184
+    m_Key: SETTINGS.LANGUAGE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

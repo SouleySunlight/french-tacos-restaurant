@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 548510ab1c5f347da84f7a3a0d2b310d
+guid: fd877cbf0841345ad846307183cec265
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8179574137410412297
-    second: Background #2_0
+      213: -9204229149746011400
+    second: Setting button Shadow_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Background #2_0
+      name: Setting button Shadow_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1080
-        height: 1920
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f02ea5c8a05c7e80800000000000000
-      internalID: -8179574137410412297
+      spriteID: 8f2e71aba52044080800000000000000
+      internalID: -9204229149746011400
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Background #2_0: -8179574137410412297
+      Setting button Shadow_0: -9204229149746011400
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
