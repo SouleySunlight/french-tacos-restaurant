@@ -35,11 +35,14 @@ public class SoundsButtonDisplayer : MonoBehaviour
         {
             GameManager.Instance.SoundManager.TurnOffSounds();
             UpdateVisual();
+            GameManager.Instance.SaveSettings();
+
 
             return;
         }
         GameManager.Instance.SoundManager.TurnOnSounds();
         UpdateVisual();
+        GameManager.Instance.SaveSettings();
 
     }
 

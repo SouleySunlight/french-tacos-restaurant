@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 
@@ -43,11 +44,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(OnGameLoadedCoroutine());
+        LoadSettings();
         LoadGame();
         LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
     }
-
-
 
     public void SaveGame()
     {
@@ -77,6 +77,33 @@ public class GameManager : MonoBehaviour
         OrdersManager.SetMaxNumberOfOrders(data.maxNumberOfOrders);
         OrdersManager.SetTacosPrice(data.tacosPrice);
         isLoaded = true;
+    }
+
+    public void SaveSettings()
+    {
+        SettingsSaveData settingsSaveData = new()
+        {
+            isSoundOn = SoundManager.areSoundsOn,
+            isMusicOn = SoundManager.isMusicOn,
+            language = LocalizationSettings.SelectedLocale.Identifier.Code
+        };
+
+
+        SaveSystem.SaveSettings(settingsSaveData);
+    }
+
+    void LoadSettings()
+    {
+        SettingsSaveData settingsSaveData = SaveSystem.LoadSettings();
+        SoundManager.LoadIsMusicOn(settingsSaveData.isMusicOn);
+        SoundManager.LoadAreSoundsOn(settingsSaveData.isSoundOn);
+
+        var locale = LocalizationSettings.AvailableLocales.GetLocale(settingsSaveData.language);
+        if (locale != null)
+        {
+            LocalizationSettings.SelectedLocale = locale;
+        }
+
     }
 
     private IEnumerator OnGameLoadedCoroutine()

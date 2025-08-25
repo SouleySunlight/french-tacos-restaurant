@@ -36,6 +36,7 @@ public class LanguageButtonDisplayer : MonoBehaviour
             LocalizationSettings.SelectedLocale = locale;
         }
         UpdateVisual();
+        GameManager.Instance.SaveSettings();
 
     }
 }

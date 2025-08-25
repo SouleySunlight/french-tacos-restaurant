@@ -35,11 +35,13 @@ public class MusicButtonDisplayer : MonoBehaviour
         {
             GameManager.Instance.SoundManager.TurnOffMusic();
             UpdateVisual();
+            GameManager.Instance.SaveSettings();
 
             return;
         }
         GameManager.Instance.SoundManager.TurnOnMusic();
         UpdateVisual();
+        GameManager.Instance.SaveSettings();
 
     }
 

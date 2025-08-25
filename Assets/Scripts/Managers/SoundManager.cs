@@ -10,11 +10,6 @@ public class SoundManager : MonoBehaviour
     public static bool areSoundsOn { get; private set; } = true;
     [SerializeField] private AudioClip mainTheme;
 
-    void Start()
-    {
-        PlayMusic();
-    }
-
     public void PlayMusic()
     {
         if (!isMusicOn)
@@ -83,6 +78,18 @@ public class SoundManager : MonoBehaviour
         ambientSource.Stop();
     }
 
+    public void LoadIsMusicOn(bool musicOn)
+    {
+        isMusicOn = musicOn;
+        if (isMusicOn)
+        {
+            PlayMusic();
+        }
+    }
 
+    public void LoadAreSoundsOn(bool soundsOn)
+    {
+        areSoundsOn = soundsOn;
+    }
 
 }
