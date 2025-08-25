@@ -15,7 +15,7 @@ public class SoundsButtonDisplayer : MonoBehaviour
         UpdateVisual();
     }
 
-    void UpdateVisual()
+    public void UpdateVisual()
     {
         if (SoundManager.areSoundsOn)
         {

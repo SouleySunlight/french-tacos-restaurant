@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 public class GameManager : MonoBehaviour
 {
@@ -43,7 +44,10 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(OnGameLoadedCoroutine());
         LoadGame();
+        LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
     }
+
+
 
     public void SaveGame()
     {
@@ -158,6 +162,22 @@ public class GameManager : MonoBehaviour
         UpgradeManager.UpdateUpgradeButtonVisuals();
         WorkersManager.UpdateWorkerModalVisual();
     }
+
+    void OnLocaleChanged(UnityEngine.Localization.Locale newLocale)
+    {
+        var languageButtons = FindObjectsByType<LanguageButtonDisplayer>(FindObjectsSortMode.None);
+        foreach (var languageButton in languageButtons)
+        {
+            languageButton.GetComponent<LanguageButtonDisplayer>().UpdateVisual();
+        }
+        FindFirstObjectByType<SoundsButtonDisplayer>().UpdateVisual();
+        FindFirstObjectByType<MusicButtonDisplayer>().UpdateVisual();
+        WorkersManager.UpdateWorkerModalVisual();
+
+
+
+    }
+
 
     void InitializeManagers()
     {

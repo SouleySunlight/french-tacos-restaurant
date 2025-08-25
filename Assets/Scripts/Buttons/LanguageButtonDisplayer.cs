@@ -1,14 +1,13 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
-public class MusicButtonDisplayer : MonoBehaviour
+public class LanguageButtonDisplayer : MonoBehaviour
 {
-    [SerializeField] private TMP_Text buttonText;
     [SerializeField] private Image buttonBackground;
     [SerializeField] private Sprite onBackground;
     [SerializeField] private Sprite offBackground;
+    [SerializeField] private string localeCode;
 
     void Start()
     {
@@ -17,30 +16,26 @@ public class MusicButtonDisplayer : MonoBehaviour
 
     public void UpdateVisual()
     {
-        if (SoundManager.isMusicOn)
+        if (LocalizationSettings.SelectedLocale.Identifier.Code == localeCode)
         {
             buttonBackground.sprite = onBackground;
-            buttonText.text = LocalizationSettings.StringDatabase
-            .GetLocalizedString("UI_Texts", "SETTINGS.ON");
             return;
         }
         buttonBackground.sprite = offBackground;
-        buttonText.text = LocalizationSettings.StringDatabase
-            .GetLocalizedString("UI_Texts", "SETTINGS.OFF");
     }
 
     public void OnClick()
     {
-        if (SoundManager.isMusicOn)
+        if (LocalizationSettings.SelectedLocale.Identifier.Code == localeCode)
         {
-            GameManager.Instance.SoundManager.TurnOffMusic();
-            UpdateVisual();
-
             return;
         }
-        GameManager.Instance.SoundManager.TurnOnMusic();
+        var locale = LocalizationSettings.AvailableLocales.GetLocale(localeCode);
+        if (locale != null)
+        {
+            LocalizationSettings.SelectedLocale = locale;
+        }
         UpdateVisual();
 
     }
-
 }
