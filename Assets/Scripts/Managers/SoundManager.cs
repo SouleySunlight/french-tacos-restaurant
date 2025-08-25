@@ -7,8 +7,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource ambientSource;
 
     public static bool isMusicOn { get; private set; } = true;
-
-
+    public static bool areSoundsOn { get; private set; } = true;
     [SerializeField] private AudioClip mainTheme;
 
     void Start()
@@ -42,16 +41,41 @@ public class SoundManager : MonoBehaviour
 
     }
 
+    public void TurnOnSounds()
+    {
+        areSoundsOn = true;
+        ambientSource.volume = 0.5f;
+
+    }
+
+    public void TurnOffSounds()
+    {
+        areSoundsOn = false;
+        ambientSource.volume = 0f;
+
+    }
+
     public void PlaySFX(AudioClip clip)
     {
+        if (!areSoundsOn)
+        {
+            return;
+        }
         sfxSource.PlayOneShot(clip);
     }
 
     public void PlayAmbient(AudioClip clip)
     {
+        if (!areSoundsOn)
+        {
+            ambientSource.volume = 0f;
+        }
+        else
+        {
+            ambientSource.volume = 0.5f;
+        }
         ambientSource.clip = clip;
         ambientSource.loop = true;
-        ambientSource.volume = 0.5f;
         ambientSource.Play();
     }
     public void StopAmbient()

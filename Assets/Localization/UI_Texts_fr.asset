@@ -247,6 +247,10 @@ MonoBehaviour:
     m_Localized: "D\xE9s."
     m_Metadata:
       m_Items: []
+  - m_Id: 3972661339217920
+    m_Localized: Effets sonores
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
