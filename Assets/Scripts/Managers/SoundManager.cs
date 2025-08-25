@@ -19,7 +19,7 @@ public class SoundManager : MonoBehaviour
         }
         musicSource.clip = mainTheme;
         musicSource.loop = true;
-        musicSource.volume = 0.5f;
+        musicSource.volume = 0.3f;
         musicSource.Play();
     }
 
