@@ -156,6 +156,15 @@ public class GrillManager : MonoBehaviour, IWorkStation
 
     }
 
+    public void DiscardTacos(Tacos tacos)
+    {
+        var tacosToDiscard = waitingToGrillTacos.Find(waitingTacos => waitingTacos.guid == tacos.guid);
+        if (tacosToDiscard == null) { return; }
+        waitingToGrillTacos.Remove(tacosToDiscard);
+        grillVisual.DiscardTacos(tacosToDiscard);
+
+    }
+
     public void UpdateGrillingTime()
     {
         currentGrillDuration = GRILL_BASE_DURATION * GameManager.Instance.UpgradeManager.GetSpeedfactor("GRILL");

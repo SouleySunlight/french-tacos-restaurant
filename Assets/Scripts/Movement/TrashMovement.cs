@@ -7,6 +7,10 @@ public class TrashMovement : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData pointerEventData)
     {
         GameObject dropped = pointerEventData.pointerDrag;
-        Debug.Log(dropped.GetComponent<TacosDisplayer>().tacosData.ingredients[0]);
+        if (!dropped.TryGetComponent<TacosDisplayer>(out var tacosDisplayer)) { return; }
+        if (PlayzoneVisual.currentView == ViewToShowEnum.GRILL)
+        {
+            GameManager.Instance.GrillManager.DiscardTacos(tacosDisplayer.tacosData);
+        }
     }
 }
