@@ -151,12 +151,11 @@ public class GrillManager : MonoBehaviour, IWorkStation
 
     void ServeTacos(Tacos tacos)
     {
-        RemoveTacosOfTheGrill(tacos);
         gameManager.OnTacosGrilled(tacos);
 
     }
 
-    void RemoveTacosOfTheGrill(Tacos tacos)
+    public void RemoveTacosOfTheGrill(Tacos tacos)
     {
         var tacosToRemoveIndex = grillingTacos.FindIndex((grillTacos) => grillTacos != null && grillTacos.guid == tacos.guid);
         grillingTacos[tacosToRemoveIndex] = null;
@@ -267,7 +266,6 @@ public class GrillManager : MonoBehaviour, IWorkStation
         foreach (var tacos in GetTacosDone())
         {
             gameManager.OnTacosGrilled(tacos);
-            RemoveTacosOfTheGrill(tacos);
             isWorkerTaskDone = true;
         }
 

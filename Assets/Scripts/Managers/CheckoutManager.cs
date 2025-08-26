@@ -8,6 +8,7 @@ public class CheckoutManager : MonoBehaviour, IWorkStation
 
     private CheckoutVisual checkoutVisual;
 
+    private static readonly int MAX_TACOS_TO_SERVE = 6;
 
     private Worker currentWorker = null;
     private bool isWorkerTaskDone = false;
@@ -83,6 +84,11 @@ public class CheckoutManager : MonoBehaviour, IWorkStation
                 return;
             }
         }
+    }
+
+    public bool CanAddTacosToCheckout()
+    {
+        return tacosToServe.Count < MAX_TACOS_TO_SERVE;
     }
 
     public void MarkWorkerTaskAsDone()
