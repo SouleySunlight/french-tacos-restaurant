@@ -359,7 +359,7 @@ public class GrillManager : MonoBehaviour, IWorkStation
         if (tacos.GetComponent<TacosMovemement>().isAboveTrash)
         {
             grillVisual.ThrowTacos(tacos);
-            FindFirstObjectByType<TrashMovement>().PlayTrashSound();
+            GameManager.Instance.SoundManager.PlayTrashSound();
         }
         grillVisual.UpdateVisual();
     }
