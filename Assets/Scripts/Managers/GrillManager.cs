@@ -344,4 +344,13 @@ public class GrillManager : MonoBehaviour, IWorkStation
         grillVisual.UpdateVisual();
 
     }
+    public void OnEndDrag(GameObject tacos)
+    {
+        if (tacos.GetComponent<TacosMovemement>().isAboveTrash)
+        {
+            GameManager.Instance.GrillManager.DiscardTacos(tacos.GetComponent<TacosDisplayer>().tacosData);
+            FindFirstObjectByType<TrashMovement>().PlayTrashSound();
+        }
+        grillVisual.UpdateVisual();
+    }
 }

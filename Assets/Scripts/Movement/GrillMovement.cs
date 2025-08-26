@@ -62,6 +62,8 @@ public class GrillMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IDr
     public void OnDrop(PointerEventData eventData)
     {
         GameObject dropped = eventData.pointerDrag;
+        if (!dropped.TryGetComponent<TacosMovemement>(out var tacosMovement)) { return; }
+        if (tacosMovement.isAboveTrash) { return; }
         if (!dropped.TryGetComponent<TacosDisplayer>(out var tacosDisplayer)) { return; }
         var tacos = tacosDisplayer.tacosData;
         if (tacos == null) { return; }

@@ -7,6 +7,7 @@ public class TacosMovemement : MonoBehaviour, IPointerDownHandler, IDragHandler,
 {
     [HideInInspector] public UnityEvent<GameObject> ClickEventGrill;
     [SerializeField] private CanvasGroup canvasGroup;
+    public bool isAboveTrash = false;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -26,15 +27,19 @@ public class TacosMovemement : MonoBehaviour, IPointerDownHandler, IDragHandler,
         }
         if (PlayzoneVisual.currentView == ViewToShowEnum.GRILL)
         {
-            FindFirstObjectByType<GrillVisual>().UpdateVisual();
+            GameManager.Instance.GrillManager.OnEndDrag(eventData.pointerDrag);
         }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (PlayzoneVisual.currentView == ViewToShowEnum.CHECKOUT || PlayzoneVisual.currentView == ViewToShowEnum.GRILL)
+        if (PlayzoneVisual.currentView == ViewToShowEnum.CHECKOUT)
         {
             GetComponent<RectTransform>().anchoredPosition += eventData.delta / GetComponentInParent<Canvas>().scaleFactor;
+        }
+        if (PlayzoneVisual.currentView == ViewToShowEnum.GRILL)
+        {
+            FindFirstObjectByType<GrillVisual>().DragTacos(eventData);
         }
     }
 

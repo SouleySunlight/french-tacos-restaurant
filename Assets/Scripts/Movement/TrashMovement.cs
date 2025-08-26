@@ -1,19 +1,14 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TrashMovement : MonoBehaviour, IDropHandler
+public class TrashMovement : MonoBehaviour
 {
 
     [SerializeField] private AudioClip trashShound;
 
-    public void OnDrop(PointerEventData pointerEventData)
+
+    public void PlayTrashSound()
     {
-        GameObject dropped = pointerEventData.pointerDrag;
-        if (!dropped.TryGetComponent<TacosDisplayer>(out var tacosDisplayer)) { return; }
-        if (PlayzoneVisual.currentView == ViewToShowEnum.GRILL)
-        {
-            GameManager.Instance.SoundManager.PlaySFX(trashShound);
-            GameManager.Instance.GrillManager.DiscardTacos(tacosDisplayer.tacosData);
-        }
+        GameManager.Instance.SoundManager.PlaySFX(trashShound);
     }
 }

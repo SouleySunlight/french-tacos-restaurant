@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class GrillVisual : MonoBehaviour, IView
 {
     [SerializeField] private GameObject tacosToGrillPrefab;
+    [SerializeField] private GameObject trash;
+
     [SerializeField] private RectTransform grillPosition;
     [SerializeField] private RectTransform parentPosition;
 
@@ -155,5 +158,49 @@ public class GrillVisual : MonoBehaviour, IView
         if (tacosToDiscard == null) { return; }
         tacosToGrillList.Remove(tacosToDiscard);
         Destroy(tacosToDiscard);
+    }
+
+    public void DragTacos(PointerEventData eventData)
+    {
+        var draggedTacos = eventData.pointerDrag;
+        var rectTransform = draggedTacos.GetComponent<RectTransform>();
+        var tacosMovemement = draggedTacos.GetComponent<TacosMovemement>();
+        float distance = Vector2.Distance(eventData.position, trash.transform.position);
+
+        if (tacosMovemement.isAboveTrash)
+        {
+            if (distance >= 200)
+            {
+                RemoveTacosFromAboveTrash(draggedTacos);
+                rectTransform.anchoredPosition += eventData.delta / GetComponentInParent<Canvas>().scaleFactor;
+            }
+            return;
+        }
+        if (distance < 200 && !tacosMovemement.isAboveTrash)
+        {
+            PlaceTacosAboveTrash(draggedTacos);
+            return;
+        }
+        rectTransform.anchoredPosition += eventData.delta / GetComponentInParent<Canvas>().scaleFactor;
+
+    }
+
+    void PlaceTacosAboveTrash(GameObject tacos)
+    {
+        tacos.GetComponent<TacosMovemement>().isAboveTrash = true;
+        var rectTransform = tacos.GetComponent<RectTransform>();
+
+        rectTransform.localScale = Vector3.one * 0.4f;
+        rectTransform.position = new(trash.transform.position.x, trash.transform.position.y + 150);
+
+    }
+
+    void RemoveTacosFromAboveTrash(GameObject tacos)
+    {
+        tacos.GetComponent<TacosMovemement>().isAboveTrash = false;
+        var rectTransform = tacos.GetComponent<RectTransform>();
+
+        rectTransform.localScale = Vector3.one;
+
     }
 }
