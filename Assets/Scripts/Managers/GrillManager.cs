@@ -122,6 +122,10 @@ public class GrillManager : MonoBehaviour, IWorkStation
 
     public void AddTacosToGrill(Tacos tacos)
     {
+        if (!isGrillOpened)
+        {
+            return;
+        }
         waitingToGrillTacos.Remove(tacos);
 
         for (int i = 0; i <= grillingTacos.Count; i++)
