@@ -98,11 +98,6 @@ public class GrillManager : MonoBehaviour, IWorkStation
             {
                 return;
             }
-            if (waitingToGrillTacos.Contains(tacos))
-            {
-                AddTacosToGrill(tacos);
-                return;
-            }
 
             if (tacos.isGrilled || tacos.isBurnt)
             {

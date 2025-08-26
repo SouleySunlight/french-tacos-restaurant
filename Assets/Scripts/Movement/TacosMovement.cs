@@ -20,11 +20,15 @@ public class TacosMovemement : MonoBehaviour, IPointerDownHandler, IDragHandler,
         {
             FindFirstObjectByType<CheckoutVisual>().UpdateVisuals();
         }
+        if (PlayzoneVisual.currentView == ViewToShowEnum.GRILL)
+        {
+            FindFirstObjectByType<GrillVisual>().UpdateVisual();
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (PlayzoneVisual.currentView == ViewToShowEnum.CHECKOUT)
+        if (PlayzoneVisual.currentView == ViewToShowEnum.CHECKOUT || PlayzoneVisual.currentView == ViewToShowEnum.GRILL)
         {
             GetComponent<RectTransform>().anchoredPosition += eventData.delta / GetComponentInParent<Canvas>().scaleFactor;
         }

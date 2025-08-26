@@ -1,0 +1,1547 @@
+fileFormatVersion: 2
+guid: 72e9df94376814713a7b951626a32eb5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4227207508699736511
+    second: TRASH 1 (1)_0
+  - first:
+      213: -7836132698343682408
+    second: TRASH 1 (1)_1
+  - first:
+      213: 5109975724131074735
+    second: TRASH 1 (1)_2
+  - first:
+      213: -3903410044545159638
+    second: TRASH 1 (1)_3
+  - first:
+      213: -6744829512504101192
+    second: TRASH 1 (1)_4
+  - first:
+      213: -5537811379021689789
+    second: TRASH 1 (1)_5
+  - first:
+      213: -5271400517475830513
+    second: TRASH 1 (1)_6
+  - first:
+      213: 3934412870528369118
+    second: TRASH 1 (1)_7
+  - first:
+      213: -7808714401455246186
+    second: TRASH 1 (1)_8
+  - first:
+      213: -2616112327761499873
+    second: TRASH 1 (1)_9
+  - first:
+      213: 3540330136314782039
+    second: TRASH 1 (1)_10
+  - first:
+      213: -696026629164532803
+    second: TRASH 1 (1)_11
+  - first:
+      213: -4508107664826339133
+    second: TRASH 1 (1)_12
+  - first:
+      213: 2004147253500714748
+    second: TRASH 1 (1)_13
+  - first:
+      213: 1449935278923580033
+    second: TRASH 1 (1)_14
+  - first:
+      213: 7306409074981523240
+    second: TRASH 1 (1)_15
+  - first:
+      213: -1522739242244355966
+    second: TRASH 1 (1)_16
+  - first:
+      213: 8059237217626258677
+    second: TRASH 1 (1)_17
+  - first:
+      213: -2509917263968825889
+    second: TRASH 1 (1)_18
+  - first:
+      213: -2885290711780351656
+    second: TRASH 1 (1)_19
+  - first:
+      213: -2032517239805944734
+    second: TRASH 1 (1)_20
+  - first:
+      213: -9194941410312372547
+    second: TRASH 1 (1)_21
+  - first:
+      213: -6920491646955396267
+    second: TRASH 1 (1)_22
+  - first:
+      213: -929929361701154528
+    second: TRASH 1 (1)_23
+  - first:
+      213: -8978174840185009774
+    second: TRASH 1 (1)_24
+  - first:
+      213: 9183570250098550238
+    second: TRASH 1 (1)_25
+  - first:
+      213: 1202784747374709609
+    second: TRASH 1 (1)_26
+  - first:
+      213: 6863103344243164645
+    second: TRASH 1 (1)_27
+  - first:
+      213: -1979761204074879233
+    second: TRASH 1 (1)_28
+  - first:
+      213: 4206070892990818363
+    second: TRASH 1 (1)_29
+  - first:
+      213: -3430908852376930135
+    second: TRASH 1 (1)_30
+  - first:
+      213: 5032260655143416676
+    second: TRASH 1 (1)_31
+  - first:
+      213: -5926836707862689884
+    second: TRASH 1 (1)_32
+  - first:
+      213: -9157313382129316890
+    second: TRASH 1 (1)_33
+  - first:
+      213: -7933118973915379816
+    second: TRASH 1 (1)_34
+  - first:
+      213: -1102928333188654809
+    second: TRASH 1 (1)_35
+  - first:
+      213: -1360886525911541315
+    second: TRASH 1 (1)_36
+  - first:
+      213: 6002162695582512039
+    second: TRASH 1 (1)_37
+  - first:
+      213: -7062072617401353480
+    second: TRASH 1 (1)_38
+  - first:
+      213: 108072613912595465
+    second: TRASH 1 (1)_39
+  - first:
+      213: 4671872721414076530
+    second: TRASH 1 (1)_40
+  - first:
+      213: 2425177501603145042
+    second: TRASH 1 (1)_41
+  - first:
+      213: 4642165179836542336
+    second: TRASH 1 (1)_42
+  - first:
+      213: -5800552041550456470
+    second: TRASH 1 (1)_43
+  - first:
+      213: -1469951303351940122
+    second: TRASH 1 (1)_44
+  - first:
+      213: -4826414390882911513
+    second: TRASH 1 (1)_45
+  - first:
+      213: 6101166351197208858
+    second: TRASH 1 (1)_46
+  - first:
+      213: -80590641855729211
+    second: TRASH 1 (1)_47
+  - first:
+      213: 544078276199234513
+    second: TRASH 1 (1)_48
+  - first:
+      213: -5566726443533574694
+    second: TRASH 1 (1)_49
+  - first:
+      213: -310328365255353150
+    second: TRASH 1 (1)_50
+  - first:
+      213: -573274209471154446
+    second: TRASH 1 (1)_51
+  - first:
+      213: -4159565705790530198
+    second: TRASH 1 (1)_52
+  - first:
+      213: 6068948886528740909
+    second: TRASH 1 (1)_53
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TRASH 1 (1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1583
+        width: 98
+        height: 477
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1469614ea21f555c0800000000000000
+      internalID: -4227207508699736511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 26
+        width: 2207
+        height: 2034
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89ec66614d6704390800000000000000
+      internalID: -7836132698343682408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_2
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 1876
+        width: 85
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa2c3b7e8d74ae640800000000000000
+      internalID: 5109975724131074735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_3
+      rect:
+        serializedVersion: 2
+        x: 1954
+        y: 1994
+        width: 14
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2ea132ee3d44d9c0800000000000000
+      internalID: -3903410044545159638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_4
+      rect:
+        serializedVersion: 2
+        x: 2011
+        y: 2053
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b63f944b4d8562a0800000000000000
+      internalID: -6744829512504101192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_5
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 2023
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34ccb4034edb523b0800000000000000
+      internalID: -5537811379021689789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_6
+      rect:
+        serializedVersion: 2
+        x: 1018
+        y: 2026
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f05fa0f882938d6b0800000000000000
+      internalID: -5271400517475830513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_7
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 2026
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed1819b09a7d99630800000000000000
+      internalID: 3934412870528369118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_8
+      rect:
+        serializedVersion: 2
+        x: 1168
+        y: 2026
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69478cccf9fd1a390800000000000000
+      internalID: -7808714401455246186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_9
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 2005
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f19614bd2b3b1bbd0800000000000000
+      internalID: -2616112327761499873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_10
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 2007
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75127a26087c12130800000000000000
+      internalID: 3540330136314782039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_11
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 2005
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbb7f6ee7773756f0800000000000000
+      internalID: -696026629164532803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_12
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 2005
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c07fccb6fbff61c0800000000000000
+      internalID: -4508107664826339133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_13
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 2007
+        width: 23
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfe1c720f4920db10800000000000000
+      internalID: 2004147253500714748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_14
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 1994
+        width: 31
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1820c8f34743f1410800000000000000
+      internalID: 1449935278923580033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_15
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 2007
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82fc6f9b754956560800000000000000
+      internalID: 7306409074981523240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_16
+      rect:
+        serializedVersion: 2
+        x: 1901
+        y: 2003
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2884a7c1ab42edae0800000000000000
+      internalID: -1522739242244355966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_17
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 1994
+        width: 40
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fc783dbc8928df60800000000000000
+      internalID: 8059237217626258677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_18
+      rect:
+        serializedVersion: 2
+        x: 1957
+        y: 1796
+        width: 108
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdd8489eb8bfa2dd0800000000000000
+      internalID: -2509917263968825889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_19
+      rect:
+        serializedVersion: 2
+        x: 1971
+        y: 2006
+        width: 23
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8512992726365f7d0800000000000000
+      internalID: -2885290711780351656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_20
+      rect:
+        serializedVersion: 2
+        x: 2058
+        y: 1994
+        width: 56
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26c5281d65c0bc3e0800000000000000
+      internalID: -2032517239805944734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_21
+      rect:
+        serializedVersion: 2
+        x: 2127
+        y: 1994
+        width: 31
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbe3dc31181056080800000000000000
+      internalID: -9194941410312372547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_22
+      rect:
+        serializedVersion: 2
+        x: 2159
+        y: 2003
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5536a20738975ff90800000000000000
+      internalID: -6920491646955396267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_23
+      rect:
+        serializedVersion: 2
+        x: 2170
+        y: 1994
+        width: 38
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 021d8992c2a3813f0800000000000000
+      internalID: -929929361701154528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_24
+      rect:
+        serializedVersion: 2
+        x: 2095
+        y: 1796
+        width: 108
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2994c6f1d8d176380800000000000000
+      internalID: -8978174840185009774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_25
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 1694
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed528fe5c78927f70800000000000000
+      internalID: 9183570250098550238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_26
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 1694
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96b0788ea5621b010800000000000000
+      internalID: 1202784747374709609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_27
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 1694
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e5c86a1124ae3f50800000000000000
+      internalID: 6863103344243164645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_28
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 1482
+        width: 9
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff664039ca97684e0800000000000000
+      internalID: -1979761204074879233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_29
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 1464
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b38e3d44137fe5a30800000000000000
+      internalID: 4206070892990818363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_30
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 1431
+        width: 7
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a874559396f260d0800000000000000
+      internalID: -3430908852376930135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_31
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 1402
+        width: 6
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4637ffe576e26d540800000000000000
+      internalID: 5032260655143416676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_32
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 1388
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a7491a7a65afbda0800000000000000
+      internalID: -5926836707862689884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_33
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 1379
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6eb40491fffaae080800000000000000
+      internalID: -9157313382129316890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_34
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1354
+        width: 9
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 897ccde1356e7e190800000000000000
+      internalID: -7933118973915379816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_35
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 1509
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7299397468c91b0f0800000000000000
+      internalID: -1102928333188654809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_36
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 1347
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db95d6b3ae82d1de0800000000000000
+      internalID: -1360886525911541315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_37
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 1582
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a3fb4abb27fb4350800000000000000
+      internalID: 6002162695582512039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_38
+      rect:
+        serializedVersion: 2
+        x: 1991
+        y: 1283
+        width: 216
+        height: 417
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fa77c5fe5a7efd90800000000000000
+      internalID: -7062072617401353480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_39
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 556
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90c45324873ff7100800000000000000
+      internalID: 108072613912595465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_40
+      rect:
+        serializedVersion: 2
+        x: 2198
+        y: 446
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27839bbcc73d5d040800000000000000
+      internalID: 4671872721414076530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_41
+      rect:
+        serializedVersion: 2
+        x: 1959
+        y: 401
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 255235ca616f7a120800000000000000
+      internalID: 2425177501603145042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_42
+      rect:
+        serializedVersion: 2
+        x: 1991
+        y: 349
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08d28d4c2a84c6040800000000000000
+      internalID: 4642165179836542336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_43
+      rect:
+        serializedVersion: 2
+        x: 2147
+        y: 349
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a69d73e96ac408fa0800000000000000
+      internalID: -5800552041550456470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_44
+      rect:
+        serializedVersion: 2
+        x: 2162
+        y: 349
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ebc596e31fa99be0800000000000000
+      internalID: -1469951303351940122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_45
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 295
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ea3794dea1250db0800000000000000
+      internalID: -4826414390882911513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_46
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 293
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a110da69872bba450800000000000000
+      internalID: 6101166351197208858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_47
+      rect:
+        serializedVersion: 2
+        x: 2023
+        y: 289
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c1f7fbfc3fa1eef0800000000000000
+      internalID: -80590641855729211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_48
+      rect:
+        serializedVersion: 2
+        x: 2136
+        y: 295
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dbbcde3f44fc8700800000000000000
+      internalID: 544078276199234513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_49
+      rect:
+        serializedVersion: 2
+        x: 2144
+        y: 289
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: add586b1bc30fb2b0800000000000000
+      internalID: -5566726443533574694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_50
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 286
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cc1a39fefd71bbf0800000000000000
+      internalID: -310328365255353150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_51
+      rect:
+        serializedVersion: 2
+        x: 1894
+        y: 286
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f63491d4225b08f0800000000000000
+      internalID: -573274209471154446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_52
+      rect:
+        serializedVersion: 2
+        x: 2030
+        y: 286
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6d557667014646c0800000000000000
+      internalID: -4159565705790530198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TRASH 1 (1)_53
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 246
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2e4c8d8bdc393450800000000000000
+      internalID: 6068948886528740909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      TRASH 1 (1)_0: -4227207508699736511
+      TRASH 1 (1)_1: -7836132698343682408
+      TRASH 1 (1)_10: 3540330136314782039
+      TRASH 1 (1)_11: -696026629164532803
+      TRASH 1 (1)_12: -4508107664826339133
+      TRASH 1 (1)_13: 2004147253500714748
+      TRASH 1 (1)_14: 1449935278923580033
+      TRASH 1 (1)_15: 7306409074981523240
+      TRASH 1 (1)_16: -1522739242244355966
+      TRASH 1 (1)_17: 8059237217626258677
+      TRASH 1 (1)_18: -2509917263968825889
+      TRASH 1 (1)_19: -2885290711780351656
+      TRASH 1 (1)_2: 5109975724131074735
+      TRASH 1 (1)_20: -2032517239805944734
+      TRASH 1 (1)_21: -9194941410312372547
+      TRASH 1 (1)_22: -6920491646955396267
+      TRASH 1 (1)_23: -929929361701154528
+      TRASH 1 (1)_24: -8978174840185009774
+      TRASH 1 (1)_25: 9183570250098550238
+      TRASH 1 (1)_26: 1202784747374709609
+      TRASH 1 (1)_27: 6863103344243164645
+      TRASH 1 (1)_28: -1979761204074879233
+      TRASH 1 (1)_29: 4206070892990818363
+      TRASH 1 (1)_3: -3903410044545159638
+      TRASH 1 (1)_30: -3430908852376930135
+      TRASH 1 (1)_31: 5032260655143416676
+      TRASH 1 (1)_32: -5926836707862689884
+      TRASH 1 (1)_33: -9157313382129316890
+      TRASH 1 (1)_34: -7933118973915379816
+      TRASH 1 (1)_35: -1102928333188654809
+      TRASH 1 (1)_36: -1360886525911541315
+      TRASH 1 (1)_37: 6002162695582512039
+      TRASH 1 (1)_38: -7062072617401353480
+      TRASH 1 (1)_39: 108072613912595465
+      TRASH 1 (1)_4: -6744829512504101192
+      TRASH 1 (1)_40: 4671872721414076530
+      TRASH 1 (1)_41: 2425177501603145042
+      TRASH 1 (1)_42: 4642165179836542336
+      TRASH 1 (1)_43: -5800552041550456470
+      TRASH 1 (1)_44: -1469951303351940122
+      TRASH 1 (1)_45: -4826414390882911513
+      TRASH 1 (1)_46: 6101166351197208858
+      TRASH 1 (1)_47: -80590641855729211
+      TRASH 1 (1)_48: 544078276199234513
+      TRASH 1 (1)_49: -5566726443533574694
+      TRASH 1 (1)_5: -5537811379021689789
+      TRASH 1 (1)_50: -310328365255353150
+      TRASH 1 (1)_51: -573274209471154446
+      TRASH 1 (1)_52: -4159565705790530198
+      TRASH 1 (1)_53: 6068948886528740909
+      TRASH 1 (1)_6: -5271400517475830513
+      TRASH 1 (1)_7: 3934412870528369118
+      TRASH 1 (1)_8: -7808714401455246186
+      TRASH 1 (1)_9: -2616112327761499873
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
