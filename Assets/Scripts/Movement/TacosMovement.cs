@@ -11,6 +11,10 @@ public class TacosMovemement : MonoBehaviour, IPointerDownHandler, IDragHandler,
     public void OnBeginDrag(PointerEventData eventData)
     {
         canvasGroup.blocksRaycasts = false;
+        if (PlayzoneVisual.currentView == ViewToShowEnum.GRILL)
+        {
+            FindFirstObjectByType<GrillVisual>().PutTacosAbove(eventData.pointerDrag);
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)

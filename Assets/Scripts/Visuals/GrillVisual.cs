@@ -5,7 +5,9 @@ using UnityEngine.UI;
 public class GrillVisual : MonoBehaviour, IView
 {
     [SerializeField] private GameObject tacosToGrillPrefab;
-    [SerializeField] private RectTransform grillPosition = new();
+    [SerializeField] private RectTransform grillPosition;
+    [SerializeField] private RectTransform parentPosition;
+
     [SerializeField] private GameObject grillTop;
     private List<GameObject> tacosToGrillList = new();
     private List<GameObject> grillingTacos = new();
@@ -42,12 +44,20 @@ public class GrillVisual : MonoBehaviour, IView
         UpdateUngrilledTacosVisual();
     }
 
+    public void PutTacosAbove(GameObject tacos)
+    {
+        var draggingTacos = tacosToGrillList.Find((tacosPrefab) => tacosPrefab == tacos);
+        if (!draggingTacos) { return; }
+        draggingTacos.transform.SetParent(parentPosition);
+    }
+
     public void UpdateUngrilledTacosVisual()
     {
         var index = 0;
         foreach (GameObject prefab in tacosToGrillList)
         {
             var rectTransform = prefab.GetComponent<RectTransform>();
+            rectTransform.SetParent(grillPosition);
 
             rectTransform.anchorMin = new Vector2(0.3f + index * 0.4f, 1);
             rectTransform.anchorMax = new Vector2(0.3f + index * 0.4f, 1);
@@ -75,6 +85,8 @@ public class GrillVisual : MonoBehaviour, IView
     {
         var tacosToGrill = tacosToGrillList.Find(tacosPrefab => tacosPrefab.GetComponent<TacosDisplayer>().tacosData == tacos);
         tacosToGrillList.Remove(tacosToGrill);
+
+        tacosToGrill.gameObject.transform.SetParent(grillPosition);
 
 
         var rectTransform = tacosToGrill.GetComponent<RectTransform>();
