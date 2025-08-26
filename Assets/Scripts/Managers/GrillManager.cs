@@ -176,6 +176,7 @@ public class GrillManager : MonoBehaviour, IWorkStation
 
     public void DiscardBurntTacos(Tacos tacos)
     {
+        GameManager.Instance.SoundManager.PlayTrashSound();
         RemoveTacosOfTheGrill(tacos);
 
     }
