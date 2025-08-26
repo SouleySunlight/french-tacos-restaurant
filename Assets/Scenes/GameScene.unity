@@ -9886,9 +9886,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 758821818}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -783}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 165}
   m_SizeDelta: {x: 300, y: 330}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1553063276
@@ -9941,6 +9941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ddd3fb0cb0b407ab44aaaf68c86cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trashShound: {fileID: 8300000, guid: 3ced00370134847aea1ab35bfc8950a9, type: 3}
 --- !u!1 &1585660920
 GameObject:
   m_ObjectHideFlags: 0
@@ -12552,6 +12553,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 411
       objectReference: {fileID: 0}
+    - target: {fileID: 190985847914835799, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
+      propertyPath: trash
+      value: 
+      objectReference: {fileID: 1553063274}
     - target: {fileID: 190985847914835799, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: grillTop
       value: 

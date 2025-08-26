@@ -163,6 +163,13 @@ public class GrillVisual : MonoBehaviour, IView
         tacosToGrillList.Remove(tacosToDiscard);
         Destroy(tacosToDiscard);
     }
+    public void DiscardBurntTacos(Tacos tacos)
+    {
+        var tacosToDiscard = grillingTacos.Find(tacosToGrill => tacosToGrill.GetComponent<TacosDisplayer>().tacosData.guid == tacos.guid);
+        if (tacosToDiscard == null) { return; }
+        grillingTacos.Remove(tacosToDiscard);
+        Destroy(tacosToDiscard);
+    }
 
     public void DragTacos(PointerEventData eventData)
     {

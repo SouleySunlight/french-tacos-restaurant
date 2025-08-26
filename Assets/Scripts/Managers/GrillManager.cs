@@ -99,7 +99,13 @@ public class GrillManager : MonoBehaviour, IWorkStation
                 return;
             }
 
-            if (tacos.isGrilled || tacos.isBurnt)
+            if (tacos.isBurnt)
+            {
+                DiscardBurntTacos(tacos);
+                return;
+            }
+
+            if (tacos.isGrilled)
             {
                 ServeTacos(tacos);
                 return;
@@ -166,6 +172,12 @@ public class GrillManager : MonoBehaviour, IWorkStation
         if (tacosToDiscard == null) { return; }
         waitingToGrillTacos.Remove(tacosToDiscard);
         grillVisual.DiscardTacos(tacosToDiscard);
+
+    }
+
+    public void DiscardBurntTacos(Tacos tacos)
+    {
+        RemoveTacosOfTheGrill(tacos);
 
     }
 
