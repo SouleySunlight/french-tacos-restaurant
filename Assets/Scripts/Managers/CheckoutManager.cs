@@ -95,4 +95,23 @@ public class CheckoutManager : MonoBehaviour, IWorkStation
     {
         isWorkerTaskDone = true;
     }
+
+    public void OnEndDrag(GameObject tacos)
+    {
+        if (tacos.GetComponent<TacosMovemement>().isAboveTrash)
+        {
+            checkoutVisual.ThrowTacos(tacos);
+            GameManager.Instance.SoundManager.PlayTrashSound();
+        }
+        checkoutVisual.UpdateVisuals();
+    }
+
+    public void DiscardTacos(Tacos tacos)
+    {
+        var tacosToDiscard = tacosToServe.Find(waitingTacos => waitingTacos.guid == tacos.guid);
+        if (tacosToDiscard == null) { return; }
+        tacosToServe.Remove(tacosToDiscard);
+        checkoutVisual.RemoveTacosToServe(tacosToDiscard);
+
+    }
 }

@@ -17,6 +17,10 @@ public class TacosMovemement : MonoBehaviour, IPointerDownHandler, IDragHandler,
         {
             FindFirstObjectByType<GrillVisual>().PutTacosAbove(eventData.pointerDrag);
         }
+        if (PlayzoneVisual.currentView == ViewToShowEnum.CHECKOUT)
+        {
+            FindFirstObjectByType<CheckoutVisual>().PutTacosAbove(eventData.pointerDrag);
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -24,7 +28,7 @@ public class TacosMovemement : MonoBehaviour, IPointerDownHandler, IDragHandler,
         canvasGroup.blocksRaycasts = true;
         if (PlayzoneVisual.currentView == ViewToShowEnum.CHECKOUT)
         {
-            FindFirstObjectByType<CheckoutVisual>().UpdateVisuals();
+            GameManager.Instance.CheckoutManager.OnEndDrag(eventData.pointerDrag);
         }
         if (PlayzoneVisual.currentView == ViewToShowEnum.GRILL)
         {
@@ -36,7 +40,8 @@ public class TacosMovemement : MonoBehaviour, IPointerDownHandler, IDragHandler,
     {
         if (PlayzoneVisual.currentView == ViewToShowEnum.CHECKOUT)
         {
-            GetComponent<RectTransform>().anchoredPosition += eventData.delta / GetComponentInParent<Canvas>().scaleFactor;
+            FindFirstObjectByType<CheckoutVisual>().DragTacos(eventData);
+            //GetComponent<RectTransform>().anchoredPosition += eventData.delta / GetComponentInParent<Canvas>().scaleFactor;
         }
         if (PlayzoneVisual.currentView == ViewToShowEnum.GRILL)
         {
@@ -77,7 +82,13 @@ public class TacosMovemement : MonoBehaviour, IPointerDownHandler, IDragHandler,
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        GameManager.Instance.GrillManager.DiscardTacos(tacos.GetComponent<TacosDisplayer>().tacosData);
-        Destroy(gameObject);
+        if (PlayzoneVisual.currentView == ViewToShowEnum.GRILL)
+        {
+            GameManager.Instance.GrillManager.DiscardTacos(tacos.GetComponent<TacosDisplayer>().tacosData);
+        }
+        if (PlayzoneVisual.currentView == ViewToShowEnum.CHECKOUT)
+        {
+            GameManager.Instance.CheckoutManager.DiscardTacos(tacos.GetComponent<TacosDisplayer>().tacosData);
+        }
     }
 }
