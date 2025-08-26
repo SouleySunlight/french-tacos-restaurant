@@ -60,7 +60,11 @@ public class GrillVisual : MonoBehaviour, IView
         foreach (GameObject prefab in tacosToGrillList)
         {
             var rectTransform = prefab.GetComponent<RectTransform>();
-            rectTransform.SetParent(grillPosition);
+            if (!prefab.GetComponent<TacosMovemement>().isAboveTrash)
+            {
+                rectTransform.SetParent(grillPosition);
+
+            }
 
             rectTransform.anchorMin = new Vector2(0.3f + index * 0.4f, 1);
             rectTransform.anchorMax = new Vector2(0.3f + index * 0.4f, 1);
@@ -201,6 +205,13 @@ public class GrillVisual : MonoBehaviour, IView
         var rectTransform = tacos.GetComponent<RectTransform>();
 
         rectTransform.localScale = Vector3.one;
+
+    }
+
+    public void ThrowTacos(GameObject tacos)
+    {
+        tacos.GetComponent<TacosMovemement>().ThrowTacos(tacos, trash.GetComponent<RectTransform>());
+
 
     }
 }

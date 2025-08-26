@@ -1,4 +1,5 @@
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -49,5 +50,34 @@ public class TacosMovemement : MonoBehaviour, IPointerDownHandler, IDragHandler,
         {
             ClickEventGrill.Invoke(gameObject);
         }
+    }
+
+    public void ThrowTacos(GameObject tacos, RectTransform trashPosition)
+    {
+        StartCoroutine(ThrowTacosCoroutine(0.25f, tacos, trashPosition));
+    }
+    IEnumerator ThrowTacosCoroutine(float time, GameObject tacos, RectTransform trashPosition)
+    {
+        var rectTransform = tacos.GetComponent<RectTransform>();
+        Vector3 startingPos = rectTransform.position;
+        Vector3 finalPos = trashPosition.transform.position;
+
+        Vector3 startingScale = rectTransform.localScale;
+        Vector3 finalScale = Vector3.one * 0.1f;
+
+        float elapsedTime = 0;
+
+        while (elapsedTime < time)
+        {
+            float animationCompleteRatio = elapsedTime / time;
+            var position = Vector3.Lerp(startingPos, finalPos, animationCompleteRatio);
+            position.y = startingPos.y + (finalPos.y - startingPos.y) * animationCompleteRatio;
+            rectTransform.position = position;
+            rectTransform.localScale = Vector3.Lerp(startingScale, finalScale, animationCompleteRatio);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        GameManager.Instance.GrillManager.DiscardTacos(tacos.GetComponent<TacosDisplayer>().tacosData);
+        Destroy(gameObject);
     }
 }

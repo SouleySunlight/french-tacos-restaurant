@@ -348,9 +348,11 @@ public class GrillManager : MonoBehaviour, IWorkStation
     {
         if (tacos.GetComponent<TacosMovemement>().isAboveTrash)
         {
-            GameManager.Instance.GrillManager.DiscardTacos(tacos.GetComponent<TacosDisplayer>().tacosData);
+            grillVisual.ThrowTacos(tacos);
             FindFirstObjectByType<TrashMovement>().PlayTrashSound();
         }
         grillVisual.UpdateVisual();
     }
+
+
 }
