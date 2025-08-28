@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Timer over
+  m_Name: TimerOver
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 616441831567127772, guid: 2c6ad23937ead47dcaf1b8d678dcd627, type: 3}
+      value: {fileID: -7380141637143962509, guid: 1537208f9eace40518e5d1f10f058c76, type: 3}
     - time: 0.125
-      value: {fileID: 203087893262084961, guid: 8aeade342d2af48ed9b9199311e7d33a, type: 3}
+      value: {fileID: 5877860068014828901, guid: 60781a4fc91834822881cf0af0ad4ee3, type: 3}
     attribute: m_Sprite
     path: 
     classID: 114
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 616441831567127772, guid: 2c6ad23937ead47dcaf1b8d678dcd627, type: 3}
-    - {fileID: 203087893262084961, guid: 8aeade342d2af48ed9b9199311e7d33a, type: 3}
+    - {fileID: -7380141637143962509, guid: 1537208f9eace40518e5d1f10f058c76, type: 3}
+    - {fileID: 5877860068014828901, guid: 60781a4fc91834822881cf0af0ad4ee3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

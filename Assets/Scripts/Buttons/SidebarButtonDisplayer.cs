@@ -16,7 +16,7 @@ public class SidebarButtonDisplayer : MonoBehaviour
 
     public void UpdateTimer(float percentage)
     {
-        roundedCompletionbar.GetComponent<RoundedCompletionBarDisplayer>().UpdateTimer(percentage);
+        roundedCompletionbar.GetComponent<SidebarCompletionBar>().UpdateTimer(percentage);
     }
 
 }
