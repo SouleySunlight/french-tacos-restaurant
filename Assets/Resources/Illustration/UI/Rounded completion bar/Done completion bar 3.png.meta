@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1d7eff47953824453bc1b749c31a3e25
+guid: 8aeade342d2af48ed9b9199311e7d33a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6309690537701557294
-    second: Done completion bar 2_0
+      213: 203087893262084961
+    second: Done completion bar 3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Done completion bar 2_0
+      name: Done completion bar 3_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2dbb7a9d2e97f68a0800000000000000
-      internalID: -6309690537701557294
+      spriteID: 16ba118ec5381d200800000000000000
+      internalID: 203087893262084961
       vertices: []
       indices: 
       edges: []
