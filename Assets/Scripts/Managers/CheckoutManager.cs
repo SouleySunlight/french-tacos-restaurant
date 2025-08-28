@@ -8,6 +8,7 @@ public class CheckoutManager : MonoBehaviour, IWorkStation
 
     private CheckoutVisual checkoutVisual;
 
+    private static readonly int MAX_TACOS_TO_SERVE = 6;
 
     private Worker currentWorker = null;
     private bool isWorkerTaskDone = false;
@@ -85,8 +86,32 @@ public class CheckoutManager : MonoBehaviour, IWorkStation
         }
     }
 
+    public bool CanAddTacosToCheckout()
+    {
+        return tacosToServe.Count < MAX_TACOS_TO_SERVE;
+    }
+
     public void MarkWorkerTaskAsDone()
     {
         isWorkerTaskDone = true;
+    }
+
+    public void OnEndDrag(GameObject tacos)
+    {
+        if (tacos.GetComponent<TacosMovemement>().isAboveTrash)
+        {
+            checkoutVisual.ThrowTacos(tacos);
+            GameManager.Instance.SoundManager.PlayTrashSound();
+        }
+        checkoutVisual.UpdateVisuals();
+    }
+
+    public void DiscardTacos(Tacos tacos)
+    {
+        var tacosToDiscard = tacosToServe.Find(waitingTacos => waitingTacos.guid == tacos.guid);
+        if (tacosToDiscard == null) { return; }
+        tacosToServe.Remove(tacosToDiscard);
+        checkoutVisual.RemoveTacosToServe(tacosToDiscard);
+
     }
 }

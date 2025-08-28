@@ -1,11 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class GrillVisual : MonoBehaviour, IView
 {
     [SerializeField] private GameObject tacosToGrillPrefab;
-    [SerializeField] private RectTransform grillPosition = new();
+    [SerializeField] private GameObject trash;
+
+    [SerializeField] private RectTransform grillPosition;
+    [SerializeField] private RectTransform parentPosition;
+
     [SerializeField] private GameObject grillTop;
     private List<GameObject> tacosToGrillList = new();
     private List<GameObject> grillingTacos = new();
@@ -42,12 +47,24 @@ public class GrillVisual : MonoBehaviour, IView
         UpdateUngrilledTacosVisual();
     }
 
+    public void PutTacosAbove(GameObject tacos)
+    {
+        var draggingTacos = tacosToGrillList.Find((tacosPrefab) => tacosPrefab == tacos);
+        if (!draggingTacos) { return; }
+        draggingTacos.transform.SetParent(parentPosition);
+    }
+
     public void UpdateUngrilledTacosVisual()
     {
         var index = 0;
         foreach (GameObject prefab in tacosToGrillList)
         {
             var rectTransform = prefab.GetComponent<RectTransform>();
+            if (!prefab.GetComponent<TacosMovemement>().isAboveTrash)
+            {
+                rectTransform.SetParent(grillPosition);
+
+            }
 
             rectTransform.anchorMin = new Vector2(0.3f + index * 0.4f, 1);
             rectTransform.anchorMax = new Vector2(0.3f + index * 0.4f, 1);
@@ -75,6 +92,8 @@ public class GrillVisual : MonoBehaviour, IView
     {
         var tacosToGrill = tacosToGrillList.Find(tacosPrefab => tacosPrefab.GetComponent<TacosDisplayer>().tacosData == tacos);
         tacosToGrillList.Remove(tacosToGrill);
+
+        tacosToGrill.gameObject.transform.SetParent(grillPosition);
 
 
         var rectTransform = tacosToGrill.GetComponent<RectTransform>();
@@ -135,5 +154,71 @@ public class GrillVisual : MonoBehaviour, IView
         grillingTacos.Clear();
         tacosToGrillList.Clear();
         UpdateVisual();
+    }
+
+    public void DiscardTacos(Tacos tacos)
+    {
+        var tacosToDiscard = tacosToGrillList.Find(tacosToGrill => tacosToGrill.GetComponent<TacosDisplayer>().tacosData.guid == tacos.guid);
+        if (tacosToDiscard == null) { return; }
+        tacosToGrillList.Remove(tacosToDiscard);
+        Destroy(tacosToDiscard);
+    }
+    public void DiscardBurntTacos(Tacos tacos)
+    {
+        var tacosToDiscard = grillingTacos.Find(tacosToGrill => tacosToGrill.GetComponent<TacosDisplayer>().tacosData.guid == tacos.guid);
+        if (tacosToDiscard == null) { return; }
+        grillingTacos.Remove(tacosToDiscard);
+        Destroy(tacosToDiscard);
+    }
+
+    public void DragTacos(PointerEventData eventData)
+    {
+        var draggedTacos = eventData.pointerDrag;
+        var rectTransform = draggedTacos.GetComponent<RectTransform>();
+        var tacosMovemement = draggedTacos.GetComponent<TacosMovemement>();
+        float distance = Vector2.Distance(eventData.position, trash.transform.position);
+
+        if (tacosMovemement.isAboveTrash)
+        {
+            if (distance >= 200)
+            {
+                RemoveTacosFromAboveTrash(draggedTacos);
+                rectTransform.anchoredPosition += eventData.delta / GetComponentInParent<Canvas>().scaleFactor;
+            }
+            return;
+        }
+        if (distance < 200 && !tacosMovemement.isAboveTrash)
+        {
+            PlaceTacosAboveTrash(draggedTacos);
+            return;
+        }
+        rectTransform.anchoredPosition += eventData.delta / GetComponentInParent<Canvas>().scaleFactor;
+
+    }
+
+    void PlaceTacosAboveTrash(GameObject tacos)
+    {
+        tacos.GetComponent<TacosMovemement>().isAboveTrash = true;
+        var rectTransform = tacos.GetComponent<RectTransform>();
+
+        rectTransform.localScale = Vector3.one * 0.4f;
+        rectTransform.position = new(trash.transform.position.x, trash.transform.position.y + 150);
+
+    }
+
+    void RemoveTacosFromAboveTrash(GameObject tacos)
+    {
+        tacos.GetComponent<TacosMovemement>().isAboveTrash = false;
+        var rectTransform = tacos.GetComponent<RectTransform>();
+
+        rectTransform.localScale = Vector3.one;
+
+    }
+
+    public void ThrowTacos(GameObject tacos)
+    {
+        tacos.GetComponent<TacosMovemement>().ThrowTacos(tacos, trash.GetComponent<RectTransform>());
+
+
     }
 }

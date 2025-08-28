@@ -180,6 +180,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
     void OnIngredientBurntClicked(int position, bool? doneByWorker = false)
     {
         RemoveIngredientFromFrying(position);
+        GameManager.Instance.SoundManager.PlayTrashSound();
         ManageFryingSound();
         if (doneByWorker == true)
         {

@@ -143,6 +143,7 @@ public class HotplateManager : MonoBehaviour, IWorkStation
 
     void OnIngredientBurntClicked(int position, bool? doneByWorker = false)
     {
+        GameManager.Instance.SoundManager.PlayTrashSound();
         RemoveIngredientFromCooking(position);
         ManageCookingSound();
 

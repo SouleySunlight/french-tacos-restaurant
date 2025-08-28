@@ -98,13 +98,14 @@ public class GrillManager : MonoBehaviour, IWorkStation
             {
                 return;
             }
-            if (waitingToGrillTacos.Contains(tacos))
+
+            if (tacos.isBurnt)
             {
-                AddTacosToGrill(tacos);
+                DiscardBurntTacos(tacos);
                 return;
             }
 
-            if (tacos.isGrilled || tacos.isBurnt)
+            if (tacos.isGrilled)
             {
                 ServeTacos(tacos);
                 return;
@@ -127,6 +128,10 @@ public class GrillManager : MonoBehaviour, IWorkStation
 
     public void AddTacosToGrill(Tacos tacos)
     {
+        if (!isGrillOpened)
+        {
+            return;
+        }
         waitingToGrillTacos.Remove(tacos);
 
         for (int i = 0; i <= grillingTacos.Count; i++)
@@ -146,18 +151,33 @@ public class GrillManager : MonoBehaviour, IWorkStation
 
     void ServeTacos(Tacos tacos)
     {
-        RemoveTacosOfTheGrill(tacos);
         gameManager.OnTacosGrilled(tacos);
 
     }
 
-    void RemoveTacosOfTheGrill(Tacos tacos)
+    public void RemoveTacosOfTheGrill(Tacos tacos)
     {
         var tacosToRemoveIndex = grillingTacos.FindIndex((grillTacos) => grillTacos != null && grillTacos.guid == tacos.guid);
         grillingTacos[tacosToRemoveIndex] = null;
         grillingTime[tacosToRemoveIndex] = GlobalConstant.UNUSED_TIME_VALUE;
         totalGrillingTime[tacosToRemoveIndex] = GlobalConstant.UNUSED_TIME_VALUE;
         grillVisual.RemoveTacosOfTheGrill(tacos, tacosToRemoveIndex);
+
+    }
+
+    public void DiscardTacos(Tacos tacos)
+    {
+        var tacosToDiscard = waitingToGrillTacos.Find(waitingTacos => waitingTacos.guid == tacos.guid);
+        if (tacosToDiscard == null) { return; }
+        waitingToGrillTacos.Remove(tacosToDiscard);
+        grillVisual.DiscardTacos(tacosToDiscard);
+
+    }
+
+    public void DiscardBurntTacos(Tacos tacos)
+    {
+        GameManager.Instance.SoundManager.PlayTrashSound();
+        RemoveTacosOfTheGrill(tacos);
 
     }
 
@@ -247,7 +267,6 @@ public class GrillManager : MonoBehaviour, IWorkStation
         foreach (var tacos in GetTacosDone())
         {
             gameManager.OnTacosGrilled(tacos);
-            RemoveTacosOfTheGrill(tacos);
             isWorkerTaskDone = true;
         }
 
@@ -336,4 +355,15 @@ public class GrillManager : MonoBehaviour, IWorkStation
         grillVisual.UpdateVisual();
 
     }
+    public void OnEndDrag(GameObject tacos)
+    {
+        if (tacos.GetComponent<TacosMovemement>().isAboveTrash)
+        {
+            grillVisual.ThrowTacos(tacos);
+            GameManager.Instance.SoundManager.PlayTrashSound();
+        }
+        grillVisual.UpdateVisual();
+    }
+
+
 }

@@ -9,6 +9,8 @@ public class SoundManager : MonoBehaviour
     public static bool isMusicOn { get; private set; } = true;
     public static bool areSoundsOn { get; private set; } = true;
     [SerializeField] private AudioClip mainTheme;
+    [SerializeField] private AudioClip trashSound;
+
 
     public void PlayMusic()
     {
@@ -90,6 +92,11 @@ public class SoundManager : MonoBehaviour
     public void LoadAreSoundsOn(bool soundsOn)
     {
         areSoundsOn = soundsOn;
+    }
+
+    public void PlayTrashSound()
+    {
+        PlaySFX(trashSound);
     }
 
 }

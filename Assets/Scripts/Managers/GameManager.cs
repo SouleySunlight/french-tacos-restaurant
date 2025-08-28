@@ -149,6 +149,12 @@ public class GameManager : MonoBehaviour
 
     public void OnTacosGrilled(Tacos tacos)
     {
+        if (!CheckoutManager.CanAddTacosToCheckout())
+        {
+            return;
+        }
+
+        GrillManager.RemoveTacosOfTheGrill(tacos);
         CheckoutManager.ReceiveTacosToServe(tacos);
 
     }
