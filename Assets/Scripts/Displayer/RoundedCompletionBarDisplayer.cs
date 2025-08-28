@@ -14,13 +14,15 @@ public class RoundedCompletionBarDisplayer : MonoBehaviour
 
         if (percentage == 0)
         {
-            animator.SetBool("isTimerOver", false);
             gameObject.SetActive(false);
+            if (animator == null) { return; }
+            animator.SetBool("isTimerOver", false);
             return;
         }
         gameObject.SetActive(true);
         if (percentage >= 1)
         {
+            if (animator == null) { return; }
             animator.SetBool("isTimerOver", true);
         }
     }

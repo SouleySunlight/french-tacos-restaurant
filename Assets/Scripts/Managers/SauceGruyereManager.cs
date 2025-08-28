@@ -32,7 +32,11 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
         if (GameManager.Instance.isGamePaused) { return; }
 
 
-        if (cookingTime == GlobalConstant.UNUSED_TIME_VALUE) { return; }
+        if (cookingTime == GlobalConstant.UNUSED_TIME_VALUE)
+        {
+            GameManager.Instance.SidebarManager.UpdateButtonTimer(ViewToShowEnum.SAUCE_GRUYERE, 0);
+            return;
+        }
 
         if (cookingTime >= currentCookingTime + sauceGruyere.wastingTimeOffset)
         {
@@ -54,6 +58,8 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
 
         cookingTime += Time.deltaTime;
         sauceGruyereVisual.UpdateTimer(cookingTime / currentCookingTime);
+        GameManager.Instance.SidebarManager.UpdateButtonTimer(ViewToShowEnum.SAUCE_GRUYERE, cookingTime / currentCookingTime);
+
 
     }
 

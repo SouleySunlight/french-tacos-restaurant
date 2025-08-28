@@ -30,6 +30,8 @@ public class HotplateManager : MonoBehaviour, IWorkStation
     void Update()
     {
         if (GameManager.Instance.isGamePaused) { return; }
+        SidebarTimer.UpdateSidebarTimer(cookingTimes, totalCookingTimes, ViewToShowEnum.HOTPLATE);
+
 
         for (int i = 0; i < cookingTimes.Count; i++)
         {

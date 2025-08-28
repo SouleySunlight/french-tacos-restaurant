@@ -38,6 +38,8 @@ public class FryerManager : MonoBehaviour, IWorkStation
     void Update()
     {
         if (GameManager.Instance.isGamePaused) { return; }
+        SidebarTimer.UpdateSidebarTimer(fryingTimes, totalFryingTimes, ViewToShowEnum.FRYER);
+
 
         for (int i = 0; i < fryingTimes.Count; i++)
         {
