@@ -56,6 +56,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
             }
 
             fryingTimes[i] += Time.deltaTime;
+            Debug.Log(fryingTimes[i] / totalFryingTimes[i]);
             fryerVisuals.UpdateTimer(i, fryingTimes[i] / totalFryingTimes[i]);
         }
     }
