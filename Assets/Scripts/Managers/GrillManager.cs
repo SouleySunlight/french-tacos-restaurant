@@ -40,10 +40,12 @@ public class GrillManager : MonoBehaviour, IWorkStation
     void Update()
     {
         if (GameManager.Instance.isGamePaused) { return; }
+
+        SidebarTimer.UpdateSidebarTimer(grillingTime, totalGrillingTime, ViewToShowEnum.GRILL);
         if (isGrillOpened) { return; }
         for (int i = 0; i < grillingTime.Count; i++)
         {
-            if (grillingTime[i] == -10f) { continue; }
+            if (grillingTime[i] == GlobalConstant.UNUSED_TIME_VALUE) { continue; }
 
             grillingTime[i] += Time.deltaTime;
 
@@ -62,8 +64,8 @@ public class GrillManager : MonoBehaviour, IWorkStation
                 continue;
             }
 
-            grillVisual.UpdateTimer(i, grillingTime[i] / totalGrillingTime[i]);
-
+            var percentage = grillingTime[i] / totalGrillingTime[i];
+            grillVisual.UpdateTimer(i, percentage);
         }
     }
 

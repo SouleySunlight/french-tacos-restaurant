@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 
@@ -24,6 +23,7 @@ public class GameManager : MonoBehaviour
     public SoundManager SoundManager { get; private set; }
     public BackgroundManager BackgroundManager { get; private set; }
     public SettingsManager SettingsManager { get; private set; }
+    public SidebarManager SidebarManager { get; private set; }
     public bool isGamePaused = false;
     private bool isLoaded = false;
 
@@ -230,6 +230,7 @@ public class GameManager : MonoBehaviour
         SoundManager = GetComponentInChildren<SoundManager>();
         BackgroundManager = GetComponentInChildren<BackgroundManager>();
         SettingsManager = GetComponentInChildren<SettingsManager>();
+        SidebarManager = GetComponentInChildren<SidebarManager>();
 
         if (TacosMakerManager == null)
         {
@@ -407,8 +408,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             SettingsManager = GetComponentInChildren<SettingsManager>();
-
-
+        }
+        if (SidebarManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/SettingsManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load SettingsManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            SidebarManager = GetComponentInChildren<SidebarManager>();
         }
     }
 }

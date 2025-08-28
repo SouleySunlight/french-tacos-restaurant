@@ -8,6 +8,8 @@ public class SidebarVisuals : MonoBehaviour
     [SerializeField] private GameObject sidebuttonPrefab;
     [SerializeField] private List<SidebarOptions> sidebarOptions;
 
+    private List<GameObject> sidebarButtons = new();
+
     private readonly int VERTICAL_GAP = -120;
     private readonly int VERTICAL_OFFSET = -220;
 
@@ -21,6 +23,8 @@ public class SidebarVisuals : MonoBehaviour
             createdOption.GetComponent<Button>().onClick.AddListener(() => UpdateView(sidebarOption.viewToShow));
             createdOption.GetComponent<SidebarButtonDisplayer>().sidebarOption = sidebarOption;
 
+            sidebarButtons.Add(createdOption);
+
             var rectTransform = createdOption.GetComponent<RectTransform>();
 
 
@@ -31,7 +35,26 @@ public class SidebarVisuals : MonoBehaviour
             rectTransform.anchoredPosition = new Vector2(0, index * VERTICAL_GAP + VERTICAL_OFFSET);
             index++;
         }
+        InitializeTimers();
 
+    }
+
+    public void UpdateTimer(ViewToShowEnum viewToShow, float timer)
+    {
+        var sidebarButton = sidebarButtons.Find(button => button.GetComponent<SidebarButtonDisplayer>().sidebarOption.viewToShow == viewToShow);
+        if (sidebarButton == null)
+        {
+            return;
+        }
+        sidebarButton.GetComponent<SidebarButtonDisplayer>().UpdateTimer(timer);
+    }
+
+    public void InitializeTimers()
+    {
+        foreach (var sidebarButton in sidebarButtons)
+        {
+            sidebarButton.GetComponent<SidebarButtonDisplayer>().UpdateTimer(0f);
+        }
     }
 
     void Start()
