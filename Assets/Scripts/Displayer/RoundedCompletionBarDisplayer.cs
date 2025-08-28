@@ -7,6 +7,7 @@ public class RoundedCompletionBarDisplayer : MonoBehaviour
 
     [SerializeField] private Image completionBar;
     [SerializeField] private Animator animator;
+    [SerializeField] private bool shouldShowAnimation = true;
 
     public void UpdateTimer(float percentage)
     {
@@ -22,7 +23,7 @@ public class RoundedCompletionBarDisplayer : MonoBehaviour
         gameObject.SetActive(true);
         if (percentage >= 1)
         {
-            if (animator == null) { return; }
+            if (animator == null || !shouldShowAnimation) { return; }
             animator.SetBool("isTimerOver", true);
         }
     }
