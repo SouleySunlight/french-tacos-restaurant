@@ -27,6 +27,7 @@ public class SauceGruyereVisual : MonoBehaviour, IView
     void Awake()
     {
         CreateSauceGruyere();
+        UpdateTimer(0);
         sauceGruyereImage.gameObject.SetActive(false);
         cheeseImage.gameObject.SetActive(false);
         creamImage.gameObject.SetActive(false);
