@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   completionBar: {fileID: 6366846661977225162}
   animator: {fileID: 3562663442435936843}
+  doneSound: {fileID: 8300000, guid: 8a18d570235124018a1c67c40c99e952, type: 3}
 --- !u!1 &7062556853545687726
 GameObject:
   m_ObjectHideFlags: 0
