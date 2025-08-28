@@ -12,19 +12,26 @@ public class RoundedCompletionBarDisplayer : MonoBehaviour
     public void UpdateTimer(float percentage)
     {
         completionBar.fillAmount = percentage;
+        UpdateTimerAnimation(percentage);
 
         if (percentage == 0)
         {
             gameObject.SetActive(false);
-            if (animator == null) { return; }
-            animator.SetBool("isTimerOver", false);
             return;
         }
         gameObject.SetActive(true);
-        if (percentage >= 1)
+    }
+
+    void UpdateTimerAnimation(float percentage)
+    {
+        if (percentage >= 1 && shouldShowAnimation)
         {
-            if (animator == null || !shouldShowAnimation) { return; }
             animator.SetBool("isTimerOver", true);
+        }
+        if (percentage < 1)
+        {
+            animator.SetBool("isTimerOver", false);
+
         }
     }
 }
