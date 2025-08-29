@@ -142,11 +142,17 @@ public class HotplateManager : MonoBehaviour, IWorkStation
                 isWorkerTaskDone = true;
             }
         }
+        else
+        {
+            GameManager.Instance.HelpTextManager.ShowNotEnoughPlaceMessage();
+
+        }
     }
 
     void OnIngredientBurntClicked(int position, bool? doneByWorker = false)
     {
         GameManager.Instance.SoundManager.PlayTrashSound();
+        GameManager.Instance.HelpTextManager.ShowBurntMessage(cookingIngredients[position]);
         RemoveIngredientFromCooking(position);
         ManageCookingSound();
 

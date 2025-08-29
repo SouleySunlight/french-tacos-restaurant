@@ -255,6 +255,18 @@ MonoBehaviour:
     m_Localized: Langue
     m_Metadata:
       m_Items: []
+  - m_Id: 5529615262015488
+    m_Localized: "{0} brul\xE9(e), \xE0 la poubelle..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5534084406173696
+    m_Localized: "Sauce gruy\xE8re"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5534903373389824
+    m_Localized: Frites
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

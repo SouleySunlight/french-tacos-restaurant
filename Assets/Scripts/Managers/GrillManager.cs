@@ -149,6 +149,7 @@ public class GrillManager : MonoBehaviour, IWorkStation
         }
         throw new NotEnoughSpaceException();
 
+
     }
 
     void ServeTacos(Tacos tacos)
@@ -179,6 +180,7 @@ public class GrillManager : MonoBehaviour, IWorkStation
     public void DiscardBurntTacos(Tacos tacos)
     {
         GameManager.Instance.SoundManager.PlayTrashSound();
+        GameManager.Instance.HelpTextManager.ShowBurntTacosMessage();
         RemoveTacosOfTheGrill(tacos);
 
     }

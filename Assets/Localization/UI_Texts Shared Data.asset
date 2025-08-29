@@ -251,6 +251,18 @@ MonoBehaviour:
     m_Key: SETTINGS.LANGUAGE
     m_Metadata:
       m_Items: []
+  - m_Id: 5529615262015488
+    m_Key: INGREDIENT.BURNT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5534084406173696
+    m_Key: INGREDIENT_GRU_SAU
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5534903373389824
+    m_Key: INGREDIENT_FRI
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
