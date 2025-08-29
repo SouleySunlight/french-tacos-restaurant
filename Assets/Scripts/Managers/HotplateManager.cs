@@ -134,6 +134,7 @@ public class HotplateManager : MonoBehaviour, IWorkStation
         if (GameManager.Instance.InventoryManager.CanAddProcessedIngredient(ingredient))
         {
             GameManager.Instance.InventoryManager.AddProcessedIngredient(ingredient);
+            GameManager.Instance.GainManager.CreateNewGain(ingredient.processedSprite, 1);
             RemoveIngredientFromCooking(position);
             hotplateVisuals.UpdateIndicatorsQuantity();
             if (doneByWorker == true)
