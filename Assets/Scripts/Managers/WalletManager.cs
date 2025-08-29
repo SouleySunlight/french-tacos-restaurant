@@ -10,6 +10,8 @@ public class WalletManager : MonoBehaviour
     public float moneySpentOnWorkersThisDay { get; private set; } = 0;
     public float moneySpentOnUpgradeThisDay { get; private set; } = 0;
     [SerializeField] private AudioClip moneyReceivedSound;
+    [SerializeField] private Sprite moneySprite;
+
 
 
 
@@ -25,6 +27,8 @@ public class WalletManager : MonoBehaviour
         currentWalletAmount += amount;
         moneyEarnedThisDay += amount;
         walletVisual.UpdateWalletAmount(currentWalletAmount);
+        GameManager.Instance.GainManager.CreateNewGain(moneySprite, Mathf.RoundToInt(amount));
+
     }
 
     public float GetCurrentAmount()

@@ -145,6 +145,8 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
     void RemoveCookedSauceGruyere()
     {
         GameManager.Instance.InventoryManager.AddProcessedIngredients(sauceGruyere, SAUCE_GRUYERE_CREATED_QUANTITY);
+        GameManager.Instance.GainManager.CreateNewGain(sauceGruyere.processedSprite, SAUCE_GRUYERE_CREATED_QUANTITY);
+
         RemoveSauceGruyere();
     }
 

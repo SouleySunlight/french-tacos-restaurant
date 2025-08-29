@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public BackgroundManager BackgroundManager { get; private set; }
     public SettingsManager SettingsManager { get; private set; }
     public SidebarManager SidebarManager { get; private set; }
+    public GainManager GainManager { get; private set; }
+
     public bool isGamePaused = false;
     private bool isLoaded = false;
 
@@ -231,6 +233,8 @@ public class GameManager : MonoBehaviour
         BackgroundManager = GetComponentInChildren<BackgroundManager>();
         SettingsManager = GetComponentInChildren<SettingsManager>();
         SidebarManager = GetComponentInChildren<SidebarManager>();
+        GainManager = GetComponentInChildren<GainManager>();
+
 
         if (TacosMakerManager == null)
         {
@@ -419,6 +423,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             SidebarManager = GetComponentInChildren<SidebarManager>();
+        }
+        if (GainManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/GainManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load GainManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            GainManager = GetComponentInChildren<GainManager>();
         }
     }
 }
