@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class FryerVisual : MonoBehaviour, IView
 {
-
     [SerializeField] private RectTransform firstButtonPosition;
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private GameObject ingredientPrefab;
@@ -12,6 +11,8 @@ public class FryerVisual : MonoBehaviour, IView
     [SerializeField] private List<GameObject> baskets = new();
     [SerializeField] private List<GameObject> completionBars = new();
     [SerializeField] private GameObject ingredientIndicatorPrefab;
+    [SerializeField] private Animator animator;
+
     private List<List<GameObject>> ingredientsInBasket = new();
 
     private List<GameObject> buttons = new();
@@ -184,6 +185,11 @@ public class FryerVisual : MonoBehaviour, IView
             rect.rotation = Quaternion.Euler(0, 0, -30);
             return;
         }
+    }
+
+    public void UpdateBoilingAnimation(bool isBoiling)
+    {
+        animator.SetBool("isBoiling", isBoiling);
     }
 
 }
