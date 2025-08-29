@@ -9,6 +9,11 @@ public class RoundedCompletionBarDisplayer : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private bool shouldShowAnimation = true;
 
+    void Start()
+    {
+        UpdateTimer(0);
+    }
+
     public void UpdateTimer(float percentage)
     {
         completionBar.fillAmount = percentage;
@@ -24,6 +29,7 @@ public class RoundedCompletionBarDisplayer : MonoBehaviour
 
     void UpdateTimerAnimation(float percentage)
     {
+        if (animator == null && animator.runtimeAnimatorController == null) { return; }
         if (percentage >= 1 && shouldShowAnimation)
         {
             animator.SetBool("isTimerOver", true);

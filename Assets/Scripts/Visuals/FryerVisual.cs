@@ -28,7 +28,6 @@ public class FryerVisual : MonoBehaviour, IView
         {
             basket.GetComponent<BasketMovement>().ClickBasket.AddListener(OnClickOnBasket);
         }
-        InitializeTimers();
     }
 
     public void SetupIngredients(List<Ingredient> ingredients)
@@ -185,14 +184,6 @@ public class FryerVisual : MonoBehaviour, IView
             rect.anchoredPosition = new(0, 200);
             rect.rotation = Quaternion.Euler(0, 0, -30);
             return;
-        }
-    }
-
-    void InitializeTimers()
-    {
-        foreach (var timer in completionBars)
-        {
-            timer.GetComponent<RoundedCompletionBarDisplayer>().UpdateTimer(0);
         }
     }
 
