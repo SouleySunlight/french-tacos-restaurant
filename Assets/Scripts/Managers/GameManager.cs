@@ -139,6 +139,7 @@ public class GameManager : MonoBehaviour
         {
             if (!GrillManager.CanAddTacosToGrillWaitingZone())
             {
+                HelpTextManager.ShowNotEnoughPlaceMessage();
                 throw new NotEnoughSpaceException();
             }
             var wrappedTacos = TacosMakerManager.WrapTacos();
@@ -154,6 +155,7 @@ public class GameManager : MonoBehaviour
     {
         if (!CheckoutManager.CanAddTacosToCheckout())
         {
+            HelpTextManager.ShowNotEnoughPlaceMessage();
             return;
         }
 

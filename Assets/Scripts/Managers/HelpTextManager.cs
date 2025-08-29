@@ -27,4 +27,11 @@ public class HelpTextManager : MonoBehaviour
 
         ShowMessage("INGREDIENT.BURNT", "Tacos");
     }
+
+    public void ShowNotEnoughPlaceMessage()
+    {
+
+        ShowMessage("MESSAGE.NOT_ENOUGH_SPACE");
+    }
+
 }

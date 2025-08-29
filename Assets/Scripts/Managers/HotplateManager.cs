@@ -142,6 +142,11 @@ public class HotplateManager : MonoBehaviour, IWorkStation
                 isWorkerTaskDone = true;
             }
         }
+        else
+        {
+            GameManager.Instance.HelpTextManager.ShowNotEnoughPlaceMessage();
+
+        }
     }
 
     void OnIngredientBurntClicked(int position, bool? doneByWorker = false)
