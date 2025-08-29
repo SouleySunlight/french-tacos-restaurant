@@ -121,6 +121,7 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
         if (isSauceGruyereBurnt)
         {
             GameManager.Instance.SoundManager.PlayTrashSound();
+            GameManager.Instance.HelpTextManager.ShowBurntMessage(sauceGruyere);
             RemoveSauceGruyere();
             return;
         }

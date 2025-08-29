@@ -254,6 +254,18 @@ MonoBehaviour:
     m_Localized: Languages
     m_Metadata:
       m_Items: []
+  - m_Id: 5529615262015488
+    m_Localized: Burnt {0}, thrown out...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5534084406173696
+    m_Localized: Gruyere sauce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5534903373389824
+    m_Localized: Fries
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

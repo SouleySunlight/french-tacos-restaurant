@@ -188,8 +188,11 @@ public class FryerManager : MonoBehaviour, IWorkStation
 
     void OnIngredientBurntClicked(int position, bool? doneByWorker = false)
     {
+        GameManager.Instance.HelpTextManager.ShowBurntMessage(fryingIngredients[position]);
+
         RemoveIngredientFromFrying(position);
         GameManager.Instance.SoundManager.PlayTrashSound();
+
         ManageFryingSoundAndAnimation();
         if (doneByWorker == true)
         {
