@@ -14,4 +14,15 @@ public class GainDisplayer : MonoBehaviour
         quantityText.text = "+" + quantity;
         image.sprite = gainSprite;
     }
+
+    public void UpdateOpacity(float transparency)
+    {
+        Color imageColor = image.color;
+        imageColor.a = transparency;
+        image.color = imageColor;
+
+        Color textColor = quantityText.color;
+        textColor.a = transparency;
+        quantityText.color = textColor;
+    }
 }

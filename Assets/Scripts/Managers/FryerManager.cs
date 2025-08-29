@@ -164,12 +164,19 @@ public class FryerManager : MonoBehaviour, IWorkStation
     void OnIngredientCookedClicked(int position, bool? doneByWorker = false)
     {
         var ingredientToAdd = fryingIngredients[position];
+        var numberOfAddedIngredient = 0;
         for (int i = 0; i < fryingQuantities[position]; i++)
         {
             if (GameManager.Instance.InventoryManager.CanAddProcessedIngredient(ingredientToAdd))
             {
                 GameManager.Instance.InventoryManager.AddProcessedIngredient(ingredientToAdd);
+                numberOfAddedIngredient++;
             }
+        }
+        if (numberOfAddedIngredient > 0)
+        {
+            GameManager.Instance.GainManager.CreateNewGain(ingredientToAdd.processedSprite, numberOfAddedIngredient);
+
         }
         RemoveIngredientFromFrying(position);
         ManageFryingSoundAndAnimation();
