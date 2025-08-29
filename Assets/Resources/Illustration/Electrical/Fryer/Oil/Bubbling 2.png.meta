@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 460c08e353ea7430bbfe1071d1e2e8c6
+guid: d0d1f42b8d92249389737f7e319af93f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2325450553514300863
-    second: Oil shadow_0
+      213: 7596353600818197514
+    second: Bubbling 2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Oil shadow_0
+      name: Bubbling 2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fb594f825f8a54020800000000000000
-      internalID: 2325450553514300863
+      spriteID: a04370d4a5bab6960800000000000000
+      internalID: 7596353600818197514
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Oil shadow_0: 2325450553514300863
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
