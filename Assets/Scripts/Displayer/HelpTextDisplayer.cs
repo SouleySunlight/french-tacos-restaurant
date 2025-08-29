@@ -16,4 +16,11 @@ public class HelpTextDisplayer : MonoBehaviour
         }
         messageText.text = message;
     }
+
+    public void UpdateOpacity(float transparency)
+    {
+        Color textColor = messageText.color;
+        textColor.a = transparency;
+        messageText.color = textColor;
+    }
 }
