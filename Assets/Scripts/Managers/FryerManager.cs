@@ -148,7 +148,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
         fryingTimes[position] = 0;
         totalFryingTimes[position] = fryingIngredients[position].processingTime * GameManager.Instance.UpgradeManager.GetSpeedfactor("FRYER");
         fryerVisuals.StartFrying(position);
-        ManageFryingSound();
+        ManageFryingSoundAndAnimation();
     }
 
     void RemoveIngredientFromFrying(int position)
@@ -172,7 +172,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
             }
         }
         RemoveIngredientFromFrying(position);
-        ManageFryingSound();
+        ManageFryingSoundAndAnimation();
         if (doneByWorker == true)
         {
             isWorkerTaskDone = true;
@@ -183,7 +183,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
     {
         RemoveIngredientFromFrying(position);
         GameManager.Instance.SoundManager.PlayTrashSound();
-        ManageFryingSound();
+        ManageFryingSoundAndAnimation();
         if (doneByWorker == true)
         {
             isWorkerTaskDone = true;
@@ -379,21 +379,29 @@ public class FryerManager : MonoBehaviour, IWorkStation
         return false;
     }
 
-    void ManageFryingSound()
+    void ManageFryingSoundAndAnimation()
     {
-        if (AreSomeIngredientsCooking() && !isAmbientPlaying)
+        if (AreSomeIngredientsCooking())
         {
-            isAmbientPlaying = true;
-            if (PlayzoneVisual.currentView == ViewToShowEnum.FRYER)
+            fryerVisuals.UpdateBoilingAnimation(true);
+            if (!isAmbientPlaying)
             {
-                GameManager.Instance.SoundManager.PlayAmbient(fryingSound);
+                isAmbientPlaying = true;
+                if (PlayzoneVisual.currentView == ViewToShowEnum.FRYER)
+                {
+                    GameManager.Instance.SoundManager.PlayAmbient(fryingSound);
+                }
             }
+            return;
         }
-        if (isAmbientPlaying && !AreSomeIngredientsCooking())
+
+        fryerVisuals.UpdateBoilingAnimation(false);
+        if (isAmbientPlaying)
         {
             GameManager.Instance.SoundManager.StopAmbient();
             isAmbientPlaying = false;
         }
+
     }
 
     public void ManageFryingSoundOnViewChanged()
