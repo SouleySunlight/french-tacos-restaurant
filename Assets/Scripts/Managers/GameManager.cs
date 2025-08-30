@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public SidebarManager SidebarManager { get; private set; }
     public GainManager GainManager { get; private set; }
     public HelpTextManager HelpTextManager { get; private set; }
+    public TutoManager TutoManager { get; private set; }
+
 
     public bool isGamePaused = false;
     private bool isLoaded = false;
@@ -238,7 +240,7 @@ public class GameManager : MonoBehaviour
         SidebarManager = GetComponentInChildren<SidebarManager>();
         GainManager = GetComponentInChildren<GainManager>();
         HelpTextManager = GetComponentInChildren<HelpTextManager>();
-
+        TutoManager = GetComponentInChildren<TutoManager>();
 
         if (TacosMakerManager == null)
         {
@@ -449,6 +451,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             HelpTextManager = GetComponentInChildren<HelpTextManager>();
+        }
+        if (TutoManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/TutoManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load TutoManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            TutoManager = GetComponentInChildren<TutoManager>();
         }
     }
 }

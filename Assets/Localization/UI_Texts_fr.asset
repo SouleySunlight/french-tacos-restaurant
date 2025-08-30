@@ -267,6 +267,35 @@ MonoBehaviour:
     m_Localized: Frites
     m_Metadata:
       m_Items: []
+  - m_Id: 5539778396151808
+    m_Localized: Pas assez de le place pour le prendre...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666510583357440
+    m_Localized: "1. Appuie sur un ingr\xE9dient pour l\u2019ajouter au tacos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666880302866432
+    m_Localized: "2. Appuie sur le tacos une fois qu\u2019il est pr\xEAt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666971357011968
+    m_Localized: "3. Retrouve ton tacos dans la fen\xEAtre du grill"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667108053573632
+    m_Localized: i. Si tu fais une erreur appuie sur le bouton poubelle pour jeter
+      le tacos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667120498073600
+    m_Localized: "i. Pr\xE9pare tes ingr\xE9dients dans les autres fen\xEAtre"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667378514878464
+    m_Localized: Compris !
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

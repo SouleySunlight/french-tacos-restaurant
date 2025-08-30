@@ -263,6 +263,36 @@ MonoBehaviour:
     m_Key: INGREDIENT_FRI
     m_Metadata:
       m_Items: []
+  - m_Id: 5539778396151808
+    m_Key: MESSAGE.NOT_ENOUGH_SPACE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666510583357440
+    m_Key: TUTO.TACOS_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666880302866432
+    m_Key: TUTO.TACOS_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666971357011968
+    m_Key: TUTO.TACOS_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667108053573632
+    m_Key: 'TUTO.TACOS_4
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667120498073600
+    m_Key: TUTO.TACOS_5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667378514878464
+    m_Key: BUTTON.UNDERSTAND
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

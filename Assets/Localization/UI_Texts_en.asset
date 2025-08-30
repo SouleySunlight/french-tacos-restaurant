@@ -266,6 +266,34 @@ MonoBehaviour:
     m_Localized: Fries
     m_Metadata:
       m_Items: []
+  - m_Id: 5539778396151808
+    m_Localized: Not enough space to take it...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666510583357440
+    m_Localized: 1. Press an ingredient to add it to the tacos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666880302866432
+    m_Localized: 2. Press the tacos when it's done
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666971357011968
+    m_Localized: 3. Find your tacos in the grill window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667108053573632
+    m_Localized: i. If you make a mistake, press the trash button to throw the tacos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667120498073600
+    m_Localized: i. Prepare your Ingredients in other windows
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667378514878464
+    m_Localized: Understand!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
