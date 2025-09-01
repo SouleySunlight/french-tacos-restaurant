@@ -326,6 +326,23 @@ MonoBehaviour:
     m_Localized: Press a burnt ingredient to throw it
     m_Metadata:
       m_Items: []
+  - m_Id: 6512850922102784
+    m_Localized: Press an ingredient button to add it to the basket. You can add
+      up to 3 ingredients to the basket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513125774843904
+    m_Localized: Press the basket to start frying
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513226610106368
+    m_Localized: Press the fried ingredients to retrieve it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513364409769984
+    m_Localized: Press a burnt ingredient to throw it
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

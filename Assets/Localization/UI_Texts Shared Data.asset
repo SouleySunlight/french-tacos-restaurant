@@ -325,6 +325,22 @@ MonoBehaviour:
     m_Key: TUTO.HOTPLATE_3
     m_Metadata:
       m_Items: []
+  - m_Id: 6512850922102784
+    m_Key: TUTO.FRYER_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513125774843904
+    m_Key: TUTO.FRYER_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513226610106368
+    m_Key: TUTO.FRYER_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513364409769984
+    m_Key: TUTO.FRYER_4
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

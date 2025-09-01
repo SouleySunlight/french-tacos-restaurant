@@ -333,6 +333,23 @@ MonoBehaviour:
     m_Localized: "Appuie sur un ingr\xE9dient br\xFBl\xE9 pour le jeter"
     m_Metadata:
       m_Items: []
+  - m_Id: 6512850922102784
+    m_Localized: "Appuie sur un bouton d'ingr\xE9dient pour l'ajouter au panier,
+      tu peux ajouter 3 ingr\xE9dients par panier"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513125774843904
+    m_Localized: Appuie sur le panier pour commencer la cuisson
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513226610106368
+    m_Localized: "Appuie sur les aliments frits pour les r\xE9cup\xE9rer"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513364409769984
+    m_Localized: "Appuie sur un ingr\xE9dient br\xFBl\xE9 pour le jeter"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
