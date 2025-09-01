@@ -296,6 +296,43 @@ MonoBehaviour:
     m_Localized: Compris !
     m_Metadata:
       m_Items: []
+  - m_Id: 6508096397500416
+    m_Localized: Fais glisser ton doigt verticalement sur le grill pour l'ouvrir
+      ou le fermer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508357157380096
+    m_Localized: Fais glisser le tacos dans le grill ouvert puis referme le pour
+      le faire griller
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508560274939904
+    m_Localized: "Une fois grill\xE9, appuie sur le tacos et retrouve le \xE0 la
+      caisse"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508758153814016
+    m_Localized: "Si tu n'as pas besoin d'un tacos, fais le glisser \xE0 la poubelle
+      pour le jeter"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508919806484480
+    m_Localized: "Appuie sur un tacos br\xFBl\xE9 pour le jeter directement"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511262950219776
+    m_Localized: "Appuie sur un bouton d'ingr\xE9dient pour commencer sa cuisson"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511490050809856
+    m_Localized: "Appuie sur un ingr\xE9dient cuit pour le r\xE9cup\xE9rer (\xE0
+      condition d'avoir la place pour)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511798080495616
+    m_Localized: "Appuie sur un ingr\xE9dient br\xFBl\xE9 pour le jeter"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

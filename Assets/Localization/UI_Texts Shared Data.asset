@@ -293,6 +293,38 @@ MonoBehaviour:
     m_Key: BUTTON.UNDERSTAND
     m_Metadata:
       m_Items: []
+  - m_Id: 6508096397500416
+    m_Key: TUTO.GRILL_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508357157380096
+    m_Key: TUTO.GRILL_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508560274939904
+    m_Key: TUTO.GRILL_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508758153814016
+    m_Key: TUTO.GRILL_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508919806484480
+    m_Key: TUTO.GRILL_5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511262950219776
+    m_Key: TUTO.HOTPLATE_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511490050809856
+    m_Key: TUTO.HOTPLATE_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511798080495616
+    m_Key: TUTO.HOTPLATE_3
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

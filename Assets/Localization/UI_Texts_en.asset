@@ -294,6 +294,38 @@ MonoBehaviour:
     m_Localized: Understand!
     m_Metadata:
       m_Items: []
+  - m_Id: 6508096397500416
+    m_Localized: Swipe the grill vertivally to open or close it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508357157380096
+    m_Localized: Drag the tacos into the opened grill then close it to make it grill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508560274939904
+    m_Localized: Once grilled, press the tacos and retrieve it at the checkout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508758153814016
+    m_Localized: If you don't need a tacos, drag it to the trash can to throw it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508919806484480
+    m_Localized: Press a burnt tacos to throw it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511262950219776
+    m_Localized: Press an ingredient button to start cooking it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511490050809856
+    m_Localized: Press an ingredient to retrive it (if you have enough place)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511798080495616
+    m_Localized: Press a burnt ingredient to throw it
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
