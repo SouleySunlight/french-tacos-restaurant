@@ -108,6 +108,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
             fryerVisuals.FryIngredients(ingredient, i);
             return;
         }
+        GameManager.Instance.HelpTextManager.ShowNotEnoughSpaceToAddIngredient();
         throw new NotEnoughSpaceException();
 
     }
@@ -337,6 +338,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
                 }
                 catch (NotEnoughSpaceException e)
                 {
+                    GameManager.Instance.HelpTextManager.ShowNotEnoughSpaceToAddIngredient();
                     Debug.Log(e);
                 }
             }

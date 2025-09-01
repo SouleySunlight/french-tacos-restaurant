@@ -41,6 +41,7 @@ public class CheckoutManager : MonoBehaviour, IWorkStation
 
     public void RefuseTacos()
     {
+        GameManager.Instance.HelpTextManager.ShowWrongTacosMessage();
         checkoutVisual.UpdateVisuals();
 
     }

@@ -363,6 +363,14 @@ MonoBehaviour:
     m_Localized: If nobody wants it, drag it to the trash can to throw it
     m_Metadata:
       m_Items: []
+  - m_Id: 6531851387658240
+    m_Localized: Not enough {0}!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6534173643759616
+    m_Localized: Not enough money!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

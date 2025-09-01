@@ -30,6 +30,10 @@ public class InventoryManager : MonoBehaviour
     {
         if (ingredient.NeedProcessing())
         {
+            if (!IsProcessedIngredientAvailable(ingredient))
+            {
+                GameManager.Instance.HelpTextManager.ShowNotEnoughIngredientMessage(ingredient);
+            }
             return IsProcessedIngredientAvailable(ingredient);
         }
         return IsUnprocessedIngredientAvailable(ingredient);
