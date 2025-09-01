@@ -361,6 +361,10 @@ MonoBehaviour:
     m_Key: TUTO.CHECKOUT_2
     m_Metadata:
       m_Items: []
+  - m_Id: 6531851387658240
+    m_Key: INGREDIENT.NOT_ENOUGH
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

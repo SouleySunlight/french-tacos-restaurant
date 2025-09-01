@@ -34,4 +34,13 @@ public class HelpTextManager : MonoBehaviour
         ShowMessage("MESSAGE.NOT_ENOUGH_SPACE");
     }
 
+    public void ShowNotEnoughIngredientMessage(Ingredient ingredient)
+    {
+
+        var ingredientName = LocalizationSettings.StringDatabase
+             .GetLocalizedString("UI_Texts", "INGREDIENT_" + ingredient.id);
+
+        ShowMessage("INGREDIENT.NOT_ENOUGH", ingredientName);
+    }
+
 }
