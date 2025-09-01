@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     public bool isGamePaused = false;
     private bool isLoaded = false;
+    private bool areSettingsLoaded = false;
 
 
     private void Awake()
@@ -90,7 +91,8 @@ public class GameManager : MonoBehaviour
         {
             isSoundOn = SoundManager.areSoundsOn,
             isMusicOn = SoundManager.isMusicOn,
-            language = LocalizationSettings.SelectedLocale.Identifier.Code
+            language = LocalizationSettings.SelectedLocale.Identifier.Code,
+            tutosViewing = TutoManager.GetTutosSaveData()
         };
 
 
@@ -108,6 +110,8 @@ public class GameManager : MonoBehaviour
         {
             LocalizationSettings.SelectedLocale = locale;
         }
+        TutoManager.LoadTutosData(settingsSaveData.tutosViewing);
+        areSettingsLoaded = true;
 
     }
 
@@ -201,6 +205,7 @@ public class GameManager : MonoBehaviour
     {
         UpgradeManager.UpdateUpgradeButtonVisuals();
         WorkersManager.UpdateWorkerModalVisual();
+        TutoManager.ShowTutoIfNeeded(PlayzoneVisual.currentView);
     }
 
     void OnLocaleChanged(UnityEngine.Localization.Locale newLocale)

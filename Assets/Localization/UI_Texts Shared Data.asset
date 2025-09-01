@@ -341,6 +341,26 @@ MonoBehaviour:
     m_Key: TUTO.FRYER_4
     m_Metadata:
       m_Items: []
+  - m_Id: 6514526995341312
+    m_Key: TUTO.GRUYERE_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6514674660007936
+    m_Key: TUTO.GRUYERE_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6514847477915648
+    m_Key: TUTO.GRUYERE_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6515771881545728
+    m_Key: TUTO.CHECKOUT_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6516098055790592
+    m_Key: TUTO.CHECKOUT_2
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

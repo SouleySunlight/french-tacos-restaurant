@@ -350,6 +350,28 @@ MonoBehaviour:
     m_Localized: "Appuie sur un ingr\xE9dient br\xFBl\xE9 pour le jeter"
     m_Metadata:
       m_Items: []
+  - m_Id: 6514526995341312
+    m_Localized: "Appuie sur les deux ingr\xE9dients pour commencer la cuisson"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6514674660007936
+    m_Localized: "Appuie sur la sauce gruy\xE8re cuite pour r\xE9cup\xE9rer 5 portions"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6514847477915648
+    m_Localized: "Appuie la sauce gruy\xE8re br\xFBl\xE9e pour le jeter"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6515771881545728
+    m_Localized: Fais glisser le tacos sur la commande correspondante pour gagner
+      de l'or
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6516098055790592
+    m_Localized: "Si personne ne veut du tacos, fais le glisser \xE0 la poubelle
+      pour le jeter"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

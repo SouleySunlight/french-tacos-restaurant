@@ -343,6 +343,26 @@ MonoBehaviour:
     m_Localized: Press a burnt ingredient to throw it
     m_Metadata:
       m_Items: []
+  - m_Id: 6514526995341312
+    m_Localized: Press both ingredients to start cooking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6514674660007936
+    m_Localized: Press cooked gruyere sauce to retrieve 5 portions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6514847477915648
+    m_Localized: Press burnt sauce gruyere to throw it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6515771881545728
+    m_Localized: Drag the tacos on the corresponding order to earn gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6516098055790592
+    m_Localized: If nobody wants it, drag it to the trash can to throw it
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
