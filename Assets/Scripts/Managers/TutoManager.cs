@@ -12,7 +12,7 @@ public class TutoManager : MonoBehaviour
 
     public void ShowTutorial(ViewToShowEnum view)
     {
-        tutoVisual.ShowTutorial(ViewToShowEnum.TACOS_MAKER);
+        tutoVisual.ShowTutorial(view);
     }
 
     public void HideTutorial()

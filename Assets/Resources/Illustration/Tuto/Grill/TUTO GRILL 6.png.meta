@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 53a1f9aba1f3d455e82078677e9e44c7
+guid: 17a43a54df81141f88dfb27a065d9800
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7780491937578991876
-    second: Setting button (2)_0
+      213: 6167527217972979145
+    second: TUTO GRILL 6_0
+  - first:
+      213: 218849924204195515
+    second: TUTO GRILL 6_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -126,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Setting button (2)_0
+      name: TUTO GRILL 6_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 160
-        height: 160
+        x: 33
+        y: 45
+        width: 191
+        height: 241
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +144,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cfe30da3ec3260490800000000000000
-      internalID: -7780491937578991876
+      spriteID: 9c525d9e355779550800000000000000
+      internalID: 6167527217972979145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TUTO GRILL 6_1
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 33
+        width: 54
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbeef47b8d2890300800000000000000
+      internalID: 218849924204195515
       vertices: []
       indices: 
       edges: []
@@ -151,7 +176,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +186,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Setting button (2)_0: -7780491937578991876
+      TUTO GRILL 6_0: 6167527217972979145
+      TUTO GRILL 6_1: 218849924204195515
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

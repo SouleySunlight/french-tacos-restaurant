@@ -12662,7 +12662,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:4577c33242bdf426babdfad8bd774ad6
     m_TableEntryReference:
-      m_KeyId: 5667108053573632
+      m_KeyId: 5667120498073600
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -12740,8 +12740,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
