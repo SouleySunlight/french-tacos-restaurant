@@ -267,6 +267,111 @@ MonoBehaviour:
     m_Localized: Frites
     m_Metadata:
       m_Items: []
+  - m_Id: 5539778396151808
+    m_Localized: Pas assez de le place pour le prendre...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666510583357440
+    m_Localized: "Appuie sur un ingr\xE9dient pour l\u2019ajouter au tacos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666880302866432
+    m_Localized: "Appuie sur le tacos une fois qu\u2019il est pr\xEAt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666971357011968
+    m_Localized: "Retrouve ton tacos dans la fen\xEAtre du grill"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667108053573632
+    m_Localized: Si tu fais une erreur appuie sur le bouton poubelle pour jeter le
+      tacos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667120498073600
+    m_Localized: "Pr\xE9pare tes ingr\xE9dients dans les autres fen\xEAtre"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667378514878464
+    m_Localized: Compris !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508096397500416
+    m_Localized: Fais glisser ton doigt verticalement sur le grill pour l'ouvrir
+      ou le fermer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508357157380096
+    m_Localized: Fais glisser le tacos dans le grill ouvert puis referme le pour
+      le faire griller
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508560274939904
+    m_Localized: "Une fois grill\xE9, appuie sur le tacos et retrouve le \xE0 la
+      caisse"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508758153814016
+    m_Localized: "Si tu n'as pas besoin d'un tacos, fais le glisser \xE0 la poubelle
+      pour le jeter"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508919806484480
+    m_Localized: "Appuie sur un tacos br\xFBl\xE9 pour le jeter directement"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511262950219776
+    m_Localized: "Appuie sur un bouton d'ingr\xE9dient pour commencer sa cuisson"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511490050809856
+    m_Localized: "Appuie sur un ingr\xE9dient cuit pour le r\xE9cup\xE9rer (\xE0
+      condition d'avoir la place pour)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511798080495616
+    m_Localized: "Appuie sur un ingr\xE9dient br\xFBl\xE9 pour le jeter"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6512850922102784
+    m_Localized: "Appuie sur un bouton d'ingr\xE9dient pour l'ajouter au panier,
+      tu peux ajouter 3 ingr\xE9dients par panier"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513125774843904
+    m_Localized: Appuie sur le panier pour commencer la cuisson
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513226610106368
+    m_Localized: "Appuie sur les aliments frits pour les r\xE9cup\xE9rer"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513364409769984
+    m_Localized: "Appuie sur un ingr\xE9dient br\xFBl\xE9 pour le jeter"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6514526995341312
+    m_Localized: "Appuie sur les deux ingr\xE9dients pour commencer la cuisson"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6514674660007936
+    m_Localized: "Appuie sur la sauce gruy\xE8re cuite pour r\xE9cup\xE9rer 5 portions"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6514847477915648
+    m_Localized: "Appuie la sauce gruy\xE8re br\xFBl\xE9e pour le jeter"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6515771881545728
+    m_Localized: Fais glisser le tacos sur la commande correspondante pour gagner
+      de l'or
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6516098055790592
+    m_Localized: "Si personne ne veut du tacos, fais le glisser \xE0 la poubelle
+      pour le jeter"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -263,6 +263,104 @@ MonoBehaviour:
     m_Key: INGREDIENT_FRI
     m_Metadata:
       m_Items: []
+  - m_Id: 5539778396151808
+    m_Key: MESSAGE.NOT_ENOUGH_SPACE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666510583357440
+    m_Key: TUTO.TACOS_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666880302866432
+    m_Key: TUTO.TACOS_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666971357011968
+    m_Key: TUTO.TACOS_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667108053573632
+    m_Key: 'TUTO.TACOS_4
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667120498073600
+    m_Key: TUTO.TACOS_5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667378514878464
+    m_Key: BUTTON.UNDERSTAND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508096397500416
+    m_Key: TUTO.GRILL_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508357157380096
+    m_Key: TUTO.GRILL_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508560274939904
+    m_Key: TUTO.GRILL_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508758153814016
+    m_Key: TUTO.GRILL_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508919806484480
+    m_Key: TUTO.GRILL_5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511262950219776
+    m_Key: TUTO.HOTPLATE_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511490050809856
+    m_Key: TUTO.HOTPLATE_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511798080495616
+    m_Key: TUTO.HOTPLATE_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6512850922102784
+    m_Key: TUTO.FRYER_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513125774843904
+    m_Key: TUTO.FRYER_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513226610106368
+    m_Key: TUTO.FRYER_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513364409769984
+    m_Key: TUTO.FRYER_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6514526995341312
+    m_Key: TUTO.GRUYERE_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6514674660007936
+    m_Key: TUTO.GRUYERE_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6514847477915648
+    m_Key: TUTO.GRUYERE_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6515771881545728
+    m_Key: TUTO.CHECKOUT_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6516098055790592
+    m_Key: TUTO.CHECKOUT_2
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

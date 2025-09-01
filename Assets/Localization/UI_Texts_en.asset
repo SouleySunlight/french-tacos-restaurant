@@ -266,6 +266,103 @@ MonoBehaviour:
     m_Localized: Fries
     m_Metadata:
       m_Items: []
+  - m_Id: 5539778396151808
+    m_Localized: Not enough space to take it...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666510583357440
+    m_Localized: Press an ingredient to add it to the tacos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666880302866432
+    m_Localized: Press the tacos when it's done
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5666971357011968
+    m_Localized: Find your tacos in the grill window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667108053573632
+    m_Localized: If you make a mistake, press the trash button to throw the tacos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667120498073600
+    m_Localized: Prepare your Ingredients in other windows
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5667378514878464
+    m_Localized: Understand!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508096397500416
+    m_Localized: Swipe the grill vertivally to open or close it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508357157380096
+    m_Localized: Drag the tacos into the opened grill then close it to make it grill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508560274939904
+    m_Localized: Once grilled, press the tacos and retrieve it at the checkout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508758153814016
+    m_Localized: If you don't need a tacos, drag it to the trash can to throw it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6508919806484480
+    m_Localized: Press a burnt tacos to throw it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511262950219776
+    m_Localized: Press an ingredient button to start cooking it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511490050809856
+    m_Localized: Press an ingredient to retrive it (if you have enough place)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6511798080495616
+    m_Localized: Press a burnt ingredient to throw it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6512850922102784
+    m_Localized: Press an ingredient button to add it to the basket. You can add
+      up to 3 ingredients to the basket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513125774843904
+    m_Localized: Press the basket to start frying
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513226610106368
+    m_Localized: Press the fried ingredients to retrieve it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6513364409769984
+    m_Localized: Press a burnt ingredient to throw it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6514526995341312
+    m_Localized: Press both ingredients to start cooking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6514674660007936
+    m_Localized: Press cooked gruyere sauce to retrieve 5 portions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6514847477915648
+    m_Localized: Press burnt sauce gruyere to throw it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6515771881545728
+    m_Localized: Drag the tacos on the corresponding order to earn gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6516098055790592
+    m_Localized: If nobody wants it, drag it to the trash can to throw it
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

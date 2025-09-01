@@ -26,9 +26,12 @@ public class GameManager : MonoBehaviour
     public SidebarManager SidebarManager { get; private set; }
     public GainManager GainManager { get; private set; }
     public HelpTextManager HelpTextManager { get; private set; }
+    public TutoManager TutoManager { get; private set; }
+
 
     public bool isGamePaused = false;
     private bool isLoaded = false;
+    private bool areSettingsLoaded = false;
 
 
     private void Awake()
@@ -88,7 +91,8 @@ public class GameManager : MonoBehaviour
         {
             isSoundOn = SoundManager.areSoundsOn,
             isMusicOn = SoundManager.isMusicOn,
-            language = LocalizationSettings.SelectedLocale.Identifier.Code
+            language = LocalizationSettings.SelectedLocale.Identifier.Code,
+            tutosViewing = TutoManager.GetTutosSaveData()
         };
 
 
@@ -106,6 +110,8 @@ public class GameManager : MonoBehaviour
         {
             LocalizationSettings.SelectedLocale = locale;
         }
+        TutoManager.LoadTutosData(settingsSaveData.tutosViewing);
+        areSettingsLoaded = true;
 
     }
 
@@ -199,6 +205,7 @@ public class GameManager : MonoBehaviour
     {
         UpgradeManager.UpdateUpgradeButtonVisuals();
         WorkersManager.UpdateWorkerModalVisual();
+        TutoManager.ShowTutoIfNeeded(PlayzoneVisual.currentView);
     }
 
     void OnLocaleChanged(UnityEngine.Localization.Locale newLocale)
@@ -238,7 +245,7 @@ public class GameManager : MonoBehaviour
         SidebarManager = GetComponentInChildren<SidebarManager>();
         GainManager = GetComponentInChildren<GainManager>();
         HelpTextManager = GetComponentInChildren<HelpTextManager>();
-
+        TutoManager = GetComponentInChildren<TutoManager>();
 
         if (TacosMakerManager == null)
         {
@@ -449,6 +456,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             HelpTextManager = GetComponentInChildren<HelpTextManager>();
+        }
+        if (TutoManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/TutoManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load TutoManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            TutoManager = GetComponentInChildren<TutoManager>();
         }
     }
 }
