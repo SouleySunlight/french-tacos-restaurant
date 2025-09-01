@@ -125,7 +125,6 @@ public class GameManager : MonoBehaviour
         GrillManager.SetupGrillingTime();
         SauceGruyereManager.UpdateCookingTime();
         DayCycleManager.SetupDayCycle();
-        InventoryManager.SetupInventoriesMaxAmount();
 
     }
 

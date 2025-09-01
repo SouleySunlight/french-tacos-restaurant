@@ -369,6 +369,22 @@ MonoBehaviour:
     m_Key: GOLD.NOT_ENOUGH
     m_Metadata:
       m_Items: []
+  - m_Id: 6535685333835776
+    m_Key: INGREDIENT.NOT_ENOUGH_SPACE_TO_ADD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6537027670499328
+    m_Key: ORDER.WRONG_TACOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6540195708002304
+    m_Key: REWARD.MAX_INGREDIENT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6540443411013632
+    m_Key: REWARD.MAX_INGREDIENT_SUBTITLE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

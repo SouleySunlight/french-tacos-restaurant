@@ -380,6 +380,22 @@ MonoBehaviour:
     m_Localized: Pas assez d'argent !
     m_Metadata:
       m_Items: []
+  - m_Id: 6535685333835776
+    m_Localized: Pas assez de place pour ajouter l'ingredient, un peu de patience!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6537027670499328
+    m_Localized: "Ce n'est pas le tacos command\xE9 !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6540195708002304
+    m_Localized: "Nombre d'ingr\xE9dients max augment\xE9 !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6540443411013632
+    m_Localized: "Nombre d'ingr\xE9dients max :"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

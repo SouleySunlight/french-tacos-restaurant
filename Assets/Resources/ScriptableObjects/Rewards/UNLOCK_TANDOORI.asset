@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45aae1c05828406e9bd6754a6c6673b, type: 3}
   m_Name: UNLOCK_TANDOORI
   m_EditorClassIdentifier: 
-  numberOfTacosToUnlock: 2000
+  numberOfTacosToUnlock: 250
   rewardType: 0
   ingredientToUnlock: {fileID: 11400000, guid: 2891f9a766039492a9ba314120ce8cbb, type: 2}

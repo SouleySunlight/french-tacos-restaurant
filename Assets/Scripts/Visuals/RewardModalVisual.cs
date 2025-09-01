@@ -37,6 +37,10 @@ public class RewardModalVisual : MonoBehaviour
         {
             ShowOrderRewardModal();
         }
+        if (reward.rewardType == RewardType.INCREASE_MAX_INGREDIENTS)
+        {
+            ShowMaxIngredientsRewardModal();
+        }
     }
 
     public void HideRewardModal()
@@ -77,6 +81,18 @@ public class RewardModalVisual : MonoBehaviour
         image.gameObject.SetActive(false);
         previousValue.text = GameManager.Instance.OrdersManager.GetMaxNumberOfOrders().ToString();
         newValue.text = (GameManager.Instance.OrdersManager.GetMaxNumberOfOrders() + 1).ToString();
+        quantityDisplay.SetActive(true);
+    }
+
+    void ShowMaxIngredientsRewardModal()
+    {
+        rewardTitle.text = LocalizationSettings.StringDatabase
+            .GetLocalizedString("UI_Texts", "REWARD.MAX_INGREDIENT");
+        rewardSubtitle.text = LocalizationSettings.StringDatabase
+            .GetLocalizedString("UI_Texts", "REWARD.MAX_INGREDIENT_SUBTITLE");
+        image.gameObject.SetActive(false);
+        previousValue.text = GameManager.Instance.InventoryManager.GetProcessedIngredientMaxAmount().ToString();
+        newValue.text = (GameManager.Instance.InventoryManager.GetProcessedIngredientMaxAmount() + 5).ToString();
         quantityDisplay.SetActive(true);
     }
 }

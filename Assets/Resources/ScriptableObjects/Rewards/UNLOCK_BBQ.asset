@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45aae1c05828406e9bd6754a6c6673b, type: 3}
   m_Name: UNLOCK_BBQ
   m_EditorClassIdentifier: 
-  numberOfTacosToUnlock: 10000
+  numberOfTacosToUnlock: 1000
   rewardType: 0
   ingredientToUnlock: {fileID: 11400000, guid: 610f312f64fd94efc81c0e529e7e14b6, type: 2}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45aae1c05828406e9bd6754a6c6673b, type: 3}
   m_Name: INCREASE_ORDER_1
   m_EditorClassIdentifier: 
-  numberOfTacosToUnlock: 25
+  numberOfTacosToUnlock: 20
   rewardType: 2
   ingredientToUnlock: {fileID: 0}

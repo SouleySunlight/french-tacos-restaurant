@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45aae1c05828406e9bd6754a6c6673b, type: 3}
   m_Name: UNLOCK_Harissa$
   m_EditorClassIdentifier: 
-  numberOfTacosToUnlock: 500
+  numberOfTacosToUnlock: 140
   rewardType: 0
   ingredientToUnlock: {fileID: 11400000, guid: 7eb48606ff4514bc69edb302181bffc5, type: 2}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45aae1c05828406e9bd6754a6c6673b, type: 3}
   m_Name: UNLOCK_NUGGETS
   m_EditorClassIdentifier: 
-  numberOfTacosToUnlock: 100
+  numberOfTacosToUnlock: 50
   rewardType: 0
   ingredientToUnlock: {fileID: 11400000, guid: 8b7fbbf57f1d443b89806d8768858add, type: 2}

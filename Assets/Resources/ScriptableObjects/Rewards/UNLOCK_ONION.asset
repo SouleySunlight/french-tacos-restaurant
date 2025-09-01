@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45aae1c05828406e9bd6754a6c6673b, type: 3}
   m_Name: UNLOCK_ONION
   m_EditorClassIdentifier: 
-  numberOfTacosToUnlock: 250
+  numberOfTacosToUnlock: 100
   rewardType: 0
   ingredientToUnlock: {fileID: 11400000, guid: 77e09de92004d495d8d063104ecbd3ed, type: 2}

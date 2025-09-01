@@ -9313,6 +9313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160f4a29b0a8044f7bb2df9b40f84b09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  errorAudio: {fileID: 8300000, guid: 454da0006d85149928675560a8097cd7, type: 3}
 --- !u!1 &864319563
 GameObject:
   m_ObjectHideFlags: 0

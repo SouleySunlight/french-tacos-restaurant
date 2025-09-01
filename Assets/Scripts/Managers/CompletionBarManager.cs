@@ -88,6 +88,9 @@ public class CompletionBarManager : MonoBehaviour
             case RewardType.MORE_ORDERS:
                 GameManager.Instance.OrdersManager.IncrelmentMaxNumberOfOrders();
                 break;
+            case RewardType.INCREASE_MAX_INGREDIENTS:
+                GameManager.Instance.InventoryManager.UpdateProcessedInventoryMaxAmount(5);
+                break;
         }
     }
 
