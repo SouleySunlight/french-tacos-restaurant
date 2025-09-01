@@ -195,4 +195,14 @@ public class InventoryManager : MonoBehaviour
         GameManager.Instance.FryerManager.AddAvailableIngredient(ingredient);
     }
 
+    public int GetMaxIngredientNumberSaveData()
+    {
+        return processedIngredientMaxAmount;
+    }
+
+    public void LoadMaxIngredientNumber(int maxIngredientNumber)
+    {
+        processedIngredientMaxAmount = maxIngredientNumber;
+    }
+
 }
