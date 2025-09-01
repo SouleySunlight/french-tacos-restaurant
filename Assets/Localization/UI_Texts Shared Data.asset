@@ -365,6 +365,10 @@ MonoBehaviour:
     m_Key: INGREDIENT.NOT_ENOUGH
     m_Metadata:
       m_Items: []
+  - m_Id: 6534173643759616
+    m_Key: GOLD.NOT_ENOUGH
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

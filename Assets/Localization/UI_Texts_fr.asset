@@ -376,6 +376,10 @@ MonoBehaviour:
     m_Localized: Pas assez de {0} !
     m_Metadata:
       m_Items: []
+  - m_Id: 6534173643759616
+    m_Localized: Pas assez d'argent !
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

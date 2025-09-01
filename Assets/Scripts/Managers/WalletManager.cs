@@ -43,6 +43,10 @@ public class WalletManager : MonoBehaviour
 
     public bool HasEnoughMoney(float amount)
     {
+        if (currentWalletAmount < amount)
+        {
+            GameManager.Instance.HelpTextManager.ShowNotEnoughGoldMessage();
+        }
         return currentWalletAmount >= amount;
     }
 

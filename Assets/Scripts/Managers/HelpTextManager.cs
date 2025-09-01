@@ -42,5 +42,10 @@ public class HelpTextManager : MonoBehaviour
 
         ShowMessage("INGREDIENT.NOT_ENOUGH", ingredientName);
     }
+    public void ShowNotEnoughGoldMessage()
+    {
+
+        ShowMessage("GOLD.NOT_ENOUGH");
+    }
 
 }
