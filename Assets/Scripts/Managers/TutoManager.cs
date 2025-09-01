@@ -66,7 +66,7 @@ public class TutoManager : MonoBehaviour
 
     public void LoadTutosData(TutosViewingSaveData data)
     {
-        if (data.slots.Count == 0)
+        if (data == null || data.slots.Count == 0)
         {
             foreach (ViewToShowEnum view in Enum.GetValues(typeof(ViewToShowEnum)))
             {

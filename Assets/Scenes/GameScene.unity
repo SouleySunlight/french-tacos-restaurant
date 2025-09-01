@@ -10082,6 +10082,22 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GeneralButtonDisplayer, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 1370557134292627509, guid: 76e9427af83c9420ba4ba9eb02ed28e9, type: 3}
+      propertyPath: m_RaycastPadding.w
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370557134292627509, guid: 76e9427af83c9420ba4ba9eb02ed28e9, type: 3}
+      propertyPath: m_RaycastPadding.x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370557134292627509, guid: 76e9427af83c9420ba4ba9eb02ed28e9, type: 3}
+      propertyPath: m_RaycastPadding.y
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370557134292627509, guid: 76e9427af83c9420ba4ba9eb02ed28e9, type: 3}
+      propertyPath: m_RaycastPadding.z
+      value: -30
+      objectReference: {fileID: 0}
     - target: {fileID: 1546716168327775184, guid: 76e9427af83c9420ba4ba9eb02ed28e9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12806,6 +12822,22 @@ PrefabInstance:
     - target: {fileID: 436710351856320313, guid: d7d0cd94b02bc4be7852f698aa88e114, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GeneralButtonDisplayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370557134292627509, guid: d7d0cd94b02bc4be7852f698aa88e114, type: 3}
+      propertyPath: m_RaycastPadding.w
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370557134292627509, guid: d7d0cd94b02bc4be7852f698aa88e114, type: 3}
+      propertyPath: m_RaycastPadding.x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370557134292627509, guid: d7d0cd94b02bc4be7852f698aa88e114, type: 3}
+      propertyPath: m_RaycastPadding.y
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370557134292627509, guid: d7d0cd94b02bc4be7852f698aa88e114, type: 3}
+      propertyPath: m_RaycastPadding.z
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 1546716168327775184, guid: d7d0cd94b02bc4be7852f698aa88e114, type: 3}
       propertyPath: m_Pivot.x
@@ -20959,7 +20991,7 @@ PrefabInstance:
       objectReference: {fileID: 4657796638849379191, guid: 48419ec368d364875a89f7c09779893e, type: 3}
     - target: {fileID: 1517463453799867697, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1737008675131188238, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}
       propertyPath: m_IsActive
