@@ -49,8 +49,11 @@ public class HelpTextManager : MonoBehaviour
     }
     public void ShowNotEnoughSpaceToAddIngredient()
     {
-
         ShowMessage("INGREDIENT.NOT_ENOUGH_SPACE_TO_ADD");
     }
+    public void ShowWrongTacosMessage()
+    {
 
+        ShowMessage("ORDER.WRONG_TACOS");
+    }
 }
