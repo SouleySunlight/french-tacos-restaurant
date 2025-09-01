@@ -92,7 +92,6 @@ public class HotplateVisuals : MonoBehaviour, IView
         for (int i = 0; i < GlobalConstant.MAX_COOKING_INGREDIENTS; i++)
         {
             var completionBar = Instantiate(roundedCompletionBarPrefab, hotplateTransform);
-            //completionBar.GetComponent<RoundedCompletionBarDisplayer>().UpdateTimer(0);
             completionBars.Add(completionBar);
 
             var rectTransform = completionBar.GetComponent<RectTransform>();
