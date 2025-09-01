@@ -371,6 +371,22 @@ MonoBehaviour:
     m_Localized: Not enough money!
     m_Metadata:
       m_Items: []
+  - m_Id: 6535685333835776
+    m_Localized: Not enough space to add the ingredient, please be patient!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6537027670499328
+    m_Localized: It's not the ordered tacos!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6540195708002304
+    m_Localized: Max ingredient number increased!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6540443411013632
+    m_Localized: 'Max number of ingredient:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

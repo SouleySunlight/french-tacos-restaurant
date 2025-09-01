@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45aae1c05828406e9bd6754a6c6673b, type: 3}
   m_Name: UNLOCK_MERGUEZ
   m_EditorClassIdentifier: 
-  numberOfTacosToUnlock: 7500
+  numberOfTacosToUnlock: 500
   rewardType: 0
   ingredientToUnlock: {fileID: 11400000, guid: 4d6177012fa324b1b882d2c0bb28aa6f, type: 2}

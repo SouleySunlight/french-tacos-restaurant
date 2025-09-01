@@ -66,7 +66,8 @@ public class GameManager : MonoBehaviour
             tacosPrice = OrdersManager.GetTacosPrice(),
             processedIngredientInventorySaveData = InventoryManager.GetInventoryProcessedIngredientSaveData(),
             unlockedIngredients = InventoryManager.GetUnlockedIngredientIds(),
-            upgradeSaveData = UpgradeManager.GetInventorySaveData()
+            upgradeSaveData = UpgradeManager.GetInventorySaveData(),
+            maxIngredientNumber = InventoryManager.GetMaxIngredientNumberSaveData()
         };
 
         SaveSystem.Save(gameSaveData);
@@ -82,6 +83,7 @@ public class GameManager : MonoBehaviour
         CompletionBarManager.LoadNumberOfTacosServed(data.numberOfTacosServed);
         OrdersManager.SetMaxNumberOfOrders(data.maxNumberOfOrders);
         OrdersManager.SetTacosPrice(data.tacosPrice);
+        InventoryManager.LoadMaxIngredientNumber(data.maxIngredientNumber);
         isLoaded = true;
     }
 
@@ -125,7 +127,6 @@ public class GameManager : MonoBehaviour
         GrillManager.SetupGrillingTime();
         SauceGruyereManager.UpdateCookingTime();
         DayCycleManager.SetupDayCycle();
-        InventoryManager.SetupInventoriesMaxAmount();
 
     }
 

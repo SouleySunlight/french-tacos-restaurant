@@ -9,7 +9,7 @@ public class InventoryManager : MonoBehaviour
     [HideInInspector] public int Popularity { get; private set; } = new();
     private Dictionary<string, InventorySlot> processedIngredientInventory = new();
 
-    private int processedIngredientMaxAmount;
+    private int processedIngredientMaxAmount = 10;
 
     public string GetProcessedIngredientStockString(Ingredient ingredient)
     {
@@ -161,16 +161,11 @@ public class InventoryManager : MonoBehaviour
         LoadPopularity();
     }
 
-    public void UpdateProcessedInventoryMaxAmount()
+    public void UpdateProcessedInventoryMaxAmount(int value)
     {
-        processedIngredientMaxAmount = GlobalConstant.DEFAULT_INGREDIENT_MAX_AMOUNT;
+        processedIngredientMaxAmount += value;
     }
 
-
-    public void SetupInventoriesMaxAmount()
-    {
-        UpdateProcessedInventoryMaxAmount();
-    }
     public int GetProcessedIngredientQuantity(Ingredient ingredient)
     {
         return processedIngredientInventory.ContainsKey(ingredient.id) ? processedIngredientInventory[ingredient.id].currentAmount : 0;
@@ -198,6 +193,16 @@ public class InventoryManager : MonoBehaviour
         GameManager.Instance.TacosMakerManager.AddIngredient(ingredient);
         GameManager.Instance.HotplateManager.AddAvailableIngredient(ingredient);
         GameManager.Instance.FryerManager.AddAvailableIngredient(ingredient);
+    }
+
+    public int GetMaxIngredientNumberSaveData()
+    {
+        return processedIngredientMaxAmount;
+    }
+
+    public void LoadMaxIngredientNumber(int maxIngredientNumber)
+    {
+        processedIngredientMaxAmount = maxIngredientNumber;
     }
 
 }
