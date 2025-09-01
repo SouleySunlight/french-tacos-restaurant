@@ -94,6 +94,7 @@ public class HotplateManager : MonoBehaviour, IWorkStation
             return;
         }
         ManageCookingSound();
+        GameManager.Instance.HelpTextManager.ShowNotEnoughSpaceToAddIngredient();
         throw new NotEnoughSpaceException();
 
     }

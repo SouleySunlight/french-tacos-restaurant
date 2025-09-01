@@ -47,5 +47,10 @@ public class HelpTextManager : MonoBehaviour
 
         ShowMessage("GOLD.NOT_ENOUGH");
     }
+    public void ShowNotEnoughSpaceToAddIngredient()
+    {
+
+        ShowMessage("INGREDIENT.NOT_ENOUGH_SPACE_TO_ADD");
+    }
 
 }
