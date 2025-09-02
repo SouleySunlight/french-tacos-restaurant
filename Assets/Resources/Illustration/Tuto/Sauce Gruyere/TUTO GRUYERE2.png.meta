@@ -185,7 +185,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TUTO GRUYERE2_0: 8122119618494552192
+      TUTO GRUYERE2_1: 6068099841586431657
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

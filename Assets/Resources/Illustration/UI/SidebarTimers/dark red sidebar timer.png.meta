@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dark red sidebar timer_0: -7380141637143962509
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

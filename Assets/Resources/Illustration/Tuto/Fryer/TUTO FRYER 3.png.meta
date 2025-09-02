@@ -185,7 +185,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TUTO FRYER 3_0: 4769831946972075933
+      TUTO FRYER 3_1: 5377309778201124828
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
