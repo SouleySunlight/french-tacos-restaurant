@@ -50,6 +50,7 @@ public class DayCycleManager : MonoBehaviour
         GameManager.Instance.PauseGame();
         GameManager.Instance.ResetViewForNewDay();
         dayOverModalVisuals.ShowDayOverModal();
+        GameManager.Instance.AdsManager.ShowInterstitialAd();
         currentDay++;
         GameManager.Instance.SaveGame();
     }
