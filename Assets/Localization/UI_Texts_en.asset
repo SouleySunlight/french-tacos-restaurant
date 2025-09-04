@@ -387,6 +387,14 @@ MonoBehaviour:
     m_Localized: 'Max number of ingredient:'
     m_Metadata:
       m_Items: []
+  - m_Id: 7546545653145600
+    m_Localized: No more gold ? <br> Watch an ad to bounce back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7546945508728832
+    m_Localized: Watch
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
