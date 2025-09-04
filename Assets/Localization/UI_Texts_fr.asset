@@ -404,6 +404,14 @@ MonoBehaviour:
     m_Localized: Regarder
     m_Metadata:
       m_Items: []
+  - m_Id: 7608818635628544
+    m_Localized: Regarder une pub
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7608868753367040
+    m_Localized: "D\xE9bloquer un travailleur al\xE9atoire"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
