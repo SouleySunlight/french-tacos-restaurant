@@ -169,6 +169,9 @@ public class AdsManager : MonoBehaviour
                 case RewardedAdTypeEnum.RETRIEVE_MINIMAL_MONEY:
                     GameManager.Instance.WalletManager.RetriveMinimalGold();
                     break;
+                case RewardedAdTypeEnum.UNLOCK_WORKER:
+                    GameManager.Instance.WorkersManager.HireRandomWorker();
+                    break;
                 default:
                     break;
             }

@@ -8,6 +8,7 @@ public class WorkersManager : MonoBehaviour
     private List<Worker> hiredForADayWorkers = new();
     private WorkerModalVisual workerModalVisual;
     private WorkersButtonDisplayer workersButtonDisplayer;
+    public Worker hiredWorkerViaAd { get; private set; } = null;
 
     void Awake()
     {
@@ -29,7 +30,7 @@ public class WorkersManager : MonoBehaviour
         hiredForADayWorkers.Add(worker);
         HireWorker(worker);
     }
-    public void HireWorker(Worker worker)
+    public void HireWorker(Worker worker, bool isFree = false)
     {
         if (!availableWorkers.Contains(worker))
         { return; }
@@ -37,7 +38,7 @@ public class WorkersManager : MonoBehaviour
         if (hiredWorkers.Contains(worker))
         { return; }
 
-        if (!GameManager.Instance.WalletManager.HasEnoughMoney(worker.pricePerDay))
+        if (!isFree && !GameManager.Instance.WalletManager.HasEnoughMoney(worker.pricePerDay))
         { return; }
 
         var sameRoleHiredWorkers = hiredWorkers.FindAll((hiredWorker) => hiredWorker.role == worker.role);
@@ -51,9 +52,13 @@ public class WorkersManager : MonoBehaviour
         }
 
         hiredWorkers.Add(worker);
-        GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay, SpentCategoryEnum.WORKERS);
+        if (!isFree)
+        {
+            GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay, SpentCategoryEnum.WORKERS);
+        }
         workerModalVisual.UpdateContainerHiredRelatedVisual();
         workersButtonDisplayer.UpdateButtonText(HasRoleHiredWorker(GetRoleByView()));
+        UpdateWorkerModalVisual();
 
 
         switch (worker.role)
@@ -106,11 +111,14 @@ public class WorkersManager : MonoBehaviour
                 GameManager.Instance.SauceGruyereManager.FireWorker(worker);
                 break;
         }
+        UpdateWorkerModalVisual();
     }
 
     public void RenewWorkers()
     {
         var workerToFire = new List<Worker>();
+        hiredWorkers.Remove(hiredWorkerViaAd);
+        hiredWorkerViaAd = null;
         foreach (var worker in hiredWorkers)
         {
             if (!GameManager.Instance.WalletManager.HasEnoughMoney(worker.pricePerDay))
@@ -191,5 +199,29 @@ public class WorkersManager : MonoBehaviour
             ViewToShowEnum.SAUCE_GRUYERE => WorkersRole.GRUYERE,
             _ => WorkersRole.GRILL,
         };
+    }
+
+    public List<Worker> GetWorkersUnlockableWatchingAnAd()
+    {
+        var unlockableWorkers = new List<Worker>(availableWorkers);
+        foreach (var hiredWorker in hiredWorkers)
+        {
+            var sameRoleHiredWorkers = unlockableWorkers.FindAll((unlockableWorker) => unlockableWorker.role == hiredWorker.role);
+            foreach (var sameRoleHiredWorker in sameRoleHiredWorkers)
+            {
+                unlockableWorkers.Remove(sameRoleHiredWorker);
+            }
+        }
+        return unlockableWorkers;
+    }
+
+    public void HireRandomWorker()
+    {
+        var unlockableWorkers = GetWorkersUnlockableWatchingAnAd();
+        if (unlockableWorkers.Count == 0) { return; }
+        var workerIndex = Random.Range(0, unlockableWorkers.Count - 1);
+        HireWorker(unlockableWorkers[workerIndex], true);
+        hiredWorkerViaAd = unlockableWorkers[workerIndex];
+        UpdateWorkerModalVisual();
     }
 }

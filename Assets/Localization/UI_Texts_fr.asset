@@ -404,6 +404,19 @@ MonoBehaviour:
     m_Localized: Regarder
     m_Metadata:
       m_Items: []
+  - m_Id: 7608818635628544
+    m_Localized: Regarder une pub
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7608868753367040
+    m_Localized: "Engager un travailleur al\xE9atoire pour la journ\xE9e"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7620568172978176
+    m_Localized: "Tu as d\xE9j\xE0 engag\xE9 un travailleur en regardant une pub
+      : {0}"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
