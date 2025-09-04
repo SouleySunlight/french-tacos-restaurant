@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Done completion bar 3_0: 203087893262084961
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

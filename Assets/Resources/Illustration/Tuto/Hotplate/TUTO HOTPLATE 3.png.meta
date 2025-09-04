@@ -185,7 +185,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TUTO HOTPLATE 3_0: 4398058593063828720
+      TUTO HOTPLATE 3_1: -3639748034989011166
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

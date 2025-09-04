@@ -50,6 +50,7 @@ public class DayCycleManager : MonoBehaviour
         GameManager.Instance.PauseGame();
         GameManager.Instance.ResetViewForNewDay();
         dayOverModalVisuals.ShowDayOverModal();
+        GameManager.Instance.AdsManager.ShowInterstitialAd();
         currentDay++;
         GameManager.Instance.SaveGame();
     }
@@ -88,5 +89,12 @@ public class DayCycleManager : MonoBehaviour
     {
         currentDay = day;
         dayCycleVisual.UpdateDayDisplay(currentDay);
+    }
+
+    public void DoubleEarnedGold()
+    {
+        var moneyEarnedThisDay = GameManager.Instance.WalletManager.moneyEarnedThisDay;
+        GameManager.Instance.WalletManager.ReceiveMoney(moneyEarnedThisDay);
+        ToNextDay();
     }
 }
