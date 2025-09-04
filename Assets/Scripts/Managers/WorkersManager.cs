@@ -30,7 +30,7 @@ public class WorkersManager : MonoBehaviour
         hiredForADayWorkers.Add(worker);
         HireWorker(worker);
     }
-    public void HireWorker(Worker worker)
+    public void HireWorker(Worker worker, bool isFree = false)
     {
         if (!availableWorkers.Contains(worker))
         { return; }
@@ -38,7 +38,7 @@ public class WorkersManager : MonoBehaviour
         if (hiredWorkers.Contains(worker))
         { return; }
 
-        if (!GameManager.Instance.WalletManager.HasEnoughMoney(worker.pricePerDay))
+        if (!isFree && !GameManager.Instance.WalletManager.HasEnoughMoney(worker.pricePerDay))
         { return; }
 
         var sameRoleHiredWorkers = hiredWorkers.FindAll((hiredWorker) => hiredWorker.role == worker.role);
@@ -52,7 +52,10 @@ public class WorkersManager : MonoBehaviour
         }
 
         hiredWorkers.Add(worker);
-        GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay, SpentCategoryEnum.WORKERS);
+        if (!isFree)
+        {
+            GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay, SpentCategoryEnum.WORKERS);
+        }
         workerModalVisual.UpdateContainerHiredRelatedVisual();
         workersButtonDisplayer.UpdateButtonText(HasRoleHiredWorker(GetRoleByView()));
         UpdateWorkerModalVisual();
@@ -114,6 +117,8 @@ public class WorkersManager : MonoBehaviour
     public void RenewWorkers()
     {
         var workerToFire = new List<Worker>();
+        hiredWorkers.Remove(hiredWorkerViaAd);
+        hiredWorkerViaAd = null;
         foreach (var worker in hiredWorkers)
         {
             if (!GameManager.Instance.WalletManager.HasEnoughMoney(worker.pricePerDay))
@@ -215,7 +220,7 @@ public class WorkersManager : MonoBehaviour
         var unlockableWorkers = GetWorkersUnlockableWatchingAnAd();
         if (unlockableWorkers.Count == 0) { return; }
         var workerIndex = Random.Range(0, unlockableWorkers.Count - 1);
-        HireWorker(unlockableWorkers[workerIndex]);
+        HireWorker(unlockableWorkers[workerIndex], true);
         hiredWorkerViaAd = unlockableWorkers[workerIndex];
         UpdateWorkerModalVisual();
     }
