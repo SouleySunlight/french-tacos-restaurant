@@ -16910,7 +16910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1466697302
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19336,6 +19336,7 @@ GameObject:
   - component: {fileID: 1804001726}
   - component: {fileID: 1804001725}
   - component: {fileID: 1804001724}
+  - component: {fileID: 1804001729}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -19468,9 +19469,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1337529686}
-        m_TargetAssemblyTypeName: SettingsButtonDisplayer, Assembly-CSharp
-        m_MethodName: OnCloseButtonClicked
+      - m_Target: {fileID: 1804001729}
+        m_TargetAssemblyTypeName: RewardedAdsTriggerButtonDisplayer, Assembly-CSharp
+        m_MethodName: OnClickOnCloseRetrieveGoldModal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19518,6 +19519,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804001722}
   m_CullTransparentMesh: 1
+--- !u!114 &1804001729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804001722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd0e3e657578411185c706efff2b934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardedAdTypeEnum: 0
 --- !u!1 &1818532827
 GameObject:
   m_ObjectHideFlags: 0
@@ -23294,6 +23308,10 @@ PrefabInstance:
       propertyPath: moneyReceivedSound
       value: 
       objectReference: {fileID: 8300000, guid: 2f982efd3bb0543cc9dbb835019c885d, type: 3}
+    - target: {fileID: 657286414416315218, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
+      propertyPath: notEnoughMoneyModal
+      value: 
+      objectReference: {fileID: 1466697301}
     - target: {fileID: 3085991473500790815, guid: d82526c3c9b5944eb802fcf42b353d07, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1001.1441

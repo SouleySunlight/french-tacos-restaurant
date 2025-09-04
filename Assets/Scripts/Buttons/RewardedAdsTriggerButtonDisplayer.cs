@@ -7,4 +7,9 @@ public class RewardedAdsTriggerButtonDisplayer : MonoBehaviour
     {
         GameManager.Instance.AdsManager.ShowRewardedAd(rewardedAdTypeEnum);
     }
+
+    public void OnClickOnCloseRetrieveGoldModal()
+    {
+        GameManager.Instance.WalletManager.HideNotEnoughMoneyModal();
+    }
 }
