@@ -7731,7 +7731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &637927334
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16962,7 +16962,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 637927335}
         m_TargetAssemblyTypeName: WorkerModalVisual, Assembly-CSharp
         m_MethodName: HideWorkerModal
         m_Mode: 1
@@ -22905,6 +22905,7 @@ GameObject:
   - component: {fileID: 2063035902}
   - component: {fileID: 2063035901}
   - component: {fileID: 2063035900}
+  - component: {fileID: 2063035903}
   m_Layer: 5
   m_Name: Secondary Button
   m_TagString: Untagged
@@ -23038,9 +23039,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WorkerContainerDisplayer, Assembly-CSharp
-        m_MethodName: OnHireButtonClicked
+      - m_Target: {fileID: 2063035903}
+        m_TargetAssemblyTypeName: RewardedAdsTriggerButtonDisplayer, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23050,6 +23051,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2063035903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063035898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd0e3e657578411185c706efff2b934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardedAdTypeEnum: 3
 --- !u!1 &2073864328 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8593274922113795092, guid: d2cde986726624ed3bd61e7f7756a620, type: 3}

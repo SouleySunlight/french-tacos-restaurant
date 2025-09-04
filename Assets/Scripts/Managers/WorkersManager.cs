@@ -192,4 +192,26 @@ public class WorkersManager : MonoBehaviour
             _ => WorkersRole.GRILL,
         };
     }
+
+    public List<Worker> GetWorkersUnlockableWatchingAnAd()
+    {
+        var unlockableWorkers = new List<Worker>(availableWorkers);
+        foreach (var hiredWorker in hiredWorkers)
+        {
+            var sameRoleHiredWorkers = unlockableWorkers.FindAll((unlockableWorker) => unlockableWorker.role == hiredWorker.role);
+            foreach (var sameRoleHiredWorker in sameRoleHiredWorkers)
+            {
+                unlockableWorkers.Remove(sameRoleHiredWorker);
+            }
+        }
+        return unlockableWorkers;
+    }
+
+    public void HireRandomWorker()
+    {
+        var unlockableWorkers = GetWorkersUnlockableWatchingAnAd();
+        if (unlockableWorkers.Count == 0) { return; }
+        var workerIndex = Random.Range(0, unlockableWorkers.Count - 1);
+        HireWorker(unlockableWorkers[workerIndex]);
+    }
 }
