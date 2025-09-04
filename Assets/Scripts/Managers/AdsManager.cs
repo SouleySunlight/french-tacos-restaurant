@@ -7,18 +7,23 @@ using UnityEngine.Advertisements;
 public class AdsManager : MonoBehaviour
 {
     private string interstitialPlacement;
+    private string rewardedPlacement;
     private LevelPlayInterstitialAd interstitialAd;
+    private LevelPlayRewardedAd rewardedAd;
     private bool levelPlayInitialized = false;
     private string appKey;
+    public RewardedAdTypeEnum currentRewardContext = RewardedAdTypeEnum.NONE;
 
     void Awake()
     {
 #if UNITY_ANDROID
         interstitialPlacement = "9cxrknwvyyg50jfd";
+        rewardedPlacement = "wxc1l5t428olt0fg";
         appKey = "236ea3815";
 #elif UNITY_IOS
-        interstitialPlacement = "9cxrknwvyyg50jfd";
-        appKey = "2370ea025";
+        interstitialPlacement = "lv4z7sw9inmc8fi2";
+        rewardedPlacement= "wxc1l5t428olt0fg"
+        appKey = "2ifcg3k9frxurtxw";
 #endif
     }
 
@@ -39,6 +44,9 @@ public class AdsManager : MonoBehaviour
             //LevelPlay.LaunchTestSuite();
             CreateInterstitialAd();
             LoadInterstitialAd();
+
+            CreateRewardedAd();
+            LoadRewardedAd();
         };
 
         LevelPlay.OnInitFailed += (error) =>
@@ -107,6 +115,63 @@ public class AdsManager : MonoBehaviour
         else
         {
             Debug.Log("Interstitial ad is not ready yet.");
+        }
+    }
+
+    private void CreateRewardedAd()
+    {
+        if (string.IsNullOrEmpty(rewardedPlacement)) return;
+
+        rewardedAd = new LevelPlayRewardedAd(rewardedPlacement);
+
+        rewardedAd.OnAdLoaded += (adInfo) => Debug.Log($"[Rewarded] Loaded: {adInfo}");
+        rewardedAd.OnAdLoadFailed += (adError) => Debug.LogError($"[Rewarded] Load failed: {adError}");
+        rewardedAd.OnAdDisplayed += (adInfo) => Debug.Log($"[Rewarded] Displayed: {adInfo}");
+        rewardedAd.OnAdDisplayFailed += (adError) => Debug.LogError($"[Rewarded] Display failed: {adError}");
+        rewardedAd.OnAdClicked += (adInfo) => Debug.Log($"[Rewarded] Clicked: {adInfo}");
+        rewardedAd.OnAdClosed += (adInfo) =>
+        {
+            LoadRewardedAd();
+        };
+        rewardedAd.OnAdRewarded += (adInfo, reward) =>
+        {
+            GrantRewardToPlayer();
+        };
+    }
+
+    public void LoadRewardedAd()
+    {
+        rewardedAd?.LoadAd();
+    }
+
+    public void ShowRewardedAd(RewardedAdTypeEnum context)
+    {
+        currentRewardContext = context;
+
+        if (rewardedAd != null && rewardedAd.IsAdReady())
+        {
+            rewardedAd.ShowAd();
+        }
+        else
+        {
+            Debug.Log("[Rewarded] Not ready yet.");
+        }
+    }
+
+    private void GrantRewardToPlayer()
+    {
+        {
+            switch (currentRewardContext)
+            {
+                case RewardedAdTypeEnum.DOUBLE_GOLD:
+                    GameManager.Instance.DayCycleManager.DoubleEarnedGold();
+                    break;
+
+                default:
+                    break;
+            }
+
+            currentRewardContext = RewardedAdTypeEnum.NONE;
         }
     }
 }

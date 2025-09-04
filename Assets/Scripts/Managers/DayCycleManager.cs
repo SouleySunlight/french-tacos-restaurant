@@ -90,4 +90,11 @@ public class DayCycleManager : MonoBehaviour
         currentDay = day;
         dayCycleVisual.UpdateDayDisplay(currentDay);
     }
+
+    public void DoubleEarnedGold()
+    {
+        var moneyEarnedThisDay = GameManager.Instance.WalletManager.moneyEarnedThisDay;
+        GameManager.Instance.WalletManager.ReceiveMoney(moneyEarnedThisDay);
+        ToNextDay();
+    }
 }
