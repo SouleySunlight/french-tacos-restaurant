@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DoubleGoldButtonDisplayer : MonoBehaviour
+public class RewardedAdsTriggerButtonDisplayer : MonoBehaviour
 {
     [SerializeField] private RewardedAdTypeEnum rewardedAdTypeEnum;
     public void OnClick()
