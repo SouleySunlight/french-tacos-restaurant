@@ -96,4 +96,10 @@ public class WalletManager : MonoBehaviour
     {
         notEnoughMoneyModal.SetActive(false);
     }
+
+    public void RetriveMinimalGold()
+    {
+        ReceiveMoney(10);
+        HideNotEnoughMoneyModal();
+    }
 }
