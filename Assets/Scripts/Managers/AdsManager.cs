@@ -166,7 +166,9 @@ public class AdsManager : MonoBehaviour
                 case RewardedAdTypeEnum.DOUBLE_GOLD:
                     GameManager.Instance.DayCycleManager.DoubleEarnedGold();
                     break;
-
+                case RewardedAdTypeEnum.RETRIEVE_MINIMAL_MONEY:
+                    GameManager.Instance.WalletManager.RetriveMinimalGold();
+                    break;
                 default:
                     break;
             }

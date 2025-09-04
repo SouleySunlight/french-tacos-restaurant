@@ -385,6 +385,14 @@ MonoBehaviour:
     m_Key: REWARD.MAX_INGREDIENT_SUBTITLE
     m_Metadata:
       m_Items: []
+  - m_Id: 7546545653145600
+    m_Key: ADS.NOT_ENOUGH_MONEY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7546945508728832
+    m_Key: WATCH
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -396,6 +396,14 @@ MonoBehaviour:
     m_Localized: "Nombre d'ingr\xE9dients max :"
     m_Metadata:
       m_Items: []
+  - m_Id: 7546545653145600
+    m_Localized: "\xC0 court d'or ? <br> Regarde une pub pour te relancer"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7546945508728832
+    m_Localized: Regarder
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -12,8 +12,7 @@ public class WalletManager : MonoBehaviour
     [SerializeField] private AudioClip moneyReceivedSound;
     [SerializeField] private Sprite moneySprite;
 
-
-
+    [SerializeField] private GameObject notEnoughMoneyModal;
 
     void Awake()
     {
@@ -45,7 +44,14 @@ public class WalletManager : MonoBehaviour
     {
         if (currentWalletAmount < amount)
         {
-            GameManager.Instance.HelpTextManager.ShowNotEnoughGoldMessage();
+            if (currentWalletAmount < 5)
+            {
+                ShowNotEnoughMoneyModal();
+            }
+            else
+            {
+                GameManager.Instance.HelpTextManager.ShowNotEnoughGoldMessage();
+            }
         }
         return currentWalletAmount >= amount;
     }
@@ -79,5 +85,21 @@ public class WalletManager : MonoBehaviour
     public float GetMoneySpentThisDay()
     {
         return moneySpentOnIngredientsThisDay + moneySpentOnWorkersThisDay + moneySpentOnUpgradeThisDay;
+    }
+
+    public void ShowNotEnoughMoneyModal()
+    {
+        notEnoughMoneyModal.SetActive(true);
+    }
+
+    public void HideNotEnoughMoneyModal()
+    {
+        notEnoughMoneyModal.SetActive(false);
+    }
+
+    public void RetriveMinimalGold()
+    {
+        ReceiveMoney(10);
+        HideNotEnoughMoneyModal();
     }
 }
