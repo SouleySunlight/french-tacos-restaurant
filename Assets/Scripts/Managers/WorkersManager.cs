@@ -8,6 +8,7 @@ public class WorkersManager : MonoBehaviour
     private List<Worker> hiredForADayWorkers = new();
     private WorkerModalVisual workerModalVisual;
     private WorkersButtonDisplayer workersButtonDisplayer;
+    public Worker hiredWorkerViaAd { get; private set; } = null;
 
     void Awake()
     {
@@ -213,5 +214,7 @@ public class WorkersManager : MonoBehaviour
         if (unlockableWorkers.Count == 0) { return; }
         var workerIndex = Random.Range(0, unlockableWorkers.Count - 1);
         HireWorker(unlockableWorkers[workerIndex]);
+        hiredWorkerViaAd = unlockableWorkers[workerIndex];
+        UpdateWorkerModalVisual();
     }
 }

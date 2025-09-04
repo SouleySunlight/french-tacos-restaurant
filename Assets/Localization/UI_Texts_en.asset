@@ -400,7 +400,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7608868753367040
-    m_Localized: Unlock a random worker
+    m_Localized: Hire a random worker for the day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7620568172978176
+    m_Localized: 'You already hired a worker watching an ad: {0}'
     m_Metadata:
       m_Items: []
   references:

@@ -401,6 +401,10 @@ MonoBehaviour:
     m_Key: WORKER.UNLOCK_RANDOM_WORKER
     m_Metadata:
       m_Items: []
+  - m_Id: 7620568172978176
+    m_Key: WORKER.UNLOCKED_WORKER
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

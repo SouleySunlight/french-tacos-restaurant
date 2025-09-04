@@ -1,11 +1,17 @@
+using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 public class WorkerModalVisual : MonoBehaviour
 {
     [SerializeField] private GameObject workerModal;
     [SerializeField] private RectTransform modalBody;
     [SerializeField] private GameObject workerContainerDisplayer;
+    [SerializeField] private GameObject watchAdContainer;
+    [SerializeField] private GameObject adWatchedContainer;
+
     private List<GameObject> workerContainers = new();
 
     public void UpdateModalContent()
@@ -25,6 +31,7 @@ public class WorkerModalVisual : MonoBehaviour
             workerContainer.GetComponent<WorkerContainerDisplayer>().UpdateVisuals();
         }
         PlaceContainers();
+        DisplayAdRelatedContainer();
     }
 
     public void PlaceContainers()
@@ -54,5 +61,31 @@ public class WorkerModalVisual : MonoBehaviour
         {
             container.GetComponent<WorkerContainerDisplayer>().UpdateHiredRelativeVisuals();
         }
+    }
+
+    public void DisplayAdRelatedContainer()
+    {
+        if (GameManager.Instance.WorkersManager.hiredWorkerViaAd == null)
+        {
+            DisplayWatchAdContainer();
+            return;
+        }
+        DisplayAdWatchedContainer();
+    }
+
+    void DisplayWatchAdContainer()
+    {
+        watchAdContainer.SetActive(true);
+        adWatchedContainer.SetActive(false);
+    }
+
+    void DisplayAdWatchedContainer()
+    {
+        watchAdContainer.SetActive(false);
+        adWatchedContainer.SetActive(true);
+        var workerNameKey = LocalizationSettings.StringDatabase
+            .GetLocalizedString("UI_Texts", "WORKERS.TITLE." + GameManager.Instance.WorkersManager.hiredWorkerViaAd.id);
+        adWatchedContainer.GetComponentInChildren<TMP_Text>().text = string.Format(LocalizationSettings.StringDatabase
+            .GetLocalizedString("UI_Texts", "WORKER.UNLOCKED_WORKER"), workerNameKey);
     }
 }
