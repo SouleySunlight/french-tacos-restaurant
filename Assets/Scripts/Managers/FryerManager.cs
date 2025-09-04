@@ -75,6 +75,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
         if (ingredient.processingMethod == ProcessingMethodEnum.FRYER)
         {
             fryerVisuals.AddAvailableIngredient(ingredient);
+            fryerVisuals.AddIngredientIndicator(ingredient);
         }
     }
 
