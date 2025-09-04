@@ -67,6 +67,12 @@ public class WorkerModalVisual : MonoBehaviour
     {
         if (GameManager.Instance.WorkersManager.hiredWorkerViaAd == null)
         {
+            if (GameManager.Instance.WorkersManager.GetWorkersUnlockableWatchingAnAd().Count == 0)
+            {
+                watchAdContainer.SetActive(false);
+                adWatchedContainer.SetActive(false);
+                return;
+            }
             DisplayWatchAdContainer();
             return;
         }
@@ -84,7 +90,7 @@ public class WorkerModalVisual : MonoBehaviour
         watchAdContainer.SetActive(false);
         adWatchedContainer.SetActive(true);
         var workerNameKey = LocalizationSettings.StringDatabase
-            .GetLocalizedString("UI_Texts", "WORKERS.TITLE." + GameManager.Instance.WorkersManager.hiredWorkerViaAd.id);
+.GetLocalizedString("UI_Texts", "WORKERS.TITLE." + GameManager.Instance.WorkersManager.hiredWorkerViaAd.id);
         adWatchedContainer.GetComponentInChildren<TMP_Text>().text = string.Format(LocalizationSettings.StringDatabase
             .GetLocalizedString("UI_Texts", "WORKER.UNLOCKED_WORKER"), workerNameKey);
     }

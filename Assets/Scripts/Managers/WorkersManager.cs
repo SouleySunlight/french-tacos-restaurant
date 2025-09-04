@@ -55,6 +55,7 @@ public class WorkersManager : MonoBehaviour
         GameManager.Instance.WalletManager.SpendMoney(worker.pricePerDay, SpentCategoryEnum.WORKERS);
         workerModalVisual.UpdateContainerHiredRelatedVisual();
         workersButtonDisplayer.UpdateButtonText(HasRoleHiredWorker(GetRoleByView()));
+        UpdateWorkerModalVisual();
 
 
         switch (worker.role)
@@ -107,6 +108,7 @@ public class WorkersManager : MonoBehaviour
                 GameManager.Instance.SauceGruyereManager.FireWorker(worker);
                 break;
         }
+        UpdateWorkerModalVisual();
     }
 
     public void RenewWorkers()
