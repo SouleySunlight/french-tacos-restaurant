@@ -165,7 +165,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.4
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.hakunstudio.frenchtacosrestaurantsimulator
+    Android: com.hakunstudio.frenchtacosrestaurant
     Standalone: com.DefaultCompany.2D-URP
     iPhone: com.ha-kun-studio.french-tacos-restaurant-simulator
   buildNumber:
