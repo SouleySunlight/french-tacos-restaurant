@@ -417,6 +417,26 @@ MonoBehaviour:
       : {0}"
     m_Metadata:
       m_Items: []
+  - m_Id: 7831317797396480
+    m_Localized: Tu aimes le jeu ? Dis le sur le store
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7831577252847616
+    m_Localized: C'est super important pour nous d'avoir ton avis :)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7831757192683520
+    m_Localized: "Bien s\xFBr"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7831889359396864
+    m_Localized: "Peut-\xEAtre plus tard"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7832030397063168
+    m_Localized: Non
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

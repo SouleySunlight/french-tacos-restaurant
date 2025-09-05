@@ -407,6 +407,26 @@ MonoBehaviour:
     m_Localized: 'You already hired a worker watching an ad: {0}'
     m_Metadata:
       m_Items: []
+  - m_Id: 7831317797396480
+    m_Localized: Do you like the game ? Please tell it on the store
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7831577252847616
+    m_Localized: Your opinion really matters for us :)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7831757192683520
+    m_Localized: For sure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7831889359396864
+    m_Localized: Maybe later
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7832030397063168
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

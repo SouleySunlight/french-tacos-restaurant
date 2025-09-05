@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Firebase;
+using Firebase.Extensions;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     public bool isGamePaused = false;
     private bool isLoaded = false;
+    public bool isFirebaseInit = false;
 
 
     private void Awake()
@@ -84,6 +87,7 @@ public class GameManager : MonoBehaviour
         OrdersManager.SetMaxNumberOfOrders(data.maxNumberOfOrders);
         OrdersManager.SetTacosPrice(data.tacosPrice);
         InventoryManager.LoadMaxIngredientNumber(data.maxIngredientNumber);
+        InitFirebase();
         isLoaded = true;
     }
 
@@ -94,7 +98,8 @@ public class GameManager : MonoBehaviour
             isSoundOn = SoundManager.areSoundsOn,
             isMusicOn = SoundManager.isMusicOn,
             language = LocalizationSettings.SelectedLocale.Identifier.Code,
-            tutosViewing = TutoManager.GetTutosSaveData()
+            tutosViewing = TutoManager.GetTutosSaveData(),
+            ratingModalSaveData = DayCycleManager.GetRatingModalSaveData()
         };
 
 
@@ -113,6 +118,7 @@ public class GameManager : MonoBehaviour
             LocalizationSettings.SelectedLocale = locale;
         }
         TutoManager.LoadTutosData(settingsSaveData.tutosViewing);
+        DayCycleManager.LoadRatingModalData(settingsSaveData.ratingModalSaveData);
 
     }
 
@@ -218,9 +224,22 @@ public class GameManager : MonoBehaviour
         FindFirstObjectByType<SoundsButtonDisplayer>().UpdateVisual();
         FindFirstObjectByType<MusicButtonDisplayer>().UpdateVisual();
         WorkersManager.UpdateWorkerModalVisual();
+    }
 
-
-
+    void InitFirebase()
+    {
+        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
+{
+    if (task.Result == DependencyStatus.Available)
+    {
+        DayCycleManager.LoadFirebaseData();
+        isFirebaseInit = true;
+    }
+    else
+    {
+        Debug.LogError("Firebase erreur : " + task.Result);
+    }
+});
     }
 
 

@@ -1,4 +1,7 @@
+using System;
 using System.Collections;
+using Firebase.Extensions;
+using Firebase.RemoteConfig;
 using UnityEngine;
 
 public class DayCycleManager : MonoBehaviour
@@ -9,15 +12,23 @@ public class DayCycleManager : MonoBehaviour
     public bool isDayOver { get; private set; } = false;
     private DayCycleVisual dayCycleVisual;
     private DayOverModalVisuals dayOverModalVisuals;
+    private RatingModalVisual ratingModalVisual;
     [SerializeField] private AudioClip closeShopSound;
     [SerializeField] private AudioClip dayOverSound;
 
-
+    private bool hasRateTheGame = false;
+    private bool refuseRatingTheGame = false;
+    private int ratingNumberOfTimeAsked = 0;
+    private bool didShowRatingModalThisSession = false;
+    private string reviewUrl = "youtube.com/watch?v=u4ecB57jFhI&list=RDu4ecB57jFhI&start_radio=1";
+    private bool isRatingModalEnable = false;
 
     void Awake()
     {
         dayCycleVisual = FindFirstObjectByType<DayCycleVisual>(FindObjectsInactive.Include);
         dayOverModalVisuals = FindFirstObjectByType<DayOverModalVisuals>(FindObjectsInactive.Include);
+        ratingModalVisual = FindFirstObjectByType<RatingModalVisual>(FindObjectsInactive.Include);
+
     }
 
     void Update()
@@ -50,7 +61,7 @@ public class DayCycleManager : MonoBehaviour
         GameManager.Instance.PauseGame();
         GameManager.Instance.ResetViewForNewDay();
         dayOverModalVisuals.ShowDayOverModal();
-        GameManager.Instance.AdsManager.ShowInterstitialAd();
+        AdActionBetweenDay();
         currentDay++;
         GameManager.Instance.SaveGame();
     }
@@ -96,5 +107,79 @@ public class DayCycleManager : MonoBehaviour
         var moneyEarnedThisDay = GameManager.Instance.WalletManager.moneyEarnedThisDay;
         GameManager.Instance.WalletManager.ReceiveMoney(moneyEarnedThisDay);
         ToNextDay();
+    }
+
+    void AdActionBetweenDay()
+    {
+        var shouldShowRatingModal =
+            isRatingModalEnable &&
+            GameManager.Instance.isFirebaseInit &&
+            !hasRateTheGame &&
+            !refuseRatingTheGame &&
+            !didShowRatingModalThisSession &&
+            currentDay >= 3 &&
+            ratingNumberOfTimeAsked < 3;
+
+        if (shouldShowRatingModal)
+        {
+            ratingModalVisual.ShowModal();
+            didShowRatingModalThisSession = true;
+            ratingNumberOfTimeAsked++;
+            return;
+        }
+        var shouldShowAd = UnityEngine.Random.Range(0f, 1f) <= 0.8f;
+        if (!shouldShowAd) { return; }
+        GameManager.Instance.AdsManager.ShowInterstitialAd();
+    }
+
+    public void RefuseRating()
+    {
+        refuseRatingTheGame = true;
+    }
+
+    public void AcceptRating()
+    {
+        hasRateTheGame = true;
+        Application.OpenURL(reviewUrl);
+    }
+
+    public void LoadFirebaseData()
+    {
+        FirebaseRemoteConfig.DefaultInstance.FetchAsync(TimeSpan.Zero)
+            .ContinueWithOnMainThread(fetchTask =>
+            {
+                if (fetchTask.IsCompleted)
+                {
+                    FirebaseRemoteConfig.DefaultInstance.ActivateAsync()
+                        .ContinueWithOnMainThread(task =>
+                        {
+                            reviewUrl = Application.platform == RuntimePlatform.Android ?
+                                FirebaseRemoteConfig.DefaultInstance.GetValue("review_url_android").StringValue :
+                                FirebaseRemoteConfig.DefaultInstance.GetValue("review_url_ios").StringValue;
+                            isRatingModalEnable = FirebaseRemoteConfig.DefaultInstance.GetValue("is_rating_modal_enable").BooleanValue;
+                        });
+                }
+            });
+    }
+
+
+
+    public RatingModalSaveData GetRatingModalSaveData()
+    {
+        return new RatingModalSaveData()
+        {
+            hasRateTheGame = hasRateTheGame,
+            refuseRatingTheGame = refuseRatingTheGame,
+            ratingNumberOfTimeAsked = ratingNumberOfTimeAsked,
+
+        };
+    }
+
+    public void LoadRatingModalData(RatingModalSaveData data)
+    {
+        if (data == null) { return; }
+        hasRateTheGame = data.hasRateTheGame;
+        refuseRatingTheGame = data.refuseRatingTheGame;
+        ratingNumberOfTimeAsked = data.ratingNumberOfTimeAsked;
     }
 }

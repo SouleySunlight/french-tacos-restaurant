@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCGmayiYRWR1rXKJ3gW0YQgXZNk7vO2QfQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>363018011187</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ha-kun-studio.french-tacos-restaurant</string>
+	<key>PROJECT_ID</key>
+	<string>frenchtacosrestaurant</string>
+	<key>STORAGE_BUCKET</key>
+	<string>frenchtacosrestaurant.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:363018011187:ios:9ca8b3d3827ec056c29946</string>
+</dict>
+</plist>
