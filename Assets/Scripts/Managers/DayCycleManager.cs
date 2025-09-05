@@ -4,20 +4,26 @@ using UnityEngine;
 public class DayCycleManager : MonoBehaviour
 {
     private int currentDay = 1;
-    private static readonly float DAY_DURATION_IN_SECONDS = 120f;
+    private static readonly float DAY_DURATION_IN_SECONDS = 10f;
     private float currentDayTimeElapsed = 0f;
     public bool isDayOver { get; private set; } = false;
     private DayCycleVisual dayCycleVisual;
     private DayOverModalVisuals dayOverModalVisuals;
+    private RatingModalVisual ratingModalVisual;
     [SerializeField] private AudioClip closeShopSound;
     [SerializeField] private AudioClip dayOverSound;
 
-
+    private bool hasRateTheGame = false;
+    private bool refuseRatingTheGame = false;
+    private int ratingNumberOfTimeAsked = 0;
+    private bool didShowRatingModalThisSession = false;
 
     void Awake()
     {
         dayCycleVisual = FindFirstObjectByType<DayCycleVisual>(FindObjectsInactive.Include);
         dayOverModalVisuals = FindFirstObjectByType<DayOverModalVisuals>(FindObjectsInactive.Include);
+        ratingModalVisual = FindFirstObjectByType<RatingModalVisual>(FindObjectsInactive.Include);
+
     }
 
     void Update()
@@ -50,7 +56,7 @@ public class DayCycleManager : MonoBehaviour
         GameManager.Instance.PauseGame();
         GameManager.Instance.ResetViewForNewDay();
         dayOverModalVisuals.ShowDayOverModal();
-        GameManager.Instance.AdsManager.ShowInterstitialAd();
+        AdActionBetweenDay();
         currentDay++;
         GameManager.Instance.SaveGame();
     }
@@ -96,5 +102,25 @@ public class DayCycleManager : MonoBehaviour
         var moneyEarnedThisDay = GameManager.Instance.WalletManager.moneyEarnedThisDay;
         GameManager.Instance.WalletManager.ReceiveMoney(moneyEarnedThisDay);
         ToNextDay();
+    }
+
+    void AdActionBetweenDay()
+    {
+        var shouldShowRatingModal = !hasRateTheGame && !refuseRatingTheGame && !didShowRatingModalThisSession && currentDay >= 3 && ratingNumberOfTimeAsked <= 3;
+        if (shouldShowRatingModal)
+        {
+            ratingModalVisual.ShowModal();
+            didShowRatingModalThisSession = true;
+            ratingNumberOfTimeAsked++;
+            return;
+        }
+        var shouldShowAd = Random.Range(0f, 1f) <= 0.8f;
+        if (!shouldShowAd) { return; }
+        GameManager.Instance.AdsManager.ShowInterstitialAd();
+    }
+
+    public void RefuseRating()
+    {
+        refuseRatingTheGame = true;
     }
 }
