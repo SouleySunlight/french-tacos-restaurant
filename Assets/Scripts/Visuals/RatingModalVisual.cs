@@ -12,6 +12,7 @@ public class RatingModalVisual : MonoBehaviour
     public void HideModal()
     {
         ratingModal.SetActive(false);
+        GameManager.Instance.SaveSettings();
     }
 
     public void RefuseRating()
