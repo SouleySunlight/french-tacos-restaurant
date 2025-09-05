@@ -98,7 +98,8 @@ public class GameManager : MonoBehaviour
             isSoundOn = SoundManager.areSoundsOn,
             isMusicOn = SoundManager.isMusicOn,
             language = LocalizationSettings.SelectedLocale.Identifier.Code,
-            tutosViewing = TutoManager.GetTutosSaveData()
+            tutosViewing = TutoManager.GetTutosSaveData(),
+            ratingModalSaveData = DayCycleManager.GetRatingModalSaveData()
         };
 
 
@@ -117,6 +118,7 @@ public class GameManager : MonoBehaviour
             LocalizationSettings.SelectedLocale = locale;
         }
         TutoManager.LoadTutosData(settingsSaveData.tutosViewing);
+        DayCycleManager.LoadRatingModalData(settingsSaveData.ratingModalSaveData);
 
     }
 
@@ -232,7 +234,6 @@ public class GameManager : MonoBehaviour
     {
         DayCycleManager.LoadFirebaseData();
         isFirebaseInit = true;
-        Debug.Log("Firebase prêt !");
     }
     else
     {

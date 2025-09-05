@@ -6,6 +6,7 @@ public class SettingsSaveData
     public bool isMusicOn = true;
     public string language;
     public TutosViewingSaveData tutosViewing = null;
+    public RatingModalSaveData ratingModalSaveData = null;
 
 }
 
@@ -20,4 +21,12 @@ public class TutosViewingSlotSaveData
 public class TutosViewingSaveData
 {
     public List<TutosViewingSlotSaveData> slots = new();
+}
+
+[System.Serializable]
+public class RatingModalSaveData
+{
+    public bool hasRateTheGame = false;
+    public bool refuseRatingTheGame = false;
+    public int ratingNumberOfTimeAsked = 0;
 }
