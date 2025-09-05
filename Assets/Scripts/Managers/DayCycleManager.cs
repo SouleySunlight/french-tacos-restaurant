@@ -1,4 +1,7 @@
+using System;
 using System.Collections;
+using Firebase.Extensions;
+using Firebase.RemoteConfig;
 using UnityEngine;
 
 public class DayCycleManager : MonoBehaviour
@@ -17,6 +20,8 @@ public class DayCycleManager : MonoBehaviour
     private bool refuseRatingTheGame = false;
     private int ratingNumberOfTimeAsked = 0;
     private bool didShowRatingModalThisSession = false;
+    private string reviewUrl = "youtube.com/watch?v=u4ecB57jFhI&list=RDu4ecB57jFhI&start_radio=1";
+    private bool isRatingModalEnable = false;
 
     void Awake()
     {
@@ -107,6 +112,7 @@ public class DayCycleManager : MonoBehaviour
     void AdActionBetweenDay()
     {
         var shouldShowRatingModal =
+            isRatingModalEnable &&
             GameManager.Instance.isFirebaseInit &&
             !hasRateTheGame &&
             !refuseRatingTheGame &&
@@ -121,7 +127,7 @@ public class DayCycleManager : MonoBehaviour
             ratingNumberOfTimeAsked++;
             return;
         }
-        var shouldShowAd = Random.Range(0f, 1f) <= 0.8f;
+        var shouldShowAd = UnityEngine.Random.Range(0f, 1f) <= 0.8f;
         if (!shouldShowAd) { return; }
         GameManager.Instance.AdsManager.ShowInterstitialAd();
     }
@@ -129,5 +135,24 @@ public class DayCycleManager : MonoBehaviour
     public void RefuseRating()
     {
         refuseRatingTheGame = true;
+    }
+
+    public void LoadFirebaseData()
+    {
+        FirebaseRemoteConfig.DefaultInstance.FetchAsync(TimeSpan.Zero)
+            .ContinueWithOnMainThread(fetchTask =>
+            {
+                if (fetchTask.IsCompleted)
+                {
+                    FirebaseRemoteConfig.DefaultInstance.ActivateAsync()
+                        .ContinueWithOnMainThread(task =>
+                        {
+                            reviewUrl = Application.platform == RuntimePlatform.Android ?
+                                FirebaseRemoteConfig.DefaultInstance.GetValue("review_url_android").StringValue :
+                                FirebaseRemoteConfig.DefaultInstance.GetValue("review_url_ios").StringValue;
+                            isRatingModalEnable = FirebaseRemoteConfig.DefaultInstance.GetValue("is_rating_modal_enable").BooleanValue;
+                        });
+                }
+            });
     }
 }

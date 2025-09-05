@@ -230,6 +230,7 @@ public class GameManager : MonoBehaviour
 {
     if (task.Result == DependencyStatus.Available)
     {
+        DayCycleManager.LoadFirebaseData();
         isFirebaseInit = true;
         Debug.Log("Firebase prêt !");
     }
