@@ -137,6 +137,12 @@ public class DayCycleManager : MonoBehaviour
         refuseRatingTheGame = true;
     }
 
+    public void AcceptRating()
+    {
+        hasRateTheGame = true;
+        Application.OpenURL(reviewUrl);
+    }
+
     public void LoadFirebaseData()
     {
         FirebaseRemoteConfig.DefaultInstance.FetchAsync(TimeSpan.Zero)

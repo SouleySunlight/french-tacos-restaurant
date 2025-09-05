@@ -19,4 +19,10 @@ public class RatingModalVisual : MonoBehaviour
         GameManager.Instance.DayCycleManager.RefuseRating();
         HideModal();
     }
+
+    public void AcceptRating()
+    {
+        GameManager.Instance.DayCycleManager.AcceptRating();
+        HideModal();
+    }
 }
