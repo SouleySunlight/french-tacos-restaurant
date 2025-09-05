@@ -106,7 +106,14 @@ public class DayCycleManager : MonoBehaviour
 
     void AdActionBetweenDay()
     {
-        var shouldShowRatingModal = !hasRateTheGame && !refuseRatingTheGame && !didShowRatingModalThisSession && currentDay >= 3 && ratingNumberOfTimeAsked <= 3;
+        var shouldShowRatingModal =
+            GameManager.Instance.isFirebaseInit &&
+            !hasRateTheGame &&
+            !refuseRatingTheGame &&
+            !didShowRatingModalThisSession &&
+            currentDay >= 3 &&
+            ratingNumberOfTimeAsked <= 3;
+
         if (shouldShowRatingModal)
         {
             ratingModalVisual.ShowModal();
