@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public HelpTextManager HelpTextManager { get; private set; }
     public TutoManager TutoManager { get; private set; }
     public AdsManager AdsManager { get; private set; }
+    public NotificationManager NotificationManager { get; private set; }
 
 
     public bool isGamePaused = false;
@@ -55,7 +56,14 @@ public class GameManager : MonoBehaviour
         StartCoroutine(OnGameLoadedCoroutine());
         LoadSettings();
         LoadGame();
+        NotificationManager.CancelAllNotifications();
         LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
+    }
+
+    private void OnApplicationPause()
+    {
+        NotificationManager.ScheduleNotification();
+
     }
 
     public void SaveGame()
@@ -266,6 +274,7 @@ public class GameManager : MonoBehaviour
         HelpTextManager = GetComponentInChildren<HelpTextManager>();
         TutoManager = GetComponentInChildren<TutoManager>();
         AdsManager = GetComponentInChildren<AdsManager>();
+        NotificationManager = GetComponentInChildren<NotificationManager>();
 
         if (TacosMakerManager == null)
         {
@@ -498,6 +507,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             AdsManager = GetComponentInChildren<AdsManager>();
+        }
+        if (NotificationManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/NotificationManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load NotificationManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            NotificationManager = GetComponentInChildren<NotificationManager>();
         }
     }
 }
