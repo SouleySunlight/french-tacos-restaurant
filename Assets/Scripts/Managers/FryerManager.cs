@@ -421,10 +421,12 @@ public class FryerManager : MonoBehaviour, IWorkStation
     {
         if (isAmbientPlaying)
         {
+            fryerVisuals.UpdateBoilingAnimation(true);
             GameManager.Instance.SoundManager.PlayAmbient(fryingSound);
             return;
         }
 
+        fryerVisuals.UpdateBoilingAnimation(false);
         GameManager.Instance.SoundManager.StopAmbient();
 
     }

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: GRILL2
   level: 2
-  pricePerDay: 50
+  pricePerDay: 20
   role: 0
