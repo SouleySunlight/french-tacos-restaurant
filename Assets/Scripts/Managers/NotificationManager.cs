@@ -15,6 +15,7 @@ public class NotificationManager : MonoBehaviour
 
     public void ScheduleNotification()
     {
+        CancelAllNotifications();
         var locale = LocalizationSettings.SelectedLocale.Identifier.Code;
         string title = locale == "fr" ? "Tes clients ont faim 🌮" : "Your customers are hungry 🌮";
         string subtitle = locale == "fr" ? "Les tacos ne se font pas tout seul !" : "Tacos don't make themselves!";
@@ -33,7 +34,7 @@ public class NotificationManager : MonoBehaviour
         {
             Title = title,
             Text = subtitle,
-            FireTime = DateTime.Now.AddMinutes(1)
+            FireTime = DateTime.Now.AddHours(24)
         };
 
         AndroidNotificationCenter.SendNotification(notification, androidChannelId);

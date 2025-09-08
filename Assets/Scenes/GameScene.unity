@@ -4047,7 +4047,7 @@ MonoBehaviour:
   musicSource: {fileID: 360269645}
   sfxSource: {fileID: 360269647}
   ambientSource: {fileID: 360269648}
-  mainTheme: {fileID: 8300000, guid: c12c85c4c9e7343afa425afac7424ef8, type: 3}
+  mainTheme: {fileID: 8300000, guid: 1585f23e29520438aaf8e1145436a948, type: 3}
   trashSound: {fileID: 8300000, guid: 3ced00370134847aea1ab35bfc8950a9, type: 3}
 --- !u!82 &360269647
 AudioSource:

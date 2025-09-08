@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Firebase;
 using Firebase.Extensions;
 using UnityEngine;
@@ -56,14 +57,18 @@ public class GameManager : MonoBehaviour
         StartCoroutine(OnGameLoadedCoroutine());
         LoadSettings();
         LoadGame();
-        NotificationManager.CancelAllNotifications();
+        NotificationManager.RequestPermission();
         LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
     }
 
-    private void OnApplicationPause()
+    void OnApplicationPause(bool paused)
     {
-        NotificationManager.ScheduleNotification();
-
+        if (paused)
+        {
+            NotificationManager.ScheduleNotification();
+            return;
+        }
+        NotificationManager.CancelAllNotifications();
     }
 
     public void SaveGame()
