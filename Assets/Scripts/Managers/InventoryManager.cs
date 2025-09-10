@@ -21,9 +21,9 @@ public class InventoryManager : MonoBehaviour
         return processedIngredientInventory[ingredient.id].currentAmount > 0;
     }
 
-    public bool IsUnprocessedIngredientAvailable(Ingredient ingredient)
+    public bool IsUnprocessedIngredientAvailable(Ingredient ingredient, bool neededByWorker = false)
     {
-        return GameManager.Instance.WalletManager.HasEnoughMoney(ingredient.priceToRefill);
+        return GameManager.Instance.WalletManager.HasEnoughMoney(ingredient.priceToRefill, neededByWorker);
     }
 
     public bool IsIngredientAvailableForTacos(Ingredient ingredient)
@@ -38,9 +38,9 @@ public class InventoryManager : MonoBehaviour
         }
         return IsUnprocessedIngredientAvailable(ingredient);
     }
-    public void ConsumeUnprocessedIngredient(Ingredient ingredient)
+    public void ConsumeUnprocessedIngredient(Ingredient ingredient, bool consumedByWorkers = false)
     {
-        if (!GameManager.Instance.WalletManager.HasEnoughMoney(ingredient.priceToRefill)) { return; }
+        if (!GameManager.Instance.WalletManager.HasEnoughMoney(ingredient.priceToRefill, consumedByWorkers)) { return; }
         GameManager.Instance.WalletManager.SpendMoney(ingredient.priceToRefill, SpentCategoryEnum.INGREDIENTS);
     }
     public void ConsumeProcessedIngredient(Ingredient ingredient)

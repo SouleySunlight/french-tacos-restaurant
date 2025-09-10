@@ -73,7 +73,7 @@ public class HotplateManager : MonoBehaviour, IWorkStation
         return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll(ingredient => ingredient.processingMethod == ProcessingMethodEnum.HOTPLATE);
     }
 
-    public void CookIngredients(Ingredient ingredient)
+    public void CookIngredients(Ingredient ingredient, bool doneByWorker = false)
     {
         for (int i = 0; i < cookingIngredients.Count; i++)
         {
@@ -81,11 +81,11 @@ public class HotplateManager : MonoBehaviour, IWorkStation
             {
                 continue;
             }
-            if (!GameManager.Instance.InventoryManager.IsUnprocessedIngredientAvailable(ingredient))
+            if (!GameManager.Instance.InventoryManager.IsUnprocessedIngredientAvailable(ingredient, doneByWorker))
             {
                 return;
             }
-            GameManager.Instance.InventoryManager.ConsumeUnprocessedIngredient(ingredient);
+            GameManager.Instance.InventoryManager.ConsumeUnprocessedIngredient(ingredient, doneByWorker);
             cookingIngredients[i] = ingredient;
             cookingTimes[i] = 0;
             totalCookingTimes[i] = cookingIngredients[i].processingTime * GameManager.Instance.UpgradeManager.GetSpeedfactor("HOTPLATE");
@@ -286,7 +286,7 @@ public class HotplateManager : MonoBehaviour, IWorkStation
         {
             return;
         }
-        CookIngredients(ingredientToAdd);
+        CookIngredients(ingredientToAdd, true);
     }
 
     bool AreSomeIngredientsCooking()

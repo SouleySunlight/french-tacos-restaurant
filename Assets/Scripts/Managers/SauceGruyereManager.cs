@@ -79,9 +79,9 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
         return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll((ingredient) => ingredient.category == IngredientCategoryEnum.SAUCE_GRUYERE);
     }
 
-    public void AddIngredientToSauceGruyere(Ingredient ingredient, bool? isDoneByWorker = false)
+    public void AddIngredientToSauceGruyere(Ingredient ingredient, bool isDoneByWorker = false)
     {
-        if (!GameManager.Instance.InventoryManager.IsUnprocessedIngredientAvailable(ingredient))
+        if (!GameManager.Instance.InventoryManager.IsUnprocessedIngredientAvailable(ingredient, isDoneByWorker))
         {
             return;
         }
@@ -89,7 +89,7 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
         {
             return;
         }
-        GameManager.Instance.InventoryManager.ConsumeUnprocessedIngredient(ingredient);
+        GameManager.Instance.InventoryManager.ConsumeUnprocessedIngredient(ingredient, isDoneByWorker);
         sauceGruyereIngredients.Add(ingredient);
         sauceGruyereVisual.AddIngredientToSauceGruyere(ingredient);
         sauceGruyereVisual.UpdateIngredientButtons();
@@ -228,7 +228,7 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
         }
         if (sauceGruyereIngredients.Count == 0)
         {
-            AddIngredientToSauceGruyere(GetSauceGruyereComponent()[0]);
+            AddIngredientToSauceGruyere(GetSauceGruyereComponent()[0], true);
             return;
 
         }

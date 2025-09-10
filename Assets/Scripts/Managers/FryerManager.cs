@@ -80,7 +80,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
     }
 
 
-    public void FryIngredients(Ingredient ingredient)
+    public void FryIngredients(Ingredient ingredient, bool doneByWorker = false)
     {
         for (int i = 0; i < fryingIngredients.Count; i++)
         {
@@ -96,11 +96,11 @@ public class FryerManager : MonoBehaviour, IWorkStation
             {
                 continue;
             }
-            if (!GameManager.Instance.InventoryManager.IsUnprocessedIngredientAvailable(ingredient))
+            if (!GameManager.Instance.InventoryManager.IsUnprocessedIngredientAvailable(ingredient, doneByWorker))
             {
                 return;
             }
-            GameManager.Instance.InventoryManager.ConsumeUnprocessedIngredient(ingredient);
+            GameManager.Instance.InventoryManager.ConsumeUnprocessedIngredient(ingredient, doneByWorker);
             if (fryingIngredients[i] == null)
             {
                 fryingIngredients[i] = ingredient;
@@ -335,7 +335,7 @@ public class FryerManager : MonoBehaviour, IWorkStation
             {
                 try
                 {
-                    FryIngredients(ingredientToAdd);
+                    FryIngredients(ingredientToAdd, true);
                 }
                 catch (NotEnoughSpaceException e)
                 {

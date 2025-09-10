@@ -40,10 +40,11 @@ public class WalletManager : MonoBehaviour
         walletVisual.UpdateWalletAmount(currentWalletAmount);
     }
 
-    public bool HasEnoughMoney(float amount)
+    public bool HasEnoughMoney(float amount, bool neededByWorker = false)
     {
         if (currentWalletAmount < amount)
         {
+            if (neededByWorker) { return false; }
             if (currentWalletAmount < 5)
             {
                 ShowNotEnoughMoneyModal();
