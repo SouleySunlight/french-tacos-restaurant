@@ -2,7 +2,6 @@ using UnityEngine;
 using Unity.Services.Core;
 using Unity.Services.LevelPlay;
 using System.Threading.Tasks;
-using UnityEngine.Advertisements;
 
 public class AdsManager : MonoBehaviour
 {
@@ -22,8 +21,8 @@ public class AdsManager : MonoBehaviour
         appKey = "236ea3815";
 #elif UNITY_IOS
         interstitialPlacement = "lv4z7sw9inmc8fi2";
-        rewardedPlacement= "wxc1l5t428olt0fg"
-        appKey = "2ifcg3k9frxurtxw";
+        rewardedPlacement = "wxc1l5t428olt0fg";
+        appKey = "2370ea025";
 #endif
     }
 
