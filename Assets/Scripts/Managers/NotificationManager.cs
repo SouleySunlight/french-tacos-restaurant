@@ -41,12 +41,6 @@ public class NotificationManager : MonoBehaviour
 #endif
 
 #if UNITY_IOS
-        var authOptions = AuthorizationOption.Alert | AuthorizationOption.Badge | AuthorizationOption.Sound;
-        iOSNotificationCenter.RequestAuthorization(authOptions, granted =>
-        {
-            Debug.Log("Permission notifications iOS : " + granted);
-        });
-
         var timeTrigger = new iOSNotificationTimeIntervalTrigger()
         {
             TimeInterval = new TimeSpan(24, 0, 0),
@@ -80,14 +74,6 @@ public class NotificationManager : MonoBehaviour
 
     public void RequestPermission()
     {
-#if UNITY_IOS
-        var authOptions = AuthorizationOption.Alert | AuthorizationOption.Badge | AuthorizationOption.Sound;
-        iOSNotificationCenter.RequestAuthorization(authOptions, granted =>
-        {
-            Debug.Log("Permission notifications iOS : " + granted);
-        });
-#endif
-
 #if UNITY_ANDROID
         if (!UnityEngine.Android.Permission.HasUserAuthorizedPermission("android.permission.POST_NOTIFICATIONS"))
         {
