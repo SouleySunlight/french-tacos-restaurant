@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.google.firebase.app.unity"
-          android:versionCode="1"
-          android:versionName="1.0">
+    package="com.google.firebase.app.unity"
+    android:versionCode="1"
+    android:versionName="1.0">
+    <application
+        android:label="@string/app_name"
+        android:icon="@mipmap/app_icon">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2707917313888876~4786663796" />
+    </application>
 </manifest>
