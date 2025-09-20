@@ -18,7 +18,7 @@ public class NotificationManager : MonoBehaviour
         CancelAllNotifications();
         var locale = LocalizationSettings.SelectedLocale.Identifier.Code;
         string title = locale == "fr" ? "Tes clients ont faim 🌮" : "Your customers are hungry 🌮";
-        string subtitle = locale == "fr" ? "Les tacos ne se font pas tout seul !" : "Tacos don't make themselves!";
+        string subtitle = locale == "fr" ? "Les tacos ne se font pas tout seuls !" : "Tacos don't make themselves!";
 
 #if UNITY_ANDROID
         var channel = new AndroidNotificationChannel()
