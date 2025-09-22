@@ -106,6 +106,18 @@ public class InventoryManager : MonoBehaviour
         return ids;
     }
 
+    public bool IsFryerUnlocked()
+    {
+        var fries = UnlockedIngredients.Find(ingredient => ingredient.id == "FRI");
+        return fries != null;
+    }
+
+    public bool IsSauceGruyereUnlocked()
+    {
+        var fries = UnlockedIngredients.Find(ingredient => ingredient.id == "GRU_SAU");
+        return fries != null;
+    }
+
     public void LoadUnlockedIngredientsFromSaveData(List<string> ingredientIds)
     {
         UnlockedIngredients.Clear();
@@ -193,6 +205,10 @@ public class InventoryManager : MonoBehaviour
         GameManager.Instance.TacosMakerManager.AddIngredient(ingredient);
         GameManager.Instance.HotplateManager.AddAvailableIngredient(ingredient);
         GameManager.Instance.FryerManager.AddAvailableIngredient(ingredient);
+        if (ingredient.id == "FRI" || ingredient.id == "GRU_SAU")
+        {
+            GameManager.Instance.SidebarManager.UpdateSidebarButtons();
+        }
     }
 
     public int GetMaxIngredientNumberSaveData()

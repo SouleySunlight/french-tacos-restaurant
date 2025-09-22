@@ -14,11 +14,31 @@ public class SidebarVisuals : MonoBehaviour
     private readonly int VERTICAL_OFFSET = -220;
 
 
-    void Awake()
+    void Start()
     {
+        UpdateSidebarVisual();
+        UpdateView(sidebarOptions[0].viewToShow);
+    }
+
+    public void UpdateSidebarVisual()
+    {
+        foreach (var sidebarButton in sidebarButtons)
+        {
+            Destroy(sidebarButton);
+        }
+        sidebarButtons.Clear();
+
         var index = 0;
         foreach (var sidebarOption in sidebarOptions)
         {
+            if (sidebarOption.name == "Fryer" && !GameManager.Instance.InventoryManager.IsFryerUnlocked())
+            {
+                continue;
+            }
+            if (sidebarOption.name == "Gruyère" && !GameManager.Instance.InventoryManager.IsSauceGruyereUnlocked())
+            {
+                continue;
+            }
             var createdOption = Instantiate(sidebuttonPrefab, this.transform);
             createdOption.GetComponent<Button>().onClick.AddListener(() => UpdateView(sidebarOption.viewToShow));
             createdOption.GetComponent<SidebarButtonDisplayer>().sidebarOption = sidebarOption;
@@ -36,7 +56,6 @@ public class SidebarVisuals : MonoBehaviour
             index++;
         }
         InitializeTimers();
-
     }
 
     public void UpdateTimer(ViewToShowEnum viewToShow, float timer)
@@ -55,11 +74,6 @@ public class SidebarVisuals : MonoBehaviour
         {
             sidebarButton.GetComponent<SidebarButtonDisplayer>().UpdateTimer(0f);
         }
-    }
-
-    void Start()
-    {
-        UpdateView(sidebarOptions[0].viewToShow);
     }
 
     void UpdateView(ViewToShowEnum viewToShow)

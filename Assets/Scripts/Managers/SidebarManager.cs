@@ -13,4 +13,9 @@ public class SidebarManager : MonoBehaviour
     {
         sidebarVisuals.UpdateTimer(viewToShow, timer);
     }
+
+    public void UpdateSidebarButtons()
+    {
+        sidebarVisuals.UpdateSidebarVisual();
+    }
 }
