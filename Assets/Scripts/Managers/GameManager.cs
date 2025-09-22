@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
     {
         GameSaveData data = SaveSystem.Load();
         WalletManager.SetCurrentAmount(data.playerMoney);
-        DayCycleManager.SetCurrentDay(data.currentDay == 0 ? 1 : data.currentDay);
+        DayCycleManager.SetCurrentDay(data.currentDay);
         InventoryManager.LoadInventory(data.processedIngredientInventorySaveData, data.unlockedIngredients);
         UpgradeManager.LoadUpgradesFromSaveData(data.upgradeSaveData);
         CompletionBarManager.LoadNumberOfTacosServed(data.numberOfTacosServed);
@@ -145,6 +145,7 @@ public class GameManager : MonoBehaviour
         GrillManager.SetupGrillingTime();
         SauceGruyereManager.UpdateCookingTime();
         DayCycleManager.SetupDayCycle();
+        SidebarManager.UpdateSidebarButtons();
 
     }
 

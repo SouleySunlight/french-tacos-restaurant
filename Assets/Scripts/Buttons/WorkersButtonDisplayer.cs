@@ -10,6 +10,11 @@ public class WorkersButtonDisplayer : MonoBehaviour
 
     public void UpdateVisual()
     {
+        if (GameManager.Instance.DayCycleManager.GetCurrentDay() == 0)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         var currentView = PlayzoneVisual.currentView;
 
         if (currentView == ViewToShowEnum.TACOS_MAKER)

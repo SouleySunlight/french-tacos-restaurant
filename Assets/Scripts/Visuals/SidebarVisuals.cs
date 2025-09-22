@@ -16,7 +16,6 @@ public class SidebarVisuals : MonoBehaviour
 
     void Start()
     {
-        UpdateSidebarVisual();
         UpdateView(sidebarOptions[0].viewToShow);
     }
 

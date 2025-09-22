@@ -32,6 +32,10 @@ public class UpgradeManager : MonoBehaviour
 
     public int GetCurrentLevel(string id)
     {
+        if (GameManager.Instance.DayCycleManager.GetCurrentDay() == 0)
+        {
+            return 20;
+        }
         return upgrades[id].currentLevel;
     }
 
@@ -63,7 +67,8 @@ public class UpgradeManager : MonoBehaviour
 
     public float GetSpeedfactor(string id)
     {
-        return upgrades[id].upgrade.GetSpeedFactor(upgrades[id].currentLevel);
+        var currentLevel = GameManager.Instance.DayCycleManager.GetCurrentDay() == 0 ? 20 : upgrades[id].currentLevel;
+        return upgrades[id].upgrade.GetSpeedFactor(currentLevel);
     }
 
     public UpgradeSaveData GetInventorySaveData()
