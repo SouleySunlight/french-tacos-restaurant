@@ -185,4 +185,15 @@ public class TacosMakerVisual : MonoBehaviour, IView
         FindFirstObjectByType<GameManager>().WrapTacos();
     }
 
+    public RectTransform GetIngredientButtonTransform(Ingredient ingredient)
+    {
+        var button = buttons.Find(button => button.GetComponent<IngredientButtonDisplayer>().ingredientData == ingredient);
+        return button.GetComponent<RectTransform>();
+    }
+
+    public RectTransform GetOnCreationTacosTransform()
+    {
+        return onCreationTacos.GetComponent<RectTransform>();
+    }
+
 }

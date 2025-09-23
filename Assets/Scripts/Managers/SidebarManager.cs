@@ -18,4 +18,20 @@ public class SidebarManager : MonoBehaviour
     {
         sidebarVisuals.UpdateSidebarVisual();
     }
+
+    public RectTransform GetSidebarButtonRectTransform(ViewToShowEnum viewToShow)
+    {
+        return sidebarVisuals.GetButtonRectTransform(viewToShow);
+    }
+
+    public void DeactivateAllSidebarButtons()
+    {
+        sidebarVisuals.DeactivateAllButtons();
+    }
+
+    public void ActivateAllSidebarButtons()
+    {
+        sidebarVisuals.ActivateAllButtons();
+    }
+
 }

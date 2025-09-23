@@ -22,6 +22,10 @@ public class OrdersManager : MonoBehaviour
     void Update()
     {
 
+        if (GameManager.Instance.DayCycleManager.GetCurrentDay() == 0)
+        {
+            return;
+        }
         if (GameManager.Instance.isGamePaused)
         {
             return;
@@ -48,7 +52,7 @@ public class OrdersManager : MonoBehaviour
         }
     }
 
-    void AddNewOrder(Order order)
+    public void AddNewOrder(Order order)
     {
         orders.Add(order);
         ordersVisual.AddOrder(order);
@@ -74,6 +78,7 @@ public class OrdersManager : MonoBehaviour
     IEnumerator AddFirstOrderOfTheDayCoroutine()
     {
         yield return new WaitForSeconds(2);
+        if (GameManager.Instance.DayCycleManager.GetCurrentDay() == 0) { yield break; }
         AddNewOrder(GenerateOrder());
         timeSinceLastOrder = 0f;
     }
@@ -243,5 +248,19 @@ public class OrdersManager : MonoBehaviour
     public void IncrementTacosPrice()
     {
         tacosPrice++;
+    }
+
+    public RectTransform GetFirstOrderTransform()
+    {
+        return ordersVisual.GetFirstOrderTransform();
+    }
+
+    public List<Ingredient> GetFirstOrderExpectedIngredients()
+    {
+        if (orders.Count == 0)
+        {
+            return new List<Ingredient>();
+        }
+        return orders[0].expectedOrder;
     }
 }

@@ -46,6 +46,15 @@ public class OrdersVisual : MonoBehaviour
         UpdateVisuals();
     }
 
+    public RectTransform GetFirstOrderTransform()
+    {
+        if (orderPrefabs.Count == 0)
+        {
+            return null;
+        }
+        return orderPrefabs[0].GetComponent<RectTransform>();
+    }
+
 
 
 }

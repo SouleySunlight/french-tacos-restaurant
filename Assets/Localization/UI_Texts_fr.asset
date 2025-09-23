@@ -437,6 +437,67 @@ MonoBehaviour:
     m_Localized: Non
     m_Metadata:
       m_Items: []
+  - m_Id: 14587619538100224
+    m_Localized: Suivant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14590235399675904
+    m_Localized: "Voil\xE0 ta premi\xE8re commande, allons la pr\xE9parer !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14591661395927040
+    m_Localized: 'Bienvenue dans French Tacos Restaurant ! '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14592610122326016
+    m_Localized: "Commen\xE7ons par faire cuire le poulet, suis moi !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14740564233674752
+    m_Localized: "Appuie sur le poulet pour l'ajouter \xE0 la plaque de cuisson,
+      tu peux en ajouter 4 !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14839489728864256
+    m_Localized: "Une fois le poulet cuit, appuie dessus pour le r\xE9cup\xE9rer.
+      N'attends pas trop ou il br\xFBlera"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14839489770807296
+    m_Localized: "Maintenant que les ingr\xE9dients sont pr\xEAts allons pr\xE9parer
+      le tacos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14843000520695808
+    m_Localized: "Appuie sur les ingredients de la commande pour les ajouter dans
+      le tacos. Une fois tous pr\xE9sent, clique sur le tacos pour le plier"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14848540231589888
+    m_Localized: Allons faire griller ce tacos!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14866707473489920
+    m_Localized: "Commen\xE7ons par mettre le tacos dans le grill"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14922855232823296
+    m_Localized: Referme le grill et laisse le tacos griller
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14924276598562816
+    m_Localized: "Ouvre le grill et r\xE9cup\xE8re le tacos en appuyant dessus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14927444170498048
+    m_Localized: "Allons servir ce client affam\xE9!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14930649440837632
+    m_Localized: "Fais glisser le tacos sur la commande correspondante pour le servir
+      et r\xE9cup\xE9rer ton or"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

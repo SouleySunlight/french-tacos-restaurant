@@ -178,7 +178,12 @@ public class GrillVisual : MonoBehaviour, IView
         var tacosMovemement = draggedTacos.GetComponent<TacosMovemement>();
         float distance = Vector2.Distance(eventData.position, trash.transform.position);
 
-        if (tacosMovemement.isAboveTrash)
+        if (!GameManager.Instance.GrillManager.canUserRemoveTacos && grillingTacos.Contains(draggedTacos))
+        {
+            return;
+        }
+
+        if (tacosMovemement.isAboveTrash && GameManager.Instance.DayCycleManager.GetCurrentDay() > 0)
         {
             if (distance >= 200)
             {
@@ -187,7 +192,7 @@ public class GrillVisual : MonoBehaviour, IView
             }
             return;
         }
-        if (distance < 200 && !tacosMovemement.isAboveTrash)
+        if (distance < 200 && !tacosMovemement.isAboveTrash && GameManager.Instance.DayCycleManager.GetCurrentDay() > 0)
         {
             PlaceTacosAboveTrash(draggedTacos);
             return;
@@ -218,7 +223,36 @@ public class GrillVisual : MonoBehaviour, IView
     public void ThrowTacos(GameObject tacos)
     {
         tacos.GetComponent<TacosMovemement>().ThrowTacos(tacos, trash.GetComponent<RectTransform>());
+    }
 
+    public RectTransform GetFirstTacosTransform()
+    {
+        if (tacosToGrillList.Count == 0) { return null; }
+        return tacosToGrillList[0].GetComponent<RectTransform>();
+    }
+
+    public RectTransform GetGrillPosition()
+    {
+        return grillPosition;
+    }
+
+    public void PreventUserFromOpeningOrClosingGrill()
+    {
+        GetComponent<GrillMovement>().CloseGrill.RemoveAllListeners();
+        GetComponent<GrillMovement>().OpenGrill.RemoveAllListeners();
 
     }
+
+    public void AllowUserToOpenOrCloseGrill()
+    {
+        GetComponent<GrillMovement>().CloseGrill.AddListener(CloseGrill);
+        GetComponent<GrillMovement>().OpenGrill.AddListener(OpenGrill);
+    }
+
+    public RectTransform GetFirstGrillingTacosTransform()
+    {
+        if (grillingTacos.Count == 0) { return null; }
+        return grillingTacos[0].GetComponent<RectTransform>();
+    }
+
 }

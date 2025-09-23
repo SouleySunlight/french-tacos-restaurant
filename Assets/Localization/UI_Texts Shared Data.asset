@@ -425,6 +425,62 @@ MonoBehaviour:
     m_Key: NO
     m_Metadata:
       m_Items: []
+  - m_Id: 14587619538100224
+    m_Key: NEXT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14590235399675904
+    m_Key: TUTO.FIRST_ORDER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14591661395927040
+    m_Key: TUTO.WELCOME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14592610122326016
+    m_Key: TUTO.GO_TO_HOTPLATE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14740564233674752
+    m_Key: TUTO.COOK_CHICKEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14839489728864256
+    m_Key: TUTO.ON_CHICKEN_COOKED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14839489770807296
+    m_Key: TUTO.GO_TO_TACOS_MAKER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14843000520695808
+    m_Key: TUTO.PREPARE_TACOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14848540231589888
+    m_Key: TUTO.GO_TO_GRILL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14866707473489920
+    m_Key: TUTO.PUT_TACOS_INTO_GRILL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14922855232823296
+    m_Key: TUTO.GRILL_TACOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14924276598562816
+    m_Key: TUTO.REMOVE_GRILLED_TACOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14927444170498048
+    m_Key: TUTO.GO_TO_CHECKOUT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14930649440837632
+    m_Key: TUTO.SERVE_TACOS
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

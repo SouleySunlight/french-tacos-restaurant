@@ -166,4 +166,28 @@ public class HotplateVisuals : MonoBehaviour, IView
             button.GetComponent<IngredientButtonDisplayer>().GetComponent<IngredientButtonDisplayer>().UpdateVisual();
         }
     }
+
+    public RectTransform GetIngredientButtonTransform(Ingredient ingredient)
+    {
+        var button = buttons.Find(button => button.GetComponent<IngredientButtonDisplayer>().ingredientData == ingredient);
+        if (button == null)
+        {
+            return null;
+        }
+        return button.GetComponent<RectTransform>();
+    }
+
+    public RectTransform GetCookingIngredientTransform(int index)
+    {
+        if (index < 0 || index >= ingredients.Count)
+        {
+            return null;
+        }
+        var ingredient = ingredients[index];
+        if (ingredient == null)
+        {
+            return null;
+        }
+        return ingredient.GetComponent<RectTransform>();
+    }
 }

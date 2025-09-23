@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public HelpWindowManager HelpWindowManager { get; private set; }
     public AdsManager AdsManager { get; private set; }
     public NotificationManager NotificationManager { get; private set; }
+    public TutorialManager TutorialManager { get; private set; }
 
 
     public bool isGamePaused = false;
@@ -144,6 +145,10 @@ public class GameManager : MonoBehaviour
         SauceGruyereManager.UpdateCookingTime();
         DayCycleManager.SetupDayCycle();
         SidebarManager.UpdateSidebarButtons();
+        if (DayCycleManager.GetCurrentDay() == 0)
+        {
+            TutorialManager.StartDayZeroTutorial();
+        }
 
     }
 
@@ -278,6 +283,8 @@ public class GameManager : MonoBehaviour
         HelpWindowManager = GetComponentInChildren<HelpWindowManager>();
         AdsManager = GetComponentInChildren<AdsManager>();
         NotificationManager = GetComponentInChildren<NotificationManager>();
+        TutorialManager = GetComponentInChildren<TutorialManager>();
+
 
         if (TacosMakerManager == null)
         {
@@ -521,6 +528,17 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             NotificationManager = GetComponentInChildren<NotificationManager>();
+        }
+        if (TutorialManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/TutorialManager");
+            if (prefab == null)
+            {
+                Debug.LogError("Unable to load TutorialManager");
+                return;
+            }
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            TutorialManager = GetComponentInChildren<TutorialManager>();
         }
     }
 }

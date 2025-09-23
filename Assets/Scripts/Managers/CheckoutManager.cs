@@ -115,4 +115,9 @@ public class CheckoutManager : MonoBehaviour, IWorkStation
         checkoutVisual.RemoveTacosToServe(tacosToDiscard);
 
     }
+
+    public RectTransform GetFirstTacosTransform()
+    {
+        return checkoutVisual.GetFirstTacosTransform();
+    }
 }

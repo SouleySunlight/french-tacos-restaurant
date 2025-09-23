@@ -427,6 +427,65 @@ MonoBehaviour:
     m_Localized: No
     m_Metadata:
       m_Items: []
+  - m_Id: 14587619538100224
+    m_Localized: Next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14590235399675904
+    m_Localized: Here's your first order, let's prepare it!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14591661395927040
+    m_Localized: Welcome to French Tacos Restaurant!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14592610122326016
+    m_Localized: Let's start by cooking the chicken, follow me!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14740564233674752
+    m_Localized: Press the chicken to add it to the hotplate, you can add up to 4!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14839489728864256
+    m_Localized: Once the chicken is cooked, press it to retrieve it. Don't wait
+      too long or it will burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14839489770807296
+    m_Localized: Now that ingredients are ready, let's prepare it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14843000520695808
+    m_Localized: Press every ingredients of the order. Once done, press the tacos
+      to fold it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14848540231589888
+    m_Localized: Let's make this tacos grill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14866707473489920
+    m_Localized: Let's start putting tacos into the grill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14922855232823296
+    m_Localized: Close the grill and let the tacos grill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14924276598562816
+    m_Localized: Open the grill and get the tacos pressing it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14927444170498048
+    m_Localized: Let's serve our famished customer!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14930649440837632
+    m_Localized: Drag the tacos on the corresponding order to serve it and earn your
+      gold
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
