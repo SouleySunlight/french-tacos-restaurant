@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public SidebarManager SidebarManager { get; private set; }
     public GainManager GainManager { get; private set; }
     public HelpTextManager HelpTextManager { get; private set; }
-    public TutoManager TutoManager { get; private set; }
+    public HelpWindowManager HelpWindowManager { get; private set; }
     public AdsManager AdsManager { get; private set; }
     public NotificationManager NotificationManager { get; private set; }
 
@@ -111,7 +111,6 @@ public class GameManager : MonoBehaviour
             isSoundOn = SoundManager.areSoundsOn,
             isMusicOn = SoundManager.isMusicOn,
             language = LocalizationSettings.SelectedLocale.Identifier.Code,
-            tutosViewing = TutoManager.GetTutosSaveData(),
             ratingModalSaveData = DayCycleManager.GetRatingModalSaveData()
         };
 
@@ -130,7 +129,6 @@ public class GameManager : MonoBehaviour
         {
             LocalizationSettings.SelectedLocale = locale;
         }
-        TutoManager.LoadTutosData(settingsSaveData.tutosViewing);
         DayCycleManager.LoadRatingModalData(settingsSaveData.ratingModalSaveData);
 
     }
@@ -225,7 +223,6 @@ public class GameManager : MonoBehaviour
     {
         UpgradeManager.UpdateUpgradeButtonVisuals();
         WorkersManager.UpdateWorkerModalVisual();
-        TutoManager.ShowTutoIfNeeded(PlayzoneVisual.currentView);
     }
 
     void OnLocaleChanged(UnityEngine.Localization.Locale newLocale)
@@ -278,7 +275,7 @@ public class GameManager : MonoBehaviour
         SidebarManager = GetComponentInChildren<SidebarManager>();
         GainManager = GetComponentInChildren<GainManager>();
         HelpTextManager = GetComponentInChildren<HelpTextManager>();
-        TutoManager = GetComponentInChildren<TutoManager>();
+        HelpWindowManager = GetComponentInChildren<HelpWindowManager>();
         AdsManager = GetComponentInChildren<AdsManager>();
         NotificationManager = GetComponentInChildren<NotificationManager>();
 
@@ -492,7 +489,7 @@ public class GameManager : MonoBehaviour
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
             HelpTextManager = GetComponentInChildren<HelpTextManager>();
         }
-        if (TutoManager == null)
+        if (HelpWindowManager == null)
         {
             GameObject prefab = Resources.Load<GameObject>("Prefab/Managers/TutoManager");
             if (prefab == null)
@@ -501,7 +498,7 @@ public class GameManager : MonoBehaviour
                 return;
             }
             Instantiate(prefab, transform.position, Quaternion.identity, transform);
-            TutoManager = GetComponentInChildren<TutoManager>();
+            HelpWindowManager = GetComponentInChildren<HelpWindowManager>();
         }
         if (AdsManager == null)
         {
