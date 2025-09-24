@@ -17,5 +17,5 @@ MonoBehaviour:
   ingredient: {fileID: 0}
   order: []
   messagekey: TUTO.SERVE_TACOS
-  messageModalYPosition: 0
+  messageModalYPosition: -800
   shouldShowMessageBackground: 0

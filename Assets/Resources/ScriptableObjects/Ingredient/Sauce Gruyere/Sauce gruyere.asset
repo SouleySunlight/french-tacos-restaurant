@@ -25,7 +25,7 @@ MonoBehaviour:
   processingTime: 20
   wastingTimeOffset: 10
   category: 4
-  isUnlockedFromTheBeginning: 0
+  isUnlockedFromTheBeginning: 1
   priceToRefill: 1
   canBeAddedToTacos: 1
   canBePurshased: 0

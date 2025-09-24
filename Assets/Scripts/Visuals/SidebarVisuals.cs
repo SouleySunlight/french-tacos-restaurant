@@ -21,23 +21,9 @@ public class SidebarVisuals : MonoBehaviour
 
     public void UpdateSidebarVisual()
     {
-        foreach (var sidebarButton in sidebarButtons)
-        {
-            Destroy(sidebarButton);
-        }
-        sidebarButtons.Clear();
-
         var index = 0;
         foreach (var sidebarOption in sidebarOptions)
         {
-            if (sidebarOption.name == "Fryer" && !GameManager.Instance.InventoryManager.IsFryerUnlocked())
-            {
-                continue;
-            }
-            if (sidebarOption.name == "Gruyère" && !GameManager.Instance.InventoryManager.IsSauceGruyereUnlocked())
-            {
-                continue;
-            }
             var createdOption = Instantiate(sidebuttonPrefab, this.transform);
             createdOption.GetComponent<Button>().onClick.AddListener(() => UpdateView(sidebarOption.viewToShow));
             createdOption.GetComponent<SidebarButtonDisplayer>().sidebarOption = sidebarOption;
