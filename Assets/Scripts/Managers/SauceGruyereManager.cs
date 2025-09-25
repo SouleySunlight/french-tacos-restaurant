@@ -40,7 +40,7 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
 
         if (cookingTime >= currentCookingTime + sauceGruyere.wastingTimeOffset)
         {
-            if (!isSauceGruyereBurnt)
+            if (!isSauceGruyereBurnt && GameManager.Instance.DayCycleManager.GetCurrentDay() != 0)
             {
                 isSauceGruyereBurnt = true;
                 sauceGruyereVisual.OnSauceGruyereBurnt();
@@ -276,6 +276,27 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
             return;
         }
         GameManager.Instance.SoundManager.StopAmbient();
+    }
+
+    public RectTransform GetIngredientButtonRectTransform(Ingredient ingredient)
+    {
+        return sauceGruyereVisual.GetIngredientButtonRectTransform(ingredient);
+    }
+
+    public bool IsIngredientInPot(Ingredient ingredient)
+    {
+        return sauceGruyereIngredients.Contains(ingredient);
+    }
+
+    public RectTransform GetPotRectTransform()
+    {
+        return sauceGruyereVisual.GetPotRectTransform();
+    }
+
+    public bool IsPotEmpty()
+    {
+        Debug.Log(sauceGruyereIngredients.Count == 0);
+        return sauceGruyereIngredients.Count == 0;
     }
 
 }

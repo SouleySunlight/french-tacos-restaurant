@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7272bba21d1aa414b995a2c8ebd8358f, type: 3}
   m_Name: Add chicken to Hotplate
   m_EditorClassIdentifier: 
-  tutorialStepType: 3
+  tutorialStepType: 2
   viewToShow: 0
   ingredient: {fileID: 11400000, guid: 3379be92e59104cc3a127a761ff34feb, type: 2}
   order: []

@@ -499,12 +499,41 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 14934397496057856
-    m_Localized: "Ta prochaine commande n\xE9cessite des ingredients que tu n'as
-      pas encore pr\xE9par\xE9"
+    m_Localized: "Ta prochaine commande n\xE9cessite des ingr\xE9dients que tu n'as
+      pas encore pr\xE9par\xE9s"
     m_Metadata:
       m_Items: []
   - m_Id: 14935052323381248
     m_Localized: "Commen\xE7ons par les frites"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15139679522250752
+    m_Localized: "Appuies sur les frites pour les ajouter au panier, tu peux mettre
+      jusqu'\xE0 3 ingr\xE9dients identiques par panier. Appuie ensuite sur le panier
+      pour commencer la friture"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15146570281377792
+    m_Localized: "Une fois la cuisson termin\xE9e, appuie sur le panier pour r\xE9cup\xE9rer
+      tes frites. N'attends pas trop o\xF9 elles br\xFBleront"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15148726606618624
+    m_Localized: "Super, allons pr\xE9parer la sauce gruy\xE8re maitenant !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15158932862394368
+    m_Localized: "Ajoute la cr\xE8me puis le fromage et laisse cuire"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15159574414745600
+    m_Localized: "Une fois cuite, appuie dessus pour r\xE9cup\xE9rer la sauce. N'attends
+      pas trop longtemps ou la sauce br\xFBlera"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15162125730177024
+    m_Localized: "F\xE9licitations, tu sais pr\xE9parer des tacos! Vole de tes propres
+      ailes et amuse toi ;)"
     m_Metadata:
       m_Items: []
   references:

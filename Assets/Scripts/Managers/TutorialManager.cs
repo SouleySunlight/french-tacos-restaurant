@@ -72,6 +72,21 @@ public class TutorialManager : MonoBehaviour
             case TutorialStepType.SERVE_TACOS:
                 ServeTacosAction(step);
                 break;
+            case TutorialStepType.ADD_INGREDIENT_TO_FRYER:
+                AddIngredientToFryerAction(step);
+                break;
+            case TutorialStepType.REMOVE_INGREDIENT_FROM_FRYER:
+                RemoveIngredientToFryerAction(step);
+                break;
+            case TutorialStepType.ADD_INGREDIENT_TO_GRUYERE_POT:
+                AddIngredientToSauceGruyereAction(step);
+                break;
+            case TutorialStepType.REMOVE_INGREDIENT_FROM_GRUYERE_POT:
+                RemoveIngredientToSauceGruyereAction(step);
+                break;
+            case TutorialStepType.FINISH_DAY:
+                GameManager.Instance.DayCycleManager.TryToFinishDay();
+                break;
             default:
                 Debug.LogWarning("Tutorial step type not handled: " + step.tutorialStepType);
                 break;
@@ -105,7 +120,22 @@ public class TutorialManager : MonoBehaviour
     {
         StartCoroutine(ShowMessageCoroutine(step));
     }
-
+    void AddIngredientToFryerAction(TutorialStep step)
+    {
+        StartCoroutine(AddIngredientToFryerCoroutine(step));
+    }
+    void RemoveIngredientToFryerAction(TutorialStep step)
+    {
+        StartCoroutine(RemoveIngredientToFryerCoroutine(step));
+    }
+    void AddIngredientToSauceGruyereAction(TutorialStep step)
+    {
+        StartCoroutine(AddIngredientToSauceGruyereCoroutine(step));
+    }
+    void RemoveIngredientToSauceGruyereAction(TutorialStep step)
+    {
+        StartCoroutine(RemoveIngredientToSauceGruyereCoroutine(step));
+    }
     void AddIngredientToHotplateAction(TutorialStep step)
     {
         StartCoroutine(AddIngredientToHotplateCoroutine(step));
@@ -187,6 +217,8 @@ public class TutorialManager : MonoBehaviour
     {
         GameManager.Instance.SidebarManager.DeactivateAllSidebarButtons();
         GameManager.Instance.GrillManager.DisableUserToRemoveTacos();
+        GameManager.Instance.GrillManager.PreventUserFromOpeningOrClosingGrill();
+
 
         if (step.messagekey != null && step.messagekey != "")
         {
@@ -201,6 +233,8 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitUntil(() => GameManager.Instance.GrillManager.ContainsAtLeastOneTacos());
 
         tutorialCursorDisplayer.StopCursorMovement();
+        GameManager.Instance.GrillManager.AllowUserToOpenOrCloseGrill();
+
         GameManager.Instance.SidebarManager.ActivateAllSidebarButtons();
         PlayNextStep();
     }
@@ -279,6 +313,63 @@ public class TutorialManager : MonoBehaviour
             tutorialMessageDisplayer.ShowMessage(step.messagekey, step.messageModalYPosition, true);
         }
         yield return new WaitUntil(() => !GameManager.Instance.HotplateManager.CanAddIngredientToCook());
+        tutorialMessageDisplayer.HideMessage();
+        PlayNextStep();
+    }
+    IEnumerator AddIngredientToFryerCoroutine(TutorialStep step)
+    {
+        var ingredientButton = GameManager.Instance.FryerManager.GetFirstIngredientButtonTransform(step.ingredient);
+        tutorialPanelVisual.FocusOn(ingredientButton.GetComponent<RectTransform>(), 0.05f);
+        if (step.messagekey != null && step.messagekey != "")
+        {
+            tutorialMessageDisplayer.ShowMessage(step.messagekey, step.messageModalYPosition, true);
+        }
+        yield return new WaitUntil(() => GameManager.Instance.FryerManager.GetFirstBasketQuantity() == 3);
+        var basketTransform = GameManager.Instance.FryerManager.GetFirstBasketTransform();
+        tutorialPanelVisual.FocusOn(basketTransform.GetComponent<RectTransform>(), 0.15f);
+        yield return new WaitUntil(() => GameManager.Instance.FryerManager.IsFirstBasketFrying());
+        tutorialMessageDisplayer.HideMessage();
+        PlayNextStep();
+    }
+
+    IEnumerator RemoveIngredientToFryerCoroutine(TutorialStep step)
+    {
+        if (step.messagekey != null && step.messagekey != "")
+        {
+            tutorialMessageDisplayer.ShowMessage(step.messagekey, step.messageModalYPosition, true);
+        }
+        var basketTransform = GameManager.Instance.FryerManager.GetFirstBasketTransform();
+        tutorialPanelVisual.FocusOn(basketTransform.GetComponent<RectTransform>(), 0.15f);
+        yield return new WaitUntil(() => !GameManager.Instance.FryerManager.IsFirstBasketFrying());
+        tutorialMessageDisplayer.HideMessage();
+        PlayNextStep();
+    }
+
+    IEnumerator AddIngredientToSauceGruyereCoroutine(TutorialStep step)
+    {
+        if (step.messagekey != null && step.messagekey != "")
+        {
+            tutorialMessageDisplayer.ShowMessage(step.messagekey, step.messageModalYPosition, true);
+        }
+        var ingredientButton = GameManager.Instance.SauceGruyereManager.GetIngredientButtonRectTransform(step.order[0]);
+        tutorialPanelVisual.FocusOn(ingredientButton.GetComponent<RectTransform>(), 0.05f);
+        yield return new WaitUntil(() => GameManager.Instance.SauceGruyereManager.IsIngredientInPot(step.order[0]));
+        ingredientButton = GameManager.Instance.SauceGruyereManager.GetIngredientButtonRectTransform(step.order[1]);
+        tutorialPanelVisual.FocusOn(ingredientButton.GetComponent<RectTransform>(), 0.05f);
+        yield return new WaitUntil(() => GameManager.Instance.SauceGruyereManager.IsIngredientInPot(step.order[1]));
+        tutorialMessageDisplayer.HideMessage();
+        PlayNextStep();
+    }
+
+    IEnumerator RemoveIngredientToSauceGruyereCoroutine(TutorialStep step)
+    {
+        if (step.messagekey != null && step.messagekey != "")
+        {
+            tutorialMessageDisplayer.ShowMessage(step.messagekey, step.messageModalYPosition, true);
+        }
+        var potTransform = GameManager.Instance.SauceGruyereManager.GetPotRectTransform();
+        tutorialPanelVisual.FocusOn(potTransform.GetComponent<RectTransform>(), 0.15f);
+        yield return new WaitUntil(() => GameManager.Instance.SauceGruyereManager.IsPotEmpty());
         tutorialMessageDisplayer.HideMessage();
         PlayNextStep();
     }

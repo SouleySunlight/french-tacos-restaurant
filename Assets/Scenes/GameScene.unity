@@ -2230,7 +2230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 50, y: 0}
   m_SizeDelta: {x: 800, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &219296167
@@ -19698,15 +19698,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Bienvenue dans French tacos Simulator
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dd973e84d412f49c3995801f3dc52de4, type: 2}
-  m_sharedMaterial: {fileID: -4531593606867068262, guid: dd973e84d412f49c3995801f3dc52de4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fc18c399ec42b4555b5e117adae800fa, type: 2}
+  m_sharedMaterial: {fileID: -5232820658471098011, guid: fc18c399ec42b4555b5e117adae800fa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -19939,7 +19939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8627451}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -21334,6 +21334,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 82c1b31aa471041478da24919be46e3a, type: 2}
   - {fileID: 11400000, guid: ad4c72f3cc7ab4fbe825f2612438508e, type: 2}
   - {fileID: 11400000, guid: 19aefb009eaa94f91b669162676fec43, type: 2}
+  - {fileID: 11400000, guid: 1f0d7107f51ea46ce98529be23eeca4d, type: 2}
+  - {fileID: 11400000, guid: 6e9a2cf4e90214733b79fca67fc72c0a, type: 2}
+  - {fileID: 11400000, guid: cdb567ba5c929414d8d2df6ada874f38, type: 2}
+  - {fileID: 11400000, guid: a62fc92a6af11408584b08a579dab56d, type: 2}
+  - {fileID: 11400000, guid: c4e36d0827bd24699a713ca348babb17, type: 2}
+  - {fileID: 11400000, guid: d6db69ffa035247df88ad81c5a7a3d4d, type: 2}
+  - {fileID: 11400000, guid: 47c9fa370dc8c4a5499ff5e2ad63bf34, type: 2}
+  - {fileID: 11400000, guid: c3bd76c6ed51b47ec981b5c7139abe22, type: 2}
+  - {fileID: 11400000, guid: 148f3bee026fc4c8aa82dbcbc5f3f08d, type: 2}
+  - {fileID: 11400000, guid: 0ff4a138e1b324153b6a502ea2cf6633, type: 2}
+  - {fileID: 11400000, guid: 566b08e78551c4b679b969827caa29e7, type: 2}
+  - {fileID: 11400000, guid: f909a71e1fda4456cbc6f65c3a4bc826, type: 2}
+  - {fileID: 11400000, guid: 82c1b31aa471041478da24919be46e3a, type: 2}
+  - {fileID: 11400000, guid: ad4c72f3cc7ab4fbe825f2612438508e, type: 2}
 --- !u!1 &1692023348
 GameObject:
   m_ObjectHideFlags: 0

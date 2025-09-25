@@ -12,7 +12,7 @@ public class TutorialMessageDisplayer : MonoBehaviour
 
     public void ShowMessage(string messageKey, int yPosition = 0, bool hideButton = false, bool showBackground = false)
     {
-        tutorialMessageModal.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, yPosition);
+        tutorialMessageModal.GetComponent<RectTransform>().anchoredPosition = new Vector2(50, yPosition);
         background.SetActive(showBackground);
         tutorialMessageModal.SetActive(false);
         nextButton.SetActive(!hideButton);

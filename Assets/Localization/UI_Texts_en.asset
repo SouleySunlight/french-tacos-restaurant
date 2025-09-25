@@ -495,6 +495,33 @@ MonoBehaviour:
     m_Localized: Let's start with fries
     m_Metadata:
       m_Items: []
+  - m_Id: 15139679522250752
+    m_Localized: Press fries to add it to the basket, you can add up to 3 identical
+      ingredients to a basket. Then press the basket to start frying
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15146570281377792
+    m_Localized: Once cooking is over, press the basket to retrieve your fries. Don't
+      wait for too loong or it will burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15148726606618624
+    m_Localized: "Well done, let's prepare the sauce gruy\xE8re now!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15158932862394368
+    m_Localized: Add cream and cheese and let it cook
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15159574414745600
+    m_Localized: Once cooked, press on it it to retrieve the sauce. Don't wait for
+      too long or it will burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15162125730177024
+    m_Localized: Congrats, you know how to prepare tacos! Have fun :)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

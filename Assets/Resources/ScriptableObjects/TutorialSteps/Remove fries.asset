@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7272bba21d1aa414b995a2c8ebd8358f, type: 3}
-  m_Name: Remove chicken from hotplate
+  m_Name: Remove fries
   m_EditorClassIdentifier: 
-  tutorialStepType: 3
+  tutorialStepType: 11
   viewToShow: 0
   ingredient: {fileID: 0}
   order: []
-  messagekey: TUTO.ON_CHICKEN_COOKED
-  messageModalYPosition: -800
+  messagekey: TUTO.REMOVE_FRIES
+  messageModalYPosition: 600
   shouldShowMessageBackground: 0

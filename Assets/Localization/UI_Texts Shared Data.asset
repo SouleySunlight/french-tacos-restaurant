@@ -489,6 +489,30 @@ MonoBehaviour:
     m_Key: TUTO.GO_TO_FRYER
     m_Metadata:
       m_Items: []
+  - m_Id: 15139679522250752
+    m_Key: TUTO.FRY_FRIES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15146570281377792
+    m_Key: TUTO.REMOVE_FRIES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15148726606618624
+    m_Key: TUTO.GO_TO_SAUCE_GRUYERE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15158932862394368
+    m_Key: TUTO.ADD_INGREDIENTS_TO_SAUCE_GRUYERE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15159574414745600
+    m_Key: TUTO.REMOVE_INGREDIENTS_TO_SAUCE_GRUYERE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15162125730177024
+    m_Key: TUTO.CONGRATS
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

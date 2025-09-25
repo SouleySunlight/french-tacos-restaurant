@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7272bba21d1aa414b995a2c8ebd8358f, type: 3}
   m_Name: GrillTacos
   m_EditorClassIdentifier: 
-  tutorialStepType: 8
+  tutorialStepType: 7
   viewToShow: 0
   ingredient: {fileID: 0}
   order: []
