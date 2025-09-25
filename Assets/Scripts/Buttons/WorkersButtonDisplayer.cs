@@ -44,4 +44,8 @@ public class WorkersButtonDisplayer : MonoBehaviour
         buttonText.text = LocalizationSettings.StringDatabase
             .GetLocalizedString("UI_Texts", key);
     }
+    public RectTransform GetRectTransform()
+    {
+        return buttonBody.GetComponent<RectTransform>();
+    }
 }

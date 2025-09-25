@@ -550,6 +550,39 @@ MonoBehaviour:
     m_Localized: "Puis appuies sur le bouton d'am\xE9lioration"
     m_Metadata:
       m_Items: []
+  - m_Id: 15213719674937344
+    m_Localized: "Et voil\xE0 ! Am\xE9liore tes appareils pour aller toujours plus
+      vite"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15215952256819200
+    m_Localized: "Tu peux aussi utiliser ton argent pour engager des employ\xE9s
+      pour t'aider"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15216929898749952
+    m_Localized: "Commence par aller sur la fen\xEAtre pour laquelle tu veux engager
+      un employ\xE9, par exemple la plaque de cuisson"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15218345660899328
+    m_Localized: "Appuie sur le bouton des employ\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15220047256477696
+    m_Localized: "Tu peux engager des employ\xE9s en payant"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15220204362522624
+    m_Localized: "Ou regarder une pub pour engager un employ\xE9 al\xE9atoire 1 fois
+      / jour (en jeu). Cette fois c'est gratuit :)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15223953827028992
+    m_Localized: "Tu peux engager plusieurs employ\xE9s pour t'aider quand \xE7a
+      devient dur"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

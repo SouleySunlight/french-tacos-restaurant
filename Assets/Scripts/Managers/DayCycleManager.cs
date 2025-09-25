@@ -58,6 +58,10 @@ public class DayCycleManager : MonoBehaviour
         {
             GameManager.Instance.TutorialManager.StartUpgradeTutorial();
         }
+        if (currentDay == 4)
+        {
+            GameManager.Instance.TutorialManager.StartWorkerTutorial();
+        }
     }
 
     private void FinishDay()

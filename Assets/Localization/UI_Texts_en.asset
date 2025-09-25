@@ -536,6 +536,36 @@ MonoBehaviour:
     m_Localized: Then press the upgrade button
     m_Metadata:
       m_Items: []
+  - m_Id: 15213719674937344
+    m_Localized: "Et voil\xE0! Keep upgrading your electronics to keep cooking faster"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15215952256819200
+    m_Localized: You can also spend your money to hire employees to help you
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15216929898749952
+    m_Localized: Start by going to the window for which you want to hire an employee,
+      for example the hotplate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15218345660899328
+    m_Localized: Press employees button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15220047256477696
+    m_Localized: You can hire employees by spending gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15220204362522624
+    m_Localized: Or watch an ad to hire a random employee, once per day (in game).
+      This time it's free :)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15223953827028992
+    m_Localized: You can hire several employees to help you when it's hard
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

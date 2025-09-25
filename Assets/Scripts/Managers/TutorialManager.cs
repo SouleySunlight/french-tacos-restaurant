@@ -9,11 +9,13 @@ public class TutorialManager : MonoBehaviour
 
     [SerializeField] private List<TutorialStep> dayZeroSteps;
     [SerializeField] private List<TutorialStep> upgradeSteps;
+    [SerializeField] private List<TutorialStep> workersSteps;
+
     private TutorialPanelVisual tutorialPanelVisual;
     private TutorialMessageDisplayer tutorialMessageDisplayer;
     private TutoCursorDisplayer tutorialCursorDisplayer;
     private int currentStep = 0;
-    private TutorialType currentTutorialType;
+    public TutorialType currentTutorialType = TutorialType.NONE;
 
     private bool isNextButtonClicked = false;
 
@@ -28,6 +30,14 @@ public class TutorialManager : MonoBehaviour
     {
         currentStep = -1;
         currentTutorialType = TutorialType.UPGRADE;
+        GameManager.Instance.PauseGame();
+        PlayNextStep();
+    }
+
+    public void StartWorkerTutorial()
+    {
+        currentStep = -1;
+        currentTutorialType = TutorialType.WORKER;
         GameManager.Instance.PauseGame();
         PlayNextStep();
     }
@@ -53,6 +63,7 @@ public class TutorialManager : MonoBehaviour
         {
             if (GameManager.Instance.isGamePaused) { GameManager.Instance.ResumeGame(); }
             tutorialPanelVisual.HidePanel();
+            currentTutorialType = TutorialType.NONE;
             return;
         }
         var step = GetCurrentStep();
@@ -65,11 +76,14 @@ public class TutorialManager : MonoBehaviour
         {
             return currentStep >= dayZeroSteps.Count;
         }
-        else if (currentTutorialType == TutorialType.UPGRADE)
+        if (currentTutorialType == TutorialType.UPGRADE)
         {
             return currentStep >= upgradeSteps.Count;
         }
-        ;
+        if (currentTutorialType == TutorialType.WORKER)
+        {
+            return currentStep >= workersSteps.Count;
+        }
         return true;
     }
     TutorialStep GetCurrentStep()
@@ -78,11 +92,15 @@ public class TutorialManager : MonoBehaviour
         {
             return dayZeroSteps[currentStep];
         }
-        else if (currentTutorialType == TutorialType.UPGRADE)
+
+        if (currentTutorialType == TutorialType.UPGRADE)
         {
             return upgradeSteps[currentStep];
         }
-        ;
+        if (currentTutorialType == TutorialType.WORKER)
+        {
+            return workersSteps[currentStep];
+        }
         return null;
     }
 
@@ -137,6 +155,12 @@ public class TutorialManager : MonoBehaviour
                 break;
             case TutorialStepType.PRESS_UPGRADE_BUTTON:
                 UpgradeButtonAction(step);
+                break;
+            case TutorialStepType.PRESS_WORKER_BUTTON:
+                WorkerButtonAction(step);
+                break;
+            case TutorialStepType.PRESS_WORKER_AD_BUTTON:
+                WorkerAdButtonAction(step);
                 break;
             default:
                 Debug.LogWarning("Tutorial step type not handled: " + step.tutorialStepType);
@@ -234,6 +258,43 @@ public class TutorialManager : MonoBehaviour
             tutorialMessageDisplayer.ShowMessage(step.messagekey, step.messageModalYPosition, true);
         }
         yield return new WaitUntil(() => GameManager.Instance.UpgradeManager.GetCurrentLevel("GRILL") == 1);
+        tutorialMessageDisplayer.HideMessage();
+        tutorialPanelVisual.HidePanel();
+        PlayNextStep();
+    }
+
+    void WorkerButtonAction(TutorialStep step)
+    {
+        StartCoroutine(WorkerButtonActionCoroutine(step));
+    }
+    IEnumerator WorkerButtonActionCoroutine(TutorialStep step)
+    {
+        var workerButton = FindFirstObjectByType<WorkersButtonDisplayer>(FindObjectsInactive.Include);
+        var buttonRect = workerButton.GetRectTransform();
+        tutorialPanelVisual.FocusOn(buttonRect, 0.1f);
+        if (step.messagekey != null && step.messagekey != "")
+        {
+            tutorialMessageDisplayer.ShowMessage(step.messagekey, step.messageModalYPosition, true);
+        }
+        yield return new WaitUntil(() => FindFirstObjectByType<WorkerModalVisual>(FindObjectsInactive.Include).isModalOpen);
+        tutorialMessageDisplayer.HideMessage();
+        tutorialPanelVisual.HidePanel();
+        PlayNextStep();
+    }
+
+    void WorkerAdButtonAction(TutorialStep step)
+    {
+        StartCoroutine(WorkerAdButtonActionCoroutine(step));
+    }
+    IEnumerator WorkerAdButtonActionCoroutine(TutorialStep step)
+    {
+        var workerButton = FindFirstObjectByType<WorkerModalVisual>(FindObjectsInactive.Include).GetAdButtonRectTransform();
+        tutorialPanelVisual.FocusOn(workerButton, 0.05f);
+        if (step.messagekey != null && step.messagekey != "")
+        {
+            tutorialMessageDisplayer.ShowMessage(step.messagekey, step.messageModalYPosition, true);
+        }
+        yield return new WaitUntil(() => GameManager.Instance.WorkersManager.hiredWorkerViaAd != null);
         tutorialMessageDisplayer.HideMessage();
         tutorialPanelVisual.HidePanel();
         PlayNextStep();

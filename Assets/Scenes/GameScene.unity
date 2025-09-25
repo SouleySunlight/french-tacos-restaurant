@@ -8792,6 +8792,7 @@ MonoBehaviour:
   workerContainerDisplayer: {fileID: 680680299953636213, guid: dfa31ad14252d40efacf73f49b2ee23c, type: 3}
   watchAdContainer: {fileID: 42416855}
   adWatchedContainer: {fileID: 2062667451}
+  watchAdButton: {fileID: 2063035898}
 --- !u!1 &655968168
 GameObject:
   m_ObjectHideFlags: 0
@@ -21354,6 +21355,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e079358bbbb34eff860b5517916f9c0, type: 2}
   - {fileID: 11400000, guid: d99400028dfac488cb41c66a65871090, type: 2}
   - {fileID: 11400000, guid: 4ae5baec37d444a3a9edc6a37e4211aa, type: 2}
+  - {fileID: 11400000, guid: 8579247bcdc4f41efb088c3465d2f5d9, type: 2}
+  workersSteps:
+  - {fileID: 11400000, guid: d81ea45c89e2049918ed6f922b351442, type: 2}
+  - {fileID: 11400000, guid: ce948c003304947028a6992943ef1004, type: 2}
+  - {fileID: 11400000, guid: 0f6ddc82f94264c07998733986505540, type: 2}
+  - {fileID: 11400000, guid: 652bac2937aa04c55af77ec3377d7144, type: 2}
+  - {fileID: 11400000, guid: 6af75f03849074d4d9841a94ee4ee347, type: 2}
+  - {fileID: 11400000, guid: 0bbf8286a33d349608f89e0c1c4e3d52, type: 2}
+  currentTutorialType: 0
 --- !u!1 &1692023348
 GameObject:
   m_ObjectHideFlags: 0

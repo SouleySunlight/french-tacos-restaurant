@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7272bba21d1aa414b995a2c8ebd8358f, type: 3}
-  m_Name: Upgrade message done
+  m_Name: Begin workers message
   m_EditorClassIdentifier: 
   tutorialStepType: 5
   viewToShow: 0
   ingredient: {fileID: 0}
   order: []
-  messagekey: TUTO.UPGRADE_DONE
+  messagekey: TUTO.WORKER_BEGIN
   messageModalYPosition: 0
   shouldShowMessageBackground: 1
