@@ -17,6 +17,8 @@ public class GrillManager : MonoBehaviour, IWorkStation
     private readonly float BURN_BASE_DURATION = 10f;
     private float currentGrillDuration;
 
+    public bool canUserRemoveTacos { get; private set; } = true;
+
     private GrillVisual grillVisual;
 
     private GameManager gameManager;
@@ -49,7 +51,7 @@ public class GrillManager : MonoBehaviour, IWorkStation
 
             grillingTime[i] += Time.deltaTime;
 
-            if (grillingTime[i] >= totalGrillingTime[i] + BURN_BASE_DURATION && !grillingTacos[i].isBurnt)
+            if (grillingTime[i] >= totalGrillingTime[i] + BURN_BASE_DURATION && !grillingTacos[i].isBurnt && GameManager.Instance.DayCycleManager.GetCurrentDay() > 0)
             {
                 grillingTacos[i].BurnTacos();
                 grillVisual.UpdateTacosVisual(grillingTacos[i]);
@@ -94,6 +96,11 @@ public class GrillManager : MonoBehaviour, IWorkStation
 
     public void OnClickOnTacos(Tacos tacos)
     {
+        if (!canUserRemoveTacos)
+        {
+            return;
+        }
+
         try
         {
             if (!isGrillOpened)
@@ -103,6 +110,11 @@ public class GrillManager : MonoBehaviour, IWorkStation
 
             if (tacos.isBurnt)
             {
+                if (GameManager.Instance.DayCycleManager.GetCurrentDay() == 0)
+                {
+                    ServeTacos(tacos);
+                    return;
+                }
                 DiscardBurntTacos(tacos);
                 return;
             }
@@ -140,9 +152,11 @@ public class GrillManager : MonoBehaviour, IWorkStation
         {
             if (grillingTacos[i] == null)
             {
+
                 grillingTacos[i] = tacos;
                 grillVisual.GrillTacos(tacos, i);
                 grillingTime[i] = 0f;
+                UpdateGrillingTime();
                 totalGrillingTime[i] = currentGrillDuration;
                 return;
             }
@@ -369,5 +383,57 @@ public class GrillManager : MonoBehaviour, IWorkStation
         grillVisual.UpdateVisual();
     }
 
+    public bool ContainsAtLeastOneTacos()
+    {
+        foreach (var tacos in grillingTacos)
+        {
+            if (tacos != null)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public RectTransform GetFirstTacosTransform()
+    {
+        return grillVisual.GetFirstTacosTransform();
+    }
+
+    public RectTransform GetGrillPosition()
+    {
+        return grillVisual.GetGrillPosition();
+    }
+
+    public void EnableUserToRemoveTacos()
+    {
+        canUserRemoveTacos = true;
+    }
+
+    public void DisableUserToRemoveTacos()
+    {
+        canUserRemoveTacos = false;
+    }
+
+    public void PreventUserFromOpeningOrClosingGrill()
+    {
+        grillVisual.PreventUserFromOpeningOrClosingGrill();
+    }
+
+    public void AllowUserToOpenOrCloseGrill()
+    {
+        grillVisual.AllowUserToOpenOrCloseGrill();
+    }
+
+    public bool IsFirstTacosGrilled()
+    {
+        if (grillingTacos[0] == null) { return false; }
+        return grillingTacos[0].isGrilled;
+    }
+
+    public RectTransform GetFirstGrillingTacosTransform()
+    {
+        return grillVisual.GetFirstGrillingTacosTransform();
+    }
 
 }

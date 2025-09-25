@@ -46,7 +46,7 @@ public class IngredientButtonDisplayer : MonoBehaviour
         }
         quantityDisplayer.SetActive(false);
         priceDisplayer.SetActive(true);
-        priceDisplayer.GetComponentInChildren<TMP_Text>().text = ingredientData.priceToRefill.ToString();
+        priceDisplayer.GetComponentInChildren<TMP_Text>().text = GameManager.Instance.DayCycleManager.GetCurrentDay() == 0 ? "0" : ingredientData.priceToRefill.ToString();
         return;
     }
 

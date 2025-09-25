@@ -15,7 +15,6 @@ public class HotplateManager : MonoBehaviour, IWorkStation
     [SerializeField] private AudioClip cookingSound;
     private bool isAmbientPlaying = false;
 
-
     void Awake()
     {
         hotplateVisuals = FindFirstObjectByType<HotplateVisuals>(FindObjectsInactive.Include);
@@ -42,9 +41,13 @@ public class HotplateManager : MonoBehaviour, IWorkStation
                 hotplateVisuals.OnIngredientCooked(i);
             }
 
+
             if (cookingTimes[i] >= totalCookingTimes[i] + cookingIngredients[i].wastingTimeOffset)
             {
-                hotplateVisuals.OnIngredientBurnt(i);
+                if (GameManager.Instance.DayCycleManager.GetCurrentDay() != 0)
+                {
+                    hotplateVisuals.OnIngredientBurnt(i);
+                }
             }
 
             cookingTimes[i] += Time.deltaTime;
@@ -121,6 +124,11 @@ public class HotplateManager : MonoBehaviour, IWorkStation
 
         if (cookingTime > totalCookingTimes[position] + cookingIngredients[position].wastingTimeOffset)
         {
+            if (GameManager.Instance.DayCycleManager.GetCurrentDay() == 0)
+            {
+                OnIngredientCookedClicked(position);
+                return;
+            }
             OnIngredientBurntClicked(position);
             return;
         }
@@ -347,5 +355,20 @@ public class HotplateManager : MonoBehaviour, IWorkStation
                 OnIngredientBurntClicked(i);
             }
         }
+    }
+
+    public RectTransform GetIngredientButtonTransform(Ingredient ingredient)
+    {
+        return hotplateVisuals.GetIngredientButtonTransform(ingredient);
+    }
+
+    public RectTransform GetCookingIngredientTransform(int index)
+    {
+        return hotplateVisuals.GetCookingIngredientTransform(index);
+    }
+
+    public bool IsIngredientCookingOnPosition(int index)
+    {
+        return cookingIngredients[index] != null;
     }
 }

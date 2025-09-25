@@ -10,6 +10,11 @@ public class WorkersButtonDisplayer : MonoBehaviour
 
     public void UpdateVisual()
     {
+        if (GameManager.Instance.DayCycleManager.GetCurrentDay() < 4)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         var currentView = PlayzoneVisual.currentView;
 
         if (currentView == ViewToShowEnum.TACOS_MAKER)
@@ -38,5 +43,9 @@ public class WorkersButtonDisplayer : MonoBehaviour
         var key = hasWorkerActive ? "WORKERS.ACTIVE" : "WORKERS.INACTIVE";
         buttonText.text = LocalizationSettings.StringDatabase
             .GetLocalizedString("UI_Texts", key);
+    }
+    public RectTransform GetRectTransform()
+    {
+        return buttonBody.GetComponent<RectTransform>();
     }
 }

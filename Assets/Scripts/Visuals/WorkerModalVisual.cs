@@ -11,6 +11,9 @@ public class WorkerModalVisual : MonoBehaviour
     [SerializeField] private GameObject workerContainerDisplayer;
     [SerializeField] private GameObject watchAdContainer;
     [SerializeField] private GameObject adWatchedContainer;
+    [SerializeField] private GameObject watchAdButton;
+
+    public bool isModalOpen { get; private set; } = false;
 
     private List<GameObject> workerContainers = new();
 
@@ -46,12 +49,14 @@ public class WorkerModalVisual : MonoBehaviour
     public void ShowWorkerModal()
     {
         GameManager.Instance.isGamePaused = true;
+        isModalOpen = true;
         workerModal.SetActive(true);
     }
 
     public void HideWorkerModal()
     {
         GameManager.Instance.isGamePaused = false;
+        isModalOpen = false;
         workerModal.SetActive(false);
     }
 
@@ -90,8 +95,13 @@ public class WorkerModalVisual : MonoBehaviour
         watchAdContainer.SetActive(false);
         adWatchedContainer.SetActive(true);
         var workerNameKey = LocalizationSettings.StringDatabase
-.GetLocalizedString("UI_Texts", "WORKERS.TITLE." + GameManager.Instance.WorkersManager.hiredWorkerViaAd.id);
+            .GetLocalizedString("UI_Texts", "WORKERS.TITLE." + GameManager.Instance.WorkersManager.hiredWorkerViaAd.id);
         adWatchedContainer.GetComponentInChildren<TMP_Text>().text = string.Format(LocalizationSettings.StringDatabase
             .GetLocalizedString("UI_Texts", "WORKER.UNLOCKED_WORKER"), workerNameKey);
+    }
+
+    public RectTransform GetAdButtonRectTransform()
+    {
+        return watchAdButton.GetComponent<RectTransform>();
     }
 }

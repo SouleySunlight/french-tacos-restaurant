@@ -844,8 +844,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Remove ingredients before burning
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dd973e84d412f49c3995801f3dc52de4, type: 2}
-  m_sharedMaterial: {fileID: -4531593606867068262, guid: dd973e84d412f49c3995801f3dc52de4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 98d673f2b33bd4f51a2451e43b58f486, type: 2}
+  m_sharedMaterial: {fileID: -4335295472727514051, guid: 98d673f2b33bd4f51a2451e43b58f486, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -157,6 +157,21 @@ public class SauceGruyereVisual : MonoBehaviour, IView
         UpdateIngredients();
     }
 
+    public RectTransform GetIngredientButtonRectTransform(Ingredient ingredient)
+    {
+        var button = buttons.Find(button => button.GetComponent<IngredientButtonDisplayer>().ingredientData == ingredient);
+        if (button == null)
+        {
+            return null;
+        }
+        return button.GetComponent<RectTransform>();
+    }
+
+    public RectTransform GetPotRectTransform()
+    {
+        return sauceGruyereImage.GetComponent<RectTransform>();
+    }
+
 
 
 }

@@ -85,4 +85,24 @@ public class TacosMakerManager : MonoBehaviour
     {
         return GameManager.Instance.InventoryManager.UnlockedIngredients.FindAll(ingredient => ingredient.canBeAddedToTacos);
     }
+
+    public RectTransform GetIngredientButtonTransform(Ingredient ingredient)
+    {
+        return tacosMakerVisual.GetIngredientButtonTransform(ingredient);
+    }
+
+    public RectTransform GetOnCreationTacosTransform()
+    {
+        return tacosMakerVisual.GetOnCreationTacosTransform();
+    }
+
+    public bool IsIngredientInTacos(Ingredient ingredient)
+    {
+        return onCreationTacos.ingredients.Contains(ingredient);
+    }
+
+    public bool IsOnCreationTacosEmpty()
+    {
+        return onCreationTacos.ingredients.Count == 0;
+    }
 }

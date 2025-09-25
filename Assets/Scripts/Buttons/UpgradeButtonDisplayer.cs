@@ -11,6 +11,12 @@ public class UpgradeButtonDisplayer : MonoBehaviour
     [SerializeField] private TMP_Text percentText;
     public void UpdateVisual()
     {
+        if (GameManager.Instance.DayCycleManager.GetCurrentDay() < 2)
+        {
+            upgradeButton.SetActive(false);
+            return;
+        }
+
         var currentView = PlayzoneVisual.currentView;
 
         if (currentView == ViewToShowEnum.TACOS_MAKER || currentView == ViewToShowEnum.CHECKOUT)
@@ -41,6 +47,11 @@ public class UpgradeButtonDisplayer : MonoBehaviour
             ViewToShowEnum.FRYER => "FRYER",
             _ => string.Empty,
         };
+    }
+
+    public RectTransform GetRectTransform()
+    {
+        return buttonBody.GetComponent<RectTransform>();
     }
 
 

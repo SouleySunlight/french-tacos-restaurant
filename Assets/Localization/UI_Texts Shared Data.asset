@@ -425,6 +425,134 @@ MonoBehaviour:
     m_Key: NO
     m_Metadata:
       m_Items: []
+  - m_Id: 14587619538100224
+    m_Key: NEXT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14590235399675904
+    m_Key: TUTO.FIRST_ORDER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14591661395927040
+    m_Key: TUTO.WELCOME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14592610122326016
+    m_Key: TUTO.GO_TO_HOTPLATE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14740564233674752
+    m_Key: TUTO.COOK_CHICKEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14839489728864256
+    m_Key: TUTO.ON_CHICKEN_COOKED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14839489770807296
+    m_Key: TUTO.GO_TO_TACOS_MAKER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14843000520695808
+    m_Key: TUTO.PREPARE_TACOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14848540231589888
+    m_Key: TUTO.GO_TO_GRILL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14866707473489920
+    m_Key: TUTO.PUT_TACOS_INTO_GRILL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14922855232823296
+    m_Key: TUTO.GRILL_TACOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14924276598562816
+    m_Key: TUTO.REMOVE_GRILLED_TACOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14927444170498048
+    m_Key: TUTO.GO_TO_CHECKOUT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14930649440837632
+    m_Key: TUTO.SERVE_TACOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14934397496057856
+    m_Key: TUTO.SECOND_ORDER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14935052323381248
+    m_Key: TUTO.GO_TO_FRYER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15139679522250752
+    m_Key: TUTO.FRY_FRIES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15146570281377792
+    m_Key: TUTO.REMOVE_FRIES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15148726606618624
+    m_Key: TUTO.GO_TO_SAUCE_GRUYERE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15158932862394368
+    m_Key: TUTO.ADD_INGREDIENTS_TO_SAUCE_GRUYERE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15159574414745600
+    m_Key: TUTO.REMOVE_INGREDIENTS_TO_SAUCE_GRUYERE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15162125730177024
+    m_Key: TUTO.CONGRATS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15184777651937280
+    m_Key: TUTO.UPGRADE_START
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15185705830440960
+    m_Key: TUTO.UPGRADE_WINDOW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15213191133913088
+    m_Key: TUTO_UPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15213719674937344
+    m_Key: TUTO.UPGRADE_DONE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15215952256819200
+    m_Key: TUTO.WORKER_BEGIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15216929898749952
+    m_Key: TUTO.GO_TO_WORKER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15218345660899328
+    m_Key: TUTO.PRESS_WORKER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15220047256477696
+    m_Key: TUTO.WORKER_OPTION1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15220204362522624
+    m_Key: TUTO.WORKER_OPTION2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15223953827028992
+    m_Key: TUTO.WORKER_DONE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

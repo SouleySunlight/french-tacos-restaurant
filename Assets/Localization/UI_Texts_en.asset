@@ -427,6 +427,145 @@ MonoBehaviour:
     m_Localized: No
     m_Metadata:
       m_Items: []
+  - m_Id: 14587619538100224
+    m_Localized: Next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14590235399675904
+    m_Localized: Here's your first order, let's prepare it!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14591661395927040
+    m_Localized: Welcome to French Tacos Restaurant!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14592610122326016
+    m_Localized: Let's start by cooking the chicken, follow me!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14740564233674752
+    m_Localized: Press the chicken to add it to the hotplate, you can add up to 4!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14839489728864256
+    m_Localized: Once the chicken is cooked, press it to retrieve it. Don't wait
+      too long or it will burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14839489770807296
+    m_Localized: Now that ingredients are ready, let's prepare it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14843000520695808
+    m_Localized: Press every ingredients of the order. Once done, press the tacos
+      to fold it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14848540231589888
+    m_Localized: Let's make this tacos grill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14866707473489920
+    m_Localized: Let's start putting tacos into the grill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14922855232823296
+    m_Localized: Close the grill and let the tacos grill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14924276598562816
+    m_Localized: Open the grill and get the tacos pressing it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14927444170498048
+    m_Localized: Let's serve our famished customer!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14930649440837632
+    m_Localized: Drag the tacos on the corresponding order to serve it and earn your
+      gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14934397496057856
+    m_Localized: Your next order requires ingredients that you did not prepare for
+      the moment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14935052323381248
+    m_Localized: Let's start with fries
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15139679522250752
+    m_Localized: Press fries to add it to the basket, you can add up to 3 identical
+      ingredients to a basket. Then press the basket to start frying
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15146570281377792
+    m_Localized: Once cooking is over, press the basket to retrieve your fries. Don't
+      wait for too loong or it will burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15148726606618624
+    m_Localized: "Well done, let's prepare the sauce gruy\xE8re now!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15158932862394368
+    m_Localized: Add cream and cheese and let it cook
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15159574414745600
+    m_Localized: Once cooked, press on it it to retrieve the sauce. Don't wait for
+      too long or it will burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15162125730177024
+    m_Localized: Congrats, you know how to prepare tacos! Have fun :)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15184777651937280
+    m_Localized: You got some golds now, don't hesitate to use it to upgrade your
+      electronics and earn some time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15185705830440960
+    m_Localized: Start by going to the window you want to upgrade, for example the
+      grill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15213191133913088
+    m_Localized: Then press the upgrade button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15213719674937344
+    m_Localized: "Et voil\xE0! Keep upgrading your electronics to keep cooking faster"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15215952256819200
+    m_Localized: You can also spend your money to hire employees to help you
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15216929898749952
+    m_Localized: Start by going to the window for which you want to hire an employee,
+      for example the hotplate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15218345660899328
+    m_Localized: Press employees button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15220047256477696
+    m_Localized: You can hire employees by spending gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15220204362522624
+    m_Localized: Or watch an ad to hire a random employee, once per day (in game).
+      This time it's free :)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15223953827028992
+    m_Localized: You can hire several employees to help you when it's hard
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -129,6 +129,11 @@ public class FryerManager : MonoBehaviour, IWorkStation
         }
         if (fryingTime >= totalFryingTimes[position] + fryingIngredients[position].wastingTimeOffset)
         {
+            if (GameManager.Instance.DayCycleManager.GetCurrentDay() == 0)
+            {
+                OnIngredientCookedClicked(position);
+                return;
+            }
             OnIngredientBurntClicked(position);
             return;
         }
@@ -429,5 +434,25 @@ public class FryerManager : MonoBehaviour, IWorkStation
         fryerVisuals.UpdateBoilingAnimation(false);
         GameManager.Instance.SoundManager.StopAmbient();
 
+    }
+
+    public RectTransform GetFirstIngredientButtonTransform(Ingredient ingredient)
+    {
+        return fryerVisuals.GetFirstIngredientButtonTransform(ingredient);
+    }
+
+    public int GetFirstBasketQuantity()
+    {
+        return fryingQuantities[0];
+    }
+
+    public RectTransform GetFirstBasketTransform()
+    {
+        return fryerVisuals.GetFirstBasketTransform();
+    }
+
+    public bool IsFirstBasketFrying()
+    {
+        return isFrying[0];
     }
 }

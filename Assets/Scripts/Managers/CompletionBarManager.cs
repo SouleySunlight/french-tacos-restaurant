@@ -36,6 +36,7 @@ public class CompletionBarManager : MonoBehaviour
 
     public void IncrementNumberOfTacosServed()
     {
+        if (GameManager.Instance.DayCycleManager.GetCurrentDay() == 0) { return; }
         if (isMaximumReached) return;
         numberOfTacosServed++;
         current++;

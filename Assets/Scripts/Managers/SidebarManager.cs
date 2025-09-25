@@ -13,4 +13,25 @@ public class SidebarManager : MonoBehaviour
     {
         sidebarVisuals.UpdateTimer(viewToShow, timer);
     }
+
+    public void UpdateSidebarButtons()
+    {
+        sidebarVisuals.UpdateSidebarVisual();
+    }
+
+    public RectTransform GetSidebarButtonRectTransform(ViewToShowEnum viewToShow)
+    {
+        return sidebarVisuals.GetButtonRectTransform(viewToShow);
+    }
+
+    public void DeactivateAllSidebarButtons()
+    {
+        sidebarVisuals.DeactivateAllButtons();
+    }
+
+    public void ActivateAllSidebarButtons()
+    {
+        sidebarVisuals.ActivateAllButtons();
+    }
+
 }

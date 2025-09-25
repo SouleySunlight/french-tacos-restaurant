@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class DayCycleManager : MonoBehaviour
 {
-    private int currentDay = 1;
+    private int currentDay = 0;
     private static readonly float DAY_DURATION_IN_SECONDS = 120f;
     private float currentDayTimeElapsed = 0f;
     public bool isDayOver { get; private set; } = false;
@@ -35,6 +35,7 @@ public class DayCycleManager : MonoBehaviour
     {
         if (GameManager.Instance.isGamePaused) { return; }
         if (isDayOver) { return; }
+        if (GameManager.Instance.DayCycleManager.GetCurrentDay() == 0) { return; }
 
         currentDayTimeElapsed += Time.deltaTime;
         dayCycleVisual.UpdateDayCycleCompletionBar(currentDayTimeElapsed / DAY_DURATION_IN_SECONDS);
@@ -53,6 +54,14 @@ public class DayCycleManager : MonoBehaviour
         currentDayTimeElapsed = 0f;
         dayCycleVisual.UpdateDayDisplay(currentDay);
         GameManager.Instance.OrdersManager.AddFirstOrderOfTheDay();
+        if (currentDay == 2)
+        {
+            GameManager.Instance.TutorialManager.StartUpgradeTutorial();
+        }
+        if (currentDay == 4)
+        {
+            GameManager.Instance.TutorialManager.StartWorkerTutorial();
+        }
     }
 
     private void FinishDay()
@@ -111,6 +120,7 @@ public class DayCycleManager : MonoBehaviour
 
     void AdActionBetweenDay()
     {
+        if (GameManager.Instance.DayCycleManager.GetCurrentDay() == 0) { return; }
         var shouldShowRatingModal =
             isRatingModalEnable &&
             GameManager.Instance.isFirebaseInit &&

@@ -55,14 +55,14 @@ public class CheckoutVisual : MonoBehaviour, IView
 
         if (tacosMovemement.isAboveTrash)
         {
-            if (distance >= 200)
+            if (distance >= 200 && GameManager.Instance.DayCycleManager.GetCurrentDay() > 0)
             {
                 RemoveTacosFromAboveTrash(draggedTacos);
                 rectTransform.anchoredPosition += eventData.delta / GetComponentInParent<Canvas>().scaleFactor;
             }
             return;
         }
-        if (distance < 200 && !tacosMovemement.isAboveTrash)
+        if (distance < 200 && !tacosMovemement.isAboveTrash && GameManager.Instance.DayCycleManager.GetCurrentDay() > 0)
         {
             PlaceTacosAboveTrash(draggedTacos);
             return;
@@ -98,5 +98,11 @@ public class CheckoutVisual : MonoBehaviour, IView
     public void PutTacosAbove(GameObject tacos)
     {
         tacos.GetComponent<RectTransform>().SetParent(parentPosition);
+    }
+
+    public RectTransform GetFirstTacosTransform()
+    {
+        if (tacosToServe.Count == 0) { return null; }
+        return tacosToServe[0].GetComponent<RectTransform>();
     }
 }

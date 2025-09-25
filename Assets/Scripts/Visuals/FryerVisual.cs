@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class FryerVisual : MonoBehaviour, IView
 {
-    [SerializeField] private RectTransform firstButtonPosition;
     [SerializeField] private GameObject ingredientButtonPrefab;
     [SerializeField] private GameObject ingredientPrefab;
     [SerializeField] private List<GameObject> quantityManager = new();
@@ -134,6 +133,10 @@ public class FryerVisual : MonoBehaviour, IView
 
     public void OnIngredientBurnt(int position)
     {
+        if (GameManager.Instance.DayCycleManager.GetCurrentDay() == 0)
+        {
+            return;
+        }
         foreach (var ingredient in ingredientsInBasket[position])
         {
             ingredient.GetComponent<IngredientDisplayer>().DisplayWastedInFryerImage();
@@ -190,6 +193,21 @@ public class FryerVisual : MonoBehaviour, IView
     public void UpdateBoilingAnimation(bool isBoiling)
     {
         animator.SetBool("isBoiling", isBoiling);
+    }
+
+    public RectTransform GetFirstIngredientButtonTransform(Ingredient ingredient)
+    {
+        var button = buttons.Find(button => button.GetComponent<IngredientButtonDisplayer>().ingredientData == ingredient);
+        if (button == null)
+        {
+            return null;
+        }
+        return button.GetComponent<RectTransform>();
+    }
+
+    public RectTransform GetFirstBasketTransform()
+    {
+        return baskets[0].GetComponent<RectTransform>();
     }
 
 }
