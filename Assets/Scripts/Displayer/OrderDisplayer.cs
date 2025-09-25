@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,6 +41,7 @@ public class OrderDisplayer : MonoBehaviour
     void InstantiateSauce()
     {
         var sauces = orderData.expectedOrder.FindAll(x => x.category == IngredientCategoryEnum.SAUCE);
+        sauces.Sort((a, b) => a.id.CompareTo(b.id));
         foreach (var sauce in sauces)
         {
             var ingredientGO = Instantiate(ingredientPrefab, transform);
@@ -52,6 +54,9 @@ public class OrderDisplayer : MonoBehaviour
     void InstantiateVegetable()
     {
         var vegetables = orderData.expectedOrder.FindAll(x => x.category == IngredientCategoryEnum.VEGETABLE);
+        var ordre = new List<string> { "SAL", "TOM", "ONI" };
+
+        vegetables = vegetables.OrderBy(l => ordre.IndexOf(l.id)).ToList();
         foreach (var vegetable in vegetables)
         {
             var ingredientGO = Instantiate(ingredientPrefab, transform);
