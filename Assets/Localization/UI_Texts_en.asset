@@ -522,6 +522,20 @@ MonoBehaviour:
     m_Localized: Congrats, you know how to prepare tacos! Have fun :)
     m_Metadata:
       m_Items: []
+  - m_Id: 15184777651937280
+    m_Localized: You got some golds now, don't hesitate to use it to upgrade your
+      electronics and earn some time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15185705830440960
+    m_Localized: Start by going to the window you want to upgrade, for example the
+      grill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15213191133913088
+    m_Localized: Then press the upgrade button
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

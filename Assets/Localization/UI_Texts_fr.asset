@@ -536,6 +536,20 @@ MonoBehaviour:
       ailes et amuse toi ;)"
     m_Metadata:
       m_Items: []
+  - m_Id: 15184777651937280
+    m_Localized: "Tu as un peu d'or d\xE9sormais, n'h\xE9site pas \xE0 l'utiliser
+      pour am\xE9liorer ton mat\xE9riel et gagner du temps"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15185705830440960
+    m_Localized: "Commence par aller sur la fen\xEAtre que tu veux am\xE9liorer,
+      par exemple le grill"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15213191133913088
+    m_Localized: "Puis appuies sur le bouton d'am\xE9lioration"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

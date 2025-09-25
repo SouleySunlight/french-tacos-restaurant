@@ -8,10 +8,12 @@ public class TutorialManager : MonoBehaviour
 {
 
     [SerializeField] private List<TutorialStep> dayZeroSteps;
+    [SerializeField] private List<TutorialStep> upgradeSteps;
     private TutorialPanelVisual tutorialPanelVisual;
     private TutorialMessageDisplayer tutorialMessageDisplayer;
     private TutoCursorDisplayer tutorialCursorDisplayer;
     private int currentStep = 0;
+    private TutorialType currentTutorialType;
 
     private bool isNextButtonClicked = false;
 
@@ -22,9 +24,18 @@ public class TutorialManager : MonoBehaviour
         tutorialCursorDisplayer = FindFirstObjectByType<TutoCursorDisplayer>(FindObjectsInactive.Include);
     }
 
+    public void StartUpgradeTutorial()
+    {
+        currentStep = -1;
+        currentTutorialType = TutorialType.UPGRADE;
+        GameManager.Instance.PauseGame();
+        PlayNextStep();
+    }
+
     public void StartDayZeroTutorial()
     {
         currentStep = -1;
+        currentTutorialType = TutorialType.DAY_ZERO;
         PlayNextStep();
     }
 
@@ -38,8 +49,45 @@ public class TutorialManager : MonoBehaviour
             tutorialPanelVisual.HidePanel();
             return;
         }
+        if (IsOver())
+        {
+            if (GameManager.Instance.isGamePaused) { GameManager.Instance.ResumeGame(); }
+            tutorialPanelVisual.HidePanel();
+            return;
+        }
+        var step = GetCurrentStep();
+        PerformAction(step);
+    }
 
-        var step = dayZeroSteps[currentStep];
+    bool IsOver()
+    {
+        if (currentTutorialType == TutorialType.DAY_ZERO)
+        {
+            return currentStep >= dayZeroSteps.Count;
+        }
+        else if (currentTutorialType == TutorialType.UPGRADE)
+        {
+            return currentStep >= upgradeSteps.Count;
+        }
+        ;
+        return true;
+    }
+    TutorialStep GetCurrentStep()
+    {
+        if (currentTutorialType == TutorialType.DAY_ZERO)
+        {
+            return dayZeroSteps[currentStep];
+        }
+        else if (currentTutorialType == TutorialType.UPGRADE)
+        {
+            return upgradeSteps[currentStep];
+        }
+        ;
+        return null;
+    }
+
+    void PerformAction(TutorialStep step)
+    {
         switch (step.tutorialStepType)
         {
             case TutorialStepType.MOVE_TO_WINDOW:
@@ -87,12 +135,14 @@ public class TutorialManager : MonoBehaviour
             case TutorialStepType.FINISH_DAY:
                 GameManager.Instance.DayCycleManager.TryToFinishDay();
                 break;
+            case TutorialStepType.PRESS_UPGRADE_BUTTON:
+                UpgradeButtonAction(step);
+                break;
             default:
                 Debug.LogWarning("Tutorial step type not handled: " + step.tutorialStepType);
                 break;
         }
     }
-
     void MoveToWindowAction(TutorialStep step)
     {
         if (PlayzoneVisual.currentView == step.viewToShow)
@@ -170,6 +220,24 @@ public class TutorialManager : MonoBehaviour
         StartCoroutine(ServeTacosCoroutine(step));
     }
 
+    void UpgradeButtonAction(TutorialStep step)
+    {
+        StartCoroutine(UpgradeButtonCoroutine(step));
+    }
+    IEnumerator UpgradeButtonCoroutine(TutorialStep step)
+    {
+        var upgradeButton = FindFirstObjectByType<UpgradeButtonDisplayer>(FindObjectsInactive.Include);
+        var buttonRect = upgradeButton.GetRectTransform();
+        tutorialPanelVisual.FocusOn(buttonRect, 0.1f);
+        if (step.messagekey != null && step.messagekey != "")
+        {
+            tutorialMessageDisplayer.ShowMessage(step.messagekey, step.messageModalYPosition, true);
+        }
+        yield return new WaitUntil(() => GameManager.Instance.UpgradeManager.GetCurrentLevel("GRILL") == 1);
+        tutorialMessageDisplayer.HideMessage();
+        tutorialPanelVisual.HidePanel();
+        PlayNextStep();
+    }
     IEnumerator ServeTacosCoroutine(TutorialStep step)
     {
         GameManager.Instance.SidebarManager.DeactivateAllSidebarButtons();

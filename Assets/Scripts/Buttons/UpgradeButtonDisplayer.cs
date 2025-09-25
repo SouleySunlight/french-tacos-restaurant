@@ -11,7 +11,7 @@ public class UpgradeButtonDisplayer : MonoBehaviour
     [SerializeField] private TMP_Text percentText;
     public void UpdateVisual()
     {
-        if (GameManager.Instance.DayCycleManager.GetCurrentDay() == 0)
+        if (GameManager.Instance.DayCycleManager.GetCurrentDay() < 2)
         {
             upgradeButton.SetActive(false);
             return;
@@ -47,6 +47,11 @@ public class UpgradeButtonDisplayer : MonoBehaviour
             ViewToShowEnum.FRYER => "FRYER",
             _ => string.Empty,
         };
+    }
+
+    public RectTransform GetRectTransform()
+    {
+        return buttonBody.GetComponent<RectTransform>();
     }
 
 

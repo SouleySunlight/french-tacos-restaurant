@@ -31,4 +31,11 @@ public enum TutorialStepType
     ADD_INGREDIENT_TO_GRUYERE_POT,
     REMOVE_INGREDIENT_FROM_GRUYERE_POT,
     FINISH_DAY,
+    PRESS_UPGRADE_BUTTON
+}
+
+public enum TutorialType
+{
+    DAY_ZERO,
+    UPGRADE,
 }

@@ -54,6 +54,10 @@ public class DayCycleManager : MonoBehaviour
         currentDayTimeElapsed = 0f;
         dayCycleVisual.UpdateDayDisplay(currentDay);
         GameManager.Instance.OrdersManager.AddFirstOrderOfTheDay();
+        if (currentDay == 2)
+        {
+            GameManager.Instance.TutorialManager.StartUpgradeTutorial();
+        }
     }
 
     private void FinishDay()

@@ -513,6 +513,18 @@ MonoBehaviour:
     m_Key: TUTO.CONGRATS
     m_Metadata:
       m_Items: []
+  - m_Id: 15184777651937280
+    m_Key: TUTO.UPGRADE_START
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15185705830440960
+    m_Key: TUTO.UPGRADE_WINDOW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15213191133913088
+    m_Key: TUTO_UPGRADE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
