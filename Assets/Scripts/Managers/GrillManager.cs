@@ -17,7 +17,7 @@ public class GrillManager : MonoBehaviour, IWorkStation
     private readonly float BURN_BASE_DURATION = 10f;
     private float currentGrillDuration;
 
-    public bool canUserRemoveTacos { get; private set; } = false;
+    public bool canUserRemoveTacos { get; private set; } = true;
 
     private GrillVisual grillVisual;
 
@@ -152,9 +152,11 @@ public class GrillManager : MonoBehaviour, IWorkStation
         {
             if (grillingTacos[i] == null)
             {
+
                 grillingTacos[i] = tacos;
                 grillVisual.GrillTacos(tacos, i);
                 grillingTime[i] = 0f;
+                UpdateGrillingTime();
                 totalGrillingTime[i] = currentGrillDuration;
                 return;
             }

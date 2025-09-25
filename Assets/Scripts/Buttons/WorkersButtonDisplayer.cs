@@ -10,7 +10,7 @@ public class WorkersButtonDisplayer : MonoBehaviour
 
     public void UpdateVisual()
     {
-        if (GameManager.Instance.DayCycleManager.GetCurrentDay() == 0)
+        if (GameManager.Instance.DayCycleManager.GetCurrentDay() < 2)
         {
             gameObject.SetActive(false);
             return;

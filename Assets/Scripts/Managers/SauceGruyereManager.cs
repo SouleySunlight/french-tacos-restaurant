@@ -89,6 +89,7 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
         {
             return;
         }
+        UpdateCookingTime();
         GameManager.Instance.InventoryManager.ConsumeUnprocessedIngredient(ingredient, isDoneByWorker);
         sauceGruyereIngredients.Add(ingredient);
         sauceGruyereVisual.AddIngredientToSauceGruyere(ingredient);
@@ -295,7 +296,6 @@ public class SauceGruyereManager : MonoBehaviour, IWorkStation
 
     public bool IsPotEmpty()
     {
-        Debug.Log(sauceGruyereIngredients.Count == 0);
         return sauceGruyereIngredients.Count == 0;
     }
 

@@ -19,5 +19,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 82a13f058715d4a949413e414f0094d2, type: 2}
   - {fileID: 11400000, guid: f53c12c282203453b8ccd62d81ffbae6, type: 2}
   messagekey: TUTO.ADD_INGREDIENTS_TO_SAUCE_GRUYERE
-  messageModalYPosition: -600
+  messageModalYPosition: 600
   shouldShowMessageBackground: 0

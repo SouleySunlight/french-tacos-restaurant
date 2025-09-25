@@ -17,5 +17,5 @@ MonoBehaviour:
   ingredient: {fileID: 0}
   order: []
   messagekey: TUTO.REMOVE_INGREDIENTS_TO_SAUCE_GRUYERE
-  messageModalYPosition: -600
+  messageModalYPosition: 600
   shouldShowMessageBackground: 0

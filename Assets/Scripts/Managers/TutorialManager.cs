@@ -389,7 +389,6 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator ShowMessageCoroutine(TutorialStep step)
     {
-        Debug.Log("Showing tutorial message: " + step.messagekey);
         tutorialMessageDisplayer.ShowMessage(step.messagekey, step.messageModalYPosition, false, step.shouldShowMessageBackground);
         isNextButtonClicked = false;
         yield return new WaitUntil(() => isNextButtonClicked);

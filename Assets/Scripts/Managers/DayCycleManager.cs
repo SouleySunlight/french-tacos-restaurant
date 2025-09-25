@@ -112,6 +112,7 @@ public class DayCycleManager : MonoBehaviour
 
     void AdActionBetweenDay()
     {
+        if (GameManager.Instance.DayCycleManager.GetCurrentDay() == 0) { return; }
         var shouldShowRatingModal =
             isRatingModalEnable &&
             GameManager.Instance.isFirebaseInit &&
