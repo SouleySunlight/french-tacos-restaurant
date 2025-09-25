@@ -23,6 +23,7 @@ public class InventoryManager : MonoBehaviour
 
     public bool IsUnprocessedIngredientAvailable(Ingredient ingredient, bool neededByWorker = false)
     {
+        if (GameManager.Instance.DayCycleManager.GetCurrentDay() == 0) { return true; }
         return GameManager.Instance.WalletManager.HasEnoughMoney(ingredient.priceToRefill, neededByWorker);
     }
 
@@ -40,6 +41,7 @@ public class InventoryManager : MonoBehaviour
     }
     public void ConsumeUnprocessedIngredient(Ingredient ingredient, bool consumedByWorkers = false)
     {
+        if (GameManager.Instance.DayCycleManager.GetCurrentDay() == 0) { return; }
         if (!GameManager.Instance.WalletManager.HasEnoughMoney(ingredient.priceToRefill, consumedByWorkers)) { return; }
         GameManager.Instance.WalletManager.SpendMoney(ingredient.priceToRefill, SpentCategoryEnum.INGREDIENTS);
     }

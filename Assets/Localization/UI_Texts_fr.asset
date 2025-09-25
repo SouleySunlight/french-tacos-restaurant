@@ -498,6 +498,15 @@ MonoBehaviour:
       et r\xE9cup\xE9rer ton or"
     m_Metadata:
       m_Items: []
+  - m_Id: 14934397496057856
+    m_Localized: "Ta prochaine commande n\xE9cessite des ingredients que tu n'as
+      pas encore pr\xE9par\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14935052323381248
+    m_Localized: "Commen\xE7ons par les frites"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

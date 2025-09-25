@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class GameSaveData
 {
-    public float playerMoney = 10f;
+    public float playerMoney = 0;
     public int currentDay = 0;
     public int numberOfTacosServed = 0;
     public int maxNumberOfOrders = 3;

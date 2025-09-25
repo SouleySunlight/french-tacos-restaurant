@@ -481,6 +481,14 @@ MonoBehaviour:
     m_Key: TUTO.SERVE_TACOS
     m_Metadata:
       m_Items: []
+  - m_Id: 14934397496057856
+    m_Key: TUTO.SECOND_ORDER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14935052323381248
+    m_Key: TUTO.GO_TO_FRYER
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

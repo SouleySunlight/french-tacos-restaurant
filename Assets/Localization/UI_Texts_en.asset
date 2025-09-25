@@ -486,6 +486,15 @@ MonoBehaviour:
       gold
     m_Metadata:
       m_Items: []
+  - m_Id: 14934397496057856
+    m_Localized: Your next order requires ingredients that you did not prepare for
+      the moment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14935052323381248
+    m_Localized: Let's start with fries
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
